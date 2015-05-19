@@ -24,6 +24,7 @@ collecting and disseminating information, data comparison is difficult. The
 process is often labor intensive and subjective. Luckily, remote sensing data
 could help reduce the burden of environmental monitoring and also provide
 information on conservation status.
+
 \section{State of Research and Research Question}
 Remote sensing has a rich history in environmental conservation, meteorology,
 climate science and other fields. Due to this history remote sensing experts
@@ -52,8 +53,9 @@ described below.
 
 \subsection{Background - Remote Sensing and Ontologies}
 
-
 \subsection{Feature selection}
+%% focus on ML?
+
 There are many different classification approaches with varying degrees of
 complexity and requiring different levels of user input. One commonly used
 classification approach, the maximum likelihood classification (MLC) approach,
@@ -89,6 +91,8 @@ usually two features per class is enough to produce accurate results. Combining
 this algorithm with an ontology would produces traceable results that are easy
 to understand. This approach would also help fill the observation-based ontology
 research gap as first described by Janowicz (2012) \cite{Janowicz2012}.
+\subsection{Other ML algorithm}
+
 \subsection{Semantic-based image interpretation}
 Different fields (medical imaging, security, etc.) have used ontologies for
 improving image retrieval and object detection. Only recently have ontologies
@@ -142,12 +146,12 @@ Such an automated tool could combine the benefits of object-based image analysis
 system. When an ontology is available, scientists can follow how the classes
 were developed and become aware of possible incompatibilities before combining
 datasets \cite{Janowicz2012}.
+
 \subsection{Research Question}
 \begin{itemize}
   \item Does the proposed methodology produce accurate/valid results?
   \item Can the method be applied to other classes with similar accuracy?
 \end{itemize}
-
 \section{Method}
 \subsection{Input Data into Workflow}
 After joining EUNIS characteristics to the RLP biotope map, the map was 
@@ -155,6 +159,8 @@ spatially joined with the pre-segmented remote sensing data. The remote sensing
 data already had zonal statistics computed for all of the polygons with min,
 max, mean, median, sum and stddev of aspect, caar, coin, difi, diri, diah, flac,
 mrrt, mrvb, prcu, slop, swi and toin.
+
+%% ROC? Recall Percision? Evaluation of quality?
 
 \subsection{Environmental Data}
 
