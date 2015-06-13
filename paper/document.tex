@@ -92,6 +92,7 @@ this algorithm with an ontology would produces traceable results that are easy
 to understand. This approach would also help fill the observation-based ontology
 research gap as first described by Janowicz (2012) \cite{Janowicz2012}.
 \subsection{Other ML algorithm}
+We compare the results of the SEaTH tool with the randomForest classifier 
 
 \subsection{Semantic-based image interpretation}
 Different fields (medical imaging, security, etc.) have used ontologies for
@@ -155,10 +156,27 @@ datasets \cite{Janowicz2012}.
 \section{Method}
 \subsection{Input Data into Workflow}
 After joining EUNIS characteristics to the RLP biotope map, the map was 
-spatially joined with the pre-segmented remote sensing data. The remote sensing
-data already had zonal statistics computed for all of the polygons with min,
-max, mean, median, sum and stddev of aspect, caar, coin, difi, diri, diah, flac,
-mrrt, mrvb, prcu, slop, swi and toin.
+spatially joined with the pre-segmented remote sensing data. Defiens eCognition
+software was used for the segmentation and was performed by RLP AgroScience. 
+The remote sensing data already had zonal statistics computed for all of the
+polygons.
+\begin{itemize}
+  \item min, max, mean, median, sum and stddev of:
+  \begin{itemize}
+    \item aspect, caar,
+	\item coin
+	\item difi
+	\item diri
+	\item diah
+	\item flac
+	\item mrrt
+	\item mrvb
+	\item prcu
+	\item slop
+	\item swi
+	\item toin.
+  \end{itemize}with  sum and stddev of 
+\end{itemize}
 
 %% ROC? Recall Percision? Evaluation of quality?
 
@@ -173,9 +191,17 @@ mrrt, mrvb, prcu, slop, swi and toin.
 The study area is located in the southeastern part of the Trier-Saarbug district
 in the federal state of Rhineland-Palatinate, Germany. The area is 
 approximately 200km$^{2}$ and borders Luxembourg in the west. 
+\begin{figure}
+	\includegraphics[height=0.5, width=\textwidth]{diagrams/study_area_small.png}
+\end{figure}
+
 
 \section{Results}
-
+\subsection{Feature importance}
+The single dimension (SEaTH) and multi-dimensional classification
+algorithms chose very different features as important. To compare results
+most adequately the automated dataset generated for SEaTH classification
+and rule generation was classified using RandomForest.
 \section{Discussion}
 
 \section{Conclusion}
