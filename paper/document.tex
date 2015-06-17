@@ -188,21 +188,28 @@ polygons.
 'BodenVegStark', 'NoVeg', NoVegHoch', 'Plantagen', 'Veg'
 
 
-\subsection{Study Area: Trier-Saarburg, Germany}
+\subsection{Study Area and Data}
 The study area is located in the southeastern part of the Trier-Saarbug district
-in the federal state of Rhineland-Palatinate, Germany. The area is 
-approximately 200km$^{2}$ and borders Luxembourg in the west. 
+in the federal state of Rhineland-Palatinate, Germany. At approximately
+200km$^{2}$, Luxembourg borders the district to the west and the federal state of Saarland to the South.
 \begin{figure}
 	\includegraphics[width=\textwidth]{diagrams/study_area_small.png}
 \end{figure}
 
-
 \section{Results}
 \subsection{Feature importance}
 The single dimension (SEaTH) and multi-dimensional classification
-algorithms chose very different features as important. To compare results
-most adequately the automated dataset generated for SEaTH classification
-and rule generation was classified using RandomForest.
+algorithms chose very different features as important. While SEaTH performs
+better when trained on a few objects displaying characteristic
+features\cite{Nussbaum2006}, the extra trees classifier and other ensemble
+algorithms generally are trained on a larger portion of the data. To compare
+performance more appropriately, we train SEaTH on a small dataset and the same
+dataset used for the extra trees classifier.
+
+We use WEKA and a cross-validation of 10 to train a J48 algorithm on the data.
+
+SEaTH classification accuracy depended on the the number of features used to cS
+
 \section{Discussion}
 
 \section{Conclusion}
