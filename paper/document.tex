@@ -8,8 +8,7 @@
 \begin{document}
 
 
-\section{Automated workflow for classification of habitat characteristics using
-Remote Sensing and other environmental data}
+\section{Classifying EUNIS Habitats Using Ontologies and Data Mining Methods}
 
 \section{Introduction - Context and Background}
 Human caused habitat destruction is a primary driver of biodiversity loss and
@@ -72,7 +71,9 @@ National Seashore for coastal dune and salt marsh classification
 Yet these algorithms are more suited for pixel-based image analysis and do not
 allow for automatic derivation of thresholds for classes.
 % % more examples of data mining/machine learning?
-A possible solution to this problem is to use the Separability and Thresholds
+
+\subsection{Selection of Algorithm}
+The Separability and Thresholds
 (SEaTH) \cite{Nussbaum2006} algorithm to automatically derive features important
 for classification from the data.
 \subsection{Empirically derived feature selection and threshold delineation -
@@ -175,7 +176,7 @@ polygons.
 	\item prcu
 	\item slop
 	\item swi
-	\item toin.
+	\item toin
   \end{itemize}with  sum and stddev of 
 \end{itemize}
 
@@ -206,12 +207,19 @@ algorithms generally are trained on a larger portion of the data. To compare
 performance more appropriately, we train SEaTH on a small dataset and the same
 dataset used for the extra trees classifier.
 
+
 We use WEKA and a cross-validation of 10 to train a J48 algorithm on the data.
 
 SEaTH classification accuracy depended on the the number of features used to cS
 
-\section{Discussion}
 
+\section{Discussion}
+SEaTH shows much better separability when one chooses larger objects and fewer
+from each object. Training SEaTH on few carefully selected objects being ideal
+representations of the class further increases the separability. Using two sets
+of rules produced from different sized training data produced quite different
+results when tested on the same dataset. 
+%% are some ogc_fids in training in testing data? 
 \section{Conclusion}
 
 \end{document}
