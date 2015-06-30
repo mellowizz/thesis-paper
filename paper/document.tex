@@ -20,7 +20,7 @@ which established the Natura 2000 network of habitats. The law requires
 conservation and monitoring of designated habitats by member states and for a
 report to be submitted every six years. 
 
-Earth Observation data can be combined with  local knowledge are
+Earth Observation data can be combined with local knowledge are
 
 Yet as Lucas et. al (2015) point out there are no standards for classifying
 habitats with Earth Observation (EO) data that can be applied to all sites. 
@@ -34,14 +34,11 @@ be labor intensive and subjective.
 Luckily, EO data could help reduce the burden of environmental monitoring and
 also provide information on conservation status.
 
-An automated system that can classify Natura 2000 habitats using EO
-data and an existing biotope map as inputs would greatly increase monitoring
-comparability and accuracy. 
-
-We propose an automated system using 
-EU-wide biotope classification schema called European Union Nature Information
-System (EUNIS), data mining algorithms for training on biotope data and
-ontologies for hierarchical reasoning and information management.
+We propose an automated system that can classify Natura 2000 habitats
+accoding to the EU-wide biotope classification schema called the European Union
+Nature Information System (EUNIS) using EO data, an existing biotope map and
+expert knowledge formalized in an ontology. The biotope data serves as class
+labels for training a data mining algorithm.
 
 \section{State of Research and Research Question}
 Remote sensing has a rich history in environmental conservation, meteorology,
@@ -51,7 +48,7 @@ image analysis implicitly incorporates the expertise and knowledge of the
 individual performing the analysis and reduces objectivity. This can be divided
 into remote sensing knowledge (spectral signature, remote sensing index, etc.)
 and field knowledge (feature properties, spatial relations, etc)
-\cite{Andres2013a}. This knowledge is often neither completely nor explicitily
+\cite{Andres2013a}. This knowledge is often neither completely nor explicitly
 defined but influences the classification. Thus, two experts can interpret the
 same image differently due to their unique conceptualizations and experiences.
 Further complicating matters, the classification chain is not documented and
@@ -87,17 +84,26 @@ than Adaboost \cite{Chan2008} and performed well when applied to the Cape Cod
 National Seashore for coastal dune and salt marsh classification
 \cite{Timm2012}.
 % need more?
-Yet these algorithms are more suited for pixel-based image analysis and do not
-allow for automatic derivation of thresholds for classes.
-% % more examples of data mining/machine learning?
+\subsection{Dimensionality of data}
+The data we use has many parameters and finding the optimal number to classify
+with is challenging and can be computationally intensive. Therefore we selected
+to use SEaTH.
 
-\subsection{Selection of Algorithm}
-The Separability and Thresholds
+\subsection{Selection of Algorithm - SEaTH and Decision Trees}
+We first chose the Separability and Thresholds
 (SEaTH) \cite{Nussbaum2006} algorithm to automatically derive features important
-for classification from the data.
-\subsection{Empirically derived feature selection and threshold delineation -
-SEaTH} The Separability and Thresholds (SEaTH) algorithm \cite{Nussbaum2006}
-statistically identifies characteristic features and their thresholds. It has
+for classification from the data because it is able to generate rules with
+thresholds that can easily be transferred to an ontology. Saving the rules in
+the ontology makes it clear what rules were used for classification and can be
+used by experts to modify the rules to be more accurate. To compare
+classification accuracy we selected the scikit-learn python suite
+\cite{scikit-learn} due to its ease of use and the availability of
+different algorithms. We settled on the ``DecisionTreeClassifier'' as one can
+visualize the results and parse the tree to load the results into the ontology.
+Moreover, an automated system should be able to use other algorithms as they become available.
+
+\subsection{SEaTH} The Separability and Thresholds (SEaTH) algorithm
+\cite{Nussbaum2006} statistically identifies characteristic features and their thresholds. It has
 been used on remote sensing data for land cover classification \cite{Gao2011}
 and nuclear installation classification \cite{Nussbaum2006}.
 Using training data, the algorithm determines the separability of the object
@@ -111,9 +117,12 @@ usually two features per class is enough to produce accurate results. Combining
 this algorithm with an ontology would produces traceable results that are easy
 to understand. This approach would also help fill the observation-based ontology
 research gap as first described by Janowicz (2012) \cite{Janowicz2012}.
-\subsection{Comparison with Extra Trees Classifier}
-We compare the results of the SEaTH tool with the Extra Trees classifier
-implemented in scikit-learn\cite{scikit-learn}.
+
+\subsection{Comparison with Decision Tree Classifier}
+The decision tree classifier implemented in scikit-learn is a modified
+classification and regression tree (CART)\cite{scikit-learn}. To minimize the
+ruleset and reduce computation time, dimension reduction was performed on the
+data using: . 
 
 \subsection{Semantic-based image interpretation}
 Different fields (medical imaging, security, etc.) have used ontologies for
@@ -215,6 +224,20 @@ in the federal state of Rhineland-Palatinate, Germany. At approximately
 \begin{figure}
 	\includegraphics[width=\textwidth]{diagrams/study_area_small.png}
 \end{figure}
+\subsection{Training and testing}
+
+After discarding all polygons with null and NAs, there were 9333 objects in the
+data set.
+\section{Methods}
+\subsection{Data and Preprocessing}
+All data comes from the RLP Ordnance Survey (Landesamt f\"ur Vermessung und
+Geobasisinformation).
+\subsection{Stereo Matching Based DSM}
+The ASCII point data has a resolution of 0.5m which was rasterised using IDW.
+\subsection{LiDAR DTM}
+The LiDAR ASCII point clouds were acquired between 2003 and 2009 and contain
+first and last pulse. The data contains on average 4 points per m$^{2}$ and
+this was rasterised with IDW.
 
 \section{Results}
 \subsection{Feature importance}
@@ -222,22 +245,22 @@ The single dimension (SEaTH) and multi-dimensional classification
 algorithms chose very different features as important. While SEaTH performs
 better when trained on a few objects displaying characteristic
 features\cite{Nussbaum2006}, the extra trees classifier and other ensemble
-algorithms generally are trained on a larger portion of the data. To compare
-performance more appropriately, we train SEaTH on a small dataset and the same
-dataset used for the extra trees classifier.
+algorithms generally are trained on a larger portion of the data. 
 
+To compare performance more appropriately, we train SEaTH on a small dataset and
+the same dataset used for the extra trees classifier.
 
 We use WEKA and a cross-validation of 10 to train a J48 algorithm on the data.
 
 SEaTH classification accuracy depended on the the number of features used to cS
 
-
 \section{Discussion}
 SEaTH shows much better separability when one chooses larger objects and fewer
-from each object. Training SEaTH on few carefully selected objects being ideal
-representations of the class further increases the separability. Using two sets
-of rules produced from different sized training data produced quite different
-results when tested on the same dataset. 
+from each object. Training SEaTH on a few carefully selected objects being ideal
+class representations further increases the separability, but the classification
+accuracy suffers when applied to the complete data set. Using two sets of rules
+produced from different sized training data produced quite different results
+when tested on the same dataset.
 %% are some ogc_fids in training in testing data? 
 \section{Conclusion}
 
