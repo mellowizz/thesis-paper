@@ -1,13 +1,54 @@
 % %This is a very basic article template.
 % %There is just one section and two subsections.
-\documentclass[a4paper,12pt]{article}
-\usepackage{cite}
+\documentclass[authoryear, review,12pt,number]{elsarticle}
+\usepackage[numbers]{natbib}
+\usepackage{citep}
 \usepackage{graphicx}
 \usepackage{float}
-
+\usepackage{rotating}
+\usepackage{stfloats}
+\usepackage{lineno}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage{tabulary}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage[none]{hyphenat}
+\usepackage[table]{xcolor}
+\sloppy
 \begin{document}
 
+\begin{frontmatter}
+\linenumbers
+\title{Automated Classifying of EUNIS Habitats with Ontologies and Data Mining
+methods}
 
+
+\author[TUB]{T. Niklas Moran\corref{cor1}}
+\ead{niklasmoran@mailbox.tu-berlin.de}
+
+\author[TUB]{Simon Nieland}
+\author[TUB]{Birgit Kleinschmit}
+
+\author[TUB]{Michael F\"orster}
+
+\address[TUB]{Geoinformation in Environmental Planning Lab, Technische
+Universit\"at Berlin, Stra\ss e des 17. Juni 145, 10623 Berlin, Germany}
+
+\cortext[cor1]{Corresponding author at: Geoinformation in Environmental Planning
+Lab, Technische Universit\"at Berlin, Stra\ss e des 17. Juni 145, 10623 Berlin,
+Germany. Tel.:+49 30 314 72601;}
+\begin{abstract}
+Write some text here..
+\end{abstract}
+
+\begin{keyword}
+remote sensing, biotope classification, data mining,
+generalisation, nature conservation, NATURA 2000, OWL2
+\end{keyword}
+
+\end{frontmatter}
+
+\linenumbers
 \section{Classifying EUNIS Habitats Using Ontologies and Data Mining Methods}
 
 \section{Introduction - Context and Background}
@@ -48,12 +89,12 @@ image analysis implicitly incorporates the expertise and knowledge of the
 individual performing the analysis and reduces objectivity. This can be divided
 into remote sensing knowledge (spectral signature, remote sensing index, etc.)
 and field knowledge (feature properties, spatial relations, etc)
-\cite{Andres2013a}. This knowledge is often neither completely nor explicitly
+\citep{Andres2013a}. This knowledge is often neither completely nor explicitly
 defined but influences the classification. Thus, two experts can interpret the
 same image differently due to their unique conceptualizations and experiences.
 Further complicating matters, the classification chain is not documented and
 controlled, reducing comparability and hindering attempts to reproduce the
-results\cite{Arvor2013}. Therefore (semi) automatic methods for remote sensing
+results\citep{Arvor2013}. Therefore (semi) automatic methods for remote sensing
 classifications that produce accurate and reproducible results are desired.
 A (semi) automatic system would also reduce the time needed to analyze large
 remote sensing datasets. Many approaches have been used to create an accurate
@@ -75,14 +116,14 @@ There are many different classification approaches with varying degrees of
 complexity and requiring different levels of user input. One commonly used
 classification approach, the maximum likelihood classification (MLC) approach,
 among the most popular, has been used to study land use change in China
-\cite{Ding2007}, analyze forest cover in Haiti \cite{Churches2014} and land
-cover and land-use change in Egypt \cite{Shalaby2007}. Recent research suggests
+\citep{Ding2007}, analyze forest cover in Haiti \citep{Churches2014} and land
+cover and land-use change in Egypt \citep{Shalaby2007}. Recent research suggests
 support vector machines (SVMs) when compared to decision trees (DTs), a neural
-network classifier and the MLC, produces better results \cite{Huang2002}. One
+network classifier and the MLC, produces better results \citep{Huang2002}. One
 such DT is the ``Random Forest'' algorithm which has been shown to be better
-than Adaboost \cite{Chan2008} and performed well when applied to the Cape Cod
+than Adaboost \citep{Chan2008} and performed well when applied to the Cape Cod
 National Seashore for coastal dune and salt marsh classification
-\cite{Timm2012}.
+\citep{Timm2012}.
 % need more?
 \subsection{Dimensionality of data}
 The data we use has many parameters and finding the optimal number to classify
@@ -91,36 +132,36 @@ to use SEaTH.
 
 \subsection{Selection of Algorithm - SEaTH and Decision Trees}
 We first chose the Separability and Thresholds
-(SEaTH) \cite{Nussbaum2006} algorithm to automatically derive features important
+(SEaTH) \citep{Nussbaum2006} algorithm to automatically derive features important
 for classification from the data because it is able to generate rules with
 thresholds that can easily be transferred to an ontology. Saving the rules in
 the ontology makes it clear what rules were used for classification and can be
 used by experts to modify the rules to be more accurate. To compare
 classification accuracy we selected the scikit-learn python suite
-\cite{scikit-learn} due to its ease of use and the availability of
+\citep{scikit-learn} due to its ease of use and the availability of
 different algorithms. We settled on the ``DecisionTreeClassifier'' as one can
 visualize the results and parse the tree to load the results into the ontology.
 Moreover, an automated system should be able to use other algorithms as they become available.
 
 \subsection{SEaTH} The Separability and Thresholds (SEaTH) algorithm
-\cite{Nussbaum2006} statistically identifies characteristic features and their thresholds. It has
-been used on remote sensing data for land cover classification \cite{Gao2011}
-and nuclear installation classification \cite{Nussbaum2006}.
+\citep{Nussbaum2006} statistically identifies characteristic features and their thresholds. It has
+been used on remote sensing data for land cover classification \citep{Gao2011}
+and nuclear installation classification \citep{Nussbaum2006}.
 Using training data, the algorithm determines the separability of the object
 classes and then calculates the thresholds for which the maximum separability
 can be achieved using the given features. One benefit of the algorithm is that
 one does not need many training objects.
 In the Nussbaum, Niemeyer and Canty (2006) paper, for example, the authors
 suggest using only very characteristic features for training and only used
-around 10 samples per class\cite{Nussbaum2006}. The authors also state that
+around 10 samples per class\citep{Nussbaum2006}. The authors also state that
 usually two features per class is enough to produce accurate results. Combining
 this algorithm with an ontology would produces traceable results that are easy
 to understand. This approach would also help fill the observation-based ontology
-research gap as first described by Janowicz (2012) \cite{Janowicz2012}.
+research gap as first described by Janowicz (2012) \citep{Janowicz2012}.
 
 \subsection{Comparison with Decision Tree Classifier}
 The decision tree classifier implemented in scikit-learn is a modified
-classification and regression tree (CART)\cite{scikit-learn}. To minimize the
+classification and regression tree (CART)\citep{scikit-learn}. To minimize the
 ruleset and reduce computation time, dimension reduction was performed on the
 data using: . 
 
@@ -128,15 +169,15 @@ data using: .
 Different fields (medical imaging, security, etc.) have used ontologies for
 improving image retrieval and object detection. Only recently have ontologies
 been adopted in remote sensing research. An ontology, defined as ``an explicit
-specification of a conceptualization'' \cite{gruber1993} could help bridge the
+specification of a conceptualization'' \citep{gruber1993} could help bridge the
 semantic gap and allow for better data interoperability, workflow management and
-automatic image interpretation \cite{Arvor2013} \cite{Andres2013a}. The term
+automatic image interpretation \citep{Arvor2013} \citep{Andres2013a}. The term
 ``semantic gap'' refers to the difference between the higher-level descriptions
 by experts and what can be extracted from the visual data. Remote sensing and
 field expert knowledge can be digitized in ontologies, thus allowing for a
 hierarchy of concepts for improved automatic image annotation and retrieval
 using concepts from both fields to produce more accurate results
-\cite{Srikanth:2005:EOA:1076034.1076128}. Janowicz \cite{Janowicz2012}
+\citep{Srikanth:2005:EOA:1076034.1076128}. Janowicz \citep{Janowicz2012}
 advocates for more observation-driven ontologies and for including machine
 learning, geostatistics and data mining to construct ontological primitives.
 Research on using observation-based ontologies for classifications is still
@@ -148,26 +189,26 @@ Monitoring System:
 From Space To Species'' (BIO\_SOS) which seeks to develop tools to monitor and
 map protected areas in the EU and uses ontologies modeled on the Land Cover
 Classification System (LCCS) and the General Habitat Category (GHC) to achieve
-this goal \cite{Arvor2013}. Using the taxonomy of the different classification
+this goal \citep{Arvor2013}. Using the taxonomy of the different classification
 systems allows expert knowledge to be included in the process.
 Further work as part of the project includes creation of a standardized
 framework for habitat monitoring and mapping called the Earth Observation Data
-for Habitat Montioring (EOD-HAM) system \cite{Lucas2015}. The system harnesses
+for Habitat Montioring (EOD-HAM) system \citep{Lucas2015}. The system harnesses
 knowledge from both remote sensing and ecology to classify Natura 2000 sites
 using a hierarchical classification system. The EOD-HAM system uses both
 pixel-based analysis and OBIA for greater classification accuracy but still
 relies on a rule-base created by an expert or the user. Other research includes
 a semi-automatic semantic classification approach for urban building types using
 a three-layered architecture was developed by di Sciascio et al. which showed
-promising results \cite{diSciascio2013}. Belgiu et al. \cite{Belgiu2014} used
+promising results \citep{diSciascio2013}. Belgiu et al. \citep{Belgiu2014} used
 Airborne Laser Scanning (ALS) data and empirically determined thresholds using
 the Random Forest (RF) classifier to perform an ontology-based classification of
-building types. Forestier et al. \cite{Forestier2012470} used an ontology to
+building types. Forestier et al. \citep{Forestier2012470} used an ontology to
 classify pre-segmented regions using a knowledge-base. Sheeren et al.
-\cite{Sheeren2006ML} developed a method to automatically acquire classification
+\citep{Sheeren2006ML} developed a method to automatically acquire classification
 rules using a newly developed genetic programming algorithm called 'ProgGen'.
 Sheeren et al. also used the data mining algorithm C4.5 for automatic rule
-generation with satisfactory results. Nieland et al. \cite{Nieland2015}
+generation with satisfactory results. Nieland et al. \citep{Nieland2015}
 demonstrated the potential for ontological inference and hierarchical
 matchmaking as a way to improve spatial data interoperability. An automated
 image analysis and classification process that could be applied to the whole
@@ -176,24 +217,21 @@ Such an automated tool could combine the benefits of object-based image analysis
 (OBIA) with linguistic terms for a traceable and reproducible classification
 system. When an ontology is available, scientists can follow how the classes
 were developed and become aware of possible incompatibilities before combining
-datasets \cite{Janowicz2012}.
+datasets \citep{Janowicz2012}.
 
-\subsection{Research Question}
-\begin{itemize}
-  \item Does the proposed methodology produce accurate/valid results?
-  \item Can the method be applied to other classes with similar accuracy?
-\end{itemize}
 \section{Method}
 \subsection{Input Data into Workflow}
 After joining EUNIS characteristics to the RLP biotope map, the map was 
 spatially joined with the pre-segmented remote sensing data. Defiens eCognition
 software was used for the segmentation and was performed by RLP AgroScience. 
+
 The remote sensing data already had zonal statistics computed for all of the
-polygons.
+polygons. A list of the zonal statistics are below.
 \begin{itemize}
   \item min, max, mean, median, sum and stddev of:
   \begin{itemize}
-    \item aspect, caar,
+    \item aspect
+    \item caar
 	\item coin
 	\item difi
 	\item diri
@@ -201,6 +239,7 @@ polygons.
 	\item flac
 	\item mrrt
 	\item mrvb
+	\item mpi
 	\item prcu
 	\item slop
 	\item swi
@@ -216,18 +255,14 @@ polygons.
 'BodenOffen', 'BodenVegKarg', BodenVegMittel', 'BodenVegSchwach',
 'BodenVegStark', 'NoVeg', NoVegHoch', 'Plantagen', 'Veg'
 
-
 \subsection{Study Area and Data}
 The study area is located in the southeastern part of the Trier-Saarbug district
 in the federal state of Rhineland-Palatinate, Germany. At approximately
-200km$^{2}$, Luxembourg borders the district to the west and the federal state of Saarland to the South.
+200km$^{2}$, Luxembourg borders the district to the west and the federal state
+of Saarland to the South.
 \begin{figure}
 	\includegraphics[width=\textwidth]{diagrams/study_area_small.png}
 \end{figure}
-\subsection{Training and testing}
-
-After discarding all polygons with null and NAs, there were 9333 objects in the
-data set.
 \section{Methods}
 \subsection{Data and Preprocessing}
 All data comes from the RLP Ordnance Survey (Landesamt f\"ur Vermessung und
@@ -240,28 +275,37 @@ first and last pulse. The data contains on average 4 points per m$^{2}$ and
 this was rasterised with IDW.
 
 \section{Results}
+
 \subsection{Feature importance}
 The single dimension (SEaTH) and multi-dimensional classification
 algorithms chose very different features as important. While SEaTH performs
 better when trained on a few objects displaying characteristic
-features\cite{Nussbaum2006}, the extra trees classifier and other ensemble
+features\citep{Nussbaum2006}, the extra trees classifier and other ensemble
 algorithms generally are trained on a larger portion of the data. 
 
-To compare performance more appropriately, we train SEaTH on a small dataset and
-the same dataset used for the extra trees classifier.
-
-We use WEKA and a cross-validation of 10 to train a J48 algorithm on the data.
-
-SEaTH classification accuracy depended on the the number of features used to cS
-
+\subsection{Training and testing}
+In total, 20877 polygons had EUNIS classification labels and after replacing NAs
+in the zonal statistics with zeros, was split into 66\% training and 33\%
+testing data set (using KStratifiedFold from scikit-learn). While SEaTH
+generally performs better with a small number of well-chosen, characteristics
+features, we trained and tested using the data set to show that different
+algorithms could be incorporated into the automated workflow. 
 \section{Discussion}
 SEaTH shows much better separability when one chooses larger objects and fewer
-from each object. Training SEaTH on a few carefully selected objects being ideal
-class representations further increases the separability, but the classification
-accuracy suffers when applied to the complete data set. Using two sets of rules
-produced from different sized training data produced quite different results
-when tested on the same dataset.
-%% are some ogc_fids in training in testing data? 
-\section{Conclusion}
+training objects per clas. Training SEaTH on a few carefully selected objects
+being ideal class representations further increases the separability, but the classification
+accuracy suffers when applied to the complete data set. Thus, SEaTH appears to
+overfit. Using two sets of rules produced from different sized training data
+produced quite different results when tested on the same dataset.
 
+The next step is to use the base wetness classes and combine them with other
+EUNIS class properties to be able to classify biotopes throughout Europe. This
+would allow for comparison and increase scrutiny of existing biotope maps.
+
+\section{Conclusion}
+We showed an automated workflow using ontologies and data mining algorithms can
+accurately classify wetness. The
+\bibliographystyle{model2-names}
+\section{references}
+\bibliography{references}
 \end{document}
