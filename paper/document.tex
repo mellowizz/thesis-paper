@@ -61,8 +61,6 @@ which established the Natura 2000 network of habitats. The law requires
 conservation and monitoring of designated habitats by member states and for a
 report to be submitted every six years. 
 
-Earth Observation data can be combined with local knowledge are
-
 Yet as Lucas et. al (2015) point out there are no standards for classifying
 habitats with Earth Observation (EO) data that can be applied to all sites. 
 
@@ -94,16 +92,16 @@ defined but influences the classification. Thus, two experts can interpret the
 same image differently due to their unique conceptualizations and experiences.
 Further complicating matters, the classification chain is not documented and
 controlled, reducing comparability and hindering attempts to reproduce the
-results\citep{Arvor2013}. Therefore (semi) automatic methods for remote sensing
+results\citep{Arvor2013}. Therefore automated methods for remote sensing
 classifications that produce accurate and reproducible results are desired.
-A (semi) automatic system would also reduce the time needed to analyze large
+An automated system would also reduce the time needed to analyze large
 remote sensing datasets. Many approaches have been used to create an accurate
-(semi) automatic classification tool using statistics and different algorithms
+automated classification tool using statistics and different algorithms
 from machine learning and data mining. Unfortunately most of these approaches
 rely on experts to produce rule-sets or manually select training points. The
 former relies on \emph{a priori} knowledge while the latter can be
 time-consuming.
-Neither are observation-based. There are many different (semi) automatic methods
+Neither are observation-based. There are many different automatic methods
 for feature selection. A brief overview explaining the most common methods is
 described below.
 
@@ -125,10 +123,6 @@ than Adaboost \citep{Chan2008} and performed well when applied to the Cape Cod
 National Seashore for coastal dune and salt marsh classification
 \citep{Timm2012}.
 % need more?
-\subsection{Dimensionality of data}
-The data we use has many parameters and finding the optimal number to classify
-with is challenging and can be computationally intensive. Therefore we selected
-to use SEaTH.
 
 \subsection{Selection of Algorithm - SEaTH and Decision Trees}
 We first chose the Separability and Thresholds
@@ -138,7 +132,7 @@ thresholds that can easily be transferred to an ontology. Saving the rules in
 the ontology makes it clear what rules were used for classification and can be
 used by experts to modify the rules to be more accurate. To compare
 classification accuracy we selected the scikit-learn python suite
-\citep{scikit-learn} due to its ease of use and the availability of
+\citep{scikit-learn} due to its maturity and ease of use and the availability of
 different algorithms. We settled on the ``DecisionTreeClassifier'' as one can
 visualize the results and parse the tree to load the results into the ontology.
 Moreover, an automated system should be able to use other algorithms as they become available.
@@ -163,7 +157,7 @@ research gap as first described by Janowicz (2012) \citep{Janowicz2012}.
 The decision tree classifier implemented in scikit-learn is a modified
 classification and regression tree (CART)\citep{scikit-learn}. To minimize the
 ruleset and reduce computation time, dimension reduction was performed on the
-data using: . 
+data using
 
 \subsection{Semantic-based image interpretation}
 Different fields (medical imaging, security, etc.) have used ontologies for
@@ -267,6 +261,45 @@ of Saarland to the South.
 \subsection{Data and Preprocessing}
 All data comes from the RLP Ordnance Survey (Landesamt f\"ur Vermessung und
 Geobasisinformation).
+
+The data is segmented by RLP AgroScience using
+multispectral (B, G, R, NIR) orthophotos with a 0.2m ground resolution and a
+2 x 2km tile size that are produced every 2 years. The iterative object-based
+image analysis is performed using eCognition Server and segments
+the data using thresholds and multiresolution approaches (Baatz and
+Sch\'ape 2000). The segmentation process uses information solely from aerial
+images based on spectral information (NDVI and Bare Area Index) and height
+(Tintrup gen. Suntrup et al. 2015). Future segmentation processes will
+incorporate DTM derived indicies and satellite imagery.
+
+We apply a PostGIS spatial join query using ST_WITHIN to select only those
+polygons from the segmented dataset that fall completely within the biotope polygon of our preprocessed
+biotope map. We join those polygons
+with EUNIS characteristics and also attach zonal statistics that are calculated
+for every polygon. The last step in the pre-processing workflow is the
+replacement of NULL values with zeros. The null values arise due to small
+polygon sizes created by the segmentation process. In the future, a new
+segmented dataset that respects the biotope boundaries should be available and
+will reduce the problems from selecting polygons that fall completely within the
+polygon.
+
+
+\subsection{Training/Testing Dataset}
+To create a training data, we randomly select 200 training objects per class. A
+subset of these objects, 20 per class, are used as input for the SEaTH
+algorithm as it performs better with fewer characteristic objects.
+
+
+\subsection{Results}
+
+We were able to reach over 90% accuracy for dry and aquatic classAes Using the
+decision tree classification algorithm from sci-kit learn. The same results
+using the 13 most important features produced by the random forest algorithm
+also achieved equal results. This can potentially reduce the amount of features
+and statistics that need to be calculated to classify habitat objects. This
+would greatly reduce computation and storage requirements for habitat
+classification.
+
 \subsection{Stereo Matching Based DSM}
 The ASCII point data has a resolution of 0.5m which was rasterised using IDW.
 \subsection{LiDAR DTM}
@@ -276,20 +309,6 @@ this was rasterised with IDW.
 
 \section{Results}
 
-\subsection{Feature importance}
-The single dimension (SEaTH) and multi-dimensional classification
-algorithms chose very different features as important. While SEaTH performs
-better when trained on a few objects displaying characteristic
-features\citep{Nussbaum2006}, the extra trees classifier and other ensemble
-algorithms generally are trained on a larger portion of the data. 
-
-\subsection{Training and testing}
-In total, 20877 polygons had EUNIS classification labels and after replacing NAs
-in the zonal statistics with zeros, was split into 66\% training and 33\%
-testing data set (using KStratifiedFold from scikit-learn). While SEaTH
-generally performs better with a small number of well-chosen, characteristics
-features, we trained and tested using the data set to show that different
-algorithms could be incorporated into the automated workflow. 
 \section{Discussion}
 SEaTH shows much better separability when one chooses larger objects and fewer
 training objects per clas. Training SEaTH on a few carefully selected objects
