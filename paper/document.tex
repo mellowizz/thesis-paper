@@ -49,17 +49,27 @@ generalisation, nature conservation, NATURA 2000, OWL2
 \end{frontmatter}
 
 \linenumbers
-\section{Classifying EUNIS Habitats Using Ontologies and Data Mining Methods}
 
 \section{Introduction - Context and Background}
 Recognizing that human-caused habitat destruction plays a dominant role in
 biodiversity loss, the European Union has implemented an environmental
-conservation framework to halt biodiversity law in accordance with the
+conservation framework to halt biodiversity loss in accordance with the
 Convention on Biological Diversity (CBD, 2005). An integral part of this
 framework is the EU Habitats Directive (Council Directive) 92/43/EEC [1992],
 which established the Natura 2000 network of habitats. The law requires
-conservation and monitoring of designated habitats by member states and for a
-report to be submitted every six years. 
+conservation and monitoring of designated habitats by member states and for a report to be submitted every six years. The German federal state of
+Rhineland-Palatinate has started to implement a thematically integrated
+state-wide system with all relevant geo-data for plans and decision-making from
+the local level to the EU levvel. Since collection of comprehensive,
+good-quality environmental data through field recordings is expensive and time
+consuming, remote sensing and other technologies can potentially solve these
+problems. -- (corbane et al 2015)
+As a result the federal authorities in Rhineland-Paltinate started to implement
+such a system in mid-2014 under the name NATFLO (Landscape objects from remotely
+sensed data for nature conservancy). One of the goals of the projects is
+multifunctionality which entails differing semantic conceptualizations. The use
+of ontologies and ontology-based reasoning over vector objects was seen as the
+solution to this problem. 
 
 Yet as Lucas et. al (2015) point out there are no standards for classifying
 habitats with Earth Observation (EO) data that can be applied to all sites. 
@@ -238,6 +248,11 @@ polygons. A list of the zonal statistics are below.
 	\item slop
 	\item swi
 	\item toin
+    \item total 
+    \item tri
+    \item tpi2
+    \item tpi5
+    \item wief
   \end{itemize}with  sum and stddev of 
 \end{itemize}
 
@@ -257,7 +272,6 @@ of Saarland to the South.
 \begin{figure}
 	\includegraphics[width=\textwidth]{diagrams/study_area_small.png}
 \end{figure}
-\section{Methods}
 \subsection{Data and Preprocessing}
 All data comes from the RLP Ordnance Survey (Landesamt f\"ur Vermessung und
 Geobasisinformation).

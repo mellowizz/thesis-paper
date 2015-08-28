@@ -1,0 +1,47 @@
+
+
+Data Pre-processing
+
+RLP AgroScience uses rulesets developed in ecognition developer (defiens) to
+segment the orthophotos with help of statistics derived from digital surface models and remote sensing
+data. One such statistic is the Bare Area Index (BAI) and the mean height. 
+% tile size? more details?
+
+We apply a PostGIS spatial join query using ST_WITHIN to select only those
+polygons from the segmented dataset that fall completely within the biotope polygon of our preprocessed
+biotope map. We join those polygons
+with EUNIS characteristics and also attach zonal statistics that are calculated
+for every polygon. The last step in the pre-processing workflow is the
+replacement of NULL values with zeros. The null values arise due to small
+polygon sizes created by the segmentation process. In the future, a new
+segmented dataset that respects the biotope boundaries should be available and
+will reduce the problems from selecting polygons that fall completely within the
+polygon.
+
+Training/Testing Dataset
+Currently 200 training objects per class are randomly selected and used for
+training the decision tree (DT) algorithm. A subset of these objects, 20 per class,
+are used as input for the SEaTH algorithm as it performs better with fewer
+characteristic objects.
+
+Feature Reduction
+Feature reduction was performed to create better training data for the DT
+algorithm and SEaTH. We used a cross-validation grid search in sci-kit learn to
+find the optimal parameters. % spell it out? 
+
+SEaTH's algorithm performs a two dimensional feature selection
+on account of the Jefferies-Matusita distance.
+
+
+
+Results
+
+The 
+
+We were able to reach over 90% accuracy for dry and aquatic classAes Using the
+decision tree classification algorithm from sci-kit learn. The same results
+using the 13 most important features produced by the random forest algorithm
+also achieved equal results. This can potentially reduce the amount of features
+and statistics that need to be calculated to classify habitat objects. This
+would greatly reduce computation and storage requirements for habitat
+classification.
