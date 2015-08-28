@@ -63,7 +63,7 @@ state-wide system with all relevant geo-data for plans and decision-making from
 the local level to the EU levvel. Since collection of comprehensive,
 good-quality environmental data through field recordings is expensive and time
 consuming, remote sensing and other technologies can potentially solve these
-problems. -- (corbane et al 2015)
+problems. % (corbane et al 2015)
 As a result the federal authorities in Rhineland-Paltinate started to implement
 such a system in mid-2014 under the name NATFLO (Landscape objects from remotely
 sensed data for nature conservancy). One of the goals of the projects is
@@ -224,13 +224,32 @@ were developed and become aware of possible incompatibilities before combining
 datasets \citep{Janowicz2012}.
 
 \section{Method}
+\subsection{Expert Knowledge and Data Mining}
+We chose supervised classification algorithms that are able to exploit expert
+knowledge, perform classification tasks quickly and accurately and produce human
+understandable rule sets for further scrutiny and refinement. Therefore, the
+SEaTH algorithm and the Decision Tree algorithm (a type of classification and regression
+tree) were selected to find the optimal combination of environmental indices and
+object properties that differentiate between objects. The labels used to
+differentiate between polygons come from the Rhineland Palatinate
+\subsection{Ontology-based Reasoning}
+Both the data mining algorithms, SEaTH and Decision Trees can  produce , produce a rule
+set, they can be imported into an OWL ontology. so that a reasoner can perfrom
+A-Box reasoning 
 \subsection{Input Data into Workflow}
+
 After joining EUNIS characteristics to the RLP biotope map, the map was 
 spatially joined with the pre-segmented remote sensing data. Defiens eCognition
 software was used for the segmentation and was performed by RLP AgroScience. 
 
 The remote sensing data already had zonal statistics computed for all of the
 polygons. A list of the zonal statistics are below.
+\subsection{Stereo Matching Based DSM}
+The ASCII point data has a resolution of 0.5m which was rasterised using IDW.
+\subsection{LiDAR DTM}
+The LiDAR ASCII point clouds were acquired between 2003 and 2009 and contain
+first and last pulse. The data contains on average 4 points per m$^{2}$ and
+this was rasterised with IDW.
 \begin{itemize}
   \item min, max, mean, median, sum and stddev of:
   \begin{itemize}
@@ -255,8 +274,6 @@ polygons. A list of the zonal statistics are below.
     \item wief
   \end{itemize}with  sum and stddev of 
 \end{itemize}
-
-%% ROC? Recall Percision? Evaluation of quality?
 
 \subsection{Environmental Data}
 
@@ -314,12 +331,6 @@ and statistics that need to be calculated to classify habitat objects. This
 would greatly reduce computation and storage requirements for habitat
 classification.
 
-\subsection{Stereo Matching Based DSM}
-The ASCII point data has a resolution of 0.5m which was rasterised using IDW.
-\subsection{LiDAR DTM}
-The LiDAR ASCII point clouds were acquired between 2003 and 2009 and contain
-first and last pulse. The data contains on average 4 points per m$^{2}$ and
-this was rasterised with IDW.
 
 \section{Results}
 
