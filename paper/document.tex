@@ -51,25 +51,43 @@ generalisation, nature conservation, NATURA 2000, OWL2
 \linenumbers
 
 \section{Introduction - Context and Background}
+% NATURA2000 obligations and local obligations = NATFLO
 Recognizing that human-caused habitat destruction plays a dominant role in
 biodiversity loss, the European Union has implemented an environmental
 conservation framework to halt biodiversity loss in accordance with the
 Convention on Biological Diversity (CBD, 2005). An integral part of this
 framework is the EU Habitats Directive (Council Directive) 92/43/EEC [1992],
 which established the Natura 2000 network of habitats. The law requires
-conservation and monitoring of designated habitats by member states and for a report to be submitted every six years. The German federal state of
-Rhineland-Palatinate has started to implement a thematically integrated
-state-wide system with all relevant geo-data for plans and decision-making from
-the local level to the EU levvel. Since collection of comprehensive,
+conservation and monitoring of designated habitats by member states and for a
+report to be submitted every six years. Due to these obligations and other
+environmental and spatial planning requirements, the German federal state of
+Rhineland-Palatinate started to implement a thematically integrated
+state-wide system with all relevant geo-data for plans and decision-making at
+all levels of government called NATFLO (Landscape objects from remotely
+sensed data for nature conservancy). The semantic and thematic interoperability
+effortlessly incorporates expert knowledge and helps decision-makers, scientists
+from different disciplines and planners successfully communicate using
+objective environmental data. To 
+%% automated map-making
+Since collection of comprehensive,
 good-quality environmental data through field recordings is expensive and time
-consuming, remote sensing and other technologies can potentially solve these
-problems. % (corbane et al 2015)
+consuming, remote sensing and other technologies can potentially reduce costs
+and provide a more robust data source that can be used in different domains. The
+NATFLO project harnesses vector objects with various indicies in automated
+workflows to allow for (semi) automated mapping. % (corbane et al 2015)
+\subsection{NATFLO}
+% do I need to describe the project?!
+
+%% redundant:
 As a result the federal authorities in Rhineland-Paltinate started to implement
-such a system in mid-2014 under the name NATFLO (Landscape objects from remotely
-sensed data for nature conservancy). One of the goals of the projects is
+such a system in mid-2014 under the name NATFLO . One of the goals of the projects is
 multifunctionality which entails differing semantic conceptualizations. The use
 of ontologies and ontology-based reasoning over vector objects was seen as the
-solution to this problem. 
+solution to this problem. Using ontologies with the help of experts allows for
+the translation from the Rhineland-Palitinate biotope system to the EU-wide EU
+Nature Information System (EUNIS). Ontologies also allows
+for comparison between areas with differing semantic conceptualizations and a
+reasoning over objects. 
 
 Yet as Lucas et. al (2015) point out there are no standards for classifying
 habitats with Earth Observation (EO) data that can be applied to all sites. 
@@ -231,49 +249,28 @@ understandable rule sets for further scrutiny and refinement. Therefore, the
 SEaTH algorithm and the Decision Tree algorithm (a type of classification and regression
 tree) were selected to find the optimal combination of environmental indices and
 object properties that differentiate between objects. The labels used to
-differentiate between polygons come from the Rhineland Palatinate
+differentiate between polygons come from the Rhineland Palatinate biotope map
+last updated in 2015. Consulting with experts, the translation between the
+Rhineland-Paltinate (OSIRIS) biotopes and EUNIS was possible. The properties of
+the EUNIS biotopes was then given to each polygon of the segmented data that fit
+within the biotope boundary. The 
+% Nieland, Kleinschmit, F\'orster 2015
 \subsection{Ontology-based Reasoning}
-Both the data mining algorithms, SEaTH and Decision Trees can  produce , produce a rule
-set, they can be imported into an OWL ontology. so that a reasoner can perfrom
-A-Box reasoning 
-\subsection{Input Data into Workflow}
+Both the data mining algorithms, SEaTH and Decision Trees can produce rule
+set with defined thresholds that can be chained together with logical operators
+(AND, OR, NOT) that then can be imported into an OWL ontology. Once in an
+ontology, a reasoner can perfrom A-Box reasoning. The reasoner chosen for its
+speed and efficiency is the Fact++ Reasoner.
 
-After joining EUNIS characteristics to the RLP biotope map, the map was 
-spatially joined with the pre-segmented remote sensing data. Defiens eCognition
-software was used for the segmentation and was performed by RLP AgroScience. 
-
-The remote sensing data already had zonal statistics computed for all of the
-polygons. A list of the zonal statistics are below.
+A benefit of using ontologies is that one can have hierarchies of concepts and
+the reasoner can find logical inconsitencies and subsumption of concepts.
 \subsection{Stereo Matching Based DSM}
 The ASCII point data has a resolution of 0.5m which was rasterised using IDW.
 \subsection{LiDAR DTM}
 The LiDAR ASCII point clouds were acquired between 2003 and 2009 and contain
 first and last pulse. The data contains on average 4 points per m$^{2}$ and
 this was rasterised with IDW.
-\begin{itemize}
-  \item min, max, mean, median, sum and stddev of:
-  \begin{itemize}
-    \item aspect
-    \item caar
-	\item coin
-	\item difi
-	\item diri
-	\item diah
-	\item flac
-	\item mrrt
-	\item mrvb
-	\item mpi
-	\item prcu
-	\item slop
-	\item swi
-	\item toin
-    \item total 
-    \item tri
-    \item tpi2
-    \item tpi5
-    \item wief
-  \end{itemize}with  sum and stddev of 
-\end{itemize}
+%
 
 \subsection{Environmental Data}
 
@@ -289,9 +286,12 @@ of Saarland to the South.
 \begin{figure}
 	\includegraphics[width=\textwidth]{diagrams/study_area_small.png}
 \end{figure}
+
 \subsection{Data and Preprocessing}
-All data comes from the RLP Ordnance Survey (Landesamt f\"ur Vermessung und
+All input data comes from the RLP Ordnance Survey (Landesamt f\"ur Vermessung und
 Geobasisinformation).
+
+
 
 The data is segmented by RLP AgroScience using
 multispectral (B, G, R, NIR) orthophotos with a 0.2m ground resolution and a
@@ -300,10 +300,34 @@ image analysis is performed using eCognition Server and segments
 the data using thresholds and multiresolution approaches (Baatz and
 Sch\'ape 2000). The segmentation process uses information solely from aerial
 images based on spectral information (NDVI and Bare Area Index) and height
-(Tintrup gen. Suntrup et al. 2015). Future segmentation processes will
-incorporate DTM derived indicies and satellite imagery.
+(Tintrup gen. Suntrup et al. 2015). Further indicators 
 
-We apply a PostGIS spatial join query using ST_WITHIN to select only those
+\begin{itemize}
+    \item Clip the biotope map to the extent of Saarburg-Trier
+    \item Join EUNIS properties to OSIRIS class names
+    \item Postgis join using ST\_WITHIN to select segmented polygons completely
+        within biotope map polygons
+    \item Join zonal statistics to the segmented polygons
+\end{itemize}
+Since this study focuses on the the area of Saarburg-Trier, the first step was
+to clip the biotope map with the extent of Trier-Saarburg. Then we join a table
+that has been created with the help of ecologists in Rhineland-Paltinate that
+translates the OSIRIS biotopes to the corresponding EUNIS biotope class. We then
+perform a spatial join using Postgis ST\_WITHIN to select the segmented polygons
+that lie within the biotope map. These polygons have all the biotope information
+attached to them and in the final step have the zonal statistics with
+morphological and hydrolgical (SAGA wetness index, ) and topographic indicies (topographic wetness
+index, )
+After joining EUNIS characteristics to the RLP biotope map, the map was 
+spatially joined with the pre-segmented remote sensing data. Defiens eCognition
+software was used for the segmentation and was performed by RLP AgroScience. 
+
+The remote sensing data already had zonal statistics computed for all of the
+polygons. A list of the zonal statistics are below.
+
+% Future segmentation processes will incorporate DTM derived indicies and satellite imagery.
+
+We apply a PostGIS spatial join query using ST\_WITHIN to select only those
 polygons from the segmented dataset that fall completely within the biotope polygon of our preprocessed
 biotope map. We join those polygons
 with EUNIS characteristics and also attach zonal statistics that are calculated
@@ -323,16 +347,13 @@ algorithm as it performs better with fewer characteristic objects.
 
 \subsection{Results}
 
-We were able to reach over 90% accuracy for dry and aquatic classAes Using the
+We were able to reach over 90\% accuracy for dry and aquatic classes using the
 decision tree classification algorithm from sci-kit learn. The same results
 using the 13 most important features produced by the random forest algorithm
 also achieved equal results. This can potentially reduce the amount of features
 and statistics that need to be calculated to classify habitat objects. This
 would greatly reduce computation and storage requirements for habitat
 classification.
-
-
-\section{Results}
 
 \section{Discussion}
 SEaTH shows much better separability when one chooses larger objects and fewer
@@ -348,7 +369,9 @@ would allow for comparison and increase scrutiny of existing biotope maps.
 
 \section{Conclusion}
 We showed an automated workflow using ontologies and data mining algorithms can
-accurately classify wetness. The
+accurately classify wetness. Moreover, the use of ontologies if published on the
+Internet can allow otehrs to reuse the owrkflow and make their own
+modifications.
 \bibliographystyle{model2-names}
 \section{References}
 \bibliography{references}
