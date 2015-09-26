@@ -267,13 +267,12 @@ images based on spectral information (NDVI and Bare Area Index) and height
 \end{itemize}
 Since this study focuses on the the area of Saarburg-Trier, the first step was
 to clip the biotope map with the extent of Trier-Saarburg. Then we join a table
-that has been created with the help of ecologists in Rhineland-Palatinate that
+that has been created with the help of ecologists in Rhineland-Paltinate that
 translates the OSIRIS biotopes to the corresponding EUNIS biotope class. We then
 perform a spatial join using Postgis ST\_WITHIN to select the segmented polygons
 that lie within the biotope map. These polygons have all the biotope information
 attached to them and in the final step have the zonal statistics with
-morphological and hydrological (SAGA wetness index, ) and topographic indices 
-(topographic wetness
+morphological and hydrolgical (SAGA wetness index, ) and topographic indicies (topographic wetness
 index, )
 After joining EUNIS characteristics to the RLP biotope map, the map was 
 spatially joined with the pre-segmented remote sensing data. Defiens eCognition
@@ -315,7 +314,7 @@ tree from SciKit learn) were selected to find the optimal combination of environ
 object properties that differentiate between objects. The labels used to
 differentiate between polygons come from the Rhineland Palatinate biotope map
 last updated in 2015. Consulting with experts, the translation between the
-Rhineland-Palatinate (OSIRIS) biotopes and EUNIS was possible. The properties of
+Rhineland-Paltinate (OSIRIS) biotopes and EUNIS was possible. The properties of
 the EUNIS biotopes was then given to each polygon of the segmented data that
 fit within the biotope boundary.
 % Nieland, Kleinschmit, F\'orster 2015
