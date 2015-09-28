@@ -1,0 +1,12 @@
+\documentclass[a4paper,10pt]{letter}
+\usepackage[utf8]{inputenc}
+
+\begin{document}
+% If you want headings on subsequent pages,
+% remove the ``%'' on the next line:
+% \pagestyle{headings}
+
+
+$(mrvb_mean <= 0.000005) \wedge(re_ndvi_re_max <= 0.217508)$
+
+\end{document}
