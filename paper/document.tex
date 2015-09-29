@@ -65,23 +65,20 @@ environmental and spatial planning requirements, the German federal state of
 Rhineland-Palatinate created the NATFLO project (Landscape objects from remotely
 sensed data for nature conservancy). The aim of the project is to implement a
 thematically integrated state-wide system with all relevant geo-data for plans
-and decision-making at all levels of government. The semantic and thematic interoperability
-effortlessly incorporates expert knowledge and helps decision-makers, scientists
-from different disciplines and planners successfully communicate using
-objective environmental data.
-% cheaper RS, higher res makes it possible? 
-%% NATFLO automated map-making
-Since collection of comprehensive,
-good-quality environmental data through field recordings is expensive and time
-consuming, remote sensing and other technologies can potentially reduce costs
-and provide a more robust data source that can be used in different domains. The
-NATFLO project harnesses vector objects with various indices in automated
-workflows to allow for (semi) automated mapping. % (corbane et al 2015)
-\subsection{NATFLO}
+and decision-making at all levels of government.  Since collection of
+comprehensive, high quality environmental data through field recordings is
+expensive and time consuming, the project harnesses existing environmental data
+and remote sensing products. To increase semantic interoperability, concepts
+from the Eionet Action Group on Land monitoring in Europe (EAGLE) are
+used.
+describe vector objects with various indices in automated workflows to allow for (semi) automated mapping. % (corbane et al 2015)
+
+% The semantic and thematic interoperability
+%effortlessly incorporates expert knowledge and helps decision-makers,
+% scientists from different disciplines and planners successfully communicate using
+%objective environmental data.
+
 % do I need to describe the project?!
-As mentioned above thematic interoperability is key to the project and as a
-result concepts from Eionet Action Group on Land monitoring in Europe (EAGLE)
-are used.
 One of the goals of the projects is
 multi-functionality which entails differing semantic conceptualizations. The use
 of ontologies and ontology-based reasoning over vector objects was seen as the
@@ -111,32 +108,6 @@ Nature Information System (EUNIS) using EO data, an existing biotope map and
 expert knowledge formalized in an ontology. The biotope data serves as class
 labels for training data mining algorithms.
 
-\section{State of Research and Research Question}
-Remote sensing has a rich history in environmental conservation, meteorology,
-climate science and other fields. Due to this history remote sensing experts
-have become very good at analyzing remote sensing data. Yet, remote sensing
-image analysis implicitly incorporates the expertise and knowledge of the
-individual performing the analysis and reduces objectivity. This can be divided
-into remote sensing knowledge (spectral signature, remote sensing index, etc.)
-and field knowledge (feature properties, spatial relations, etc)
-\citep{Andres2013a}. This knowledge is often neither completely nor explicitly
-defined but influences the classification. Thus, two experts can interpret the
-same image differently due to their unique conceptualizations and experiences.
-Further complicating matters, the classification chain is not documented and
-controlled, reducing comparability and hindering attempts to reproduce the
-results\citep{Arvor2013}. Therefore automated methods for remote sensing
-classifications that produce accurate and reproducible results are desired.
-An automated system would also reduce the time needed to analyze large
-remote sensing datasets. Many approaches have been used to create an accurate
-automated classification tool using statistics and different algorithms
-from machine learning and data mining. Unfortunately most of these approaches
-rely on experts to produce rule-sets or manually select training points. The
-former relies on \emph{a priori} knowledge while the latter can be
-time-consuming.
-Neither are observation-based. There are many different automatic methods
-for feature selection. A brief overview explaining the most common methods is
-described below.
-
 \section{Background - Remote Sensing and Ontologies}
 
 \subsection{Feature selection}
@@ -154,40 +125,6 @@ than Adaboost \citep{Chan2008} and performed well when applied to the Cape Cod
 National Seashore for coastal dune and salt marsh classification
 \citep{Timm2012}.
 % need more?
-\subsection{Selection of Algorithm - SEaTH and Decision Trees}
-We first chose the Separability and Thresholds
-(SEaTH) \citep{Nussbaum2006} algorithm to automatically derive features important
-for classification from the data because it is able to generate rules with
-thresholds that can easily be transferred to an ontology. Saving the rules in
-the ontology makes it clear what rules were used for classification and can be
-used by experts to modify the rules to be more accurate. To compare
-classification accuracy we selected the scikit-learn python suite
-\citep{scikit-learn} due to its maturity and ease of use and the availability of
-different algorithms. We settled on the ``Decision Tree Classifier'' as one can
-visualize the results and parse the tree to load the results into the ontology.
-Moreover, the automated system can use other algorithms as they become available.
-\subsection{SEaTH} The Separability and Thresholds (SEaTH) algorithm
-\citep{Nussbaum2006} statistically identifies characteristic features and their thresholds. It has
-been used on remote sensing data for land cover classification \citep{Gao2011}
-and nuclear installation classification \citep{Nussbaum2006}.
-Using training data, the algorithm determines the separability of the object
-classes and then calculates the thresholds for which the maximum separability
-can be achieved using the given features. One benefit of the algorithm is that
-one does not need many training objects.
-In the Nussbaum, Niemeyer and Canty (2006) paper, for example, the authors
-suggest using only very characteristic features for training and only used
-around 10 samples per class\citep{Nussbaum2006}. The authors also state that
-usually two features per class is enough to produce accurate results. Combining
-this algorithm with an ontology would produces traceable results that are easy
-to understand. This approach would also help fill the observation-based ontology
-research gap as first described by Janowicz (2012) \citep{Janowicz2012}.
-
-\subsection{Comparison with Decision Tree Classifier}
-The decision tree (DT) classifier implemented in scikit-learn is a modified
-classification and regression tree (CART)\citep{scikit-learn}. A cross
-validation using DT with many different parameters is first performed to find the best
-parameters. Then the rules generated by the algorithm is converted with an
-automated python script to OWL Ontology rules.
 
 \subsection{Semantic-based image interpretation}
 Different fields (medical imaging, security, etc.) have used ontologies for
@@ -248,7 +185,6 @@ datasets \citep{Janowicz2012}.
 \subsection{Data and Preprocessing}
 All input data comes from the RLP Ordnance Survey (Landesamt f\"ur Vermessung und
 Geobasisinformation).
-
 The data is segmented by RLP AgroScience using
 multi-spectral (B, G, R, NIR) orthophotos with a 0.2m ground resolution and a
 2 x 2km tile size that are produced every 2 years. The iterative object-based
@@ -258,6 +194,13 @@ Sch\'ape 2000). The segmentation process uses information solely from aerial
 images based on spectral information (NDVI and Bare Area Index) and height
 (Tintrup gen. Suntrup et al. 2015). Further indicators 
 
+\subsection{Stereo Matching Based DSM}
+The ASCII point data has a resolution of 0.5m which was rasterised using IDW.
+\subsection{LiDAR DTM}
+The LiDAR ASCII point clouds were acquired between 2003 and 2009 and contain
+first and last pulse. The data contains on average 4 points per m$^{2}$ and
+this was rasterised with IDW.
+
 \begin{itemize}
     \item Clip the biotope map to the extent of Saarburg-Trier
     \item Join EUNIS properties to OSIRIS class names
@@ -265,6 +208,7 @@ images based on spectral information (NDVI and Bare Area Index) and height
         within biotope map polygons
     \item Join zonal statistics to the segmented polygons
 \end{itemize}
+
 Since this study focuses on the the area of Saarburg-Trier, the first step was
 to clip the biotope map with the extent of Trier-Saarburg. Then we join a table
 that has been created with the help of ecologists in Rhineland-Palatinate that
@@ -279,13 +223,10 @@ After joining EUNIS characteristics to the RLP biotope map, the map was
 spatially joined with the pre-segmented remote sensing data. Defiens eCognition
 software was used for the segmentation and was performed by RLP AgroScience. 
 
-The remote sensing data already had zonal statistics computed for all of the
-polygons. A list of the zonal statistics are below.
-\begin{itemize}
-  \item 
-  \item Wind Effect
-  \item  
-\end{itemize}
+%The remote sensing data already had zonal statistics computed for all of the
+%polygons. A list of the zonal statistics are below.
+%% INSERT LIST?
+
 We apply a PostGIS spatial join query using ST\_WITHIN to select only those
 polygons from the segmented dataset that fall completely within the biotope
 polygon of our preprocessed biotope map. We join those polygons
@@ -298,11 +239,8 @@ will reduce the problems from selecting polygons that fall completely within the
 polygon.
 
 \begin{figure}
-  \begin{center}
-  \includegraphics[width=\textwidth]{
-diagrams/workflow_diagram-page001.png }
+  \includegraphics[width=\linewidth]{diagrams/workflow_overview2.png}
 \caption{The workflow.}
-  \end{center}
 \end{figure}
 
 
@@ -320,8 +258,42 @@ the EUNIS biotopes was then given to each polygon of the segmented data that
 fit within the biotope boundary.
 % Nieland, Kleinschmit, F\'orster 2015
 
+\subsection{Selection of Algorithm - SEaTH and Decision Trees}
+We first chose the Separability and Thresholds
+(SEaTH) \citep{Nussbaum2006} algorithm to automatically derive features important
+for classification from the data because it is able to generate rules with
+thresholds that can easily be transferred to an ontology. Saving the rules in
+the ontology makes it clear what rules were used for classification and can be
+used by experts to modify the rules to be more accurate. To compare
+classification accuracy we selected the scikit-learn python suite
+\citep{scikit-learn} due to its maturity and ease of use and the availability of
+different algorithms. We settled on the ``Decision Tree Classifier'' as one can
+visualize the results and parse the tree to load the results into the ontology.
+Moreover, the automated system can use other algorithms as they become available.
+\subsection{SEaTH} The Separability and Thresholds (SEaTH) algorithm
+\citep{Nussbaum2006} statistically identifies characteristic features and their thresholds. It has
+been used on remote sensing data for land cover classification \citep{Gao2011}
+and nuclear installation classification \citep{Nussbaum2006}.
+Using training data, the algorithm determines the separability of the object
+classes and then calculates the thresholds for which the maximum separability
+can be achieved using the given features. One benefit of the algorithm is that
+one does not need many training objects.
+In the Nussbaum, Niemeyer and Canty (2006) paper, for example, the authors
+suggest using only very characteristic features for training and only used
+around 10 samples per class\citep{Nussbaum2006}. The authors also state that
+usually two features per class is enough to produce accurate results. Combining
+this algorithm with an ontology would produces traceable results that are easy
+to understand. This approach would also help fill the observation-based ontology
+research gap as first described by Janowicz (2012) \citep{Janowicz2012}.
+
+\subsection{Comparison with Decision Tree Classifier}
+The decision tree (DT) classifier implemented in scikit-learn is a modified
+classification and regression tree (CART)\citep{scikit-learn}. A cross
+validation using DT with many different parameters is first performed to find the best
+parameters. Then the rules generated by the algorithm is converted with an
+automated python script to OWL Ontology rules.
 \begin{figure}
-	\includegraphics[width=\textwidth]{diagrams/workflow_training_testing2.png}
+	\includegraphics{diagrams/another_workflow_diagram_large.png}
 \end{figure}
 \subsection{Ontology-based Reasoning}
 Both the data mining algorithms, SEaTH and Decision Trees can produce rule
@@ -332,12 +304,6 @@ speed and efficiency is the Fact++ Reasoner.
 
 A benefit of using ontologies is that one can have hierarchies of concepts and
 the reasoner can find logical inconsistencies and subsumption of concepts.
-\subsection{Stereo Matching Based DSM}
-The ASCII point data has a resolution of 0.5m which was rasterised using IDW.
-\subsection{LiDAR DTM}
-The LiDAR ASCII point clouds were acquired between 2003 and 2009 and contain
-first and last pulse. The data contains on average 4 points per m$^{2}$ and
-this was rasterised with IDW.
 %
 
 %
