@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.8.14)  5 OCT 2015 12:46
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.8.14)  6 OCT 2015 14:24
 entering extended mode
 **document.tex
 (C:\Users\Moran\git\thesis-paper\paper\document.tex
@@ -334,15 +334,15 @@ ces and ob-ject
 File: diagrams/another_workflow_diagram_large.png Graphic file (type png)
 <use diagrams/another_workflow_diagram_large.png>
 Package pdftex.def Info: diagrams/another_workflow_diagram_large.png used on in
-put line 289.
+put line 290.
 (pdftex.def)             Requested size: 484.05725pt x 540.51805pt.
 
-Overfull \hbox (94.05725pt too wide) in paragraph at lines 289--290
+Overfull \hbox (94.05725pt too wide) in paragraph at lines 290--291
 [][][] 
  []
 
 
-Underfull \hbox (badness 1668) in paragraph at lines 299--306
+Underfull \hbox (badness 1668) in paragraph at lines 300--307
 \OT1/cmr/m/n/12 dis-trict in the fed-eral state of Rhineland-Palatinate, Ger-ma
 ny. At
  []
@@ -807,7 +807,7 @@ KTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files (x86)/MiKT
 eX 2.9/fonts/type1/public/amsfonts/cm/cmti7.pfb><C:/Program Files (x86)/MiKTeX 
 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.
 9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on document.pdf (17 pages, 259625 bytes).
+Output written on document.pdf (17 pages, 259621 bytes).
 PDF statistics:
  118 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
