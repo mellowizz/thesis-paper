@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Arch Linux)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: document.aux
+The style file: model2-names.bst
+Database file #1: references.bib
+Warning--I didn't find a database entry for "Shalaby2007"
+Reallocated singl_function (elt_size=8) to 100 items from 50.
+Warning--empty pages in Nussbaum2006
+You've used 19 entries,
+            2990 wiz_defined-function locations,
+            907 strings with 13093 characters,
+and the built_in function-call counts, 16410 in all, are:
+= -- 1259
+> -- 814
+< -- 7
++ -- 316
+- -- 291
+* -- 1995
+:= -- 2362
+add.period$ -- 70
+call.type$ -- 19
+change.case$ -- 196
+chr.to.int$ -- 19
+cite$ -- 20
+duplicate$ -- 1091
+empty$ -- 1059
+format.name$ -- 348
+if$ -- 3053
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 235
+newline$ -- 123
+num.names$ -- 76
+pop$ -- 332
+preamble$ -- 1
+purify$ -- 173
+quote$ -- 0
+skip$ -- 313
+stack$ -- 0
+substring$ -- 720
+swap$ -- 928
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 171
+warning$ -- 1
+while$ -- 86
+width$ -- 0
+write$ -- 327
+(There were 2 warnings)
