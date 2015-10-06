@@ -76,7 +76,10 @@ We propose an automated system that can classify Natura 2000 habitats
 according to the EU-wide biotope classification schema called the European 
 Union Nature Information System (EUNIS) using EO data, an existing biotope map
 and expert knowledge formalized in an ontology. The biotope data serves as class
-labels for training data mining algorithms.
+labels for training data mining algorithms which generate rules that can be
+imported into an ontology. Once the rules and segmented objects are imported
+into an ontology, a reasoner can perform A-box and T-box reasoning classifying
+which objects belong to which class and how the classes are related. 
 % The semantic and thematic interoperability
 %effortlessly incorporates expert knowledge and helps decision-makers,
 % scientists from different disciplines and planners successfully communicate using
