@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Arch Linux) (preloaded format=pdflatex 2015.9.16)  4 OCT 2015 12:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Arch Linux) (preloaded format=pdflatex 2015.9.16)  11 OCT 2015 16:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -341,171 +341,111 @@ Overfull \vbox (38.31102pt too high) has occurred while \output is active []
 [1
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-
-Package natbib Warning: Citation `gruber1993' on page 2 undefined on input line
- 93.
-
-
-Package natbib Warning: Citation `Arvor2013' on page 2 undefined on input line 
-95.
-
-
-Package natbib Warning: Citation `Andres2013a' on page 2 undefined on input lin
-e 95.
-
-
-Package natbib Warning: Citation `Srikanth:2005:EOA:1076034.1076128' on page 2 
-undefined on input line 101.
-
-
-Package natbib Warning: Citation `Janowicz2012' on page 2 undefined on input li
-ne 101.
-
-[2]
-
-Package natbib Warning: Citation `Arvor2013' on page 3 undefined on input line 
-113.
-
-
-Package natbib Warning: Citation `Lucas2015' on page 3 undefined on input line 
-117.
-
-
-Package natbib Warning: Citation `diSciascio2013' on page 3 undefined on input 
-line 124.
-
-
-Package natbib Warning: Citation `Belgiu2014' on page 3 undefined on input line
- 124.
-
-
-Package natbib Warning: Citation `Forestier2012470' on page 3 undefined on inpu
-t line 127.
-
-
-Package natbib Warning: Citation `Sheeren2006ML' on page 3 undefined on input l
-ine 129.
-
-
-Package natbib Warning: Citation `Nieland2015' on page 3 undefined on input lin
-e 132.
-
-
-Package natbib Warning: Citation `Janowicz2012' on page 3 undefined on input li
-ne 141.
-
-[3]
-
-Package natbib Warning: Citation `Ding2007' on page 4 undefined on input line 1
-49.
-
-
-Package natbib Warning: Citation `Churches2014' on page 4 undefined on input li
-ne 149.
-
-
-Package natbib Warning: Citation `Shalaby2007' on page 4 undefined on input lin
-e 150.
-
-
-Package natbib Warning: Citation `Huang2002' on page 4 undefined on input line 
-152.
-
-
-Package natbib Warning: Citation `Chan2008' on page 4 undefined on input line 1
-54.
-
-
-Package natbib Warning: Citation `Timm2012' on page 4 undefined on input line 1
-56.
-
-[4]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 180.
-
- (/usr/share/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 180.
-
-Underfull \hbox (badness 4217) in paragraph at lines 182--184
-[]\OT1/cmr/m/n/12 Postgis join us-ing ST[]-WITHIN to se-lect seg-mented poly-go
-ns
- []
-
-[5]
-Underfull \hbox (badness 2119) in paragraph at lines 187--200
-\OT1/cmr/m/n/12 in Rhineland-Palatinate that trans-lates the OSIRIS biotopes to
- the
- []
-
-[6] <diagrams/workflow_overview2.png, id=34, 455.45157pt x 142.28156pt>
-File: diagrams/workflow_overview2.png Graphic file (type png)
-
-<use diagrams/workflow_overview2.png>
-Package pdftex.def Info: diagrams/workflow_overview2.png used on input line 217
-.
-(pdftex.def)             Requested size: 390.0pt x 121.83652pt.
-
-Underfull \hbox (badness 1057) in paragraph at lines 222--234
-\OT1/cmr/m/n/12 to find the op-ti-mal com-bi-na-tion of en-vi-ron-men-tal in-di
-ces and ob-ject
- []
-
-[7 <./diagrams/workflow_overview2.png>]
-
-Package natbib Warning: Citation `Nussbaum2006' on page 8 undefined on input li
-ne 253.
-
-
-Package natbib Warning: Citation `scikit-learn' on page 8 undefined on input li
-ne 259.
-
-[8]
-
-Package natbib Warning: Citation `Nussbaum2006' on page 9 undefined on input li
-ne 264.
-
-
-Package natbib Warning: Citation `Gao2011' on page 9 undefined on input line 26
-5.
-
-
-Package natbib Warning: Citation `Nussbaum2006' on page 9 undefined on input li
-ne 266.
-
-
-Package natbib Warning: Citation `Nussbaum2006' on page 9 undefined on input li
-ne 273.
-
-
-Package natbib Warning: Citation `Janowicz2012' on page 9 undefined on input li
-ne 277.
-
-
-Package natbib Warning: Citation `scikit-learn' on page 9 undefined on input li
-ne 281.
-
-
-<diagrams/another_workflow_diagram_large.png, id=44, 484.05844pt x 540.51938pt>
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+<diagrams/another_workflow_diagram_large.png, id=22, 484.05844pt x 540.51938pt>
 File: diagrams/another_workflow_diagram_large.png Graphic file (type png)
 <use diagrams/another_workflow_diagram_large.png>
 Package pdftex.def Info: diagrams/another_workflow_diagram_large.png used on in
-put line 286.
+put line 109.
 (pdftex.def)             Requested size: 484.05725pt x 540.51805pt.
 
-Overfull \hbox (94.05725pt too wide) in paragraph at lines 286--287
+Overfull \hbox (94.05725pt too wide) in paragraph at lines 109--113
 [][] 
  []
 
 
-Underfull \hbox (badness 1668) in paragraph at lines 296--303
-\OT1/cmr/m/n/12 dis-trict in the fed-eral state of Rhineland-Palatinate, Ger-ma
-ny. At
+LaTeX Warning: Float too large for page by 76.51805pt on input line 114.
+
+
+! LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.117     \item C
+                 lip the biotope map to the extent of Saarburg-Trier
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Underfull \hbox (badness 10000) detected at line 117
+[][]
  []
 
-[9] [10 <./diagrams/another_workflow_diagram_large.png>] [11] (./document.bbl
+
+! LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.118     \item J
+                 oin EUNIS properties to OSIRIS class names
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Underfull \hbox (badness 10000) detected at line 118
+[][]
+ []
+
+
+! LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.119     \item P
+                 ostgis join using ST\_WITHIN to select segmented polygons c...
+
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Underfull \hbox (badness 10000) detected at line 119
+[][]
+ []
+
+
+! LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.121     \item J
+                 oin zonal statistics to the segmented polygons
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Underfull \hbox (badness 10000) detected at line 121
+[][]
+ []
+
+<diagrams/workflow_overview2.png, id=24, 455.45157pt x 142.28156pt>
+File: diagrams/workflow_overview2.png Graphic file (type png)
+
+<use diagrams/workflow_overview2.png>
+Package pdftex.def Info: diagrams/workflow_overview2.png used on input line 124
+.
+(pdftex.def)             Requested size: 390.0pt x 121.83652pt.
+
+Underfull \hbox (badness 2119) in paragraph at lines 128--142
+\OT1/cmr/m/n/12 in Rhineland-Palatinate that trans-lates the OSIRIS biotopes to
+ the
+ []
+
+[3] [4 <./diagrams/another_workflow_diagram_large.png>] [5 <./diagrams/workflow
+_overview2.png>]
+Underfull \hbox (badness 1057) in paragraph at lines 179--192
+\OT1/cmr/m/n/12 to find the op-ti-mal com-bi-na-tion of en-vi-ron-men-tal in-di
+ces and ob-ject
+ []
+
+[6] [7] [8] [9] (./document.bbl
 Underfull \hbox (badness 3657) in paragraph at lines 17--28
 []\OT1/cmr/m/n/12 Andr^^Ses, S., Pierkot, C., Ar-vor, D., Andr, S., 2013.  To-w
 ards
@@ -539,9 +479,10 @@ Overfull \hbox (155.32298pt too wide) in paragraph at lines 17--28
 rocessing[]-2013[]-4[]-40[]-30068\OT1/cmr/m/n/12 . 
  []
 
+[10]
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¶ in font cmr12!
-[12]
+
 Underfull \hbox (badness 2165) in paragraph at lines 52--63
 []\OT1/cmr/m/n/12 Chan, J.C.W., Paelinckx, D., 2008.  Eval-u-a-tion of ran-dom 
 for-est
@@ -600,7 +541,7 @@ Overfull \hbox (32.56393pt too wide) in paragraph at lines 76--88
 0861\OT1/cmr/m/n/12 ,
  []
 
-
+[11]
 Underfull \hbox (badness 4416) in paragraph at lines 89--101
 []\OT1/cmr/m/n/12 Forestier, G., Puis-sant, A., Wem-mert, C., Gan^^Xcarski, P.,
  2012.
@@ -612,7 +553,6 @@ Overfull \hbox (32.56393pt too wide) in paragraph at lines 89--101
 004X\OT1/cmr/m/n/12 ,
  []
 
-[13]
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no “ in font cmr12!
@@ -676,7 +616,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 132--141
 \OT1/cmtt/m/n/12 http://dx.doi.org/10.1111/j.1467-9671.2012.01342.x,
  []
 
-
+[12]
 Underfull \hbox (badness 10000) in paragraph at lines 142--163
 []\OT1/cmtt/m/n/12 Lucas, R., Blonda, P., Bunting, P., Jones, G., Inglada,
  []
@@ -722,7 +662,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 142--163
 \OT1/cmtt/m/n/12 Issue on Earth observation for habitat mapping and
  []
 
-[14]
+
 Underfull \hbox (badness 10000) in paragraph at lines 164--177
 []\OT1/cmtt/m/n/12 Nieland, S., Kleinschmit, B., F^^?orster, M., 2015.  Using
  []
@@ -791,7 +731,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 178--190
 \OT1/cmtt/m/n/12 2006), Salzburg, 4-5 July 2006. - 2006. - (ISPRS ; XXXVI
  []
 
-
+[13]
 Underfull \hbox (badness 10000) in paragraph at lines 191--205
 []\OT1/cmtt/m/n/12 Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V.,
  []
@@ -811,10 +751,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 191--205
 \OT1/cmtt/m/n/12 Cournapeau, D., Brucher, M., Perrot, M., Duchesnay, E., 2011.
  []
 
-[15]
 LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 217
 .
- (/usr/share/texmf/tex/latex/omscmtt.fd
+(/usr/share/texmf/tex/latex/omscmtt.fd
 File: omscmtt.fd 
 )
 LaTeX Font Info:    Font shape `OMS/cmtt/m/n' in size <12> not available
@@ -875,7 +814,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 221--231
 \OT1/cmtt/m/n/12 2006. IEEE International Conference on, pp. 3919--3922.
  []
 
-
+[14]
 Underfull \hbox (badness 10000) in paragraph at lines 232--243
 []\OT1/cmtt/m/n/12 Srikanth, M., Varner, J., Bowden, M., Moldovan, D., 2005.
  []
@@ -905,7 +844,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 232--243
 \OT1/cmtt/m/n/12 552--558.  URL: http://doi.acm.org/10.1145/1076034.1076128,
  []
 
-[16]
+
 Underfull \hbox (badness 10000) in paragraph at lines 244--254
 []\OT1/cmtt/m/n/12 Timm, B.C., McGarigal, K., 2012.  Fine-scale remotely-sensed
 
@@ -932,40 +871,31 @@ Overfull \hbox (35.47508pt too wide) in paragraph at lines 244--254
 3525,
  []
 
-)
-
-Package natbib Warning: There were undefined citations.
-
-[17] (./document.aux
-
-Package natbib Warning: Citation(s) may have changed.
-(natbib)                Rerun to get citations correct.
-
-) ) 
+) [15] (./document.aux) ) 
 Here is how much of TeX's memory you used:
- 4615 strings out of 493089
- 62073 string characters out of 6140694
- 156336 words of memory out of 5000000
- 8016 multiletter control sequences out of 15000+600000
+ 4599 strings out of 493089
+ 61816 string characters out of 6140694
+ 157827 words of memory out of 5000000
+ 8003 multiletter control sequences out of 15000+600000
  9351 words of font info for 33 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,7n,35p,266b,307s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/sh
-are/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><
-/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/share/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmtt12.pfb>
-Output written on document.pdf (17 pages, 245355 bytes).
+ 41i,7n,35p,400b,284s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></us
+r/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmss8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmti12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti
+7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/sh
+are/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on document.pdf (15 pages, 243670 bytes).
 PDF statistics:
- 120 PDF objects out of 1000 (max. 8388607)
- 82 compressed objects within 1 object stream
+ 114 PDF objects out of 1000 (max. 8388607)
+ 78 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
