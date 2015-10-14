@@ -1,4 +1,21 @@
 
+\subsection{Ontology-based Reasoning}
+Both the data mining algorithms, SEaTH and Decision Trees can produce rule
+sets with defined thresholds. The rules can be chained together with logical
+operators (AND, OR, NOT) and using a script written in Python, are imported
+into an OWL ontology. The polygons from the PostGIS database can be imported
+as individuals with their corresponding zonal statistics and other properties
+available. Once in an ontology, a reasoner can perform A-Box and T-Box
+reasoning. T-Box reasoning allows one to see the relationships between the
+EUNIS classes, whereas A-Box reasoning allows the individuals to be classified
+into the various defined classes based on the rules imported from the data
+mining algorithms. The reasoner also points out logical inconsistencies and
+subsumption of concepts in the rules or classes. Identifying logical
+inconsistencies can greatly help see how the classes
+could be better defined.
+We chose Fact++ Reasoner for its speed, efficiency and
+capabilities.
+
 \subsection{Semantic-based image interpretation}
 Different fields (medical imaging, security, etc.) have used ontologies for
 improving image retrieval and object detection. Only recently have ontologies
