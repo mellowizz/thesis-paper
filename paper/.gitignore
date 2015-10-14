@@ -1,3 +1,5 @@
 /document.pdf
 /document.synctex.gz
-/tmp/
+/tmp/*
+*.aux
+*.log
