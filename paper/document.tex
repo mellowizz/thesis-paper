@@ -87,25 +87,33 @@ and expert knowledge formalized in an ontology. The biotope data serves as class
 labels for training data mining algorithms which generate rules that can be
 imported into an ontology. Once the rules and segmented objects are imported
 into an ontology, a reasoner can perform A-box and T-box reasoning classifying
-which objects belong to which class and how the classes are related. 
+which objects belong to which class and how the classes are related. This method
+contributes to the goal of empirically-deriven rule creation and enhances
+data interoperability and comparison.
 \section{Method}
 This section describes the developed method for classifying EUNIS habitats by
-using data mining algorithms to generate rules based on zonal statistics and
-remote sensing data of pre-segmented polygons. Furthermore the method's
-advantage over other data mining approaches is the creation of an ontology in
-the Web Ontology Language (OWL2/XML) that increases the interoperablity and
-readability of results. The benefits of using ontologies is described below.
+using data mining algorithms to generate rules based on digital surface
+model (DSM) and digital terrain model (DTM) derived zonal statistics and remote
+sensing data of pre-segmented polygons.
+Furthermore the method's advantage over a purely data mining approach is
+the creation of an ontology in the Web Ontology Language (OWL2/XML) that
+increases the interoperablity and readability of results. The benefits of using
+ontologies is described below.
 \subsection{Formalization of Expert Knowledge}
-RLP biotope classes (OSIRIS) were converted with the help of an
-expert to their corresponding EUNIS class. This process involved attaching
-parameters from EUNIS, NATFLO and EAGLE to each biotope. For example, the parameter 
-``NATFLO\_wetness'' could be any of ``dry'', ``mesic", ``wet'' or ``very wet'', 
-but for EUNIS class E1 - dry grasslands would be ``dry''. An example of how the 
-classes were modeled in Prot\'eg\'e is shown in figure 1. As one can see in the
-diagram E1.72 is a subclass of E1.7 with the dominant plant species
-``Agrostis''. 
-$$ E1.72 \equiv  E1.7 \sqcap \exists has\_EAGLE\_dominant\_plant\_species\_1
-\{``Agrostis'' \}
+With the help of an ecologist, RLP biotope classes (OSIRIS) were converted
+to the appropriate EUNIS class and indicators were developed for habitat
+classification. We use indicators from the classification schemes and concepts
+from EAGLE to create a comprehensive interoperable vocabulary. This process
+involved attaching indicators from EUNIS, NATFLO and EAGLE to each biotope.
+For example, the parameter ``wetness'' could be any of ``dry'', ``mesic",
+``wet'' or ``very wet'', but for EUNIS class E1 - dry grasslands would be
+``dry''. An example of how the classes were  modeled in Prot\'eg\'e is shown in
+figure 1. As one can see in the diagram, E1.72 is a subclass of E1.7 with the
+dominant plant species ``Agrostis''.
+$$ E1.72 \equiv  E1.7 \sqcap \exists dominant\_plant\_species
+\{``Agrostis'' \}$$
+$$
+dry \equiv rule\_1 \sqcap rule\_2 \sqcap rule\_3
 $$
 \begin{figure}
 	
@@ -124,12 +132,15 @@ create the Digital Surface Model (DSM) using automated stereo matching. The
 Digital Terrain Model(DTM) and Digital Elevation Model (DEM) was produced using
 LiDAR ASCII point clouds acquired between 2003 and 2009 with a resolution of
 0.5m.\\
+\subsection{Segmentation}
 The iterative object-based image analysis is performed using Defiens eCognition Server
 and segments the data using thresholds and multi-resolution approaches (Baatz and
 Sch\'ape 2000). The segmentation process uses information solely from aerial
 images based on spectral information (NDVI and Bare Area Index) and
-height from the Digital Elevation Model (DEM) \citep{Tintrup2015}.
+height from the digital elevation model (DEM) to separate
+between biotic and no-biotic features \citep{Tintrup2015}. 
 The detailed pre-processing workflow is shown in figure XX.
+%EAGLE nomenclature for landcover classes.
 \begin{figure}
 	\includegraphics[width=1\textwidth]{diagrams/pre_processing.png}
 	\caption{Ag - agriculture map}
@@ -138,7 +149,7 @@ The detailed pre-processing workflow is shown in figure XX.
 The basic pre-processing steps are outlined below.
 \begin{enumerate}
     \item Clip the biotope, agriculture, forestry and geology maps to the extent
-    of Saarburg-Trier
+    of Saarburg
     \item Join EUNIS properties to OSIRIS class names
     \item Postgis join using ST\_WITHIN to select segmented polygons
     completely within biotope map polygons
@@ -167,7 +178,7 @@ polygons that fall completely within
 %  \includegraphics[width=1\linewidth]{diagrams/workflow_overview2.png}
 %\caption{A small overview.}
 %\end{figure}
-The first step was to clip the biotope map with the extent of Trier-Saarburg.
+The first step was to clip the biotope map with the extent of Saarburg.
 Then we join the expert knowledge-derived table that translates the OSIRIS
 biotopes to the corresponding EUNIS biotope class. We then perform a spatial
 join using PostGIS ST\_WITHIN to select the segmented polygons that lie within
@@ -181,7 +192,7 @@ data. software was used for the segmentation and was performed by RLP AgroScienc
 %The remote sensing data already had zonal statistics computed for all of the
 %polygons. A list of the zonal statistics are below.
 %% INSERT LIST?
-\subsection{Data Mining}
+\subsection{Rule Generation - Data Mining}
 We chose supervised classification algorithms that are able to exploit expert
 knowledge, perform classification tasks quickly and accurately and produce human
 understandable rule sets for further scrutiny and refinement. Therefore, the
@@ -223,32 +234,29 @@ this algorithm with an ontology would produces traceable results that are easy
 to understand. This approach would also help fill the observation-based ontology
 research gap as first described by Janowicz (2012) \citep{Janowicz2012}.
 
-\subsection{Comparison with Decision Tree Classifier}
+\subsection{Decision Tree Classifier}
 The decision tree (DT) classifier implemented in scikit-learn is a modified
 classification and regression tree (CART)\citep{scikit-learn}. A cross
 validation using DT with many different parameters is first performed to find the best
 parameters. Then the rules generated by the algorithm is converted with an
 automated python script to OWL Ontology rules.
 
-%
-%9 Segmentation Classes from ecognition:
-%'BodenOffen', 'BodenVegKarg', BodenVegMittel', 'BodenVegSchwach',
-%'BodenVegStark', 'NoVeg', NoVegHoch', 'Plantagen', 'Veg'
-
+\subsection{Comparison with Random Forest}
 \subsection{Study Area}
 %% southwestern?!
-Trier-Saarburg is approximately 200km$^{2}$ and is located in the south-west of 
-the federal state of Rhineland Palatinate (RLP), Germany. Luxembourg borders 
-the area to the west and the federal state of Saarland to the South. 
-RLP has a western european centraliticulture along the Mosel and Rhine rivers 
-is quite an important economically and culturally to the region. 
+Saarburg is an 200km$^{2}$ administrative district part of Trier, located in the
+south-west of the federal state of Rhineland Palatinate (RLP), Germany.
+Luxembourg borders the area to the west and the federal state of Saarland to the South.
+RLP has a western european atlantic climate and has an
+economically and culturally important viticulture industry along the Mosel and
+Rhine rivers.
 \begin{figure}
 	\includegraphics[width=\textwidth]{diagrams/study_area_closeup.png}
 	\caption{The location of Saarburg on the left in purple in relation to 
 Rheinland Palatinate. The right is from Open Streetmaps Landscape layer. }
 \end{figure}
 
-\subsection{Training/Testing Dataset}
+\subsection{Validation}
 To create training data, we randomly select 200 training objects per class. A
 subset of these objects, 20 per class, are used to train the SEaTH
 algorithm as it performs better with fewer characteristic objects. To test the 
