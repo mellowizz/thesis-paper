@@ -1,4 +1,33 @@
 
+We apply a PostGIS spatial join query using ST\_WITHIN to select only those
+polygons from the segmented dataset that fall completely within the biotope
+polygon of our pre-processed biotope map. We join those polygons
+with EUNIS characteristics and also attach zonal statistics that are calculated
+for every polygon. The last step in the pre-processing workflow is the
+replacement of any NULL values with zeros. 
+The null values arise due to small polygon sizes created by the segmentation
+process. In the future, a new segmented dataset that respects the biotope
+boundaries should be available and will reduce the problems from selecting
+polygons that fall completely within
+% the polygon.
+%\begin{figure}
+%  \includegraphics[width=1\linewidth]{diagrams/workflow_overview2.png}
+%\caption{A small overview.}
+%\end{figure}
+The first step was to clip the biotope map with the extent of Saarburg.
+Then we join the expert knowledge-derived table that translates the OSIRIS
+biotopes to the corresponding EUNIS biotope class. We then perform a spatial
+join using PostGIS ST\_WITHIN to select the segmented polygons that lie within
+the biotope map. These polygons have all the biotope information
+attached to them and in the final step have the zonal statistics with
+morphological and hydrological (SAGA wetness index, ) and topographic indices 
+(topographic wetness index, ). 
+After joining EUNIS characteristics to the RLP
+biotope map, the map was spatially joined with the pre-segmented remote sensing
+data. software was used for the segmentation and was performed by RLP AgroScience. 
+%The remote sensing data already had zonal statistics computed for all of the
+%polygons. A list of the zonal statistics are below.
+%% INSERT LIST?
 \subsection{Ontology-based Reasoning}
 Both the data mining algorithms, SEaTH and Decision Trees can produce rule
 sets with defined thresholds. The rules can be chained together with logical
