@@ -1,0 +1,212 @@
+\begin{thebibliography}{15}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\href}[2]{#2}
+\providecommand{\path}[1]{#1}
+\providecommand{\DOIprefix}{doi:}
+\providecommand{\ArXivprefix}{arXiv:}
+\providecommand{\URLprefix}{URL: }
+\providecommand{\Pubmedprefix}{pmid:}
+\providecommand{\doi}[1]{\href{http://dx.doi.org/#1}{\path{#1}}}
+\providecommand{\Pubmed}[1]{\href{pmid:#1}{\path{#1}}}
+\providecommand{\bibinfo}[2]{#2}
+\ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
+%Type = Inproceedings
+\bibitem[{Andr\'{e}s et~al.(2013)Andr\'{e}s, Pierkot, Arvor and
+  Andr}]{Andres2013a}
+\bibinfo{author}{Andr\'{e}s, S.}, \bibinfo{author}{Pierkot, C.},
+  \bibinfo{author}{Arvor, D.}, \bibinfo{author}{Andr, S.},
+  \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{{Towards a Semantic Interpretation of Satellite
+  Images by Using Spatial Relations Defined in Geographic Standards}}, in:
+  \bibinfo{booktitle}{The Fifth International Conference on Advanced Geographic
+  Information Systems, Applications, and Services}, pp.
+  \bibinfo{pages}{99--104}.
+\newblock \URLprefix
+  \url{http://www.thinkmind.org/index.php?view=article\&articleid=geoprocessing\_2013\_4\_40\_30068}.
+%Type = Article
+\bibitem[{Arvor et~al.(2013)Arvor, Durieux, Andr\'{e}s and Laporte}]{Arvor2013}
+\bibinfo{author}{Arvor, D.}, \bibinfo{author}{Durieux, L.},
+  \bibinfo{author}{Andr\'{e}s, S.}, \bibinfo{author}{Laporte, M.A.},
+  \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{{Advances in Geographic Object-Based Image Analysis
+  with ontologies: A review of main contributions and limitations from a remote
+  sensing perspective}}.
+\newblock \bibinfo{journal}{ISPRS Journal of Photogrammetry and Remote Sensing}
+  \bibinfo{volume}{82}, \bibinfo{pages}{125--137}.
+\newblock \DOIprefix\doi{10.1016/j.isprsjprs.2013.05.003}.
+%Type = Article
+\bibitem[{Belgiu et~al.(2014)Belgiu, Tomljenovic, Lampoltshammer, Blaschke and
+  HÃ¶fle}]{Belgiu2014}
+\bibinfo{author}{Belgiu, M.}, \bibinfo{author}{Tomljenovic, I.},
+  \bibinfo{author}{Lampoltshammer, T.J.}, \bibinfo{author}{Blaschke, T.},
+  \bibinfo{author}{HÃ¶fle, B.}, \bibinfo{year}{2014}.
+\newblock \bibinfo{title}{Ontology-based classification of building types
+  detected from airborne laser scanning data}.
+\newblock \bibinfo{journal}{Remote Sensing} \bibinfo{volume}{6},
+  \bibinfo{pages}{1347--1366}.
+\newblock \URLprefix \url{http://www.mdpi.com/2072-4292/6/2/1347},
+  \DOIprefix\doi{10.3390/rs6021347}.
+%Type = Article
+\bibitem[{Forestier et~al.(2012)Forestier, Puissant, Wemmert and
+  Gan{\c{c}}arski}]{Forestier2012470}
+\bibinfo{author}{Forestier, G.}, \bibinfo{author}{Puissant, A.},
+  \bibinfo{author}{Wemmert, C.}, \bibinfo{author}{Gan{\c{c}}arski, P.},
+  \bibinfo{year}{2012}.
+\newblock \bibinfo{title}{Knowledge-based region labeling for remote sensing
+  image interpretation}.
+\newblock \bibinfo{journal}{Computers, Environment and Urban Systems}
+  \bibinfo{volume}{36}, \bibinfo{pages}{470 -- 480}.
+\newblock \URLprefix
+  \url{http://www.sciencedirect.com/science/article/pii/S019897151200004X},
+  \DOIprefix\doi{http://dx.doi.org/10.1016/j.compenvurbsys.2012.01.003}.
+%Type = Article
+\bibitem[{Gao et~al.(2011)Gao, Marpu, Niemeyer, Runfola, Giner, Hamill and
+  Pontius}]{Gao2011}
+\bibinfo{author}{Gao, Y.}, \bibinfo{author}{Marpu, P.},
+  \bibinfo{author}{Niemeyer, I.}, \bibinfo{author}{Runfola, D.M.},
+  \bibinfo{author}{Giner, N.M.}, \bibinfo{author}{Hamill, T.},
+  \bibinfo{author}{Pontius, R.G.}, \bibinfo{year}{2011}.
+\newblock \bibinfo{title}{Object-based classification with features extracted
+  by a semi-automatic feature extraction algorithm â€“ seath}.
+\newblock \bibinfo{journal}{Geocarto International} \bibinfo{volume}{26},
+  \bibinfo{pages}{211--226}.
+\newblock \URLprefix \url{http://dx.doi.org/10.1080/10106049.2011.556754},
+  \DOIprefix\doi{10.1080/10106049.2011.556754},
+  \href{http://arxiv.org/abs/http://dx.doi.org/10.1080/10106049.2011.556754}{\tt
+  arXiv:http://dx.doi.org/10.1080/10106049.2011.556754}.
+%Type = Article
+\bibitem[{Janowicz(2012)}]{Janowicz2012}
+\bibinfo{author}{Janowicz, K.}, \bibinfo{year}{2012}.
+\newblock \bibinfo{title}{Observation-driven geo-ontology engineering}.
+\newblock \bibinfo{journal}{Transactions in GIS} \bibinfo{volume}{16},
+  \bibinfo{pages}{351--374}.
+\newblock \URLprefix \url{http://dx.doi.org/10.1111/j.1467-9671.2012.01342.x},
+  \DOIprefix\doi{10.1111/j.1467-9671.2012.01342.x}.
+%Type = Article
+\bibitem[{Lucas et~al.(2015)Lucas, Blonda, Bunting, Jones, Inglada, Arias,
+  Kosmidou, Petrou, Manakos, Adamo, Charnock, Tarantino, M\"{u}cher, Jongman,
+  Kramer, Arvor, Honrado and Mairota}]{Lucas2015}
+\bibinfo{author}{Lucas, R.}, \bibinfo{author}{Blonda, P.},
+  \bibinfo{author}{Bunting, P.}, \bibinfo{author}{Jones, G.},
+  \bibinfo{author}{Inglada, J.}, \bibinfo{author}{Arias, M.},
+  \bibinfo{author}{Kosmidou, V.}, \bibinfo{author}{Petrou, Z.I.},
+  \bibinfo{author}{Manakos, I.}, \bibinfo{author}{Adamo, M.},
+  \bibinfo{author}{Charnock, R.}, \bibinfo{author}{Tarantino, C.},
+  \bibinfo{author}{M\"{u}cher, C.A.}, \bibinfo{author}{Jongman, R.H.},
+  \bibinfo{author}{Kramer, H.}, \bibinfo{author}{Arvor, D.},
+  \bibinfo{author}{Honrado, J.P.}, \bibinfo{author}{Mairota, P.},
+  \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{The earth observation data for habitat monitoring
+  (eodham) system}.
+\newblock \bibinfo{journal}{International Journal of Applied Earth Observation
+  and Geoinformation} \bibinfo{volume}{37}, \bibinfo{pages}{17\--28}.
+\newblock \URLprefix
+  \url{http://www.sciencedirect.com/science/article/pii/S0303243414002347},
+  \DOIprefix\doi{http://dx.doi.org/10.1016/j.jag.2014.10.011}.
+  \bibinfo{note}{special Issue on Earth observation for habitat mapping and
+  biodiversity monitoring}.
+%Type = Inproceedings
+\bibitem[{McKinney(2010)}]{McKinney2010}
+\bibinfo{author}{McKinney, W.}, \bibinfo{year}{2010}.
+\newblock \bibinfo{title}{Data structures for statistical computing in python},
+  in: \bibinfo{editor}{van~der Walt, S.}, \bibinfo{editor}{Millman, J.} (Eds.),
+  \bibinfo{booktitle}{Proceedings of the 9th Python in Science Conference}, pp.
+  \bibinfo{pages}{51 -- 56}.
+%Type = Article
+\bibitem[{Nieland et~al.(2015)Nieland, Kleinschmit and
+  F{\"{o}}rster}]{Nieland2015}
+\bibinfo{author}{Nieland, S.}, \bibinfo{author}{Kleinschmit, B.},
+  \bibinfo{author}{F{\"{o}}rster, M.}, \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{Using ontological inference and hierarchical
+  matchmaking to overcome semantic heterogeneity in remote sensing-based
+  biodiversity monitoring}.
+\newblock \bibinfo{journal}{International Journal of Applied Earth Observation
+  and Geoinformation} \bibinfo{volume}{37}, \bibinfo{pages}{133 -- 141}.
+\newblock \URLprefix
+  \url{http://www.sciencedirect.com/science/article/pii/S0303243414002220},
+  \DOIprefix\doi{http://dx.doi.org/10.1016/j.jag.2014.09.018}.
+  \bibinfo{note}{special Issue on Earth observation for habitat mapping and
+  biodiversity monitoring}.
+%Type = Inproceedings
+\bibitem[{Nussbaum et~al.(2006)Nussbaum, Niemeyer and Canty}]{Nussbaum2006}
+\bibinfo{author}{Nussbaum, S.}, \bibinfo{author}{Niemeyer, I.},
+  \bibinfo{author}{Canty, M.J.}, \bibinfo{year}{2006}.
+\newblock \bibinfo{title}{{SE}a{TH} - {A} new tool for automated feature
+  extraction in the context of object-oriented image analysis}, in:
+  \bibinfo{booktitle}{Proceedings of the 1st International Conference on
+  Object-based Image Analysis (OBIA 2006), Salzburg, 4-5 July 2006. - 2006. -
+  (ISPRS ; XXXVI â€“ 4/C42). - o.Z.}
+\newblock \URLprefix \url{http://juser.fz-juelich.de/record/55337}.
+  \bibinfo{note}{record converted from VDB: 12.11.2012}.
+%Type = Article
+\bibitem[{Pedregosa et~al.(2011)Pedregosa, Varoquaux, Gramfort, Michel,
+  Thirion, Grisel, Blondel, Prettenhofer, Weiss, Dubourg, Vanderplas, Passos,
+  Cournapeau, Brucher, Perrot and Duchesnay}]{scikit-learn}
+\bibinfo{author}{Pedregosa, F.}, \bibinfo{author}{Varoquaux, G.},
+  \bibinfo{author}{Gramfort, A.}, \bibinfo{author}{Michel, V.},
+  \bibinfo{author}{Thirion, B.}, \bibinfo{author}{Grisel, O.},
+  \bibinfo{author}{Blondel, M.}, \bibinfo{author}{Prettenhofer, P.},
+  \bibinfo{author}{Weiss, R.}, \bibinfo{author}{Dubourg, V.},
+  \bibinfo{author}{Vanderplas, J.}, \bibinfo{author}{Passos, A.},
+  \bibinfo{author}{Cournapeau, D.}, \bibinfo{author}{Brucher, M.},
+  \bibinfo{author}{Perrot, M.}, \bibinfo{author}{Duchesnay, E.},
+  \bibinfo{year}{2011}.
+\newblock \bibinfo{title}{Scikit-learn: Machine learning in {P}ython}.
+\newblock \bibinfo{journal}{Journal of Machine Learning Research}
+  \bibinfo{volume}{12}, \bibinfo{pages}{2825--2830}.
+%Type = Article
+\bibitem[{di~Sciascio et~al.(2013)di~Sciascio, Zanni-Merk, Wemmert,
+  Marc-Zwecker and de~Bertrand~de Beuvron}]{diSciascio2013}
+\bibinfo{author}{di~Sciascio, C.}, \bibinfo{author}{Zanni-Merk, C.},
+  \bibinfo{author}{Wemmert, C.}, \bibinfo{author}{Marc-Zwecker, S.},
+  \bibinfo{author}{de~Bertrand~de Beuvron, F.}, \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{Towards a semi-automatic semantic approach for
+  satellite image analysis}.
+\newblock \bibinfo{journal}{Procedia Computer Science} \bibinfo{volume}{22},
+  \bibinfo{pages}{1388 -- 1397}.
+\newblock \URLprefix
+  \url{http://www.sciencedirect.com/science/article/pii/S1877050913012702},
+  \DOIprefix\doi{http://dx.doi.org/10.1016/j.procs.2013.11.057}.
+  \bibinfo{note}{17th International Conference in Knowledge Based and
+  Intelligent Information and Engineering Systems - \{KES2013\}}.
+%Type = Inproceedings
+\bibitem[{Sheeren et~al.(2006)Sheeren, Quirin, Puissant, Gan{\c{c}}arski and
+  Weber}]{Sheeren2006ML}
+\bibinfo{author}{Sheeren, D.}, \bibinfo{author}{Quirin, A.},
+  \bibinfo{author}{Puissant, A.}, \bibinfo{author}{Gan{\c{c}}arski, P.},
+  \bibinfo{author}{Weber, C.}, \bibinfo{year}{2006}.
+\newblock \bibinfo{title}{Discovering rules with genetic algorithms to classify
+  urban remotely sensed data}, in: \bibinfo{booktitle}{Geoscience and Remote
+  Sensing Symposium, 2006. IGARSS 2006. IEEE International Conference on}, pp.
+  \bibinfo{pages}{3919--3922}.
+\newblock \DOIprefix\doi{10.1109/IGARSS.2006.1005}.
+%Type = Article
+\bibitem[{Tintrup~gen. Suntrup et~al.(2015)Tintrup~gen. Suntrup, Jalke, Streib,
+  Keck, Nieland, Moran, Kleinschmit and Trapp}]{Tintrup2015}
+\bibinfo{author}{Tintrup~gen. Suntrup, G.}, \bibinfo{author}{Jalke, T.},
+  \bibinfo{author}{Streib, L.}, \bibinfo{author}{Keck, N.},
+  \bibinfo{author}{Nieland, S.}, \bibinfo{author}{Moran, N.},
+  \bibinfo{author}{Kleinschmit, B.}, \bibinfo{author}{Trapp, M.},
+  \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{New methods in acquisition, update and dissemination
+  of nature conservation geodata - implementation of an integrated framework}.
+\newblock \bibinfo{journal}{ISPRS - International Archives of the
+  Photogrammetry, Remote Sensing and Spatial Information Sciences}
+  \bibinfo{volume}{XL-7/W3}, \bibinfo{pages}{707--712}.
+\newblock \URLprefix
+  \url{http://www.int-arch-photogramm-remote-sens-spatial-inf-sci.net/XL-7-W3/707/2015/},
+  \DOIprefix\doi{10.5194/isprsarchives-XL-7-W3-707-2015}.
+%Type = Inproceedings
+\bibitem[{Tsarkov and Horrocks(2006)}]{Tsarkov2006}
+\bibinfo{author}{Tsarkov, D.}, \bibinfo{author}{Horrocks, I.},
+  \bibinfo{year}{2006}.
+\newblock \bibinfo{title}{Fact++ description logic reasoner: System
+  description}, in: \bibinfo{booktitle}{Proceedings of the Third International
+  Joint Conference on Automated Reasoning},
+  \bibinfo{publisher}{Springer-Verlag}, \bibinfo{address}{Berlin, Heidelberg}.
+  pp. \bibinfo{pages}{292--297}.
+\newblock \URLprefix \url{http://dx.doi.org/10.1007/11814771_26},
+  \DOIprefix\doi{10.1007/11814771_26}.
+
+\end{thebibliography}
