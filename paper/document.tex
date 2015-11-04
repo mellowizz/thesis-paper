@@ -53,13 +53,8 @@ generalisation, nature conservation, OWL2, EUNIS, OBIA
 \section{Introduction} 
 % NATURA2000 obligations and local obligations = NATFLO
 Recognizing that the dwindling number of habitats with fully functioning
-ecosystems in Europe 
-%human-caused
-% % das kann man so nicht sagen.
-% Viele Habitate brauchen einen anthropogenen Einfluss um erhalten zu werden.
- %destruction 
-plays a dominant role in biodiversity loss, the European Union has implemented
-an environmental conservation framework to halt biodiversity loss in accordance
+ecosystems in Europe  plays a dominant role in biodiversity loss, the European
+Union has implemented an environmental conservation framework to halt biodiversity loss in accordance
 with the Convention on Biological Diversity (CBD, 2005). An integral part of this
 framework is the EU Habitats Directive (Council Directive) 92/43/EEC [1992],
 which established the Natura 2000 network of habitats. The law requires
@@ -68,183 +63,78 @@ a report to be submitted every six years. Environmental data
 to determine biodiversity status must be collected to comply with the 
 statute. Yet, comparing thematic data used for these reports can be difficult
 due to varying data collection methods by the nature conservation authorities
-in each member state \citep{}
-Reasons are, on the one hand, the subjectivity of manual habitat identification
-in the field \citep{\Cherill1999, \Nieland2015, \Nieland2016}, on the other
-hand information on the status of habitats is mostly generated in bottom-up
+in each member state \citep{}.
+Field surveys to identify habitats are subjective \citep{Cherrill1999,
+Cherrill1999a, Nieland2015} % Nieland2016},
+and the status of habitats is mostly generated in bottom-up
 approaches taking into account the national and regional interpetation
-guidelines.%vielleicht findest du hier auch noch eine Quelle
-Remote sensing (RS) offers vast opportunities to automate and collect large
-amounts of data for conservation purposes (Corbane2015, Vanden Borre2011,
-Mayer2011) in a computer readable, comparable way. Although recent research
-developed a number of indicators for habitat evaluation (Nagendra2011) for
-differing sensors, up to now, classification procedures are not formalised in a
-computer readable, structured way and therefore are only limited transferable
-and reproducable \citep{Nieland2015}.
-\\
-One such research project is the EU-funded ``Biodiversity Multi-Source
-Monitoring System:
-From Space To Species'' (BIO\_SOS) which seeks to develop tools to monitor and
-map protected areas in the EU and uses ontologies modeled on the Land Cover
-Classification System (LCCS) and the General Habitat Category (GHC) to achieve
-this goal \citep{Arvor2013}. Using the taxonomy of the different classification
-systems allows expert knowledge to be included in the process.
-Further work as part of the project includes creation of a standardized
-framework for habitat monitoring and mapping called the Earth Observation Data
-for Habitat Montioring (EOD-HAM) system \citep{Lucas2015}. The system harnesses
-knowledge from both remote sensing and ecology to classify Natura 2000 sites
-using a hierarchical classification system. The EOD-HAM system uses both
-pixel-based analysis and OBIA for greater classification accuracy but still
-relies on a rule-base created by an expert or the user. Other research includes
-a semi-automatic semantic classification approach for urban building types using
-a three-layered architecture was developed by di Sciascio et al.\ which showed
-promising results \citep{diSciascio2013}. Belgiu et al. \citep{Belgiu2014} used
-Airborne Laser Scanning (ALS) data and empirically determined thresholds using
-the Random Forest (RF) classifier to perform an ontology-based classification of
-building types. Forestier et al. \citep{Forestier2012470} used an ontology to
-classify pre-segmented regions using a knowledge-base. Sheeren et al.
-\citep{Sheeren2006ML} developed a method to automatically acquire classification
-rules using a newly developed genetic programming algorithm.
-Sheeren et al.\ also used the data mining algorithm C4.5 for automatic rule
-generation with satisfactory results. Nieland et al. \citep{Nieland2015}
-demonstrated the potential for ontological inference and hierarchical
-matchmaking as a way to improve spatial data interoperability. An automated
-image analysis and classification process that could be applied to the whole
-Natura 2000 network would be ideal and allow for comparison between habitats.
-Such an automated tool could combine the benefits of object-based image analysis
-(OBIA) with linguistic terms for a traceable and reproducible classification
-system. When an ontology is available, scientists can follow how the classes
-were developed and become aware of possible incompatibilities before combining
-datasets \citep{Janowicz2012}.
+guidelines. \\%vielleicht findest du hier auch noch eine Quelle
+One possible solution to this problem is the use of remote sensing data. 
+Remote sensing (RS) combined with Object-Based Image Analysis (OBIA), which
+segments the image into homogenous image objects \citep{Blaschke2010}, offers
+opportunities to automate and collect large amounts of computer-readable data
+useful for nature conservation \citep{Corbane2015, VandenBorre2011, Mayer2011}
+and biodiversity monitoring. Even though researchers recently developed a
+number of indicators using different sensors for habitat evaluation
+\citep{Nagendra2013}, classification procedures and rulesets were not formalised
+to be computer readable and therefore suffer from similar transferablity and
+reproducablity problems as manual habitat mapping
+\citep{Arvor2013} \citep{Nieland2015}.
+The formalization of knowledge into a
+computer-readable ontology would greatly enhance transferability,
+reproducability, logical coherence and \ldots
+
+\citep{diSciascio2013}
 %hier würde ich eine kurze Einführung in ontologien geben und für was man sie
 %in der Fernerkundung verwenden kann. Bezieh dich dabei auf das Paper von
 %Arvor2013. Was ist Reasoning?  Du musst auch noch erklären was data mining/
 %machine learning ist und die in der Fernerkundung gängigsten Algorithmen
 %erwähnen (SVM, RF, BRT, DT) Bitte alle mit Quelle!
 
-%hier muss unbedingt noch rein wer schon mal in einer Ontologie klassifiziert
-%hat: Belgiu, Arvor, Andres, di sciascio, diese Leute aus Griechenland Stelle
-%hier nochmal die Vorteile von ontologiebasierter Klassifikation heraus:
-%nachvollziehbarkeit, vebesserte Auffindbarkeit, Übertragbarkeit, logische
-%Konsistenzrüfung durch den Reasoner, verbesserte Interoperabilität, Computer
-%lesbarkeit, Erfüllung zukünftiger Europäischer Anforderungen (INSPIRE als open
-%data)..
-
-%Seh dir mal die Einleitung von meinem ersten Paper an. Vielleicht bekommst du
-%da noch etwas Anregung
-
-% Wichtig ist, dass du nochmal ganz explizit die Innovation deines Papers
-% hervorhebst. 
-%Die kombination von Data Mining algorithmen und ontologiebasierter
-%Klassifikation gibt es bislang in der Fernerkundung noch nicht. Schreib das so
-%hin! Schreib genau was die anderen bislang gemacht haben und was du jetzt noch
-%zusätlich ergänzt hast (im Bezug auf Belgiu usw.).
-
-% Further compounding the problem is that often times the local classification
-% schemes are not suited for conservation purposes. ---Das verstehe ich nicht.
-Furthermore, there is no standardized set of indicators using RS for
-trans-national habitat evaluation \citep{Lucas2015}. Therefore, technical
-solutions to increase interoperability by thematically harmonizing
-environmental data and systematize data collection methods from remote sensing
-inputs in an automated workflow would allow decision-makers to better assess and compare outcomes. 
+While different fields (medical imaging, security, etc.) have used ontologies for
+improving image retrieval and object detection, only recently have ontologies
+been adopted in remote sensing research. An ontology, defined as ``an explicit
+specification of a conceptualization'' \citep{gruber1993} could help bridge the
+semantic gap and allow for better data interoperability, workflow management and
+automatic image interpretation \citep{Arvor2013, Andres2013a}. The term
+``semantic gap'' refers to the difference between the higher-level descriptions
+by experts and what can be extracted from the visual data. Remote sensing and
+field expert knowledge can be digitized in ontologies, thus allowing for a
+hierarchy of concepts for improved automatic image annotation and retrieval
+using concepts from both fields to produce more accurate results
+\cite{Srikanth:2005:EOA:1076034.1076128}. Janowicz \cite{Janowicz2012}
+advocates for more observation-driven ontologies and for including machine
+learning, geostatistics and data mining to construct ontological primitives.
+While research on using observation-based ontologies for classifications is
+still lacking, the research in RS using ontologies is briefly summarized below.
 \\
-In this paper we propose an automated system that can classify selected
-biotopes according to the European Union Nature Information System (EUNIS)
-biotope classification schema using data based on EO, existing thematic maps
-(biotope, forestry, etc.) and expert knowledge formalized in an ontology.  The
-biotope indicators serve as class labels for training data mining algorithms
-which generate rules that can be imported into an ontology. Once the rules and
-segmented objects are imported into the ontology, a reasoner can perform
-reasoning classifying which objects belong to which class and how the classes
-are related. This method contributes to the goal of empirically-derived rule
-creation and enhances data interoperability and comparison as proposed by
-Janowicz \citep{Janowicz2012}.  \section{Method} \subsection{Target indicators
-and base nomeclatures} \label{subsec_indicators_and_nomenclatures}%bitte
-sections immer labeln
-% Bitte beschreibe genau welche Klassen du ableiten willst und welche
-% Indikatoren du dafür benötigst (vielleicht in einer Tabelle). Du kannst auch
-% etwas über die Hierarchische Struktur und den nach Indikatoren gegliederten
-% Aufbau von EUNIS schreiben. Schreib, dass wir die Indikatoren aus EUNIS
-% übernommen haben und auf die Anforderungen fernerkundlicher Analysen
-% angepasst haben. Nach Möglichkeit haben wir uns and der EAGLE nomenclature
-% orientiert um eine übergeordnete interoperablität zu gewährleisten.
-statute. Yet, comparing thematic data used for these reports can be difficult
-due to varying data collection methods by the nature conservation authorities
-in each member state \citep{}
-Reasons are, on the one hand, the subjectivity of manual habitat identification
-in the field \citep{\Cherill1999, \Nieland2015, \Nieland2016}, on the other
-hand information on the status of habitats is mostly generated in bottom-up
-approaches taking into account the national and regional interpetation
-guidelines.%vielleicht findest du hier auch noch eine Quelle
-Remote sensing (RS) offers vast opportunities to automate and collect large
-amounts of data for conservation purposes (Corbane2015, Vanden Borre2011,
-Mayer2011) in a computer readable, comparable way. Although recent research
-developed a number of indicators for habitat evaluation (Nagendra2011) for
-differing sensors, up to now, classification procedures are not formalised in a
-computer readable, structured way and therefore are only limited transferable
-and reproducable \citep{Nieland2015}.
-\\
-%hier würde ich eine kurze Einführung in ontologien geben und für was man sie
-%in der Fernerkundung verwenden kann. Bezieh dich dabei auf das Paper von
-%Arvor2013. Was ist Reasoning?  Du musst auch noch erklären was data mining/
-%machine learning ist und die in der Fernerkundung gängigsten Algorithmen
-%erwähnen (SVM, RF, BRT, DT) Bitte alle mit Quelle!
-One such research project is the EU-funded ``Biodiversity Multi-Source
-Monitoring System:
-From Space To Species'' (BIO\_SOS) which seeks to develop tools to monitor and
-map protected areas in the EU and uses ontologies modeled on the Land Cover
-Classification System (LCCS) and the General Habitat Category (GHC) to achieve
-this goal \citep{Arvor2013}. Using the taxonomy of the different classification
-systems allows expert knowledge to be included in the process.
-Further work as part of the project includes creation of a standardized
-framework for habitat monitoring and mapping called the Earth Observation Data
-for Habitat Montioring (EOD-HAM) system \citep{Lucas2015}. The system harnesses
-knowledge from both remote sensing and ecology to classify Natura 2000 sites
-using a hierarchical classification system. The EOD-HAM system uses both
-pixel-based analysis and OBIA for greater classification accuracy but still
-relies on a rule-base created by an expert or the user. Other research includes
-a semi-automatic semantic classification approach for urban building types using
-a three-layered architecture was developed by di Sciascio et al.\ which showed
-promising results \citep{diSciascio2013}. Belgiu et al. \citep{Belgiu2014} used
-Airborne Laser Scanning (ALS) data and empirically determined thresholds using
-the Random Forest (RF) classifier to perform an ontology-based classification of
-building types. Forestier et al. \citep{Forestier2012470} used an ontology to
-classify pre-segmented regions using a knowledge-base. Sheeren et al.
-\citep{Sheeren2006ML} developed a method to automatically acquire classification
-rules using a newly developed genetic programming algorithm.
-Sheeren et al.\ also used the data mining algorithm C4.5 for automatic rule
-generation with satisfactory results. Nieland et al. \citep{Nieland2015}
-demonstrated the potential for ontological inference and hierarchical
-matchmaking as a way to improve spatial data interoperability. An automated
-image analysis and classification process that could be applied to the whole
-Natura 2000 network would be ideal and allow for comparison between habitats.
-Such an automated tool could combine the benefits of object-based image analysis
-(OBIA) with linguistic terms for a traceable and reproducible classification
-system. When an ontology is available, scientists can follow how the classes
+The EU-funded  ``Biodiversity Multi-Source Monitoring System: From Space To
+Species'' (BIO\_SOS) project seeks to develop tools to monitor and map protected
+areas in the EU and uses ontologies modeled on the Land Cover Classification
+System (LCCS) and the General Habitat Category (GHC) to achieve this goal
+\citep{Arvor2013}.  Using the taxonomy of the different classification systems
+allows expert knowledge to be included in the process. Further work as part of
+the project includes creation of a standardized framework for habitat
+monitoring and mapping called the Earth Observation Data for Habitat Montioring
+(EOD-HAM) system \citep{Lucas2015}. The system harnesses knowledge from both
+remote sensing and ecology to classify Natura 2000 sites using a hierarchical
+classification system. The EOD-HAM system uses both pixel-based analysis and
+OBIA for greater classification accuracy but still relies on a rule-base
+created by an expert. Other research includes classification of urban building
+types using a three-layered architecture \citep{diSciascio2013} and 
+a semi-automated classification of urban building using the Random Forest (RF)
+classifier to determine variable importance of features from airborn laser
+scanner data \citep{Belgiu2014}. Ontologies have also
+been paired with different algorithms to
+automatically acquire classification rules with examples of using genetic programming algorithms 
+\citep{Forestier2012470} and the C4.5 data mining algorithm
+\citep{Sheeren2006ML}. Harnessing ontologies to improve spatial data interoperability has been
+demonstrated by using ontological inference and hierarchical matchmaking
+by Nieland et al. \citep{Nieland2015} 
+When an ontology is available, scientists can follow how the classes
 were developed and become aware of possible incompatibilities before combining
 datasets \citep{Janowicz2012}.
-
-
-%hier muss unbedingt noch rein wer schon mal in einer Ontologie klassifiziert
-%hat: Belgiu, Arvor, Andres, di sciascio, diese Leute aus Griechenland Stelle
-%hier nochmal die Vorteile von ontologiebasierter Klassifikation heraus:
-%nachvollziehbarkeit, vebesserte Auffindbarkeit, Übertragbarkeit, logische
-%Konsistenzrüfung durch den Reasoner, verbesserte Interoperabilität, Computer
-%lesbarkeit, Erfüllung zukünftiger Europäischer Anforderungen (INSPIRE als open
-%data)..
-
-%Seh dir mal die Einleitung von meinem ersten Paper an. Vielleicht bekommst du
-%da noch etwas Anregung
-
-% Wichtig ist, dass du nochmal ganz explizit die Innovation deines Papers
-% hervorhebst. 
-%Die kombination von Data Mining algorithmen und ontologiebasierter
-%Klassifikation gibt es bislang in der Fernerkundung noch nicht. Schreib das so
-%hin! Schreib genau was die anderen bislang gemacht haben und was du jetzt noch
-%zusätlich ergänzt hast (im Bezug auf Belgiu usw.).
-
-% Further compounding the problem is that often times the local classification
-% schemes are not suited for conservation purposes. ---Das verstehe ich nicht.
+\\
 Furthermore, there is no standardized set of indicators using RS for
 trans-national habitat evaluation \citep{Lucas2015}. Therefore, technical
 solutions to increase interoperability by thematically harmonizing
@@ -263,16 +153,73 @@ are related. This method contributes to the goal of empirically-derived rule
 creation and enhances data interoperability and comparison as proposed by
 Janowicz \citep{Janowicz2012}.
 
-\section{Method} \subsection{Target indicators
-and base nomeclatures} \label{subsec_indicators_and_nomenclatures}%bitte
-sections immer labeln
-% Bitte beschreibe genau welche Klassen du ableiten willst und welche
-% Indikatoren du dafür benötigst (vielleicht in einer Tabelle). Du kannst auch
-% etwas über die Hierarchische Struktur und den nach Indikatoren gegliederten
-% Aufbau von EUNIS schreiben. Schreib, dass wir die Indikatoren aus EUNIS
-% übernommen haben und auf die Anforderungen fernerkundlicher Analysen
-% angepasst haben. Nach Möglichkeit haben wir uns and der EAGLE nomenclature
-% orientiert um eine übergeordnete interoperablität zu gewährleisten.
+%%%%
+Kohli et al .
+(2012) developed a generic slum ontology based on input from 50 experts,
+covering 16 countries. Bertrand et al . (2013) devel- oped an ontology framework
+based on OWL 2 and the Seman- tic Web Rule Language ( SWRL ) employing expert
+knowledge, to describe urban elements and their spatial organization.
+Ontologies have been also applied in the field of GEOBIA . Du- rand et al .
+(2007) developed a methodology for object recogni- tion, from very
+high-resolution imagery, based on an ontology developed by machine learning
+techniques and experts. The ontology was based on spectral and geometric
+properties of the objects. In Forestier et al . (2012) the matching algorithm
+introduced by Durand et al . (2007) was employed to map the observations
+extracted from the image with the domain nomenclature (linguistic notions). The
+method was employed to extract image domain elements from QuickBird Imagery.
+In Belgiu and Lapoltshammer (2013), information contained in visual
+interpretation keys was modeled into an ontology to perform extraction from Very
+High Resolution imagery. An on- tology was designed, defining a class- subclass
+hierarchy based on the United Nations Land Cover Classification System. Each
+class was defined by employing spectral and geometric features existing in
+visual interpretation key
+
+ Based on the
+OWL 2 specification, OWL 2 ontologies enable the design of classes, individuals,
+properties, datatypes, and annotations (Motik et al . 2012).
+Classes represent groups of things, while Individuals represent actual objects
+of the domain (segments), which in SPOR were stored within PostgreSQL. Data
+properties represent relationships between an individual and data values.
+Object properties are entities that connect pairs of individuals . As spatial
+relationships are interpreted as topologic links between two segments, object
+properties were employed to represent spatial relationships between the objects,
+such as the hasRelativeAreaToSubObjects.
+%%%
+
+%Bezieh dich dabei auf das Paper von
+%Arvor2013. Was ist Reasoning?  Du musst auch noch erklären was data mining/
+%machine learning ist und die in der Fernerkundung gängigsten Algorithmen
+%erwähnen (SVM, RF, BRT, DT) Bitte alle mit Quelle!
+
+
+% Wichtig ist, dass du nochmal ganz explizit die Innovation deines Papers
+% hervorhebst. 
+%Die kombination von Data Mining algorithmen und ontologiebasierter
+%Klassifikation gibt es bislang in der Fernerkundung noch nicht. Schreib das so
+%hin! Schreib genau was die anderen bislang gemacht haben und was du jetzt noch
+%zusätlich ergänzt hast (im Bezug auf Belgiu usw.).
+Furthermore, there is no standardized set of indicators using RS for
+trans-national habitat evaluation \citep{Lucas2015}. Therefore, technical
+solutions to increase interoperability by thematically harmonizing
+environmental data and systematize data collection methods from remote sensing
+inputs in an automated workflow would allow decision-makers to better assess and compare outcomes. 
+\\
+In this paper we propose an automated system that can classify selected
+biotopes according to the European Union Nature Information System (EUNIS)
+biotope classification schema using data based on EO, existing thematic maps
+(biotope, forestry, etc.) and expert knowledge formalized in an ontology.  The
+biotope indicators serve as class labels for training data mining algorithms
+which generate rules that can be imported into an ontology. Once the rules and
+segmented objects are imported into the ontology, a reasoner can perform
+reasoning classifying which objects belong to which class and how the classes
+are related. This method contributes to the goal of empirically-derived rule
+creation and enhances data interoperability and comparison as proposed by
+Janowicz \citep{Janowicz2012}.
+
+  \section{Method} \subsection{Target indicators
+and base nomeclatures} \label{subsec_indicators_and_nomenclatures}
+
+
 \subsection{Overview of the Automated EUNIS Habitat Mapping System}
 % EU-HMS?
 This section describes the developed method for classifying EUNIS habitats by
@@ -287,9 +234,6 @@ EUNIS classes and polygon attributes to an ontology and finally (d) classifying
 polygons with the Fact++ reasoner \citep{Tsarkov2006} and writing results back
 to the database. An overview of the complete workflow is shown in figure
 \ref{fig_full_workflow}.\\
-%warum nutzt du im Text a,b,c usw. und in der Graphik 1,2,3.. Das ist sehr
-%verwirrend.  Bitte label die Graphiken und verlinke sie im Text. Die
-%numerierungen Stimmen nicht und es es daher schwer zu folgen.
 The software relies on a PostgreSQL database backend with PostGIS extensions
 enabled and various open source Python and java libraries to interact with the
 database, convert files and execute a reasoner over the created OWL file.
@@ -297,7 +241,8 @@ SQLAlchemy is used for database interaction and data management is done with
 the Python Data Analysis Library (Pandas) \citep{McKinney2010}. The OWLAPI is
 used to interact with the OWL2 files and execute the FaCT++ reasoner
 \citep{Tsarkov2006}. The software is freely available and is released under an
-open source license.  \begin{figure}
+open source license.  
+\begin{figure}
     \includegraphics[width=1\linewidth]{diagrams/another_workflow_diagram_large.png}
     \caption{1) Detailed pre-processing is shown in figure 2 and described in
         the text.%ich würde eine detaillierte Erklärung mit in die Graphik
@@ -307,22 +252,7 @@ open source license.  \begin{figure}
     2) Create training and testing tables in the database for use by 3)  Rules
 generated by the data mining algorithms are converted into OWL2/XML }
 \label{fig_full_workflow} \end{figure}
-open source license.  \begin{figure}
-    \includegraphics[width=1\linewidth]{diagrams/another_workflow_diagram_large.png}
-    \caption{1) Detailed pre-processing is shown in figure 2 and described in
-        the text.%ich würde eine detaillierte Erklärung mit in die Graphik
-        machen. das ist
-    % übersichtlicher und besser zu verstehen. Ist nicht so schlimm wenn sich
-    % da ein paar Sachen doppeln
-    2) Create training and testing tables in the database for use by 3)  Rules
-generated by the data mining algorithms are converted into OWL2/XML }
-\label{fig_full_workflow} \end{figure}
-
 \subsection{Formalization of Expert Knowledge}
-% Before attaching formalized habitat indicators as described in (a) above, the
-% RLP biotope classes (OSIRIS) were converted to the appropriate EUNIS class
-% with the help of an expert ecologist.  Ich würde OSIRIS komplett raus lassen.
-% Das ist nur verwirrend
 On basis of EUNIS class descriptions and interpretation guidelines (CITE), a
 set of indicators have been developed to accurately formalise certain habitats
 with regard to the inferability with available input data sets (see
@@ -337,10 +267,6 @@ comprehensive interoperable vocabulary. This process involved attaching
 indicators from EUNIS, newly created indicators by NATFLO and EAGLE to each
 biotope. For example, the parameter ``wetness'' could be any of ``dry'',
 ``mesic", ``wet'' or ``very wet''. 
-%An example of how the classes were  modeled in Prot\'eg\'e is shown in figure
-%1.  As one can see in the diagram, E1.72 is a subclass of E1.7 with the
-%dominant plant species ``Agrostis''.  Würde ich raus lassen
-
 %\begin{equation}
 \begin{align*}
 %\begin{split}
@@ -485,9 +411,6 @@ agriculture data set (INVEKOS) is updated yearly. The Forestry map is from:
 
 \begin{figure} \includegraphics[width=1\textwidth]{diagrams/pre_processing.png}
     \caption{Ag - agriculture map} \end{figure}
-
-\begin{figure} \includegraphics[width=1\textwidth]{diagrams/pre_processing.png}
-    \caption{Ag - agriculture map} \end{figure}
 To compare classification accuracy we selected the scikit-learn Python suite
 \citep{scikit-learn} due to its maturity and ease of use and the availability of
 different algorithms. One can visualize the results and parse the tree to load
@@ -532,14 +455,17 @@ carefully selected objects being ideal class representations further increases
 the separability, but the classification accuracy suffers when applied to the
 complete data set. Thus, SEaTH appears to over-fit. Using two sets of rules
 produced from different sized training data produced quite different results
-when tested on the same dataset.  \section{Conclusion} We showed an automated
+when tested on the same dataset.
+\section{Conclusion} We showed an automated
 workflow using ontologies and data mining algorithms can accurately classify
 EUNIS habitat objects. Moreover, the use of ontologies if published on the
 Internet can allow others to reuse the workflow and make their own
-modifications.  \section{Acknowledgments}
-%Agroscience danken für die Prozessierung der Daten. Umweltministerium RLP für
-%das Projekt.
-This work was conducted using the Prot\'eg\'e resource, which is supported by
-grant GM10331601 from the National Institute of General Medical Sciences of the
-United States National Institutes of Health.  \bibliographystyle{model2-names}
+modifications. 
+\section{Acknowledgments}
+We would like to thank RLP AgroScience GmbH for processing the data and the
+RLP's Environment Ministry for funding NATFLO project. This work was conducted
+using the Prot\'eg\'e resource, which is supported by grant GM10331601 from the
+National Institute of General Medical Sciences of the United States National
+Institutes of Health.
+\bibliographystyle{model2-names}
 \section{References} \bibliography{references} \end{document}

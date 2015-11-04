@@ -8,7 +8,6 @@
   Author                   = {{(Council Directive) 92/43/EEC}, CD},
   Year                     = {1992},
 
-  File                     = {:C$\backslash$:/Users/Nieland/tubcloud/Shared/geoinformation\_member/Documents/(Council Directive) 9243EEC - 1992.pdf:pdf},
   Number                   = {April 1979},
   Pages                    = {1--52}
 }
@@ -21,9 +20,28 @@
   Number                   = {c},
   Pages                    = {99--104},
 
-  File                     = {:C$\backslash$:/Users/Nieland/tubcloud/Shared/geoinformation\_member/Documents/Andrs, Pierkot, Arvor - 2013.pdf:pdf},
   ISBN                     = {9781612082516},
   Url                      = {http://www.thinkmind.org/index.php?view=article\&articleid=geoprocessing\_2013\_4\_40\_30068}
+}
+
+@Article{Argialas2013,
+  Title                    = {Change detection of buildings in suburban areas from high resolution satellite data developed through object based image analysis},
+  Author                   = {Argialas, D. P. and Michailidou, S. and Tzotsos, A.},
+  Journal                  = {Survey Review},
+  Year                     = {2013},
+
+  Month                    = {Nov},
+  Number                   = {333},
+  Pages                    = {441â€“450},
+  Volume                   = {45},
+
+  __markedentry            = {[Moran:]},
+  Doi                      = {10.1179/1752270613y.0000000058},
+  ISSN                     = {1752-2706},
+  Owner                    = {Moran},
+  Publisher                = {Maney Publishing},
+  Timestamp                = {2015.11.04},
+  Url                      = {http://dx.doi.org/10.1179/1752270613Y.0000000058}
 }
 
 @Article{Arvor2013,
@@ -37,7 +55,6 @@
   Volume                   = {82},
 
   Doi                      = {10.1016/j.isprsjprs.2013.05.003},
-  File                     = {:C$\backslash$:/Users/Nieland/tubcloud/Shared/geoinformation\_member/Documents/Arvor et al. - 2013.pdf:pdf},
   ISSN                     = {09242716},
   Publisher                = {International Society for Photogrammetry and Remote Sensing, Inc. (ISPRS)}
 }
@@ -70,7 +87,7 @@
   Url                      = {http://www.mdpi.com/2072-4292/6/2/1347}
 }
 
-@Article{Blaschke20102,
+@Article{Blaschke2010,
   Title                    = {Object based image analysis for remote sensing },
   Author                   = {T. Blaschke},
   Journal                  = {\{ISPRS\} Journal of Photogrammetry and Remote Sensing },
@@ -126,6 +143,24 @@
   Timestamp                = {2015.11.04}
 }
 
+@Article{Cherrill1999a,
+  Title                    = {Between-observer variation in the application of a standard method of habitat mapping by environmental consultants in the UK},
+  Author                   = {Cherrill, Andrew and Mcclean, Colin},
+  Journal                  = {Journal of Applied Ecology},
+  Year                     = {1999},
+
+  Month                    = {Dec},
+  Number                   = {6},
+  Pages                    = {989â€“1008},
+  Volume                   = {36},
+  Doi                      = {10.1046/j.1365-2664.1999.00458.x},
+  ISSN                     = {1365-2664},
+  Owner                    = {Moran},
+  Publisher                = {Wiley-Blackwell},
+  Timestamp                = {2015.11.04},
+  Url                      = {http://dx.doi.org/10.1046/j.1365-2664.1999.00458.x}
+}
+
 @Article{Churches2014,
   Title                    = {Evaluation of forest cover estimates for Haiti using supervised classification of Landsat data },
   Author                   = {Christopher E. Churches and Peter J. Wampler and Wanxiao Sun and Andrew J. Smith},
@@ -153,8 +188,24 @@
 
   Abstract                 = {This paper reviews the necessary considerations and available techniques for assessing the accuracy of remotely sensed data. Included in this review are the classification system, the sampling scheme, the sample size, spatial autocorrelation, and the assessment techniques. All analysis is based on the use of an error matrix or contingency table. Example matrices and results of the analysis are presented. Future trends including the need for assessment of other spatial data are also discussed.},
   Doi                      = {10.1016/0034-4257(91)90048-B},
-  File                     = {:C$\backslash$:/Users/Nieland/AppData/Local/Mendeley Ltd/Mendeley Desktop/Downloaded/Congalton - 1991.pdf:pdf},
   ISSN                     = {00344257}
+}
+
+@Article{Corbane2015,
+  Title                    = {Remote sensing for mapping natural habitats and their conservation status â€“ New opportunities and challenges},
+  Author                   = {Corbane, Christina and Lang, Stefan and Pipkins, Kyle and Alleaume, Samuel and Deshayes, Michel and GarcÃ­a MillÃ¡n, Virginia Elena and Strasser, Thomas and Vanden Borre, Jeroen and Toon, Spanhove and Michael, FÃ¶rster},
+  Journal                  = {International Journal of Applied Earth Observation and Geoinformation},
+  Year                     = {2015},
+
+  Month                    = {May},
+  Pages                    = {7â€“16},
+  Volume                   = {37},
+  Doi                      = {10.1016/j.jag.2014.11.005},
+  ISSN                     = {0303-2434},
+  Owner                    = {Moran},
+  Publisher                = {Elsevier BV},
+  Timestamp                = {2015.11.04},
+  Url                      = {http://dx.doi.org/10.1016/j.jag.2014.11.005}
 }
 
 @Article{Ding2007,
@@ -200,7 +251,6 @@
 
   Address                  = {Hannover},
 
-  File                     = {:C$\backslash$:/Users/Nieland/tubcloud/Shared/geoinformation\_member/Documents/Frick et al. - 2000.pdf:pdf},
   Keywords                 = {classification,hierarchical,knowledge base,monitoring,quickbird,vegetation}
 }
 
@@ -262,7 +312,6 @@
   Volume                   = {92},
 
   Doi                      = {10.3233/FI-2009-78},
-  File                     = {:C$\backslash$:/Users/Nieland/tubcloud/Shared/geoinformation\_member/Documents/Halder - 2009.pdf:pdf},
   Keywords                 = {aggregation pheromone,ant colony optimization,pattern classifi-,swarm intelligence}
 }
 
@@ -324,7 +373,6 @@
   Pages                    = {145--154},
   Volume                   = {31},
 
-  File                     = {:C$\backslash$:/Users/Nieland/tubcloud/Shared/geoinformation\_member/Documents/Kavouras, Kokla, Tomai - 2005.pdf:pdf},
   ISSN                     = {00983004},
   Keywords                 = {geographic ontologies,semantic properties,semantic relations,similarity}
 }
@@ -340,7 +388,6 @@
   Pages                    = {83--95},
   Volume                   = {191},
 
-  File                     = {:C$\backslash$:/Users/Nieland/tubcloud/Shared/geoinformation\_member/Documents/Kobler, Deroski, Keramitsoglou - 2006.pdf:pdf},
   ISSN                     = {03043800},
   Keywords                 = {classification,habitat mapping,satellite imagery},
   Url                      = {http://linkinghub.elsevier.com/retrieve/pii/S0304380005003510}
@@ -385,6 +432,24 @@
   Url                      = {http://www.sciencedirect.com/science/article/pii/S0303243414002347}
 }
 
+@Article{Mayer2011,
+  Title                    = {Use of Remote Sensing to Support Forest and Wetlands Policies in the {USA}},
+  Author                   = {Mayer, Audrey L. and Lopez, Ricardo D.},
+  Journal                  = {Remote Sensing},
+  Year                     = {2011},
+
+  Month                    = {Jun},
+  Number                   = {12},
+  Pages                    = {1211--1233},
+  Volume                   = {3},
+  Doi                      = {10.3390/rs3061211},
+  ISSN                     = {2072-4292},
+  Owner                    = {Moran},
+  Publisher                = {MDPI AG},
+  Timestamp                = {2015.11.04},
+  Url                      = {http://dx.doi.org/10.3390/rs3061211}
+}
+
 @InProceedings{McKinney2010,
   Title                    = { Data Structures for Statistical Computing in Python },
   Author                   = {Wes McKinney},
@@ -421,8 +486,6 @@
   Number                   = {1},
   Pages                    = {91���103},
   Volume                   = {4},
-
-  __markedentry            = {[niklasmoran:]},
   Doi                      = {10.1002/ece3.909},
   ISSN                     = {2045-7758},
   Owner                    = {niklasmoran},
@@ -447,15 +510,13 @@
 
 @Article{Nagendra2013,
   Title                    = {Remote sensing for conservation monitoring: Assessing protected areas, habitat extent, habitat condition, species diversity, and threats},
-  Author                   = {Nagendra, Harini and Lucas, Richard and Honrado, Jo��o Pradinho and Jongman, Rob H.G. and Tarantino, Cristina and Adamo, Maria and Mairota, Paola},
+  Author                   = {Nagendra, Harini and Lucas, Richard and Honrado, Jo{\~a}o Pradinho and Jongman, Rob H.G. and Tarantino, Cristina and Adamo, Maria and Mairota, Paola},
   Journal                  = {Ecological Indicators},
   Year                     = {2013},
 
   Month                    = {Oct},
   Pages                    = {45���59},
   Volume                   = {33},
-
-  __markedentry            = {[niklasmoran:6]},
   Doi                      = {10.1016/j.ecolind.2012.09.014},
   ISSN                     = {1470-160X},
   Owner                    = {niklasmoran},
@@ -548,7 +609,6 @@
   Volume                   = {35},
 
   Doi                      = {10.1016/j.cageo.2008.03.014},
-  File                     = {:C$\backslash$:/Users/Nieland/tubcloud/Shared/geoinformation\_member/Documents/Reitsma et al. - 2009.pdf:pdf},
   ISSN                     = {00983004},
   Keywords                 = {escience,geoscience,geosciml,geosemantic,grid,ontologies}
 }
@@ -565,7 +625,6 @@
   Volume                   = {5},
 
   Doi                      = {10.1016/j.ecoinf.2010.06.001},
-  File                     = {:C$\backslash$:/Users/Nieland/tubcloud/Shared/geoinformation\_member/Documents/Rocchini et al. - 2010.pdf:pdf},
   ISSN                     = {15749541},
   Publisher                = {Elsevier B.V.}
 }
@@ -581,24 +640,25 @@
   Pages                    = {1308--1322},
   Volume                   = {3},
 
-  File                     = {:C$\backslash$:/Users/Nieland/tubcloud/Shared/geoinformation\_member/Documents/Schuster et al. - 2011.pdf:pdf},
   ISSN                     = {2072-4292},
   Url                      = {http://www.mdpi.com/2072-4292/3/7/1308/}
 }
 
 @Article{diSciascio2013,
-  Title                    = {Towards a Semi-automatic Semantic Approach for Satellite Image Analysis },
-  Author                   = {Cecilia di Sciascio and Cecilia Zanni-Merk and C{\'e}dric Wemmert and Stella Marc-Zwecker and Fran{\c{c}}ois de Bertrand de Beuvron},
-  Journal                  = {Procedia Computer Science },
+  Title                    = {Towards a Semi-automatic Semantic Approach for Satellite Image Analysis},
+  Author                   = {di Sciascio, Cecilia and Zanni-Merk, Cecilia and Wemmert, CÃ©dric and Marc-Zwecker, Stella and Beuvron, FranÃ§ois de Bertrand de},
+  Journal                  = {Procedia Computer Science},
   Year                     = {2013},
-  Note                     = {17th International Conference in Knowledge Based and Intelligent Information and Engineering Systems - \{KES2013\} },
-  Number                   = {0},
-  Pages                    = {1388 - 1397},
+  Pages                    = {1388â€“1397},
   Volume                   = {22},
 
-  Doi                      = {http://dx.doi.org/10.1016/j.procs.2013.11.057},
+  __markedentry            = {[Moran:6]},
+  Doi                      = {10.1016/j.procs.2013.11.057},
   ISSN                     = {1877-0509},
-  Url                      = {http://www.sciencedirect.com/science/article/pii/S1877050913012702}
+  Owner                    = {Moran},
+  Publisher                = {Elsevier BV},
+  Timestamp                = {2015.11.04},
+  Url                      = {http://dx.doi.org/10.1016/j.procs.2013.11.057}
 }
 
 @Article{Sheeren2006DM,
@@ -658,7 +718,6 @@
   Year                     = {2010},
   Pages                    = {2707--2710},
 
-  File                     = {:C$\backslash$:/Users/Nieland/tubcloud/Shared/geoinformation\_member/Documents/Thoonen et al. - 2010.pdf:pdf},
   ISBN                     = {9781424495665}
 }
 
@@ -705,6 +764,24 @@
   Location                 = {Seattle, WA},
   Numpages                 = {6},
   Url                      = {http://dx.doi.org/10.1007/11814771_26}
+}
+
+@Article{VandenBorre2011,
+  Title                    = {Integrating remote sensing in Natura 2000 habitat monitoring: Prospects on the way forward},
+  Author                   = {Vanden Borre, Jeroen and Paelinckx, DesirÃ© and MÃ¼cher, Caspar A. and Kooistra, Lammert and Haest, Birgen and De Blust, Geert and Schmidt, Anne M.},
+  Journal                  = {Journal for Nature Conservation},
+  Year                     = {2011},
+
+  Month                    = {May},
+  Number                   = {2},
+  Pages                    = {116â€“125},
+  Volume                   = {19},
+  Doi                      = {10.1016/j.jnc.2010.07.003},
+  ISSN                     = {1617-1381},
+  Owner                    = {Moran},
+  Publisher                = {Elsevier BV},
+  Timestamp                = {2015.11.04},
+  Url                      = {http://dx.doi.org/10.1016/j.jnc.2010.07.003}
 }
 
 @Article{yu2006object,

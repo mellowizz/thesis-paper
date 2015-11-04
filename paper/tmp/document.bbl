@@ -1,4 +1,4 @@
-\begin{thebibliography}{15}
+\begin{thebibliography}{25}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\href}[2]{#2}
@@ -48,6 +48,48 @@
 \newblock \URLprefix \url{http://www.mdpi.com/2072-4292/6/2/1347},
   \DOIprefix\doi{10.3390/rs6021347}.
 %Type = Article
+\bibitem[{Blaschke(2010)}]{Blaschke2010}
+\bibinfo{author}{Blaschke, T.}, \bibinfo{year}{2010}.
+\newblock \bibinfo{title}{Object based image analysis for remote sensing}.
+\newblock \bibinfo{journal}{\{ISPRS\} Journal of Photogrammetry and Remote
+  Sensing} \bibinfo{volume}{65}, \bibinfo{pages}{2 -- 16}.
+\newblock \URLprefix
+  \url{http://www.sciencedirect.com/science/article/pii/S0924271609000884},
+  \DOIprefix\doi{http://dx.doi.org/10.1016/j.isprsjprs.2009.06.004}.
+%Type = Article
+\bibitem[{Cherrill and Mcclean(1999)}]{Cherrill1999a}
+\bibinfo{author}{Cherrill, A.}, \bibinfo{author}{Mcclean, C.},
+  \bibinfo{year}{1999}.
+\newblock \bibinfo{title}{Between-observer variation in the application of a
+  standard method of habitat mapping by environmental consultants in the uk}.
+\newblock \bibinfo{journal}{Journal of Applied Ecology} \bibinfo{volume}{36},
+  \bibinfo{pages}{989â€“1008}.
+\newblock \URLprefix \url{http://dx.doi.org/10.1046/j.1365-2664.1999.00458.x},
+  \DOIprefix\doi{10.1046/j.1365-2664.1999.00458.x}.
+%Type = Article
+\bibitem[{Cherrill and McClean(1999)}]{Cherrill1999}
+\bibinfo{author}{Cherrill, A.}, \bibinfo{author}{McClean, C.},
+  \bibinfo{year}{1999}.
+\newblock \bibinfo{title}{The reliability of ‘phase 1’habitat mapping in
+  the uk: the extent and types of observer bias}.
+\newblock \bibinfo{journal}{Landscape and urban planning} \bibinfo{volume}{45},
+  \bibinfo{pages}{131--143}.
+%Type = Article
+\bibitem[{Corbane et~al.(2015)Corbane, Lang, Pipkins, Alleaume, Deshayes,
+  GarcÃ­a~MillÃ¡n, Strasser, Vanden~Borre, Toon and Michael}]{Corbane2015}
+\bibinfo{author}{Corbane, C.}, \bibinfo{author}{Lang, S.},
+  \bibinfo{author}{Pipkins, K.}, \bibinfo{author}{Alleaume, S.},
+  \bibinfo{author}{Deshayes, M.}, \bibinfo{author}{GarcÃ­a~MillÃ¡n, V.E.},
+  \bibinfo{author}{Strasser, T.}, \bibinfo{author}{Vanden~Borre, J.},
+  \bibinfo{author}{Toon, S.}, \bibinfo{author}{Michael, F.},
+  \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{Remote sensing for mapping natural habitats and their
+  conservation status â€“ new opportunities and challenges}.
+\newblock \bibinfo{journal}{International Journal of Applied Earth Observation
+  and Geoinformation} \bibinfo{volume}{37}, \bibinfo{pages}{7â€“16}.
+\newblock \URLprefix \url{http://dx.doi.org/10.1016/j.jag.2014.11.005},
+  \DOIprefix\doi{10.1016/j.jag.2014.11.005}.
+%Type = Article
 \bibitem[{Forestier et~al.(2012)Forestier, Puissant, Wemmert and
   Gan{\c{c}}arski}]{Forestier2012470}
 \bibinfo{author}{Forestier, G.}, \bibinfo{author}{Puissant, A.},
@@ -75,6 +117,27 @@
   \DOIprefix\doi{10.1080/10106049.2011.556754},
   \href{http://arxiv.org/abs/http://dx.doi.org/10.1080/10106049.2011.556754}{\tt
   arXiv:http://dx.doi.org/10.1080/10106049.2011.556754}.
+%Type = Article
+\bibitem[{Gruber(1993)}]{gruber1993}
+\bibinfo{author}{Gruber, T.R.}, \bibinfo{year}{1993}.
+\newblock \bibinfo{title}{A translation approach to portable ontology
+  specifications}.
+\newblock \bibinfo{journal}{Knowledge acquisition} \bibinfo{volume}{5},
+  \bibinfo{pages}{199--220}.
+%Type = Article
+\bibitem[{Hofmann et~al.(2015)Hofmann, Lettmayer, Blaschke, Belgiu, Wegenkittl,
+  Graf, Lampoltshammer and Andrejchenko}]{}
+\bibinfo{author}{Hofmann, P.}, \bibinfo{author}{Lettmayer, P.},
+  \bibinfo{author}{Blaschke, T.}, \bibinfo{author}{Belgiu, M.},
+  \bibinfo{author}{Wegenkittl, S.}, \bibinfo{author}{Graf, R.},
+  \bibinfo{author}{Lampoltshammer, T.J.}, \bibinfo{author}{Andrejchenko, V.},
+  \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{Towards a framework for agent-based image analysis of
+  remote-sensing data}.
+\newblock \bibinfo{journal}{International Journal of Image and Data Fusion}
+  \bibinfo{volume}{6}, \bibinfo{pages}{115â€“137}.
+\newblock \URLprefix \url{http://dx.doi.org/10.1080/19479832.2015.1015459},
+  \DOIprefix\doi{10.1080/19479832.2015.1015459}.
 %Type = Article
 \bibitem[{Janowicz(2012)}]{Janowicz2012}
 \bibinfo{author}{Janowicz, K.}, \bibinfo{year}{2012}.
@@ -106,6 +169,16 @@
   \DOIprefix\doi{http://dx.doi.org/10.1016/j.jag.2014.10.011}.
   \bibinfo{note}{special Issue on Earth observation for habitat mapping and
   biodiversity monitoring}.
+%Type = Article
+\bibitem[{Mayer and Lopez(2011)}]{Mayer2011}
+\bibinfo{author}{Mayer, A.L.}, \bibinfo{author}{Lopez, R.D.},
+  \bibinfo{year}{2011}.
+\newblock \bibinfo{title}{Use of remote sensing to support forest and wetlands
+  policies in the {USA}}.
+\newblock \bibinfo{journal}{Remote Sensing} \bibinfo{volume}{3},
+  \bibinfo{pages}{1211--1233}.
+\newblock \URLprefix \url{http://dx.doi.org/10.3390/rs3061211},
+  \DOIprefix\doi{10.3390/rs3061211}.
 %Type = Inproceedings
 \bibitem[{McKinney(2010)}]{McKinney2010}
 \bibinfo{author}{McKinney, W.}, \bibinfo{year}{2010}.
@@ -113,6 +186,20 @@
   in: \bibinfo{editor}{van~der Walt, S.}, \bibinfo{editor}{Millman, J.} (Eds.),
   \bibinfo{booktitle}{Proceedings of the 9th Python in Science Conference}, pp.
   \bibinfo{pages}{51 -- 56}.
+%Type = Article
+\bibitem[{Nagendra et~al.(2013)Nagendra, Lucas, Honrado, Jongman, Tarantino,
+  Adamo and Mairota}]{Nagendra2013}
+\bibinfo{author}{Nagendra, H.}, \bibinfo{author}{Lucas, R.},
+  \bibinfo{author}{Honrado, J.P.}, \bibinfo{author}{Jongman, R.H.},
+  \bibinfo{author}{Tarantino, C.}, \bibinfo{author}{Adamo, M.},
+  \bibinfo{author}{Mairota, P.}, \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{Remote sensing for conservation monitoring: Assessing
+  protected areas, habitat extent, habitat condition, species diversity, and
+  threats}.
+\newblock \bibinfo{journal}{Ecological Indicators} \bibinfo{volume}{33},
+  \bibinfo{pages}{45���59}.
+\newblock \URLprefix \url{http://dx.doi.org/10.1016/j.ecolind.2012.09.014},
+  \DOIprefix\doi{10.1016/j.ecolind.2012.09.014}.
 %Type = Article
 \bibitem[{Nieland et~al.(2015)Nieland, Kleinschmit and
   F{\"{o}}rster}]{Nieland2015}
@@ -157,19 +244,16 @@
   \bibinfo{volume}{12}, \bibinfo{pages}{2825--2830}.
 %Type = Article
 \bibitem[{di~Sciascio et~al.(2013)di~Sciascio, Zanni-Merk, Wemmert,
-  Marc-Zwecker and de~Bertrand~de Beuvron}]{diSciascio2013}
+  Marc-Zwecker and Beuvron}]{diSciascio2013}
 \bibinfo{author}{di~Sciascio, C.}, \bibinfo{author}{Zanni-Merk, C.},
   \bibinfo{author}{Wemmert, C.}, \bibinfo{author}{Marc-Zwecker, S.},
-  \bibinfo{author}{de~Bertrand~de Beuvron, F.}, \bibinfo{year}{2013}.
+  \bibinfo{author}{Beuvron, F.d.B.d.}, \bibinfo{year}{2013}.
 \newblock \bibinfo{title}{Towards a semi-automatic semantic approach for
   satellite image analysis}.
 \newblock \bibinfo{journal}{Procedia Computer Science} \bibinfo{volume}{22},
-  \bibinfo{pages}{1388 -- 1397}.
-\newblock \URLprefix
-  \url{http://www.sciencedirect.com/science/article/pii/S1877050913012702},
-  \DOIprefix\doi{http://dx.doi.org/10.1016/j.procs.2013.11.057}.
-  \bibinfo{note}{17th International Conference in Knowledge Based and
-  Intelligent Information and Engineering Systems - \{KES2013\}}.
+  \bibinfo{pages}{1388â€“1397}.
+\newblock \URLprefix \url{http://dx.doi.org/10.1016/j.procs.2013.11.057},
+  \DOIprefix\doi{10.1016/j.procs.2013.11.057}.
 %Type = Inproceedings
 \bibitem[{Sheeren et~al.(2006)Sheeren, Quirin, Puissant, Gan{\c{c}}arski and
   Weber}]{Sheeren2006ML}
@@ -181,6 +265,19 @@
   Sensing Symposium, 2006. IGARSS 2006. IEEE International Conference on}, pp.
   \bibinfo{pages}{3919--3922}.
 \newblock \DOIprefix\doi{10.1109/IGARSS.2006.1005}.
+%Type = Inproceedings
+\bibitem[{Srikanth et~al.(2005)Srikanth, Varner, Bowden and
+  Moldovan}]{Srikanth:2005:EOA:1076034.1076128}
+\bibinfo{author}{Srikanth, M.}, \bibinfo{author}{Varner, J.},
+  \bibinfo{author}{Bowden, M.}, \bibinfo{author}{Moldovan, D.},
+  \bibinfo{year}{2005}.
+\newblock \bibinfo{title}{Exploiting ontologies for automatic image
+  annotation}, in: \bibinfo{booktitle}{Proceedings of the 28th Annual
+  International ACM SIGIR Conference on Research and Development in Information
+  Retrieval}, \bibinfo{publisher}{ACM}, \bibinfo{address}{New York, NY, USA}.
+  pp. \bibinfo{pages}{552--558}.
+\newblock \URLprefix \url{http://doi.acm.org/10.1145/1076034.1076128},
+  \DOIprefix\doi{10.1145/1076034.1076128}.
 %Type = Article
 \bibitem[{Tintrup~gen. Suntrup et~al.(2015)Tintrup~gen. Suntrup, Jalke, Streib,
   Keck, Nieland, Moran, Kleinschmit and Trapp}]{Tintrup2015}
@@ -208,5 +305,18 @@
   pp. \bibinfo{pages}{292--297}.
 \newblock \URLprefix \url{http://dx.doi.org/10.1007/11814771_26},
   \DOIprefix\doi{10.1007/11814771_26}.
+%Type = Article
+\bibitem[{Vanden~Borre et~al.(2011)Vanden~Borre, Paelinckx, MÃ¼cher,
+  Kooistra, Haest, De~Blust and Schmidt}]{VandenBorre2011}
+\bibinfo{author}{Vanden~Borre, J.}, \bibinfo{author}{Paelinckx, D.},
+  \bibinfo{author}{MÃ¼cher, C.A.}, \bibinfo{author}{Kooistra, L.},
+  \bibinfo{author}{Haest, B.}, \bibinfo{author}{De~Blust, G.},
+  \bibinfo{author}{Schmidt, A.M.}, \bibinfo{year}{2011}.
+\newblock \bibinfo{title}{Integrating remote sensing in natura 2000 habitat
+  monitoring: Prospects on the way forward}.
+\newblock \bibinfo{journal}{Journal for Nature Conservation}
+  \bibinfo{volume}{19}, \bibinfo{pages}{116â€“125}.
+\newblock \URLprefix \url{http://dx.doi.org/10.1016/j.jnc.2010.07.003},
+  \DOIprefix\doi{10.1016/j.jnc.2010.07.003}.
 
 \end{thebibliography}
