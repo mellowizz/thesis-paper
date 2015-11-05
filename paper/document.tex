@@ -50,58 +50,52 @@ generalisation, nature conservation, OWL2, EUNIS, OBIA
 
 \linenumbers
 
-\section{Introduction} 
-% NATURA2000 obligations and local obligations = NATFLO
-Recognizing that the dwindling number of habitats with fully functioning
-ecosystems in Europe  plays a dominant role in biodiversity loss, the European
-Union has implemented an environmental conservation framework to halt biodiversity loss in accordance
-with the Convention on Biological Diversity (CBD, 2005). An integral part of this
-framework is the EU Habitats Directive (Council Directive) 92/43/EEC [1992],
-which established the Natura 2000 network of habitats. The law requires
-conservation and monitoring of designated habitats by member states (MS) and for
-a report to be submitted every six years. Environmental data 
-to determine biodiversity status must be collected to comply with the 
-statute. Yet, comparing thematic data used for these reports can be difficult
-due to varying data collection methods by the nature conservation authorities
-in each member state \citep{}.
-Field surveys to identify habitats are subjective \citep{Cherrill1999,
-Cherrill1999a, Nieland2015} % Nieland2016},
-and the status of habitats is mostly generated in bottom-up
-approaches taking into account the national and regional interpetation
-guidelines. \\%vielleicht findest du hier auch noch eine Quelle
-One possible solution to this problem is the use of remote sensing data. 
-Remote sensing (RS) combined with Object-Based Image Analysis (OBIA), which
-segments the image into homogenous image objects \citep{Blaschke2010}, offers
-opportunities to automate and collect large amounts of computer-readable data
-useful for nature conservation \citep{Corbane2015, VandenBorre2011, Mayer2011}
-and biodiversity monitoring. Even though researchers recently developed a
-number of indicators using different sensors for habitat evaluation
-\citep{Nagendra2013}, classification procedures and rulesets were not formalised
-to be computer readable and therefore suffer from similar transferablity and
-reproducablity problems as manual habitat mapping
-\citep{Arvor2013} \citep{Nieland2015}.
-The formalization of knowledge into a
-computer-readable ontology would greatly enhance transferability,
-reproducability, logical coherence and \ldots
-
-\citep{diSciascio2013}
-%hier würde ich eine kurze Einführung in ontologien geben und für was man sie
-%in der Fernerkundung verwenden kann. Bezieh dich dabei auf das Paper von
-%Arvor2013. Was ist Reasoning?  Du musst auch noch erklären was data mining/
-%machine learning ist und die in der Fernerkundung gängigsten Algorithmen
-%erwähnen (SVM, RF, BRT, DT) Bitte alle mit Quelle!
-
-While different fields (medical imaging, security, etc.) have used ontologies for
-improving image retrieval and object detection, only recently have ontologies
-been adopted in remote sensing research. An ontology, defined as ``an explicit
-specification of a conceptualization'' \citep{gruber1993} could help bridge the
-semantic gap and allow for better data interoperability, workflow management and
-automatic image interpretation \citep{Arvor2013, Andres2013a}. The term
-``semantic gap'' refers to the difference between the higher-level descriptions
-by experts and what can be extracted from the visual data. Remote sensing and
-field expert knowledge can be digitized in ontologies, thus allowing for a
-hierarchy of concepts for improved automatic image annotation and retrieval
-using concepts from both fields to produce more accurate results
+\section{Introduction}  % NATURA2000 obligations and local obligations = NATFLO
+Recognizing that the decreasing number of
+intact habitats in Europe  plays a dominant role in biodiversity loss, the
+European Union has implemented an environmental conservation framework to halt
+biodiversity loss in accordance with the Convention on Biological Diversity
+(CBD, 2005). An integral part of this framework is the EU Habitats Directive
+(Council Directive) 92/43/EEC [1992], which established the Natura 2000 network
+of habitats. The law requires conservation and monitoring of designated habitats
+by member states (MS) and for a report to be submitted every six years.
+Environmental data to determine biodiversity status must be collected to comply
+with the statute. Yet, comparing thematic data used for these reports can be
+difficult due to varying data collection methods by the nature conservation
+authorities in each member state \citep{INSPIREdataspecs, INSPIRE}. The barriers
+to comparing the data originate from the subjective nature of field surveys to
+identify habitats \citep{Cherrill1999, Cherrill1999a, Nieland2015, Nieland2016}
+and the status of habitats is mostly generated in bottom-up approaches taking
+into account the national and regional interpetation guidelines
+\citep{INSPIREdataspecs}. One possible solution to this problem is the use of
+remote sensing data. Remote sensing (RS) combined with Object-Based Image
+Analysis (OBIA), which segments the image into homogenous image objects
+\citep{Blaschke2010}, offers opportunities to automate and collect large amounts
+of computer-readable data useful for nature conservation \citep{Corbane2015,
+VandenBorre2011, Mayer2011} and biodiversity monitoring. Even though researchers
+recently developed a number of indicators using different sensors for habitat
+evaluation \citep{Nagendra2013}, classification procedures and rulesets were not
+formalised to be computer readable and therefore suffer from similar
+transferablity and reproducablity problems as manual habitat mapping
+\citep{Arvor2013} \citep{Nieland2015}. Therefore a formalized computer-readable
+ontology could help solve these problems.
+%Was ist Reasoning?  Du musst auch noch erklären was data mining/ %machine
+% learning ist
+%und die in der Fernerkundung gängigsten Algorithmen %erwähnen (SVM, RF, BRT,
+%DT) Bitte alle mit Quelle!
+While different fields (medical imaging, security,
+etc.) have used ontologies only recently have ontologies been adopted in remote
+sensing research. An ontology, defined  as ``an explicit specification of a
+conceptualization'' \citep{gruber1993} could help bridge the semantic gap and
+allow for better data transferability, reproducability, interoperability,
+knowledge and workflow management, logical consistency and through the use of
+reasoners (inference engines) that infer logical consequences over the axioms
+and asserted facts, discovery of new knowledge \citep{Arvor2013, Andres2013a}.
+The term ``semantic gap'' refers to the difference between the higher-level
+descriptions by experts and what can be extracted from the visual data. Remote
+sensing and field expert knowledge can be digitized in ontologies, thus
+allowing for a hierarchy of concepts for improved automatic image annotation
+and retrieval using concepts from both fields to produce more accurate results
 \cite{Srikanth:2005:EOA:1076034.1076128}. Janowicz \cite{Janowicz2012}
 advocates for more observation-driven ontologies and for including machine
 learning, geostatistics and data mining to construct ontological primitives.
@@ -114,45 +108,45 @@ areas in the EU and uses ontologies modeled on the Land Cover Classification
 System (LCCS) and the General Habitat Category (GHC) to achieve this goal
 \citep{Arvor2013}.  Using the taxonomy of the different classification systems
 allows expert knowledge to be included in the process. Further work as part of
-the project includes creation of a standardized framework for habitat
-monitoring and mapping called the Earth Observation Data for Habitat Montioring
-(EOD-HAM) system \citep{Lucas2015}. The system harnesses knowledge from both
-remote sensing and ecology to classify Natura 2000 sites using a hierarchical
-classification system. The EOD-HAM system uses both pixel-based analysis and
-OBIA for greater classification accuracy but still relies on a rule-base
-created by an expert. Other research includes classification of urban building
-types using a three-layered architecture \citep{diSciascio2013} and 
-a semi-automated classification of urban building using the Random Forest (RF)
-classifier to determine variable importance of features from airborn laser
-scanner data \citep{Belgiu2014}. Ontologies have also
-been paired with different algorithms to
-automatically acquire classification rules with examples of using genetic programming algorithms 
+the project includes creation of a standardized
+framework for habitat monitoring and mapping called the Earth Observation Data
+for Habitat Montioring (EOD-HAM) system \citep{Lucas2015}. The system harnesses
+knowledge from both remote sensing and ecology to classify Natura 2000 sites
+using a hierarchical classification system. The EOD-HAM system uses both
+pixel-based analysis and OBIA for greater classification accuracy but still
+relies on a rule-base created by an expert. Other research includes
+classification of urban building types using a three-layered architecture
+\citep{diSciascio2013} and a semi-automated classification of urban building
+using the Random Forest (RF) classifier to determine variable importance of
+features from airborn laser scanner data \citep{Belgiu2014}. Ontologies have
+also been paired with different algorithms to automatically acquire
+classification rules: a genetic programming algorithm
 \citep{Forestier2012470} and the C4.5 data mining algorithm
-\citep{Sheeren2006ML}. Harnessing ontologies to improve spatial data interoperability has been
-demonstrated by using ontological inference and hierarchical matchmaking
-by Nieland et al. \citep{Nieland2015} 
-When an ontology is available, scientists can follow how the classes
-were developed and become aware of possible incompatibilities before combining
-datasets \citep{Janowicz2012}.
+\citep{Sheeren2006ML}. Harnessing ontologies to improve spatial data
+interoperability has been demonstrated by using ontological inference and
+hierarchical matchmaking by Nieland et al. \citep{Nieland2015}  When an ontology
+is available, scientists can follow how the classes were developed and become
+aware of possible incompatibilities before combining datasets
+\citep{Janowicz2012}.
 \\
-Furthermore, there is no standardized set of indicators using RS for
-trans-national habitat evaluation \citep{Lucas2015}. Therefore, technical
-solutions to increase interoperability by thematically harmonizing
+Furthermore, there is no standardized set of indicators
+using RS for trans-national habitat evaluation \citep{Lucas2015}. Therefore,
+technical solutions to increase interoperability by thematically harmonizing
 environmental data and systematize data collection methods from remote sensing
-inputs in an automated workflow would allow decision-makers to better assess and compare outcomes. 
-\\
-In this paper we propose an automated system that can classify selected
-biotopes according to the European Union Nature Information System (EUNIS)
-biotope classification schema using data based on EO, existing thematic maps
-(biotope, forestry, etc.) and expert knowledge formalized in an ontology.  The
-biotope indicators serve as class labels for training data mining algorithms
-which generate rules that can be imported into an ontology. Once the rules and
-segmented objects are imported into the ontology, a reasoner can perform
-reasoning classifying which objects belong to which class and how the classes
-are related. This method contributes to the goal of empirically-derived rule
-creation and enhances data interoperability and comparison as proposed by
-Janowicz \citep{Janowicz2012}.
+inputs in an automated workflow would allow decision-makers to better assess and
+compare outcomes. \\
 
+In this paper we propose an automated system that can
+classify selected biotopes according to the European Union Nature Information
+System (EUNIS) biotope classification schema using data based on EO, existing
+thematic maps (biotope, forestry, etc.) and expert knowledge formalized in an
+ontology.  The biotope indicators serve as class labels for training data mining
+algorithms which generate rules that can be imported into an ontology. Once the
+rules and segmented objects are imported into the ontology, a reasoner can
+perform reasoning classifying which objects belong to which class and how the
+classes are related. This method contributes to the goal of empirically-derived
+rule creation and enhances data interoperability and comparison as proposed by
+Janowicz \citep{Janowicz2012}.
 %%%%
 Kohli et al .
 (2012) developed a generic slum ontology based on input from 50 experts,
