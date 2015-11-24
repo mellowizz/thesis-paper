@@ -66,11 +66,11 @@ The main issue lies in the subjective nature of field surveys to identify
 habitats \citep{Cherrill1999, Cherrill1999a, Nieland2015} and  %Nieland2016
 complicating matters further, habitat status is mostly generated in
 bottom-up approaches taking into account the national and regional
-interpetation guidelines \citep{INSPIREdataspecs}. Using remote sensing
+interpretation guidelines \citep{INSPIREdataspecs}. Using remote sensing
 data could help address some of these issues.
 \\
 Remote sensing (RS) combined with Object-Based Image Analysis (OBIA), which
-segments the image into homogenous image objects \citep{Blaschke2010}, offers
+segments the image into homogeneous image objects \citep{Blaschke2010}, offers
 opportunities to automate and collect large amounts of computer-readable data
 useful for nature conservation and biodiversity monitoring \citep{Corbane2015,
 VandenBorre2011, Mayer2011}. Yet, RS image analysis implicitly incorporates the
@@ -90,7 +90,7 @@ While different fields (medical imaging, security, etc.) have used ontologies,
 only recently have ontologies been adopted in remote sensing research. An
 ontology, defined  as ``an explicit specification of a conceptualization''
 \citep{gruber1993} could help bridge the semantic gap and allow for better data
-transferability, reproducability, interoperability, knowledge and workflow
+transfer-ability, predictability, interchangeability, knowledge and workflow
 management and logical consistency. Moreover, through the use of reasoners
 (inference engines) that infer logical consequences over axioms and asserted 
 facts one can discover new knowledge \citep{Arvor2013, Andres2013a}. The term
@@ -101,7 +101,7 @@ hierarchy of concepts for improved automatic image annotation and retrieval
 using concepts from both fields to produce more accurate results
 \cite{Srikanth:2005:EOA:1076034.1076128}. Janowicz \cite{Janowicz2012} advocates
 for more observation-driven ontologies and for including machine learning,
-geostatistics and data mining to construct ontological primitives. While
+statistics and data mining to construct ontological primitives. While
 research on using observation-based ontologies for classifications is limited,
 the available research in RS using ontologies is briefly summarized below.
 \\
@@ -121,7 +121,7 @@ relies on a rule-base created by an expert. Other research includes
 classification of urban building types using a three-layered architecture
 \citep{diSciascio2013} and a semi-automated classification of urban building
 using the Random Forest (RF) classifier to determine variable importance of
-features from airborn laser scanner data \citep{Belgiu2014}. Ontologies have
+features from airborne laser scanner data \citep{Belgiu2014}. Ontologies have
 also been paired with different algorithms to automatically acquire
 classification rules: a genetic programming algorithm
 \citep{Forestier2012470} and the C4.5 data mining algorithm
@@ -131,7 +131,7 @@ hierarchical matchmaking by Nieland et al. \citep{Nieland2015}.
 \\
 Even though researchers recently developed a number of indicators using
 different sensors for habitat evaluation \citep{Nagendra2013}, classification
-procedures and rulesets were not formalised to be computer readable and
+procedures and rule-sets were not formalized to be computer readable and
 therefore suffer from similar transferablity and reproducablity problems as
 manual habitat mapping \citep{Arvor2013, Nieland2015}.
 Therefore a formalized computer-readable ontology could help solve these
@@ -168,11 +168,48 @@ rule creation and enhances data interoperability and comparison as proposed by J
 %hin! Schreib genau was die anderen bislang gemacht haben und was du jetzt noch
 %zus\a'tlich ergnzt hast (im Bezug auf Belgiu usw.).
 \section{Method}
-\subsection{Target indicators and base nomeclatures}
+\subsection{Target indicators and base nomenclatures}
 We test our method on EUNIS E1- dry, E2- mesic and E3- wet
 grasslands. The table below describes the indicators that are needed to identify
-and hence classify the biotopes according to the EUNIS classification hierachy.
+and hence classify the biotopes according to the EUNIS classification hierarchy.
 \label{tab_indicators_classes}
+\begin{center}
+  \begin{tabular*}{\textwidth}{|l|l|l|}
+\hline
+EUNIS Class & Indicators & Values\\
+\hline
+E1 & wetness, vegetation type & dry, graminaceous or herbaceous\\ 
+\hline
+E1.1 & wetness, vegetation type, immature\_soil 
+& dry, graminaceous or herbaceous, true\\\hline
+E1.2 & wetness, vegetation type, immature\_soil & dry, graminaceous or 
+herbaceous, false\\\hline
+E2 & wetness, vegetation type, depression & mesic, graminaceous or herbaceous, 
+false\\\hline
+E2.1 & wetness, vegetation type, depression, usage, usage\_intensity & mesic, 
+graminaceous or herbaceous, false, grazing, medium\\\hline
+E2.4 & wetness, vegetation type & mesic, graminaceous or herbaceous, false, 
+grazing,\\\hline
+E2.2 & wetness, vegetation type, usage, depression & mesic, graminaceous or 
+herbaceous, mowing\\\hline
+E2.3 & wetness, vegetation type, usage, species\_rich, immature\_soil, 
+depression, hydromorphic & mesic, graminaceous or herbaceous, mowing, false, 
+false, false\\\hline
+E2.7 & wetness, vegetation type, usage, species\_rich, immature\_soil, 
+depression, hydromorphic & mesic, graminaceous or herbaceous, none, false, 
+false, false\\\hline
+E3 & wetness, vegetation type, usage, species\_rich, immature\_soil, 
+depression, hydromorphic & very\_wet, graminaceous or herbaceous, none, 
+species\_rich, false, false, true\\\hline
+E3.4 & wetness, vegetation type, usage, species\_rich, immature\_soil, 
+depression, hydromorphic & very\_wet, graminaceous or herbaceous, grazing, 
+species\_rich, false, true\\\hline
+E3.5 & wetness, vegetation type, usage, species\_rich, immature\_soil, 
+depression, hydromorphic & very\_wet, graminaceous or herbaceous, mowing, 
+species\_rich, false, true, true\\\hline
+\end{tabular}
+\end{center}
+
 % Bitte beschreibe genau welche Klassen du ableiten willst und welche
 % Indikatoren du dafür benötigst (vielleicht in einer Tabelle). Du kannst auch
 % etwas über die Hierarchische Struktur und den nach Indikatoren gegliederten
@@ -188,7 +225,7 @@ This section describes the developed method for classifying EUNIS habitats by
 using data mining algorithms to generate rules based on remote sensing, digital
 surface model (DSM) and digital terrain model (DTM) derived statistics of
 pre-segmented polygons. The method's use of ontologies and the advantage
-theirein is also explained.\\
+therein is also explained.\\
 The system is comprised of (1) attaching
 formalized habitat indicators from expert knowledge to pre-segmented polygons,
 (2) rule generation by running data mining algorithms over randomly selected
@@ -197,7 +234,7 @@ EUNIS classes and polygon attributes into an ontology and finally (4)
 classifying polygons with the Fact++ reasoner \citep{Tsarkov2006} and writing results back
 to the database. An overview of the complete workflow is shown in figure
 \ref{fig_full_workflow}.\\
-The software relies on a PostgreSQL database backend with PostGIS extensions
+The software relies on a PostgreSQL database back-end with PostGIS extensions
 enabled and various open source Python and Java libraries to interact with the
 database, convert files and execute a reasoner over the created OWL file.
 SQLAlchemy is used for database interaction and data management is done with
@@ -223,11 +260,11 @@ open source license.
 \subsection{Formalization of Expert Knowledge}
 EUNIS class descriptions and interpretation guidelines \citep{EUNISManual} were
 used to develop a set of indicators to accurately formalize certain habitats
-with regard to the inferability with available input data sets (see
-\ref{subsec_indicators_and_nomenclatures}). This formalisation can then be
+with regard to the infer-ability with available input data sets (see
+\ref{subsec_indicators_and_nomenclatures}). This formalization can then be
 written to an OWL ontology, which is able to store complex logical connections
 in a XML based data structure. The goal is to produce what Janowicz describes
-as a ``microtheory'' \citep{Janowicz2012} which can then be used to map other
+as a ``micro theory \citep{Janowicz2012} which can then be used to map other
 theories by training the data mining algorithms for the new
 region and using the reasoner. We use environmental variables (e.g., surface
 wetness, slope position) from the classification schemes and concepts from
@@ -235,17 +272,17 @@ EAGLE to create a comprehensive interoperable vocabulary. This process involved
 attaching indicators from EUNIS, newly created indicators by NATFLO and EAGLE
 to each biotope. For example, the parameter ``wetness'' could be any of
 ``aquatic", ``dry'', ``mesic", ``moist" or ``very wet''. An example of
-a EUNIS class, E2.22 ``Sub-Atlantic lowland hay meadows'' modeled with selected
+a EUNIS class, E2.22 ``Sub-Atlantic lowland hay meadows'' modelled with selected
 remote sensing indicators is written in description logic (DL) below:
 %\begin{equation}
 \begin{align*}
 %\begin{split}
-E2.22 &\equiv water\_regime \exists \{``intermittent\_desiccation''\} \\
-&\qquad {} \land acidity \exists \{``acid''\} \\
-&\qquad {} \land geological_characteristics \exists \{``siliceous''\}\\
+E2.22 &\equiv wetness \exists \{``mesic''\} \\
+&\qquad {} \land hydromorphic \exists \{``false''\} \\
+&\qquad {} \land depression \exists \{``false''\} \\
+&\qquad {} \land immature\_soil \exists \{``false''\} \\
 &\qquad {} \land usage \exists \{``mowing''\} \\
-&\qquad {} \land usage\_intensity \exists \{``high''\} \\
-&\qquad {} \land wetness \exists \{``mesic''\} \\
+&\qquad {} \land usage\_intensity \exists \{``medium''\} \\
 \end{align*}
 \subsection{Rule Generation with Data Mining}
 The data mining module randomly selects polygons for training and testing from
@@ -254,7 +291,7 @@ the database and applies the selected algorithm on the training data.
 Currently the data mining module uses the decision tree classifier from
 scikit-learn \citep{scikit-learn} and the Separability and Thresholds (SEaTH)
 algorithm \citep{Nussbaum2006} but the method can be extended to use other
-algorithms as long as the algorithm can generate a ruleset that can be
+algorithms as long as the algorithm can generate a rule-set that can be
 converted to OWL. In the next step the rules can be imported into an OWL
 ontology along with the testing data. In the last step the reasoner (FaCT++)
 classifies all polygons according to the rules and writes the results to the
