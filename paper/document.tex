@@ -1,6 +1,7 @@
 % %This is a very basic article template.
 % %There is just one section and two subsections.
 \documentclass[authoryear, review,12pt,number]{elsarticle}
+%\documentclass[authoryear, preprint,12pt,number]{elsarticle}
 \usepackage[numbers]{natbib}
 \usepackage{graphicx}
 \usepackage{float}
@@ -173,43 +174,56 @@ We test our method on EUNIS E1- dry, E2- mesic and E3- wet
 grasslands. The table below describes the indicators that are needed to identify
 and hence classify the biotopes according to the EUNIS classification hierarchy.
 \label{tab_indicators_classes}
+\begin{table}\footnotesize
 \begin{center}
-  \begin{tabular*}{\textwidth}{|l|l|l|}
-\hline
+  \begin{tabular}{p{3.5cm} | p{6cm} | p{6cm}}
 EUNIS Class & Indicators & Values\\
 \hline
-E1 & wetness, vegetation type & dry, graminaceous or herbaceous\\ 
-\hline
-E1.1 & wetness, vegetation type, immature\_soil 
-& dry, graminaceous or herbaceous, true\\\hline
-E1.2 & wetness, vegetation type, immature\_soil & dry, graminaceous or 
-herbaceous, false\\\hline
-E2 & wetness, vegetation type, depression & mesic, graminaceous or herbaceous, 
-false\\\hline
-E2.1 & wetness, vegetation type, depression, usage, usage\_intensity & mesic, 
-graminaceous or herbaceous, false, grazing, medium\\\hline
-E2.4 & wetness, vegetation type & mesic, graminaceous or herbaceous, false, 
-grazing,\\\hline
-E2.2 & wetness, vegetation type, usage, depression & mesic, graminaceous or 
-herbaceous, mowing\\\hline
-E2.3 & wetness, vegetation type, usage, species\_rich, immature\_soil, 
-depression, hydromorphic & mesic, graminaceous or herbaceous, mowing, false, 
-false, false\\\hline
-E2.7 & wetness, vegetation type, usage, species\_rich, immature\_soil, 
-depression, hydromorphic & mesic, graminaceous or herbaceous, none, false, 
-false, false\\\hline
-E3 & wetness, vegetation type, usage, species\_rich, immature\_soil, 
-depression, hydromorphic & very\_wet, graminaceous or herbaceous, none, 
-species\_rich, false, false, true\\\hline
-E3.4 & wetness, vegetation type, usage, species\_rich, immature\_soil, 
-depression, hydromorphic & very\_wet, graminaceous or herbaceous, grazing, 
-species\_rich, false, true\\\hline
-E3.5 & wetness, vegetation type, usage, species\_rich, immature\_soil, 
-depression, hydromorphic & very\_wet, graminaceous or herbaceous, mowing, 
-species\_rich, false, true, true\\\hline
+E1 \\Dry grasslands
+& wetness, vegetation type &
+dry, graminaceous or herbaceous \\ 
+E1.1 \\Inland sand and rock with open vegetation
+& wetness, vegetation type, immature soil, hydromorphic
+& dry, graminaceous or herbaceous, true, false\\
+E1.2 \\Perennial calcareous grassland and basic steppes
+& wetness, vegetation type, immature soil depression, hydromorphic
+& dry, graminaceous or herbaceous, true, false, false\\
+E2 \\Mesic grasslands 
+& wetness, vegetation type, depression, immature soil, hydromorphic
+& mesic, graminaceous or herbaceous, false, false\\
+E2.1 \\Permanent mesotrophic pastures and aftermath-grazed
+meadows
+& wetness, vegetation type, depression, usage, usage intensity,
+hydromorphic 
+& mesic, graminaceous or herbaceous, false, grazing, medium, false
+\\
+E2.3 \\Mountain hay meadows
+& wetness, vegetation type, usage, immature soil, 
+depression, hydromorphic 
+& mesic, graminaceous or herbaceous, mowing, false, false\\
+E2.7 \\Unmanaged mesic grassland
+& wetness, vegetation type, usage, species rich, immature soil,  depression,
+hydromorphic 
+& mesic, graminaceous or herbaceous, none, false, false, false,
+false\\
+E3 \\Seasonally wet and wet grasslands
+& wetness vegetation type, usage, species rich, immature soil, 
+depression, hydromorphic 
+& very wet, graminaceous or herbaceous, none, species rich false, false, true\\
+E3.4 \\Moist or wet eutrophic and mesotrophic grassland
+& wetness, vegetation type, usage, species rich, immature soil, depression,
+hydromorphic & very wet, graminaceous or herbaceous, grazing, species rich, false, true\\
+E3.43 \\Subcontinental riverine meadows
+& wetness, vegetation type, usage, species rich, immature soil,  depression,
+hydromorphic & very wet, graminaceous or herbaceous, grazing, species rich,
+true, true, true\\
+E3.5 \\Moist or wet oligotrophic grassland
+& wetness, type, usage, species rich, immature soil, depression, hydromorphic 
+& very wet, graminaceous or herbaceous, mowing, species rich, false, true,
+true\\
 \end{tabular}
 \end{center}
-
+\end{table}
 % Bitte beschreibe genau welche Klassen du ableiten willst und welche
 % Indikatoren du dafür benötigst (vielleicht in einer Tabelle). Du kannst auch
 % etwas über die Hierarchische Struktur und den nach Indikatoren gegliederten
