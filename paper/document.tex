@@ -105,7 +105,8 @@ for more observation-driven ontologies and for including machine learning,
 statistics and data mining to construct ontological primitives. While
 research on using observation-based ontologies for classifications is limited,
 the available research in RS using ontologies is briefly summarized below.
-\\
+\Ö
+\
 The EU-funded ``Biodiversity Multi-Source Monitoring System: From Space To
 Species'' (BIO\_SOS) project seeks to develop tools to monitor and map protected
 areas in the EU and uses ontologies modeled on the Land Cover Classification
@@ -168,6 +169,18 @@ rule creation and enhances data interoperability and comparison as proposed by J
 %Klassifikation gibt es bislang in der Fernerkundung noch nicht. Schreib das so
 %hin! Schreib genau was die anderen bislang gemacht haben und was du jetzt noch
 %zus\a'tlich ergnzt hast (im Bezug auf Belgiu usw.).
+\subsection{Benefits of using an ontology}
+RS image analysis implicitly incorporates the expertise and
+knowledge of the person performing the analysis and reduces objectivity. This
+can be divided into remote sensing knowledge (spectral signature, remote
+sensing index, etc.) and field knowledge (feature properties, spatial
+relations, etc) \citep{Andres2013a}. This knowledge is often neither completely
+nor explicitly defined but influences the classification. To ensure accuracy and
+applicability of classification outputs for conservation, experts with detailed
+knowledge of the sites are needed to interpret the EO data. To alleviate this
+problem, ontologies can foster data exchange and reuse by formalizing knowledge
+with standardized languages such as OWL. The developed terms can be imported and
+combined with other terms available on the Linked Data Cloud. 
 \section{Method}
 \subsection{Target indicators and base nomenclatures}
 We test our method on EUNIS E1- dry, E2- mesic and E3- wet
@@ -199,13 +212,12 @@ hydromorphic
 \\
 E2.3 \\Mountain hay meadows
 & wetness, vegetation type, usage, immature soil, 
-depression, hydromorphic 
+depression, hydromorphic
 & mesic, graminaceous or herbaceous, mowing, false, false\\
 E2.7 \\Unmanaged mesic grassland
 & wetness, vegetation type, usage, species rich, immature soil,  depression,
 hydromorphic 
-& mesic, graminaceous or herbaceous, none, false, false, false,
-false\\
+& mesic, graminaceous or herbaceous, none, species_poor, false, false\\
 E3 \\Seasonally wet and wet grasslands
 & wetness vegetation type, usage, species rich, immature soil, 
 depression, hydromorphic 
@@ -355,18 +367,13 @@ aerial images based on spectral information (NDVI and Bare Area Index) and
 height from the digital elevation model (DEM) to separate between biotic and
 no-biotic features \citep{Tintrup2015}. The detailed pre-processing workflow is
 shown in figure \ref{fig_pre-processing}.
-\subsection{Benefits of using an ontology}
-RS image analysis implicitly incorporates the expertise and
-knowledge of the person performing the analysis and reduces objectivity. This
-can be divided into remote sensing knowledge (spectral signature, remote
-sensing index, etc.) and field knowledge (feature properties, spatial
-relations, etc) \citep{Andres2013a}. This knowledge is often neither completely
-nor explicitly defined but influences the classification. To ensure accuracy and
-applicability of classification outputs for conservation, experts with detailed
-knowledge of the sites are needed to interpret the EO data. To alleviate this
-problem, ontologies can foster data exchange and reuse by formalizing knowledge
-with standardized languages such as OWL. The developed terms can be imported and
-combined with other terms available on the Linked Data Cloud. 
+\subsection{Validation} 
+The data was divided into 20\% for training and 80\% for validation. For SEaTH
+20 objects per class were used from the training data set because the algorithm
+performs better with a smaller number of features \citep{Nussbaum2006}. 
+\section{Results}
+Training  the data with the ET classifier yielded classification results of
+100\% for indicators usage, wetness and depression.
 \section{Data and Study Area}
 All input data comes from the RLP Ordnance Survey (Landesamt f\"ur Vermessung 
 und Geobasisinformation). The data is segmented by RLP AgroScience using
@@ -436,13 +443,6 @@ and culturally important viticulture industry along the Mosel and Rhine rivers.
 \copyright OpenStreetMap contributors.}
 \end{figure}
 
-\subsection{Validation} 
-The data was divided into 20\% for training and 80\% for validation. For SEaTH
-20 objects per class were used from the training data set because the algorithm
-performs better with a smaller number of features \citep{Nussbaum2006}. 
-\section{Results}
-Training  the data with the ET classifier yielded classification results of
-100\% for indicators usage, wetness and depression.
 
 \section{Discussion} SEaTH shows much better separability when one chooses
 larger objects and fewer training objects per class. Training SEaTH on a few
