@@ -1,4 +1,4 @@
-\begin{thebibliography}{25}
+\begin{thebibliography}{28}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\href}[2]{#2}
@@ -90,6 +90,14 @@
 \newblock \URLprefix \url{http://dx.doi.org/10.1016/j.jag.2014.11.005},
   \DOIprefix\doi{10.1016/j.jag.2014.11.005}.
 %Type = Article
+\bibitem[{Davies et~al.(2004)Davies, Moss and Hill}]{EUNISManual}
+\bibinfo{author}{Davies, C.}, \bibinfo{author}{Moss, D.},
+  \bibinfo{author}{Hill, M.}, \bibinfo{year}{2004}.
+\newblock \bibinfo{title}{Eunis habitat classification revised 2004. report to
+  the european topic centre on nature protection and biodiversity}.
+\newblock \bibinfo{journal}{European Environment Agency} ,
+  \bibinfo{pages}{307}.
+%Type = Article
 \bibitem[{Forestier et~al.(2012)Forestier, Puissant, Wemmert and
   Gan{\c{c}}arski}]{Forestier2012470}
 \bibinfo{author}{Forestier, G.}, \bibinfo{author}{Puissant, A.},
@@ -102,6 +110,15 @@
 \newblock \URLprefix
   \url{http://www.sciencedirect.com/science/article/pii/S019897151200004X},
   \DOIprefix\doi{http://dx.doi.org/10.1016/j.compenvurbsys.2012.01.003}.
+%Type = Article
+\bibitem[{Fortin et~al.(2012)Fortin, {De Rainville}, Gardner, Parizeau and
+  Gagn\'e}]{DEAP_JMLR2012}
+\bibinfo{author}{Fortin, F.A.}, \bibinfo{author}{{De Rainville}, F.M.},
+  \bibinfo{author}{Gardner, M.A.}, \bibinfo{author}{Parizeau, M.},
+  \bibinfo{author}{Gagn\'e, C.}, \bibinfo{year}{2012}.
+\newblock \bibinfo{title}{{DEAP}: Evolutionary algorithms made easy}.
+\newblock \bibinfo{journal}{Journal of Machine Learning Research}
+  \bibinfo{volume}{13}, \bibinfo{pages}{2171--2175}.
 %Type = Article
 \bibitem[{Gao et~al.(2011)Gao, Marpu, Niemeyer, Runfola, Giner, Hamill and
   Pontius}]{Gao2011}
@@ -125,19 +142,23 @@
 \newblock \bibinfo{journal}{Knowledge acquisition} \bibinfo{volume}{5},
   \bibinfo{pages}{199--220}.
 %Type = Article
-\bibitem[{Hofmann et~al.(2015)Hofmann, Lettmayer, Blaschke, Belgiu, Wegenkittl,
-  Graf, Lampoltshammer and Andrejchenko}]{}
-\bibinfo{author}{Hofmann, P.}, \bibinfo{author}{Lettmayer, P.},
-  \bibinfo{author}{Blaschke, T.}, \bibinfo{author}{Belgiu, M.},
-  \bibinfo{author}{Wegenkittl, S.}, \bibinfo{author}{Graf, R.},
-  \bibinfo{author}{Lampoltshammer, T.J.}, \bibinfo{author}{Andrejchenko, V.},
-  \bibinfo{year}{2015}.
-\newblock \bibinfo{title}{Towards a framework for agent-based image analysis of
-  remote-sensing data}.
-\newblock \bibinfo{journal}{International Journal of Image and Data Fusion}
-  \bibinfo{volume}{6}, \bibinfo{pages}{115â€“137}.
-\newblock \URLprefix \url{http://dx.doi.org/10.1080/19479832.2015.1015459},
-  \DOIprefix\doi{10.1080/19479832.2015.1015459}.
+\bibitem[{Habitats and Biotopes(2013)}]{INSPIREdataspecs}
+\bibinfo{author}{Habitats, I.T.W.G.}, \bibinfo{author}{Biotopes, E.},
+  \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{Inspire data specification on habitats and biotopes
+  – technical guidelines}.
+\newblock \bibinfo{journal}{European Commision Joint Research Centre}
+  \bibinfo{volume}{D2.8.III.18}, \bibinfo{pages}{150}.
+\newblock \URLprefix
+  \url{http://inspire.jrc.ec.europa.eu/documents/Data_Specifications/INSPIRE_DataSpecification_HB_v3.0.pdf}.
+%Type = Article
+\bibitem[{INSPIRE(2007)}]{INSPIRE}
+\bibinfo{author}{INSPIRE, E.}, \bibinfo{year}{2007}.
+\newblock \bibinfo{title}{Directive: Directive 2007/2/ec of the european
+  parliament and of the council of 14 march 2007 establishing an infrastructure
+  for spatial information in the european community (inspire)}.
+\newblock \bibinfo{journal}{Official Journal of the European Union, L}
+  \bibinfo{volume}{108}, \bibinfo{pages}{50}.
 %Type = Article
 \bibitem[{Janowicz(2012)}]{Janowicz2012}
 \bibinfo{author}{Janowicz, K.}, \bibinfo{year}{2012}.

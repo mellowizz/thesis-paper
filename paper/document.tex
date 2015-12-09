@@ -17,6 +17,19 @@
 \usepackage{amsmath}
 \usepackage{multirow}
 \usepackage{rotating}
+\usepackage{adjustbox}
+\usepackage{graphicx}% http://ctan.org/pkg/graphicx
+\usepackage{booktabs}% http://ctan.org/pkg/booktabs
+\usepackage{xparse}% http://ctan.org/pkg/xparse
+\usepackage{booktabs}
+\usepackage{array}
+\newcommand*\OK{\ding{51}}
+\newcolumntype{R}[2]{%
+    >{\adjustbox{angle=#1,lap=\width-(#2)}\bgroup}%
+    l%
+    <{\egroup}%
+}
+\newcommand*\rot{\multicolumn{1}{R{90}{1em}}}% no optional argument here, please!
 \begin{document}
 \input{./title.tex}
 \input{./authordec.tex}
@@ -186,43 +199,42 @@ with standardized languages such as OWL. The developed terms can be imported and
 combined with other terms available on the Linked Data Cloud. 
 \section{Method}
 \subsection{Target indicators and base nomenclatures}
-We test our method on EUNIS E1- dry, E2- mesic and E3- wet
-grasslands. The table below describes the indicators that are needed to identify
-and hence classify the biotopes according to the EUNIS classification hierarchy.
-\begin{table}\footnotesize%[ht]
+We tested our method on dry, mesic and wet grasslands (EUNIS classes E1, E2 and
+E3 respectively). 
+We adapted the
+selected EUNIS indicators to meet the requirements of remote sensing analysis.
+We also adopted EAGLE nomenclature when possible to increase interoperability
+and further re-use.
+The table \ref{tab_indicators_classes} describes the
+indicators that are needed to identify and hence classify the biotopes
+according to the EUNIS classification hierarchy.
+
+\begin{table}
 \centering
-  \begin{tabular}{l l l}
-Description & EUNIS Class & Indicators \\
+  \begin{tabular}{clccccccc}
+  & & \multicolumn{8}{c}{Indicators}\\
+  & & \rot{wetness} & \rot{vegetation type} & \rot{usage} & \rot{usage
+  intensity} & \rot{depression} & \rot{immature soil} & \rot{hydromorphic} &
+  \rot{species richness} \\
 \hline
-\multirow{3}{*}{Dry Grasslands} & E1 & wetness, vegetation type \\ 
-    & E1.1 & wetness, vegetation type, immature soil, hydromorphic \\ 
+\multirow{10}{*}{{EUNIS Class}}
+\multirow{3}{*}{{Dry Grasslands}}
+    & E1 & * & * & & & & & & & & \\ 
+    & E1.1 & * & * & & & & * & * & & & \\ 
     & E1.2 & wetness, vegetation type, immature soil depression, hydromorphic\\
-\multirow{3}{*}{Mesic grasslands} & E2 & wetness, vegetation type, depression,
-immature soil, hydromorphic\\
-    & E2.1 & wetness, vegetation type, depression, usage, usage intensity,
-    hydromorphic \\ 
-    & E2.3 & wetness, vegetation type, usage, immature soil, depression,
-    hydromorphic \\
-    &  E2.7 & wetness, vegetation type, usage, species rich, immature soil,
-    depression, hydromorphic \\
-\multirow{3}{*}{Seasonally wet and wet grasslands} & E3 &wetness vegetation
-type, usage, species rich, immature soil, depression, hydromorphic\\
-    & E3.4 &  wetness, vegetation type, usage, species rich, immature soil,
-    depression, hydromorphic \\ 
-    & E3.5 & wetness, type, usage, species rich, immature soil, depression,
-    hydromorphic\\
+\multirow{4}{*}{Mesic grasslands} 
+    & E2 & & & * & * & & & & * & * &\\ 
+    & E2.1 & & * & * & & & & * & * &\\ 
+    & E2.3 & & & * & * & & & & * & * &\\
+    & E2.7 & & & & * & * & & & & * & * &\\
+\multirow{3}{*}{Seasonally wet and wet grasslands}
+    & E3 & * & * & * & * & * & * & * & * \\
+    & E3.4 & * & * & * & * & * & * & * & * \\
+    & E3.5 & * & * & * & * & * & * & * & * \\
 \end{tabular}
 %\end{center}
 \label{tab_indicators_classes}
 \end{table}
-% Bitte beschreibe genau welche Klassen du ableiten willst und welche
-% Indikatoren du dafür benötigst (vielleicht in einer Tabelle). Du kannst auch
-% etwas über die Hierarchische Struktur und den nach Indikatoren gegliederten
-% Aufbau von EUNIS schreiben. Schreib, dass wir die Indikatoren aus EUNIS
-% übernommen haben und auf die Anforderungen fernerkundlicher Analysen angepasst
-% haben. Nach Möglichkeit haben wir uns and der EAGLE nomenclature orientiert
-% um eine übergeordnete interoperablität zu gewährleisten.
-
 \label{subsec_indicators_and_nomenclatures}
 \subsection{Overview of the Automated EUNIS Habitat Mapping System}
 % EU-HMS?
@@ -279,10 +291,12 @@ to each biotope. For example, the parameter ``wetness'' could be any of
 ``aquatic", ``dry'', ``mesic", ``moist" or ``very wet''. This would be expressed
 as the has\_wetness object property having the domain of ``aquatic'', ``dry'',
 ``mesic'', ``moist'' or ``very wet''. An example of a EUNIS class, E2.22
-``Sub-Atlantic lowland hay meadows'' modelled with selected remote sensing indicators is written in description logic (DL) below:
+``Sub-Atlantic lowland hay meadows'' modelled with selected remote sensing
+indicators is written in description logic (DL) below \ref{description_logic}.
 %\begin{equation}
 \begin{align*}
 %\begin{split}
+\label{description_logic}
 E2.22 &\equiv wetness \exists \{``mesic''\} \\
 &\qquad {} \land hydromorphic \exists \{``false''\} \\
 &\qquad {} \land depression \exists \{``false''\} \\
