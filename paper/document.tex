@@ -69,24 +69,23 @@ generalisation, nature conservation, OWL, EUNIS, OBIA
 \linenumbers
 
 \section{Introduction}  % NATURA2000 obligations and local obligations = NATFLO
-Recognizing that the decreasing number of
-intact habitats in Europe  plays a dominant role in biodiversity loss, the
-European Union has implemented an environmental conservation framework to halt
-biodiversity loss in accordance with the Convention on Biological Diversity
-(CBD, 2005). An integral part of this framework is the EU Habitats Directive
-(Council Directive) 92/43/EEC [1992], which established the Natura 2000 network
-of habitats. The law requires conservation and monitoring of designated habitats
-by member states and for a report to be submitted every six years.
-Environmental data to determine biodiversity status must be collected to comply
-with the statute. Yet, comparing data used for these reports can be
+Recognizing the importance of functioning habitats in reducing  biodiversity
+loss, the European Union has implemented an environmental conservation framework
+to halt biodiversity loss in accordance with the Convention on Biological
+Diversity (CBD, 2005). An integral part of this framework is the EU Habitats
+Directive (Council Directive) 92/43/EEC [1992], which established the Natura
+2000 network of habitats. The law requires conservation and monitoring of
+designated habitats by member states and for a report to be submitted every six
+years. Environmental data to determine biodiversity status must be collected to
+comply with the statute. Yet, comparing data used for these reports can be
 difficult due to varying data collection methods by the nature conservation
-authorities in each member state \citep{INSPIREdataspecs, INSPIRE}.
-The main issue lies in the subjective nature of field surveys to identify
-habitats \citep{Cherrill1999, Cherrill1999a, Nieland2015} and  %Nieland2016
-complicating matters further, habitat status is mostly generated in
-bottom-up approaches taking into account the national and regional
-interpretation guidelines \citep{INSPIREdataspecs}. Using remote sensing
-data could help address some of these issues.
+authorities in each member state \citep{INSPIREdataspecs, INSPIRE}. The main
+issue lies in the subjective nature of field surveys to identify habitats
+\citep{Cherrill1999, Cherrill1999a, Nieland2015} and  %Nieland2016 complicating
+matters further, habitat status is mostly generated in bottom-up approaches
+taking into account the national and regional interpretation guidelines
+\citep{INSPIREdataspecs}. Using remote sensing data could help address some of
+these issues.
 \\
 Remote sensing (RS) combined with Object-Based Image Analysis (OBIA), which
 segments the image into homogeneous image objects \citep{Blaschke2010}, offers
@@ -175,8 +174,8 @@ perform reasoning classifying which objects belong to which class and how the
 classes are related. The combination of data mining algorithms with
 ontology-based classification has not yet been done and is a first in remote
 sensing research. This method contributes to the goal of empirically-derived
-rule creation and enhances data interoperability and comparison as proposed by Janowicz 
-\citep{Janowicz2012}.
+rule creation and enhances data interoperability and comparison as proposed by
+Janowicz \citep{Janowicz2012}.
 %Arvor2013. Was ist Reasoning?  Du musst auch noch erklären was data mining/
 %machine learning ist und die in der Fernerkundung gängigsten Algorithmen
 %erwähnen (SVM, RF, BRT, DT) Bitte alle mit Quelle!
@@ -213,27 +212,26 @@ according to the EUNIS classification hierarchy.
 \begin{table}
 \centering
   \begin{tabular}{clcccccccc}
-  
   \rot{description}&\rot{EUNIS class}&\rot{wetness} & \rot{vegetation type} &
-  \rot{usage} & \rot{usage intensity} & \rot{depression} & \rot{immature soil} & \rot{hydromorphic} &
-  \rot{species richness} \\
-\hline
-%\multirow{10}{*}{{EUNIS Class}}
+  \rot{usage} & \rot{usage intensity} & \rot{depression} & \rot{immature soil} &
+  \rot{hydromorphic} & \rot{species richness} \\ \hline
 \multirow{3}{*}{{Dry Grasslands}}
-    & E1   & dry & graminaceous & & & & & &  \\ 
-    & E1.1 & dry & * & & & & $\times$ & $\times$ \\ 
-    & E1.2 & dry\\
+    & E1   & dry & g/h & & & & & & 0\\ 
+    & E1.1 & dry & g & & low & 0 & 1 & 0 & 1\\
+    & E1.2 & dry & g & & low & 0 & 1 & 0 & 1\\ 
 \multirow{4}{*}{Mesic grasslands} 
-    & E2   &  mesic &   			& $\times$ 	& low &   &   &   & $\times$\\ 
-    & E2.1 &  mesic & $\times$     	& mowing	&   &   &   & $\times$ &\\ 
-    & E2.3 &  mesic &   & $\times$ 	& $\times$ &   &   &   &\\
-    & E2.7 &  mesic &   &   & $\times$ & $\times$ &   &   & \\
+    & E2   & mesic & g/h & grazing/mowing & low/medium & 0 & 0 & 0 & 1\\
+    & E2.1 & mesic & g/h & grazing & medium/high & 0 & 0 & 0 
+    & 0/1 \\
+    & E2.3 & mesic & g/h & mowing & medium & 0 & 0 & 0 & 0 \\
+    & E2.7 & mesic & g & & 0 & 0 & 0 & 0 & 0 \\
 \multirow{3}{*}{Wet grasslands}
-    & E3   & wet & * & * & * & $\times$ & $\times$ & $\times$ & species rich \\
-    & E3.4 & wet & * & * & * & $\times$ & $\times$ & $\times$ & species rich \\
-    & E3.5 & wet & * & * & * & $\times$ & $\times$ & $\times$ & species rich \\
+    & E3   & wet & g/h &  & medium & 0 & 0 & 1 & 1 \\
+    & E3.4 & wet & g/h & grazing/mowing & medium & 0 & 0 & 1 & 1 \\
+    & E3.5 & wet & g/h &  & low & 0 & 0 & 1 & 1 \\
 \end{tabular}
-%\end{center}
+\caption{Under vegetation type g stands for graminaceous and h for
+herbaceous with a '/' indicating an 'or'}
 \label{tab_indicators_classes}
 \end{table}
 \label{subsec_indicators_and_nomenclatures}
@@ -250,9 +248,9 @@ formalized habitat indicators from expert knowledge to pre-segmented polygons,
 (2) rule generation by running data mining algorithms over randomly selected
 polygons and using the habitat indicators as class labels, (3) importing rules,
 EUNIS classes and polygon attributes into an ontology and finally (4)
-classifying polygons with the Fact++ reasoner \citep{Tsarkov2006} and writing results back
-to the database. An overview of the complete workflow is shown in figure
-\ref{fig_full_workflow}.\\
+classifying polygons with the Fact++ reasoner \citep{Tsarkov2006} and writing
+results back to the database. An overview of the complete workflow is shown in
+figure \ref{fig_full_workflow}.\\
 The software relies on a PostgreSQL database back-end with PostGIS extensions
 enabled and various open source Python and Java libraries to interact with the
 database, convert files and execute a reasoner over the created OWL file.
@@ -262,8 +260,8 @@ used to interact with the OWL files and execute the FaCT++ reasoner
 \citep{Tsarkov2006}. The software is freely available and is released under an
 open source license.  
 \begin{figure}
-    \includegraphics[width=1\linewidth]{diagrams/another_workflow_diagram_large.png}
-    \caption
+\includegraphics[width=1\linewidth]{diagrams/another_workflow_diagram_large.png}
+\caption
     {
         1) The thematic maps (biotope, forestry, etc.) are joined together and
         statistics are calculated for each combined polygon.
@@ -454,8 +452,9 @@ modifications.
 \section{Acknowledgments}
 We would like to thank RLP AgroScience GmbH for processing the data and the
 RLP's Environment Ministry for funding the  NATFLO project. This work was
-conducted using the Prot\'eg\'e resource, which is supported by grant GM10331601 from the
-National Institute of General Medical Sciences of the United States National
+conducted using the Prot\'eg\'e resource, which is supported by grant GM10331601
+from the National Institute of General Medical Sciences of the United States
+National
 Institutes of Health.
 \bibliographystyle{model2-names}
 \section{References} \bibliography{references} \end{document}
