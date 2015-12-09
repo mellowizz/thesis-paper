@@ -29,7 +29,8 @@
     l%
     <{\egroup}%
 }
-\newcommand*\rot{\multicolumn{1}{R{90}{1em}}}% no optional argument here, please!
+\newcommand*\rot{\multicolumn{1}{R{60}{1em}}}% no optional argument here,
+% please!
 \begin{document}
 \input{./title.tex}
 \input{./authordec.tex}
@@ -211,26 +212,26 @@ according to the EUNIS classification hierarchy.
 
 \begin{table}
 \centering
-  \begin{tabular}{clccccccc}
-  & & \multicolumn{8}{c}{Indicators}\\
-  & & \rot{wetness} & \rot{vegetation type} & \rot{usage} & \rot{usage
-  intensity} & \rot{depression} & \rot{immature soil} & \rot{hydromorphic} &
+  \begin{tabular}{clcccccccc}
+  
+  \rot{description}&\rot{EUNIS class}&\rot{wetness} & \rot{vegetation type} &
+  \rot{usage} & \rot{usage intensity} & \rot{depression} & \rot{immature soil} & \rot{hydromorphic} &
   \rot{species richness} \\
 \hline
-\multirow{10}{*}{{EUNIS Class}}
+%\multirow{10}{*}{{EUNIS Class}}
 \multirow{3}{*}{{Dry Grasslands}}
-    & E1 & * & * & & & & & & & & \\ 
-    & E1.1 & * & * & & & & * & * & & & \\ 
-    & E1.2 & wetness, vegetation type, immature soil depression, hydromorphic\\
+    & E1   & dry & graminaceous & & & & & &  \\ 
+    & E1.1 & dry & * & & & & $\times$ & $\times$ \\ 
+    & E1.2 & dry\\
 \multirow{4}{*}{Mesic grasslands} 
-    & E2 & & & * & * & & & & * & * &\\ 
-    & E2.1 & & * & * & & & & * & * &\\ 
-    & E2.3 & & & * & * & & & & * & * &\\
-    & E2.7 & & & & * & * & & & & * & * &\\
-\multirow{3}{*}{Seasonally wet and wet grasslands}
-    & E3 & * & * & * & * & * & * & * & * \\
-    & E3.4 & * & * & * & * & * & * & * & * \\
-    & E3.5 & * & * & * & * & * & * & * & * \\
+    & E2   &  mesic &   			& $\times$ 	& low &   &   &   & $\times$\\ 
+    & E2.1 &  mesic & $\times$     	& mowing	&   &   &   & $\times$ &\\ 
+    & E2.3 &  mesic &   & $\times$ 	& $\times$ &   &   &   &\\
+    & E2.7 &  mesic &   &   & $\times$ & $\times$ &   &   & \\
+\multirow{3}{*}{Wet grasslands}
+    & E3   & wet & * & * & * & $\times$ & $\times$ & $\times$ & species rich \\
+    & E3.4 & wet & * & * & * & $\times$ & $\times$ & $\times$ & species rich \\
+    & E3.5 & wet & * & * & * & $\times$ & $\times$ & $\times$ & species rich \\
 \end{tabular}
 %\end{center}
 \label{tab_indicators_classes}
@@ -238,6 +239,7 @@ according to the EUNIS classification hierarchy.
 \label{subsec_indicators_and_nomenclatures}
 \subsection{Overview of the Automated EUNIS Habitat Mapping System}
 % EU-HMS?
+wetness, vegetation type, immature soil depression, hydromorphic
 This section describes the developed method for classifying EUNIS habitats by
 using data mining algorithms to generate rules based on remote sensing, digital
 surface model (DSM) and digital terrain model (DTM) derived statistics of
