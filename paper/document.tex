@@ -69,25 +69,27 @@ generalisation, nature conservation, OWL, EUNIS, OBIA
 \linenumbers
 
 \section{Introduction}  % NATURA2000 obligations and local obligations = NATFLO
-Recognizing the importance of functioning habitats in reducing  biodiversity
-loss, the European Union has implemented an environmental conservation framework
-to halt biodiversity loss in accordance with the Convention on Biological
-Diversity (CBD, 2005). An integral part of this framework is the EU Habitats
-Directive (Council Directive) 92/43/EEC [1992], which established the Natura
-2000 network of habitats. The law requires conservation and monitoring of
-designated habitats by member states and for a report to be submitted every six
-years. Environmental data to determine biodiversity status must be collected to
-comply with the statute. Yet, comparing data used for these reports can be
-difficult due to varying data collection methods by the nature conservation
-authorities in each member state \citep{INSPIREdataspecs, INSPIRE}. The main
-issue lies in the subjective nature of field surveys to identify habitats
-\citep{Cherrill1999, Cherrill1999a, Nieland2015} and  %Nieland2016 complicating
-matters further, habitat status is mostly generated in bottom-up approaches
-taking into account the national and regional interpretation guidelines
-\citep{INSPIREdataspecs}. Using remote sensing data could help address some of
-these issues.
+Recognizing the importance of functioning habitats to meet environmental
+conservation objectives, the European Union has implemented an environmental
+conservation framework to halt biodiversity loss in accordance with the
+Convention on Biological Diversity (CBD, 2005). An integral part of this
+framework is the EU Habitats Directive (Council Directive) 92/43/EEC [1992],
+which established the Natura 2000 network of habitats. The law requires
+conservation and monitoring of designated habitats by member states and for a
+report to be submitted every six years. Environmental data to determine
+biodiversity status must be collected to comply with the statute. Yet, comparing
+data used for these reports can be difficult due to varying data collection
+methods by the nature conservation authorities in each member state
+\citep{INSPIREdataspecs, INSPIRE}. The main arises due to the subjective
+nature of field surveys to identify habitats \citep{Cherrill1999, Cherrill1999a,
+Nieland2015} and further complicating matters, habitat status is
+mostly generated in bottom-up approaches taking into account the national and
+regional interpretation guidelines \citep{INSPIREdataspecs}. This subjective
+and time-consuming task of conducting field surveys could be partially replaced
+with a remote sensing (RS) method that uses ontologies which would reduce the
+subjectiveness, reduce costs and increase temporal resolution.
 \\
-Remote sensing (RS) combined with Object-Based Image Analysis (OBIA), which
+Remote sensing combined with Object-Based Image Analysis (OBIA), which
 segments the image into homogeneous image objects \citep{Blaschke2010}, offers
 opportunities to automate and collect large amounts of computer-readable data
 useful for nature conservation and biodiversity monitoring \citep{Corbane2015,
@@ -123,6 +125,15 @@ statistics and data mining to construct ontological primitives. While
 research on using observation-based ontologies for classifications is limited,
 the available research in RS using ontologies is briefly summarized below.
 \\
+%Arvor2013. Was ist Reasoning?  Du musst auch noch erklären was data mining/
+%machine learning ist und die in der Fernerkundung gängigsten Algorithmen
+%erwähnen (SVM, RF, BRT, DT) Bitte alle mit Quelle!
+% Wichtig ist, dass du nochmal ganz explizit die Innovation deines Papers
+% hervorhebst. 
+%Die kombination von Data Mining algorithmen und ontologiebasierter
+%Klassifikation gibt es bislang in der Fernerkundung noch nicht. Schreib das so
+%hin! Schreib genau was die anderen bislang gemacht haben und was du jetzt noch
+%zus\a'tlich ergnzt hast (im Bezug auf Belgiu usw.).
 The EU-funded ``Biodiversity Multi-Source Monitoring System: From Space To
 Species'' (BIO\_SOS) project seeks to develop tools to monitor and map protected
 areas in the EU and uses ontologies modeled on the Land Cover Classification
@@ -176,62 +187,44 @@ ontology-based classification has not yet been done and is a first in remote
 sensing research. This method contributes to the goal of empirically-derived
 rule creation and enhances data interoperability and comparison as proposed by
 Janowicz \citep{Janowicz2012}.
-%Arvor2013. Was ist Reasoning?  Du musst auch noch erklären was data mining/
-%machine learning ist und die in der Fernerkundung gängigsten Algorithmen
-%erwähnen (SVM, RF, BRT, DT) Bitte alle mit Quelle!
-% Wichtig ist, dass du nochmal ganz explizit die Innovation deines Papers
-% hervorhebst. 
-%Die kombination von Data Mining algorithmen und ontologiebasierter
-%Klassifikation gibt es bislang in der Fernerkundung noch nicht. Schreib das so
-%hin! Schreib genau was die anderen bislang gemacht haben und was du jetzt noch
-%zus\a'tlich ergnzt hast (im Bezug auf Belgiu usw.).
-\subsection{Benefits of using an ontology}
-RS image analysis implicitly incorporates the expertise and
-knowledge of the person performing the analysis and reduces objectivity. This
-can be divided into remote sensing knowledge (spectral signature, remote
-sensing index, etc.) and field knowledge (feature properties, spatial
-relations, etc) \citep{Andres2013a}. This knowledge is often neither completely
-nor explicitly defined but influences the classification. To ensure accuracy and
-applicability of classification outputs for conservation, experts with detailed
-knowledge of the sites are needed to interpret the EO data. To alleviate this
-problem, ontologies can foster data exchange and reuse by formalizing knowledge
-with standardized languages such as OWL. The developed terms can be imported and
-combined with other terms available on the Linked Data Cloud. 
 \section{Method}
 \subsection{Target indicators and base nomenclatures}
 We tested our method on dry, mesic and wet grasslands (EUNIS classes E1, E2 and
-E3 respectively). 
-We adapted the
-selected EUNIS indicators to meet the requirements of remote sensing analysis.
-We also adopted EAGLE nomenclature when possible to increase interoperability
-and further re-use.
-The table \ref{tab_indicators_classes} describes the
-indicators that are needed to identify and hence classify the biotopes
-according to the EUNIS classification hierarchy.
+E3 respectively). We adapted the selected EUNIS indicators to meet the
+requirements of remote sensing analysis. We also adopted EAGLE nomenclature when
+possible to increase interoperability and further re-use. The table
+\ref{tab_indicators_classes} describes the indicators that are needed to
+identify and hence classify the biotopes according to the EUNIS classification
+hierarchy. The EUNIS classification hierarchy is built upon different
+environmental indicators to differentiate between classes. 
 
 \begin{table}
 \centering
   \begin{tabular}{clcccccccc}
   \rot{description}&\rot{EUNIS class}&\rot{wetness} & \rot{vegetation type} &
-  \rot{usage} & \rot{usage intensity} & \rot{depression} & \rot{immature soil} &
-  \rot{hydromorphic} & \rot{species richness} \\ \hline
+  \rot{usage} & \rot{usage intensity} & \rot{something else} & \rot{immature
+  soil} & \rot{hydromorphic} & \rot{species richness} \\ \hline
 \multirow{3}{*}{{Dry Grasslands}}
     & E1   & dry & g/h & & & & & & 0\\ 
     & E1.1 & dry & g & & low & 0 & 1 & 0 & 1\\
     & E1.2 & dry & g & & low & 0 & 1 & 0 & 1\\ 
 \multirow{4}{*}{Mesic grasslands} 
-    & E2   & mesic & g/h & grazing/mowing & low/medium & 0 & 0 & 0 & 1\\
+    & E2   & mesic & g/h & \shortstack{grazing/\\mowing} & low/medium & 0 & 0 &
+      0 & 1\\
     & E2.1 & mesic & g/h & grazing & medium/high & 0 & 0 & 0 
-    & 0/1 \\
+      & 0/1 \\
     & E2.3 & mesic & g/h & mowing & medium & 0 & 0 & 0 & 0 \\
     & E2.7 & mesic & g & & 0 & 0 & 0 & 0 & 0 \\
 \multirow{3}{*}{Wet grasslands}
     & E3   & wet & g/h &  & medium & 0 & 0 & 1 & 1 \\
-    & E3.4 & wet & g/h & grazing/mowing & medium & 0 & 0 & 1 & 1 \\
+    & E3.4 & wet & g/h & \shortstack{grazing/\\mowing} &
+      medium & 0 & 0 & 1 & 1 \\
     & E3.5 & wet & g/h &  & low & 0 & 0 & 1 & 1 \\
 \end{tabular}
-\caption{Under vegetation type g stands for graminaceous and h for
-herbaceous with a '/' indicating an 'or'}
+\caption{Vegetation type g = graminaceous, h = herbaceous. A '/' should be
+interpreted as an ``or''. For boolean values, 0 indicates false, 1 = true.
+Species richness 1 = species rich and 0 denotes species poor. Blank fields
+mean this indicator is not required.}
 \label{tab_indicators_classes}
 \end{table}
 \label{subsec_indicators_and_nomenclatures}
@@ -292,11 +285,11 @@ to each biotope. For example, the parameter ``wetness'' could be any of
 as the has\_wetness object property having the domain of ``aquatic'', ``dry'',
 ``mesic'', ``moist'' or ``very wet''. An example of a EUNIS class, E2.22
 ``Sub-Atlantic lowland hay meadows'' modelled with selected remote sensing
-indicators is written in description logic (DL) below \ref{description_logic}.
-%\begin{equation}
+indicators is written in description logic (DL) below
+\ref{eq:description_logic}.
+\begin{equation}
 \begin{align*}
 %\begin{split}
-\label{description_logic}
 E2.22 &\equiv wetness \exists \{``mesic''\} \\
 &\qquad {} \land hydromorphic \exists \{``false''\} \\
 &\qquad {} \land depression \exists \{``false''\} \\
@@ -304,6 +297,8 @@ E2.22 &\equiv wetness \exists \{``mesic''\} \\
 &\qquad {} \land usage \exists \{``mowing''\} \\
 &\qquad {} \land usage\_intensity \exists \{``medium''\} \\
 \end{align*}
+\label{eq:description_logic}
+\end{equation}
 \subsection{Rule Generation with Data Mining}
 The data mining module randomly selects polygons for training and testing from
 the database and applies the selected algorithm on the training data. 
