@@ -23,6 +23,9 @@
 \usepackage{xparse}% http://ctan.org/pkg/xparse
 \usepackage{booktabs}
 \usepackage{array}
+\usepackage[ddmmyyyy]{datetime}
+\renewcommand{\dateseparator}{.}
+
 \newcommand*\OK{\ding{51}}
 \newcolumntype{R}[2]{%
     >{\adjustbox{angle=#1,lap=\width-(#2)}\bgroup}%
@@ -69,10 +72,11 @@ generalisation, nature conservation, OWL, EUNIS, OBIA
 \linenumbers
 
 \section{Introduction}  % NATURA2000 obligations and local obligations = NATFLO
-Recognizing the importance of functioning habitats in reducing  biodiversity
-loss, the European Union has implemented an environmental conservation framework
-to halt biodiversity loss in accordance with the Convention on Biological
-Diversity (CBD, 2005). An integral part of this framework is the EU Habitats
+Recognizing the importance of functioning habitats to reduce biodiversity loss, 
+the European Union has implemented an environmental conservation framework 
+to protect and conserve vital habitats in accordance with the Convention 
+on Biological Diversity (CBD, 2005). An integral part of this framework is the 
+EU Habitats
 Directive (Council Directive) 92/43/EEC [1992], which established the Natura
 2000 network of habitats. The law requires conservation and monitoring of
 designated habitats by member states and for a report to be submitted every six
@@ -185,18 +189,6 @@ Janowicz \citep{Janowicz2012}.
 %Klassifikation gibt es bislang in der Fernerkundung noch nicht. Schreib das so
 %hin! Schreib genau was die anderen bislang gemacht haben und was du jetzt noch
 %zus\a'tlich ergnzt hast (im Bezug auf Belgiu usw.).
-\subsection{Benefits of using an ontology}
-RS image analysis implicitly incorporates the expertise and
-knowledge of the person performing the analysis and reduces objectivity. This
-can be divided into remote sensing knowledge (spectral signature, remote
-sensing index, etc.) and field knowledge (feature properties, spatial
-relations, etc) \citep{Andres2013a}. This knowledge is often neither completely
-nor explicitly defined but influences the classification. To ensure accuracy and
-applicability of classification outputs for conservation, experts with detailed
-knowledge of the sites are needed to interpret the EO data. To alleviate this
-problem, ontologies can foster data exchange and reuse by formalizing knowledge
-with standardized languages such as OWL. The developed terms can be imported and
-combined with other terms available on the Linked Data Cloud. 
 \section{Method}
 \subsection{Target indicators and base nomenclatures}
 We tested our method on dry, mesic and wet grasslands (EUNIS classes E1, E2 and
@@ -365,9 +357,6 @@ shown in figure \ref{fig_pre-processing}.
 The data was divided into 20\% for training and 80\% for validation. For SEaTH
 20 objects per class were used from the training data set because the algorithm
 performs better with a smaller number of features \citep{Nussbaum2006}. 
-\section{Results}
-Training  the data with the ET classifier yielded classification results of
-100\% for indicators usage, wetness and depression.
 \section{Data and Study Area}
 All input data comes from the RLP Ordnance Survey (Landesamt f\"ur Vermessung 
 und Geobasisinformation). The data is segmented by RLP AgroScience using
@@ -377,26 +366,8 @@ create the Digital Surface Model (DSM) using automated stereo matching. The
 last available orthophotos are from 2013. The DTM and
 DEM was produced using LiDAR ASCII point clouds acquired between 2003 and 2009
 with a resolution of 0.5m.\\
-\subsection{Segmentation}
-The iterative object-based image analysis is performed using Defiens eCognition
-Server and segments the data using thresholds and multi-resolution approaches
-(Baatz and Sch\'ape 2000). The segmentation process uses information solely
-from aerial images based on spectral information (NDVI and Bare Area Index) and
-height from the digital elevation model (DEM) to separate
-between biotic and no-biotic features \citep{Tintrup2015}. T 
-The detailed pre-processing workflow is shown in figure
-\ref{fig_pre-processing}.
-\subsection{Segmentation} The iterative object-based image analysis is
-performed using Defiens eCognition Server and segments the data using
-thresholds and multi-resolution approaches (Baatz and Sch\'ape 2000). The
-segmentation process uses information solely from aerial images based on
-spectral information (NDVI and Bare Area Index) and height from the digital
-elevation model (DEM) to separate between biotic and no-biotic features
-\citep{Tintrup2015}. The detailed pre-processing workflow is shown in figure
-XX.
-%EAGLE nomenclature for landcover classes.
 \subsection{Thematic Maps} The RLP biotope map was last updated in 2015. The
-agriculture data set (INVEKOS) is updated yearly. The Forestry map is from:
+agriculture data set (INVEKOS) is updated yearly. The Forestry map is from
 200X and the soil map is from 200X.
 
 \begin{figure} \includegraphics[width=1\textwidth]{diagrams/pre_processing.png}
@@ -407,23 +378,6 @@ agriculture data set (INVEKOS) is updated yearly. The Forestry map is from:
     is marked as such.}
 \label{fig_pre-processing}
 \end{figure}
-To compare classification accuracy we selected the scikit-learn Python suite
-\citep{scikit-learn} due to its maturity and ease of use and the availability of
-different algorithms. One can visualize the results and parse the tree to load
-the results into the ontology.
-
-\subsection{Study Area and Data}
-%% southwestern?!
-All input data comes from the RLP Ordnance Survey (Landesamt f\"ur Vermessung
-und Geobasisinformation). The data is segmented by RLP AgroScience using
-multi-spectral (B, G, R, NIR) orthophotos with a 0.2m ground resolution and a 2
-x 2km tile size. The orthophotos are updated every 2 years and are used to
-create the Digital Surface Model (DSM) using automated stereo matching. The
-last available orthophotos are from 2013. The DTM and DEM was produced using
-LiDAR ASCII point clouds acquired between 2003 and 2009 with a resolution of
-0.5m.\\
-%rapid eye daten einbeziehen. mach doch vielleicht eine Tabelle. Das spart
-%Platz.
 Saarburg is an 200km$^{2}$ administrative district and is located in the
 south-west of the federal state of Rhineland Palatinate (RLP), Germany.
 Luxembourg borders the area to the west and the federal state of Saarland to
@@ -437,6 +391,13 @@ and culturally important viticulture industry along the Mosel and Rhine rivers.
 \copyright OpenStreetMap contributors.}
 \end{figure}
 
+\section{Results}
+Training  the data with the ET classifier yielded classification results of
+100\% for indicators usage, wetness and depression.
+To compare classification accuracy we selected the scikit-learn Python suite
+\citep{scikit-learn} due to its maturity and ease of use and the availability of
+different algorithms. One can visualize the results and parse the tree to load
+the results into the ontology.
 \section{Discussion} SEaTH shows much better separability when one chooses
 larger objects and fewer training objects per class. Training SEaTH on a few
 carefully selected objects being ideal class representations further increases
