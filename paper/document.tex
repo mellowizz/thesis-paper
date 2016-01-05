@@ -75,7 +75,7 @@ generalisation, nature conservation, OWL, EUNIS, OBIA
 Recognizing the importance of functioning habitats to reduce biodiversity loss, 
 the European Union has implemented an environmental conservation framework to 
 protect and conserve vital habitats in accordance with the Convention on 
-Biological Diversity (CBD, 2005). An integral part of this framework is the EU 
+Biological Diversity. An integral part of this framework is the EU 
 Habitats Directive (Council Directive) 92/43/EEC [1992], which established the 
 Natura 2000 network of habitats. The law requires conservation and monitoring 
 of designated habitats by member states and for a report to be submitted every 
@@ -104,9 +104,9 @@ and field knowledge (feature properties, spatial relations, etc)
 defined as it is based on trial and error but influences the classification. To 
 ensure accuracy and applicability of classification outputs for conservation, 
 experts with detailed knowledge of the sites are needed to interpret the EO 
-data. The distance between the high-level semantics used 
-by the expert to describe events and the low-level information quantified from 
-data is reffered to as the ``semantic gap''. An ontology, defined as ``an 
+data. The distance between the high-level semantics used by the expert to 
+describe events and domain concepts and the low-level information quantified 
+from data is reffered to as the ``semantic gap''. An ontology, defined as ``an 
 explicit specification of a conceptualization'' \citep{gruber1993} could help 
 bridge the ``semantic gap'' and allow for better data transfer-ability, 
 predictability, interchangeability, knowledge and workflow management and 
@@ -295,23 +295,22 @@ E2.22 &\equiv wetness \exists \{``mesic''\} \\
 \end{align*}
 \label{eq:description_logic}
 \end{equation}
-\subsection{Rule Generation with Data Mining}
+\subsection{Rule Generation with Data Mining ALgorithms}
 First the data mining module splits data into training and testing data. 
-The data mining module uses the decision tree classifier from 
-scikit-learn \citep{scikit-learn} and the Separability and Thresholds (SEaTH)
+The data mining module uses either the decision tree classifier (DT) from 
+scikit-learn \citep{scikit-learn} or the Separability and Thresholds (SEaTH)
 algorithm \citep{Nussbaum2006} but the method can be extended to use other
 algorithms as long as the algorithm can generate a rule-set that can be
-converted to OWL or into SQL queries.
-For the decision tree algorithm (DT), an evolutionary search algorithm with 10 
-evolutions based on DEAP is compared with a DT trained on all parameters and a 
-DT using only the top 10 most important features according to the extra trees 
-(ET) algorithm. A 5 fold cross validation is performed and rules from the 
-highest overall accuracy DT is chosen. At this point rules can either be loaded 
-into an ontolgy or converted to SQL rules. The reasoner FaCT++ classifies all 
-polygons according to the rules and writes the results to the database (see 
-figure \ref{fig_full_workflow}. Due to performance considerations we  
-performed the biotope classification in SQL queries. 
-\subsection{SEaTH}
+converted to OWL or into SQL queries. After the algorithms produce rules for 
+each indicator, these are then added as facet restrictions to an OWL ontology. 
+The polygons from the testing table are loaded from the database as individals 
+into the same ontology and the reasoner FaCT++ classifies all 
+polygons according to the rules. The classification  results by the reasoner 
+is written to the database. The full workflow is shown in  figure 
+\ref{fig_full_workflow}.
+%Due to performance considerations we  
+%performed the biotope classification in SQL queries. 
+\subsection{Chosen Data Minin Algorithms}
 The Separability and Thresholds (SEaTH) algorithm \citep{Nussbaum2006}
 statistically identifies characteristic features and their thresholds. It has
 been used on remote sensing data for land cover classification \citep{Gao2011}
@@ -323,20 +322,18 @@ need many training objects. In \cite{Nussbaum2006}, for example, the authors
 suggest using only very characteristic features for training and only used
 around 10 samples per class. The authors also state that usually two features
 per class is enough to produce accurate results.\\
-\subsection{Decision Tree Classifier}
-The decision tree (DT) classifier implemented in scikit-learn is a modified
-classification and regression tree (CART)\citep{scikit-learn}. The extra trees
-(ET) classifier is a modified random forest without bootstrapping and instead of
-splitting on the most discriminative feature, random thresholds from candidate
-features are taken.
-An evolutionary search algorithm based on the Distributed Evolutionary
-Algorithms in Python (DEAP) \citep{DEAP_JMLR2012} software searches
-for the best parameters for both the DT and ET classifiers. The evolutionary
-search cross-validation method was much quicker than the grid search cross
-validation. In the end we used the 10 features with the highest 
-importance as chosen by the Extra Trees algorithm. 
-%Then the rules generated by the algorithm is converted with an automated
-%Python script to OWL Ontology rules. Hier fehlt der Bezug
+%\subsection{Decision Tree Classifier}
+The DT implemented in scikit-learn is a modified classification and regression 
+tree (CART)\citep{scikit-learn}. We use an evolutionary search 
+algorithm with 10 evolutions based on the Distributed Evolutionary Algorithms 
+in Python \citep{DEAP_JMLR2012} software to find the best parameters. The 
+DT fitted with the parameters chosen by the evolutionary search algorithm 
+are then compared with a DT trained on all parameters and 
+a a DT trained on the top 10 most important features as chosen by the Extra 
+Trees (ET) classifier. A 5 fold cross validation is performed and rules from 
+the highest overall accuracy DT is chosen. The ET classifier is a modified 
+random forest without bootstrapping and instead of splitting on the most 
+discriminative feature, random thresholds from candidate features are taken.
 \subsection{Segmentation} 
 \label{subsec_segmentation}
 The iterative object-based image analysis is performed using Defiens eCognition
@@ -350,7 +347,11 @@ shown in figure \ref{fig_pre-processing}.
 \subsection{Validation} 
 The data was divided into 20\% for training and 80\% for validation. For SEaTH
 20 objects per class were used from the training data set because the algorithm
-performs better with a smaller number of features \citep{Nussbaum2006}. 
+performs better with a smaller number of features \citep{Nussbaum2006}. We 
+selected only objects that were identified to be herbaceous plants by the 
+segmentation alorithm for testing and training. The testing 
+data includes polygons of grasslands between trees in orchards and 
+algricultural land which are grasslands.
 \section{Data and Study Area}
 All input data comes from the RLP Ordnance Survey (Landesamt f\"ur Vermessung 
 und Geobasisinformation). The data is segmented by RLP AgroScience using
@@ -440,6 +441,24 @@ J1 & 0.0 & 0.0 & 0.0 & 0\\
 avg & 0.0 & 0.01 & 0.0 & 182\\
 \label{fig_dry_classification}
 %\caption{Classification report of mesic grasslands from scikit-learn}
+\end{tabular}
+The very wet results also reflect the few wet or very wet grasslands in the 
+region.
+\begin{tabular}{c c c c c}
+Class & Precision & Recall & F-score & Support\\
+\hline\\
+D5 & 0.0 & 0.0 & 0.0 & 0\\
+E1 & 0.0 & 0.0 & 0.0 & 0\\
+E2 & 0.0 & 0.0 & 0.0 & 55\\
+E3 & 0.01 & 1.0 & 0.02 & 1\\
+F3 & 0.0 & 0.0 & 0.0 & 0\\
+FB & 0.0 & 0.0 & 0.0 & 2\\
+G1 & 0.0 & 0.0 & 0.0 & 0\\
+H2 & 0.0 & 0.0 & 0.0 & 0\\
+I1 & 0.0 & 0.0 & 0.0 & 32\\
+J1 & 0.0 & 0.0 & 0.0 & 0\\
+avg & 0.0 & 0.01 & 0.0 & 90\\
+\label{fig_very_wet_classification}
 \end{tabular}
 
 \section{Discussion}
