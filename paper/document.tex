@@ -201,22 +201,19 @@ environmental indicators to differentiate between classes.
   \rot{description}&\rot{EUNIS class}&\rot{wetness} & \rot{vegetation type} &
   \rot{usage} & \rot{usage intensity} & \rot{immature
   soil} & \rot{hydromorphic} & \rot{species richness} \\ \hline
-\multirow{3}{*}{{Dry Grasslands}}
-    & E1   & dry & g/h & & & & & 0\\ 
-    & E1.1 & dry & g & & low & 1 & 0 & 1\\
-    & E1.2 & dry & g & & low & 1 & 0 & 1\\ 
+\multirow{3}{*}{{Dry grasslands}}
+    & E1   & dry & g/h & g/m/- & low & 1 & 0 & -/0/1 \\ 
+    & E1.2 & dry & g/h & g/m/- & low & 1 & 0 & 1\\
+    & E1.7 & dry & g/h & - & low & 1 & 0 & -/0\\ 
 \multirow{4}{*}{Mesic grasslands} 
-    & E2   & mesic & g/h & \shortstack{grazing/\\mowing} & low/medium & 0 &
-      0 & 1\\
-    & E2.1 & mesic & g/h & grazing & medium/high & 0 & 0 
-      & 0/1 \\
-    & E2.3 & mesic & g/h & mowing & medium & 0 & 0 & 0 \\
-    & E2.7 & mesic & g & & 0 & 0 & 0 & 0 \\
+    & E2   & mesic & g/h & g/m & low/medium & 0 & 0 & 1\\
+    & E2.1 & mesic & g/h & g & medium/high & 0 & 0 & -/0/1 \\
+    & E2.6 & mesic & g & -/g/m & high & 0 & 0 & 0 \\
+    & E2.7 & mesic & g/h & - & - & 0 & 0 & -/0/1 \\
 \multirow{3}{*}{Wet grasslands}
-    & E3   & wet & g/h &  & medium & 0 & 1 & 1 \\
-    & E3.4 & wet & g/h & \shortstack{grazing/\\mowing} &
-      medium & 0 & 1 & 1 \\
-    & E3.5 & wet & g/h & & low & 0 & 1 & 1 \\
+    & E3   & very wet & g/h &  & medium & 0 & 1 & 1 \\
+    & E3.4 & very wet & g/h & g/m & medium & 0 & 1 & 0/1 \\
+    & E3.41 & very wet & g/h & m & medium & 0 & 1 & 1 \\
 \end{tabular}
 \caption{Vegetation type g = graminaceous, h = herbaceous. A '/' should be
 interpreted as an ``or''. For boolean values, 0 indicates false, 1 = true.
@@ -461,7 +458,15 @@ avg & 0.0 & 0.01 & 0.0 & 90\\
 \label{fig_very_wet_classification}
 \end{tabular}
 
+Adding immature soil and the usage intensity increases classification accuracy 
+only very slightly.
+
+
 \section{Discussion}
+According to our conceptualization of the EUNIS grasslands, most grasslands 
+have a height of less than one meter. The normalized digital surface model's 
+max height for graslands is quite a bit bigger than that.
+%% insert table
 The missclassification of I1 - ``Arable land and market gardens'' is 
 understandable as the EUNIS biotope classification specifically states that 
 turf and sportsfields are excluded. Since I1 is ``species poor'' adding 
