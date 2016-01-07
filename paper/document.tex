@@ -1,5 +1,3 @@
-% %This is a very basic article template.
-% %There is just one section and two subsections.
 \documentclass[authoryear, review,12pt,number]{elsarticle}
 %\documentclass[authoryear, preprint,12pt,number]{elsarticle}
 \usepackage[numbers]{natbib}
@@ -43,7 +41,7 @@
 \title{Classifying EUNIS habitats using ontologies and data mining methods}
 
 
-\author[TUB]{T. Niklas Moran\corref{cor1}}
+\author[TUB]{Niklas Moran\corref{cor1}}
 \ead{niklasmoran@mailbox.tu-berlin.de}
 
 \author[TUB]{Simon Nieland}
@@ -89,8 +87,8 @@ status is mostly generated in bottom-up approaches taking into account the
 national and regional interpretation guidelines \citep{INSPIREdataspecs}. This 
 subjective and time-consuming task of conducting field surveys could be 
 partially replaced with an automated remote sensing (RS) method that uses  
-Geographic Object-Based Image Analaysis(GEOBIA) and ontologies to reduce the 
-subjectiveness, reduce costs and increase temporal resolution.
+Geographic Object-Based Image Analysis(GEOBIA) and ontologies to reduce the 
+subjectivity, reduce costs and increase temporal resolution.
 \\
 Remote sensing combined with GEOBIA, which segments the image into homogeneous 
 image objects \citep{Blaschke2010}, offers opportunities to automate and 
@@ -106,20 +104,11 @@ ensure accuracy and applicability of classification outputs for conservation,
 experts with detailed knowledge of the sites are needed to interpret the EO 
 data. The distance between the high-level semantics used by the expert to 
 describe events and domain concepts and the low-level information quantified 
-from data is reffered to as the ``semantic gap''. An ontology, defined as ``an 
+from data is referred to as the ``semantic gap''. An ontology, defined as ``an 
 explicit specification of a conceptualization'' \citep{gruber1993} could help 
 bridge the ``semantic gap'' and allow for better data transfer-ability, 
 predictability, interchangeability, knowledge and workflow management and 
 logical consistency. 
-%Ontologies can solve the 
-%``semantic gap'' and foster data exchange and reuse by formalizing knowledge 
-%with standardized languages such as OWL.
-% The ``semantic gap'' refers to the difference between the higher-level 
-% descriptions by experts and what can be extracted from the visual data.
-\\
-%While different fields (medical imaging, security, etc.) have used 
-% ontologies, only recently have ontologies been adopted in remote sensing 
-% research. 
 Moreover, through the use of reasoners (inference engines) 
 that infer logical consequences over axioms and asserted facts one can discover 
 new knowledge \citep{Arvor2013, Andres2013a}. RS and field expert knowledge can 
@@ -131,28 +120,25 @@ for more observation-driven ontologies and for including machine learning,
 statistics and data mining to construct ontological primitives. While research 
 on using observation-based ontologies for classifications is limited, the 
 available research in RS using ontologies is briefly summarized below. \\
-The EU-funded ``Biodiversity Multi-Source Monitoring System: From Space To
-Species'' (BIO\_SOS) project seeks to develop tools to monitor and map protected
-areas in the EU and uses ontologies modeled on the Land Cover Classification
-System (LCCS) and the General Habitat Category (GHC) to achieve this goal
-\citep{Arvor2013}. Using the taxonomy of the different classification systems
-allows expert knowledge to be included in the process. Further work as part of
-the project includes creation of a standardized
-framework for habitat monitoring and mapping called the Earth Observation Data
-for Habitat Montioring (EOD-HAM) system \citep{Lucas2015}. The system harnesses
-knowledge from both remote sensing and ecology to classify Natura 2000 sites
-using a hierarchical classification system. The EOD-HAM system uses both
-pixel-based analysis and OBIA for greater classification accuracy but still
-relies on a rule-base created by an expert. Other research includes
-classification of urban building types using a three-layered architecture
-\citep{diSciascio2013} and a semi-automated classification of urban building
-using the Random Forest (RF) classifier to determine variable importance of
-features from airborne laser scanner data \citep{Belgiu2014}. Ontologies have
-also been paired with different algorithms to automatically acquire
-classification rules: a genetic programming algorithm
-\citep{Forestier2012470} and the C4.5 data mining algorithm
-\citep{Sheeren2006ML}. Harnessing ontologies to improve spatial data
-interoperability has been demonstrated by using ontological inference and
+Ontologies modeled on the Land Cover Classification
+System and the General Habitat Category were integrated into tools used to 
+monitor and protect areas in the EU \citep{Arvor2013}. The authors note 
+that using the taxonomy of the different classification systems
+makes it possible to include expert knowledge in the process. 
+Further research included expert knowledge from remote sensing and ecology to 
+classify Natura 2000 sites using a hierarchical classification system. The 
+research used pixel-based analysis and OBIA for greater classification accuracy 
+but still relies on a rule-base created by an expert\citep{Lucas2015}.  Other 
+research includes classification of urban building types using a three-layered 
+architecture \citep{diSciascio2013} and a semi-automated classification of 
+urban building using the Random Forest (RF) classifier to determine variable 
+importance of features from airborne laser scanner data \citep{Belgiu2014}. 
+Ontologies have also been paired with different algorithms to automatically 
+acquire classification rules: a genetic programming algorithm 
+\citep{Forestier2012470} and the C4.5 data mining algorithm 
+\citep{Sheeren2006ML}.
+Harnessing ontologies to improve spatial data interoperability has been 
+demonstrated by using ontological inference and
 hierarchical matchmaking by Nieland et al. \citep{Nieland2015}. 
 \\
 Even though researchers recently developed a number of indicators using
@@ -185,6 +171,45 @@ done and is a first in remote sensing research. This method contributes to the
 goal of empirically-derived rule creation and enhances data interoperability and 
 comparison as proposed by Janowicz \citep{Janowicz2012}.
 \section{Method}
+
+\subsection{Overview of the Automated EUNIS Habitat Mapping System}
+This section describes the developed method for classifying EUNIS habitats by
+using data mining algorithms to generate rules based on remote sensing, digital
+surface model (DSM) and digital terrain model (DTM) derived statistics of
+pre-segmented polygons. The method's use of ontologies and the advantage
+therein is also explained.\\
+The system is comprised of (1) attaching
+formalized habitat indicators from expert knowledge to pre-segmented polygons,
+(2) rule generation by running data mining algorithms over randomly selected
+polygons and using the habitat indicators as class labels, (3) importing rules,
+EUNIS classes and polygon attributes into an ontology and finally (4)
+classifying polygons with the Fact++ reasoner \citep{Tsarkov2006} and writing
+results back to the database. An overview of the complete workflow is shown in
+figure ~\ref{fig_full_workflow}.\\
+The software uses PostGIS for data storage and open source Python and Java 
+libraries to interact with the database, convert files and execute a reasoner 
+over the created OWL file.
+% relies on a PostgreSQL database back-end 
+% SQLAlchemy is used for database interaction and data management is done with
+% the Python Data Analysis Library (Pandas) \citep{McKinney2010}.
+The OWLAPI is used to interact with the OWL files and execute the FaCT++ 
+reasoner \citep{Tsarkov2006}. The developed software is freely available and is 
+released under an open source license. 
+\begin{figure}
+\includegraphics[width=1\linewidth]{diagrams/another_workflow_diagram_large.png}
+\caption
+    {
+        1) The thematic maps (biotope, forestry, etc.) are joined together and
+        statistics are calculated for each combined polygon.
+        2) Training and testing data are created and saved in the database.
+        3) The training data is loaded into the data mining module and the
+        rules are generated for the ``wetness" indicator
+        4) The rules are imported into the OWL ontology along with the testing
+        data as individuals. The reasoner performs A-box reasoning to determine
+        class membership.
+    } 
+\label{fig_full_workflow}
+\end{figure}
 \subsection{Target indicators and base nomenclatures}
 We tested our method on dry, mesic and wet grasslands (EUNIS classes E1, E2 and
 E3 respectively). We adapted the selected EUNIS indicators to meet the
@@ -202,14 +227,14 @@ environmental indicators to differentiate between classes.
   \rot{usage} & \rot{usage intensity} & \rot{immature
   soil} & \rot{hydromorphic} & \rot{species richness} \\ \hline
 \multirow{3}{*}{{Dry grasslands}}
-    & E1   & dry & g/h & g/m/- & low & 1 & 0 & -/0/1 \\ 
+    & E1   & dry & g/h & g/m/- & low & 1 & 0 & 0/1/- \\ 
     & E1.2 & dry & g/h & g/m/- & low & 1 & 0 & 1\\
     & E1.7 & dry & g/h & - & low & 1 & 0 & -/0\\ 
 \multirow{4}{*}{Mesic grasslands} 
-    & E2   & mesic & g/h & g/m & low/medium & 0 & 0 & 1\\
+    & E2   & mesic & g/h & g/m & low/medium & 0 & 0 & 0/1/-\\
     & E2.1 & mesic & g/h & g & medium/high & 0 & 0 & -/0/1 \\
     & E2.6 & mesic & g & g/m/- & high & 0 & 0 & 0 \\
-    & E2.7 & mesic & g/h & - & - & 0 & 0 & -/0/1 \\
+    & E2.7 & mesic & g/h & - & - & 0 & 0 & 0/1/- \\
 \multirow{3}{*}{Wet grasslands}
     & E3   & very wet & g/h & g/m/- & medium & 0 & 1 & 1 \\
     & E3.4 & very wet & g/h & g/m & medium & 0 & 1 & 0/1 \\
@@ -222,44 +247,6 @@ herbaceous}, usage: {grazing, mowing}.
 \label{tab_indicators_classes}
 \end{table}
 \label{subsec_indicators_and_nomenclatures}
-\subsection{Overview of the Automated EUNIS Habitat Mapping System}
-% EU-HMS?
-This section describes the developed method for classifying EUNIS habitats by
-using data mining algorithms to generate rules based on remote sensing, digital
-surface model (DSM) and digital terrain model (DTM) derived statistics of
-pre-segmented polygons. The method's use of ontologies and the advantage
-therein is also explained.\\
-The system is comprised of (1) attaching
-formalized habitat indicators from expert knowledge to pre-segmented polygons,
-(2) rule generation by running data mining algorithms over randomly selected
-polygons and using the habitat indicators as class labels, (3) importing rules,
-EUNIS classes and polygon attributes into an ontology and finally (4)
-classifying polygons with the Fact++ reasoner \citep{Tsarkov2006} and writing
-results back to the database. An overview of the complete workflow is shown in
-figure ~\ref{fig_full_workflow}.\\
-The software relies on a PostgreSQL database back-end with PostGIS extensions
-enabled and various open source Python and Java libraries to interact with the
-database, convert files and execute a reasoner over the created OWL file.
-SQLAlchemy is used for database interaction and data management is done with
-the Python Data Analysis Library (Pandas) \citep{McKinney2010}. The OWLAPI is
-used to interact with the OWL files and execute the FaCT++ reasoner
-\citep{Tsarkov2006}. The software is freely available and is released under an
-open source license. 
-\begin{figure}
-\includegraphics[width=1\linewidth]{diagrams/another_workflow_diagram_large.png}
-\caption
-    {
-        1) The thematic maps (biotope, forestry, etc.) are joined together and
-        statistics are calculated for each combined polygon.
-        2) Training and testing data are created and saved in the database.
-        3) The training data is loaded into the data mining module and the
-        rules are generated for the ``wetness" indicator
-        4) The rules are imported into the OWL ontology along with the testing
-        data as individuals. The reasoner performs A-box reasoning to determine
-        class membership.
-    } 
-\label{fig_full_workflow}
-\end{figure}
 \subsection{Formalization of Expert Knowledge}
 EUNIS class descriptions and interpretation guidelines \citep{EUNISManual} were
 used to develop a set of indicators to accurately formalize certain habitats
@@ -274,10 +261,9 @@ a region (for instance the federal state of Rhineland Palatinate) that the data
 mining algorithms will not need to be re-trained, speeding up classification. 
 We use environmental variables (e.g., wetness, soil maturity, etc.) from the 
 classification schemes and concepts from EAGLE to create a comprehensive 
-interoperable vocabulary. This process involved attaching indicators from 
-EUNIS, newly created indicators by NATFLO and EAGLE
-to each biotope. An example of a EUNIS class, E2.22
-``Sub-Atlantic lowland hay meadows'' modelled with selected remote sensing
+inter-operable vocabulary. This process involved attaching indicators from 
+EUNIS, newly created indicators to each biotope. An example of a EUNIS class, 
+E2.22 ``Sub-Atlantic lowland hay meadows'' modelled with selected remote sensing
 indicators is written in description logic (DL) below
 ~\ref{eq:description_logic}.
 \begin{equation}
@@ -292,7 +278,7 @@ E2.22 &\equiv wetness \exists \{``mesic''\} \\
 \end{align*}
 \label{eq:description_logic}
 \end{equation}
-\subsection{Rule Generation with Data Mining ALgorithms}
+\subsection{Rule Generation with Data Mining ALgorithmns}
 First the data mining module splits data into training and testing data. 
 The data mining module uses either the decision tree classifier (DT) from 
 scikit-learn \citep{scikit-learn} or the Separability and Thresholds (SEaTH)
@@ -300,7 +286,7 @@ algorithm \citep{Nussbaum2006} but the method can be extended to use other
 algorithms as long as the algorithm can generate a rule-set that can be
 converted to OWL or into SQL queries. After the algorithms produce rules for 
 each indicator, these are then added as facet restrictions to an OWL ontology. 
-The polygons from the testing table are loaded from the database as individals 
+The polygons from the testing table are loaded from the database as individuals 
 into the same ontology and the reasoner FaCT++ classifies all 
 polygons according to the rules. The classification  results by the reasoner 
 is written to the database. The full workflow is shown in  figure 
@@ -346,10 +332,11 @@ The data was divided into 20\% for training and 80\% for validation. For SEaTH
 20 objects per class were used from the training data set because the algorithm
 performs better with a smaller number of features \citep{Nussbaum2006}. We 
 selected only objects that were identified to be herbaceous plants by the 
-segmentation alorithm for testing and training. The testing 
+segmentation algorithm for testing and training. The testing 
 data includes polygons of grasslands between trees in orchards and 
-algricultural land which are grasslands.
-\section{Data and Study Area}
+agricultural land which are grasslands.
+
+\subsection{Data and Study Area}
 All input data comes from the RLP Ordnance Survey (Landesamt f\"ur Vermessung 
 und Geobasisinformation). The data is segmented by RLP AgroScience using
 multi-spectral (B, G, R, NIR) orthophotos with a 0.2m ground resolution and a
@@ -388,7 +375,7 @@ Training the data with the ET classifier yielded classification results of
 100\% for indicators usage, wetness and
 
 Mesic grasslands represented the most frequent grassland class in the Saarburg 
-region. The classfication report and results from training the DT algorithm  
+region. The classification report and results from training the DT algorithm  
 shows that it is well represented in the data.
 \begin{tabular}{c c c c c}
 Class & Precision & Recall & F-score & Support\\
@@ -422,6 +409,9 @@ buildings, etc. The larger size of the thematic map's
 polygons means that a polygon of grasslands in between an orchard will still be 
 assigned the orchard's label and EUNIS indicators. Even after creating the 
 minimum size of a polygon set to 200m$^{2}$
+%% overal 
+
+
 \begin{tabular}{c c c c c}
 Class & Precision & Recall & F-score & Support\\
 \hline\\
@@ -461,31 +451,30 @@ avg & 0.0 & 0.01 & 0.0 & 90\\
 Adding immature soil and the usage intensity increases classification accuracy 
 only very slightly.
 
-
 \section{Discussion}
 According to our conceptualization of the EUNIS grasslands, most grasslands 
 have a height of less than one meter. The normalized digital surface model's 
 max height for graslands is quite a bit bigger than that.
 %% insert table
-The missclassification of I1 - ``Arable land and market gardens'' is 
+The misclassification of I1 - ``Arable land and market gardens'' is 
 understandable as the EUNIS biotope classification specifically states that 
-turf and sportsfields are excluded. Since I1 is ``species poor'' adding 
+turf and sports fields are excluded. Since I1 is ``species poor'' adding 
 ``species richness'' to the E2 rule reduced the number of polygons classified 
 as I1 but also reduced the total number of E2 classes as well.\\
 SEaTH shows much better separability when one chooses
 larger objects and fewer training objects per class. Training SEaTH on a few
 carefully selected objects being ideal class representations further increases
 the separability, but the classification accuracy suffers when applied to the
-complete data set. Thus, SEaTH appears to over-fit. Using two sets of rules
-produced from different sized training data produced quite different results
-when tested on the same dataset.
-The biotope classification is much more accurate than the agricultural data and 
-only polygons where both maps agreed shold have been selected.
-\section{Conclusion} We showed an autkomated
-workflow using ontologies and data mining algorithms can accurately classify
-EUNIS habitat objects. Moreover, the use of ontologies if published on the
-Internet can allow others to reuse the workflow and make their own
-modifications. 
+complete data set. Thus, SEaTH appears to over-fit. Using two sets of rules 
+produced from different sized training data produced quite different results 
+when tested on the same dataset. The biotope classification is much more 
+accurate than the agricultural data and only polygons where both maps agreed 
+shold have been selected.
+\section{Conclusion}
+We showed an automated workflow using ontologies and data mining algorithms can 
+accurately classify EUNIS habitat objects. Moreover, the use of ontologies if 
+published on the Internet can allow others to reuse the workflow and make their 
+own modifications. 
 \section{Acknowledgments}
 We would like to thank RLP AgroScience GmbH for processing the data and the
 RLP's Environment Ministry for funding the NATFLO project. This work was
