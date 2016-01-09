@@ -226,7 +226,6 @@ The OWLAPI is used to interact with the OWL files and execute the FaCT++
 reasoner \citep{Tsarkov2006}. The software is freely available and is released
 under an open source license. 
 %Wie gesagt: Welche Bibliotheken du benutzt hast ist nicht so wichtig.
->>>>>>> f3420cde4bd708bf0ecf446f694a672db87437a6
 \begin{figure}
 \includegraphics[width=1\linewidth]{diagrams/another_workflow_diagram_large.png}
 \caption
@@ -258,7 +257,7 @@ environmental indicators to differentiate between classes.
   \rot{description}&\rot{EUNIS class}&\rot{wetness} & \rot{vegetation type} &
   \rot{usage} & \rot{usage intensity} & \rot{immature
   soil} & \rot{hydromorphic} & \rot{species richness} \\ \hline
-\multirow{3}{*}{{Dry grasslands}}
+\multirow{3}{*}{Dry grasslands}
     & E1   & dry & g/h & g/m/- & low & 1 & 0 & 0/1/- \\ 
     & E1.2 & dry & g/h & g/m/- & low & 1 & 0 & 1\\
     & E1.7 & dry & g/h & - & low & 1 & 0 & -/0\\ 
@@ -305,7 +304,6 @@ vocabulary.
 % \ref{tab_indicators_classes}
  An example of a EUNIS class, E2.22
 ``Sub-Atlantic lowland hay meadows'' modelled with selected remote sensing
->>>>>>> f3420cde4bd708bf0ecf446f694a672db87437a6
 indicators is written in description logic (DL) below
 ~\ref{eq:description_logic}.
 \begin{equation}
@@ -324,7 +322,7 @@ E2.22 &\equiv wetness \exists \{``mesic''\} \\
 \subsection{Rule Generation with Data Mining ALgorithms}
 First the data mining module splits data into training and testing data. 
 The data mining module uses either the decision tree classifier 
-(DT)\footnote{http://scikit-learn.org/stable/modules/tree.html#tree} 
+(DT)\footnote{\url{http://scikit-learn.org/stable/modules/tree.html\#tree}} 
 \citep{scikit-learn} or the Separability and Thresholds (SEaTH) algorithm
 \citep{Nussbaum2006} but the method can be extended to use other algorithms as
 long as the algorithm can generate a rule-set that can be converted to OWL
@@ -358,11 +356,12 @@ characteristic features for training and only used around 10 samples per
 class. The authors also state that usually two features
 per class is enough to produce accurate results.\\
 %% DT
-The used DT implementation is a modified classification and
+The DT implementation is a modified classification and
 regression tree (CART)\citep{scikit-learn}. We use an evolutionary search 
 algorithm with 10 evolutions based on the Distributed Evolutionary Algorithms 
-in Python \citep{DEAP_JMLR2012} software to find the best features. The 
-DT fitted with the features chosen by the evolutionary search algorithm 
+in Python \citep{DEAP_JMLR2012} software to find the best features and used 
+balanced class weights to . The 
+DT was fitted with the features chosen by the evolutionary search algorithm and
 are then compared with a DT trained on all features and 
 a DT trained on the top 10 most important features as chosen by the Extra 
 Trees (ET) classifier. A 5 fold cross validation is performed and rules from 
@@ -434,6 +433,108 @@ Training the data with the ET classifier yielded classification results of
 Mesic grasslands represented the most frequent grassland class in the Saarburg 
 region. The classification report and results from training the DT algorithm  
 shows that it is well represented in the data.
+
+\begin{table}
+\centering
+    \begin{tabular}{l l c c c c}
+    Indicator & Algorithm & Precision & Recall & F-score & 
+Support\\
+    \rowcolor{lightgray} \multirow{3}{*}{hydromorphic}
+    & DT & 0.86 & 0.92 & 0.89 & 21098\\
+    & SEaTH & 0.86 & 0.87 & 0.86 & 20067\\
+    & ET & 1.0 & 1.0 & 1.0 & 21098\\
+    \rowcolor{lightgray} \multirow{3}{*}{immature soil}
+    & DT & 0.99 & 0.99 & 0.99 & 21098\\
+    & SEaTH & 0.99 & 0.42 & 0.58 & 17883\\
+    & ET & 1.0 & 1.0 & 0.99 & 21098\\
+    \multirow{3}{*}{species richness}
+    & DT & 0.08 & 0.25 & 0.12 & 21098\\
+    & SEaTH & 0.11 & 0.31 & 0.16 & 16789\\
+    & ET & 0.08 & 0.28 & 0.12 & 21098\\
+    \rowcolor{lightgray} \multirow{3}{*}{usage}
+    & DT & 0.34 & 0.45 & 0.38 & 21098\\
+    & SEaTH & 0.27 & 0.16 & 0.12 & 18876\\
+    & ET & 0.36 & 0.54 & 0.40 & 21098\\
+    \rowcolor{lightgray} \multirow{3}{*}{usage intensity}
+    & DT & 0.22 & 0.2 & 0.17 & 21098\\
+    & SEaTH & 0.26 & 0.38 & 0.28 & 14245\\
+    & ET & 0.34 & 0.46 & 0.36 & 21098\\
+    \rowcolor{lightgray} \multirow{3}{*}{wetness}
+    & DT & 0.4 & 0.62 & 0.49 & 21098\\
+    & SEaTH & 0.45 & 0.35 & 0.39 & 12178\\
+    & ET & 0.41 & 0.63 & 0.49 & 21098\\
+    \end{tabular}
+    \caption{Overall classification accuracy of EUNIS indicators}
+\end{table}
+
+
+\begin{table}
+\centering
+    \begin{tabular}{l l c c c c}
+    Indicator & Algorithm & Precision & Recall & F-score & Support\\
+    \hline
+    \multirow{2}{*}{hydromorphic}
+    & DT & 0.86 & 0.92 & 0.89 & 21098\\
+    & SEaTH & 0.86 & 0.87 & 0.86 & 20067\\
+    \hline
+    \multirow{2}{*}{immature soil}
+    & DT & 0.99 & 0.99 & 0.99 & 21098\\
+    & SEaTH & 0.99 & 0.42 & 0.58 & 17883\\
+    \hline
+    \multirow{2}{*}{species richness}
+    & DT & 0.08 & 0.25 & 0.12 & 21098\\
+    & SEaTH & 0.11 & 0.31 & 0.16 & 16789\\
+    \hline
+    \multirow{2}{*}{usage}
+    & DT & 0.34 & 0.45 & 0.38 & 21098\\
+    & SEaTH & 0.27 & 0.16 & 0.12 & 18876\\
+    \hline
+    \multirow{2}{*}{usage intensity}
+    & DT & 0.22 & 0.2 & 0.17 & 21098\\
+    & SEaTH & 0.26 & 0.38 & 0.28 & 14245\\
+    \hline
+    \multirow{2}{*}{wetness}
+    & DT & 0.4 & 0.62 & 0.49 & 21098\\
+    & SEaTH & 0.45 & 0.35 & 0.39 & 12178\\
+    \end{tabular}
+    \caption{Overall classification accuracy of EUNIS indicators}
+\end{table}
+
+
+
+\begin{table}
+\centering
+    \begin{tabular}{l l c c c c}
+    Indicator & Algorithm & Precision & Recall & F-score & Support\\
+    \hline
+    \multirow{2}{*}{hydromorphic}
+    & DT & 0.86 & 0.92 & 0.89 & 21098\\
+    & SEaTH & 0.86 & 0.87 & 0.86 & 20067\\
+    
+    \multirow{2}{*}{immature soil}
+    & DT & 0.99 & 0.99 & 0.99 & 21098\\
+    & SEaTH & 0.99 & 0.42 & 0.58 & 17883\\
+    
+    \multirow{2}{*}{species richness}
+    & DT & 0.08 & 0.25 & 0.12 & 21098\\
+    & SEaTH & 0.11 & 0.31 & 0.16 & 16789\\
+    
+    \multirow{2}{*}{usage}
+    & DT & 0.34 & 0.45 & 0.38 & 21098\\
+    & SEaTH & 0.27 & 0.16 & 0.12 & 18876\\
+    
+    \multirow{2}{*}{usage intensity}
+    & DT & 0.22 & 0.2 & 0.17 & 21098\\
+    & SEaTH & 0.26 & 0.38 & 0.28 & 14245\\
+    
+    \multirow{2}{*}{wetness}
+    & DT & 0.4 & 0.62 & 0.49 & 21098\\
+    & SEaTH & 0.45 & 0.35 & 0.39 & 12178\\
+    \end{tabular}
+    \caption{Overall classification accuracy of EUNIS indicators}
+\end{table}
+
+
 \begin{tabular}{c c c c c}
 Class & Precision & Recall & F-score & Support\\
 \hline\\
@@ -543,5 +644,11 @@ conducted using the Prot\'eg\'e resource, which is supported by grant GM10331601
 from the National Institute of General Medical Sciences of the United States
 National
 Institutes of Health.
+\section{Appendix}
+The OWL ontology with rules generated by the DT algorithm used in this study 
+is located at 
+\url{http://www.user.tu-berlin.de/niklasmoran/grassland_dt_new.owl}. The OWL 
+file with seath rules is located: 
+
 \bibliographystyle{model2-names}
 \section{References} \bibliography{references} \end{document}
