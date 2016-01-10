@@ -267,7 +267,7 @@ environmental indicators to differentiate between classes.
     & E2.6 & mesic & g & g/m/- & high & 0 & 0 & 0 \\
     & E2.7 & mesic & g/h & - & - & 0 & 0 & 0/1/- \\
 \multirow{3}{*}{Wet grasslands}
-    & E3   & very wet & g/h & g/m/- & medium & 0 & 1 & 1 \\
+    & E3   & very wet & g/h & g/m/- & low/medium & 0 & 1 & 0/1/- \\
     & E3.4 & very wet & g/h & g/m & medium & 0 & 1 & 0/1 \\
     & E3.41 & very wet & g/h & m & medium & 0 & 1 & 1 \\
 \end{tabular}
@@ -435,15 +435,17 @@ region. The classification report and results from training the DT algorithm
 shows that it is well represented in the data.
 
 \begin{table}
-\centering
+    \centering
+    %\rowcolors{2}{lightgray}{white}
     \begin{tabular}{l l c c c c}
     Indicator & Algorithm & Precision & Recall & F-score & 
 Support\\
-    \rowcolor{lightgray} \multirow{3}{*}{hydromorphic}
+    \multirow{3}{*}{hydromorphic}
     & DT & 0.86 & 0.92 & 0.89 & 21098\\
     & SEaTH & 0.86 & 0.87 & 0.86 & 20067\\
     & ET & 1.0 & 1.0 & 1.0 & 21098\\
-    \rowcolor{lightgray} \multirow{3}{*}{immature soil}
+    %\cline{2-6}
+    \multirow{3}{*}{immature soil}
     & DT & 0.99 & 0.99 & 0.99 & 21098\\
     & SEaTH & 0.99 & 0.42 & 0.58 & 17883\\
     & ET & 1.0 & 1.0 & 0.99 & 21098\\
@@ -451,106 +453,53 @@ Support\\
     & DT & 0.08 & 0.25 & 0.12 & 21098\\
     & SEaTH & 0.11 & 0.31 & 0.16 & 16789\\
     & ET & 0.08 & 0.28 & 0.12 & 21098\\
-    \rowcolor{lightgray} \multirow{3}{*}{usage}
+    %\cline{2-6}
+    \multirow{3}{*}{usage}
     & DT & 0.34 & 0.45 & 0.38 & 21098\\
     & SEaTH & 0.27 & 0.16 & 0.12 & 18876\\
     & ET & 0.36 & 0.54 & 0.40 & 21098\\
-    \rowcolor{lightgray} \multirow{3}{*}{usage intensity}
+    %\cline{2-6}
+    \multirow{3}{*}{usage intensity}
     & DT & 0.22 & 0.2 & 0.17 & 21098\\
     & SEaTH & 0.26 & 0.38 & 0.28 & 14245\\
     & ET & 0.34 & 0.46 & 0.36 & 21098\\
-    \rowcolor{lightgray} \multirow{3}{*}{wetness}
+    %\cline{2-6}
+    \multirow{3}{*}{wetness}
     & DT & 0.4 & 0.62 & 0.49 & 21098\\
     & SEaTH & 0.45 & 0.35 & 0.39 & 12178\\
     & ET & 0.41 & 0.63 & 0.49 & 21098\\
     \end{tabular}
-    \caption{Overall classification accuracy of EUNIS indicators}
+    %\caption{Overall classification accuracy of EUNIS indicators}
 \end{table}
+\subsection{EUNIS Level 2 Classification}
 
-
-\begin{table}
-\centering
-    \begin{tabular}{l l c c c c}
-    Indicator & Algorithm & Precision & Recall & F-score & Support\\
-    \hline
-    \multirow{2}{*}{hydromorphic}
-    & DT & 0.86 & 0.92 & 0.89 & 21098\\
-    & SEaTH & 0.86 & 0.87 & 0.86 & 20067\\
-    \hline
-    \multirow{2}{*}{immature soil}
-    & DT & 0.99 & 0.99 & 0.99 & 21098\\
-    & SEaTH & 0.99 & 0.42 & 0.58 & 17883\\
-    \hline
-    \multirow{2}{*}{species richness}
-    & DT & 0.08 & 0.25 & 0.12 & 21098\\
-    & SEaTH & 0.11 & 0.31 & 0.16 & 16789\\
-    \hline
-    \multirow{2}{*}{usage}
-    & DT & 0.34 & 0.45 & 0.38 & 21098\\
-    & SEaTH & 0.27 & 0.16 & 0.12 & 18876\\
-    \hline
-    \multirow{2}{*}{usage intensity}
-    & DT & 0.22 & 0.2 & 0.17 & 21098\\
-    & SEaTH & 0.26 & 0.38 & 0.28 & 14245\\
-    \hline
-    \multirow{2}{*}{wetness}
-    & DT & 0.4 & 0.62 & 0.49 & 21098\\
-    & SEaTH & 0.45 & 0.35 & 0.39 & 12178\\
-    \end{tabular}
-    \caption{Overall classification accuracy of EUNIS indicators}
-\end{table}
-
-
-
-\begin{table}
-\centering
-    \begin{tabular}{l l c c c c}
-    Indicator & Algorithm & Precision & Recall & F-score & Support\\
-    \hline
-    \multirow{2}{*}{hydromorphic}
-    & DT & 0.86 & 0.92 & 0.89 & 21098\\
-    & SEaTH & 0.86 & 0.87 & 0.86 & 20067\\
-    
-    \multirow{2}{*}{immature soil}
-    & DT & 0.99 & 0.99 & 0.99 & 21098\\
-    & SEaTH & 0.99 & 0.42 & 0.58 & 17883\\
-    
-    \multirow{2}{*}{species richness}
-    & DT & 0.08 & 0.25 & 0.12 & 21098\\
-    & SEaTH & 0.11 & 0.31 & 0.16 & 16789\\
-    
-    \multirow{2}{*}{usage}
-    & DT & 0.34 & 0.45 & 0.38 & 21098\\
-    & SEaTH & 0.27 & 0.16 & 0.12 & 18876\\
-    
-    \multirow{2}{*}{usage intensity}
-    & DT & 0.22 & 0.2 & 0.17 & 21098\\
-    & SEaTH & 0.26 & 0.38 & 0.28 & 14245\\
-    
-    \multirow{2}{*}{wetness}
-    & DT & 0.4 & 0.62 & 0.49 & 21098\\
-    & SEaTH & 0.45 & 0.35 & 0.39 & 12178\\
-    \end{tabular}
-    \caption{Overall classification accuracy of EUNIS indicators}
-\end{table}
-
-
+\ref{level1_classification}
 \begin{tabular}{c c c c c}
 Class & Precision & Recall & F-score & Support\\
-\hline\\
-D5 & 0.0 & 0.0 & 0.0 & 1\\
-E1 & 0.0 & 0.0 & 0.0 & 1\\
-E2 & 0.75 & 1.0 & 0.86 & 10409\\
-E3 & 0.0 & 0.0 & 0.0 & 3\\
-F3 & 0.0 & 0.0 & 0.0 & 3\\
-FB & 0.0 & 0.0 & 0.0 & 460\\
-G1 & 0.0 & 0.0 & 0.0 & 25\\
-H2 & 0.0 & 0.0 & 0.0 & 1\\
-I1 & 0.0 & 0.0 & 0.0 & 2922\\
-J1 & 0.0 & 0.0 & 0.0 & 9\\
-avg & 0.57 & 0.75 & 0.65 & 13834\\
-\label{fig_mesic_classification}
-%\caption{Classification report of mesic grasslands from scikit-learn}
+\hline
+E1 & 0.5 & 0.01 & 0.02 & 122\\
+E2 & 0.79 & 0.58 & 0.67 & 15539\\
+E3 & 0.7 & 0.11 & 0.2 & 61\\
+E5 & 0.0 & 0.0 & 0.0 & 2\\
+unclass & 0.0 & 0.0 & 0.0 & 5374\\
+avg & 0.59 & 0.43 & 0.49 & 21098\\
+\caption{Classification accuracy of grasslands using the DT algorithmn}
+\label{fig_dt_lvl2_classification}
+\end{tabular}
+
+The SEaTH algorithm does not perform as well as the 
+\begin{tabular}{c c c c c}
+Class & Precision & Recall & F-score & Support\\
+\hline
+E1 & 0.03 & 0.68 & 0.05 & 122\\
+E2 & 0.68 & 0.01 & 0.02 & 15539\\
+E3 & 0.02 & 0.38 & 0.04 & 61\\
+E5 & 0.0 & 0.0 & 0.0 & 2\\
+UN & 0.0 & 0.0 & 0.0 & 5374\\
+avg & 0.5 & 0.01 & 0.01 & 21098\\
+\caption{Classification accuracy of grasslands using the SEaTH algorithmn}
+
+\label{fig_seath_lvl2_classification}
 \end{tabular}
 
 The few dry grasslands in the Saarburg region really hurt the classifier's 
