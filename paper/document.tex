@@ -41,7 +41,7 @@
 \title{Classifying EUNIS habitats using ontologies and data mining methods}
 
 
-\author[TUB]{Niklas Moran\corref{cor1}}
+\author[TUB]{T. Niklas Moran\corref{cor1}}
 \ead{niklasmoran@mailbox.tu-berlin.de}
 
 \author[TUB]{Simon Nieland}
@@ -54,7 +54,7 @@ Universit\"at Berlin, Stra\ss e des 17. Juni 145, 10623 Berlin, Germany}
 
 \cortext[cor1]{Corresponding author at: Geoinformation in Environmental Planning
 Lab, Technische Universit\"at Berlin, Stra\ss e des 17. Juni 145, 10623 Berlin,
-Germany}  % el.:+49 30 314 72601;}
+Germany}
 
 \begin{abstract}
 Remote sensing Biodiversity monitoring and 
@@ -64,9 +64,7 @@ Remote sensing Biodiversity monitoring and
 remote sensing, biotope classification, data mining,
 generalisation, nature conservation, OWL, EUNIS, OBIA
 \end{keyword}
-
 \end{frontmatter}
-
 \linenumbers
 
 \section{Introduction}
@@ -105,23 +103,32 @@ experts with detailed knowledge of the sites are needed to interpret the EO
 data. The distance between the high-level semantics used by the expert to 
 describe events and domain concepts and the low-level information quantified 
 from data is reffered to as the ``semantic gap''.
-%vielleicht findest du hierfür noch eine Quellee
+%vielleicht findest du hierf?r noch eine Quellee
 An ontology, defined as ``an explicit specification of a conceptualization''
 \citep{gruber1993} could help bridge the ``semantic gap'' and allow for
 better data transferability, predictability, interchangeability, knowledge
-and workflow management and logical consistency. 
-% citations!
-% tranerability, predictablity usw?. Vielleicht kannst du das auch noch etwas
-% genauer ausführen. Ich würde auch noch OWL einführen als Speicherstruktur des
-% semantic web und Möglichkeit zur formalisierung.
+and workflow management (provenance) and logical 
+consistency \citep{Janowicz2012}.
+The standards-compliant format designed and adopted to express rich semantics 
+and enable the ``Semantic Web'' is called the Web Ontology Language (OWL2). 
+The format supports multiple syntaxes yet defines the Resource 
+Description Framework (RDF)/XML (subject predicate, object triplets) as a 
+common exchange format. An OWL2 ontology is composed of classes, individuals 
+and properties. Classes are sets of individuals and properties come in 
+two forms: an object property defines a relationship between two individuals 
+and a data property  places a data type constraint on the 
+individual \citep{OWL2}.
+% Manchester syntax?
 Moreover, through the use of reasoners (inference engines) 
-that infer logical consequences over axioms and asserted facts one can discover 
-new knowledge \citep{Arvor2013, Andres2013a}. RS and field expert knowledge can 
+that infer logical consequences over axioms and asserted facts and verify 
+consistency, one can discover new knowledge \citep{Arvor2013, Andres2013a}. RS 
+and field expert knowledge can 
 be digitized in ontologies, thus allowing for a hierarchy of concepts for 
 improved automatic image annotation and retrieval using concepts from both 
 fields to produce more accurate results 
-\cite{Srikanth:2005:EOA:1076034.1076128}. Janowicz \cite{Janowicz2012} advocates 
-for more observation-driven ontologies and for including machine learning, 
+\cite{Srikanth:2005:EOA:1076034.1076128}. Janowicz \citep{Janowicz2012} 
+advocates for more observation-driven ontologies and for including machine 
+learning, 
 statistics and data mining to construct ontological primitives. While research 
 on using observation-based ontologies for classifications is limited, the 
 available research in RS using ontologies is briefly summarized below. \\
@@ -181,9 +188,9 @@ data interoperability and comparison as proposed by Janowicz
 %perform reasoning classifying which objects belong to which class (A-Box 
 %reasoning) and how the classes are related (T-box reasoning).
 %Das sollte eher in die Methode
-%Versuche doch die Kernthesen in max. 2-3 Sätzen zusammen zu fassen (vielleicht
+%Versuche doch die Kernthesen in max. 2-3 S?tzen zusammen zu fassen (vielleicht
 % mit bullet points).
-% Darauf kannst du dann in der Conclusion wieder zurückkommen. 
+% Darauf kannst du dann in der Conclusion wieder zur?ckkommen. 
 
 
 \section{Method}
@@ -206,17 +213,17 @@ classifying polygons with the Fact++ reasoner \citep{Tsarkov2006} and writing
 results back to the database. 
 An overview of the complete workflow is shown in
 figure ~\ref{fig_full_workflow}.\\ %Diesen Teil musst du noch genauer
-% beschreiben. Das ist der Kern deiner Arbeit. Auch wenn du dich in den nächsten
-% Unterkapiteln nochmal wiederholst. Es ist sehr wichtig für das Verständnis,
-% dass du hier alles detalliert beschreibst. Ich würde für jeden Punkt
+% beschreiben. Das ist der Kern deiner Arbeit. Auch wenn du dich in den n?chsten
+% Unterkapiteln nochmal wiederholst. Es ist sehr wichtig f?r das Verst?ndnis,
+% dass du hier alles detalliert beschreibst. Ich w?rde f?r jeden Punkt
 % mindestens einen Satz schreiben.
 % Verweise auf die anderen Kapitel (z.b. (1) ist beschrieben in 2.2 und 2.3 usw.).
 % Hier muss noch rein: Woher kommen die
 % Ausgangsdaten? Wie wurden Referenzdaten erstellt?(Verweise auf Kapitel 2.2)
 % Wie funktioniert das Sampling? Wie formalisierst du die Regeln (OWL Axioms)?
-% Schreibe, dass wetness in der Graphik nur ein Beispiel ist und du das für
-% verschieden Indikatoren anwenden willst. Erkläre A-Box und T-Box reasoning.
-%Erkläre Expert knowledge. Wer macht da was? 
+% Schreibe, dass wetness in der Graphik nur ein Beispiel ist und du das f?r
+% verschieden Indikatoren anwenden willst. Erkl?re A-Box und T-Box reasoning.
+%Erkl?re Expert knowledge. Wer macht da was? 
 The software relies on a PostgreSQL database back-end with PostGIS extensions
 enabled and various open source Python and Java libraries to interact with the
 database, convert files and execute a reasoner over the created OWL file.
@@ -257,23 +264,23 @@ environmental indicators to differentiate between classes.
   \rot{description}&\rot{EUNIS class}&\rot{wetness} & \rot{vegetation type} &
   \rot{usage} & \rot{usage intensity} & \rot{immature
   soil} & \rot{hydromorphic} & \rot{species richness} \\ \hline
-\multirow{3}{*}{Dry grasslands}
+\multirow{3}{*}{dry}
     & E1   & dry & g/h & g/m/- & low & 1 & 0 & 0/1/- \\ 
     & E1.2 & dry & g/h & g/m/- & low & 1 & 0 & 1\\
     & E1.7 & dry & g/h & - & low & 1 & 0 & -/0\\ 
-\multirow{4}{*}{Mesic grasslands} 
-    & E2   & mesic & g/h & g/m & low/medium & 0 & 0 & 0/1/-\\
+\multirow{4}{*}{mesic} 
+    & E2   & mesic & g/h & g/m/- & l/m/h/- & 0 & 0 & 0/1/-\\
     & E2.1 & mesic & g/h & g & medium/high & 0 & 0 & -/0/1 \\
     & E2.6 & mesic & g & g/m/- & high & 0 & 0 & 0 \\
     & E2.7 & mesic & g/h & - & - & 0 & 0 & 0/1/- \\
-\multirow{3}{*}{Wet grasslands}
+\multirow{3}{*}{wet}
     & E3   & very wet & g/h & g/m/- & low/medium & 0 & 1 & 0/1/- \\
     & E3.4 & very wet & g/h & g/m & medium & 0 & 1 & 0/1 \\
     & E3.41 & very wet & g/h & m & medium & 0 & 1 & 1 \\
 \end{tabular}
 \caption{A `/ ' denotes OR and a '-' denotes 'none' and the first letter of 
 each value is used to safe space. Vegetation type: {graminaceous, 
-herbaceous}, usage: {grazing, mowing}. 
+herbaceous}, usage: {grazing, mowing}, usage intensity: {low, medium, high}. 
 }
 \label{tab_indicators_classes}
 \end{table}
@@ -294,7 +301,7 @@ re-trained, speeding up classification and makes generation of new reference
 data unnecessary. This refers especially to the ones, which are derived from
 rather stable data sources like the indices of the DEM/DSM\@. We use environmental
 variables (e.g., wetness, dominant species%?soil maturity?
-, etc.) from the classification schemes and concepts from EAGLE %Erst erklären
+, etc.) from the classification schemes and concepts from EAGLE %Erst erkl?ren
 to preserve interoperability by using this well-formalized
 vocabulary.
 % detailed examintation showed that indicators that are taken directly from the EUNIS
@@ -329,7 +336,7 @@ long as the algorithm can generate a rule-set that can be converted to OWL
 queries. 
 %Beschreibe genau wie du die Regeln aus dem DT raus bekommst (du gehst durch
 % den Baum und schreibst die Werte raus, verbindest sie dann mit einem
-% logischen UND usw.).Das gleiche für SeATH. Das ist der Knackpunkt deiner
+% logischen UND usw.).Das gleiche f?r SeATH. Das ist der Knackpunkt deiner
 % Arbeit.
 After the algorithms produce rules for 
 each indicator, these are then added as facet restrictions to an OWL ontology. 
@@ -427,6 +434,9 @@ algricultural land which are grasslands. %To evaluate the quality of the results
 % were compared to a ET reference classification (see table \ref{xxx})
 
 \section{Results}
+The number of indicators and what one can reasonably expect to derive from the
+data currently available is limited as one can see in the results.
+
 Training the data with the ET classifier yielded classification results of
 100\% for indicators usage, wetness and
 
@@ -440,11 +450,12 @@ shows that it is well represented in the data.
     \begin{tabular}{l l c c c c}
     Indicator & Algorithm & Precision & Recall & F-score & 
 Support\\
+    \hline
     \multirow{3}{*}{hydromorphic}
     & DT & 0.86 & 0.92 & 0.89 & 21098\\
     & SEaTH & 0.86 & 0.87 & 0.86 & 20067\\
     & ET & 1.0 & 1.0 & 1.0 & 21098\\
-    %\cline{2-6}
+    \cline{2-6}
     \multirow{3}{*}{immature soil}
     & DT & 0.99 & 0.99 & 0.99 & 21098\\
     & SEaTH & 0.99 & 0.42 & 0.58 & 17883\\
@@ -453,27 +464,29 @@ Support\\
     & DT & 0.08 & 0.25 & 0.12 & 21098\\
     & SEaTH & 0.11 & 0.31 & 0.16 & 16789\\
     & ET & 0.08 & 0.28 & 0.12 & 21098\\
-    %\cline{2-6}
+    \cline{2-6}
     \multirow{3}{*}{usage}
     & DT & 0.34 & 0.45 & 0.38 & 21098\\
     & SEaTH & 0.27 & 0.16 & 0.12 & 18876\\
     & ET & 0.36 & 0.54 & 0.40 & 21098\\
-    %\cline{2-6}
+    \cline{2-6}
     \multirow{3}{*}{usage intensity}
     & DT & 0.22 & 0.2 & 0.17 & 21098\\
     & SEaTH & 0.26 & 0.38 & 0.28 & 14245\\
     & ET & 0.34 & 0.46 & 0.36 & 21098\\
-    %\cline{2-6}
+    \cline{2-6}
     \multirow{3}{*}{wetness}
     & DT & 0.4 & 0.62 & 0.49 & 21098\\
     & SEaTH & 0.45 & 0.35 & 0.39 & 12178\\
     & ET & 0.41 & 0.63 & 0.49 & 21098\\
     \end{tabular}
-    %\caption{Overall classification accuracy of EUNIS indicators}
+    \caption{Overall classification accuracy of EUNIS indicators}
 \end{table}
-\subsection{EUNIS Level 2 Classification}
 
-\ref{level1_classification}
+\subsection{EUNIS Level 2 Classification}
+\ref{level2_classification}
+The classification accuracy
+\begin{table}
 \begin{tabular}{c c c c c}
 Class & Precision & Recall & F-score & Support\\
 \hline
@@ -483,11 +496,13 @@ E3 & 0.7 & 0.11 & 0.2 & 61\\
 E5 & 0.0 & 0.0 & 0.0 & 2\\
 unclass & 0.0 & 0.0 & 0.0 & 5374\\
 avg & 0.59 & 0.43 & 0.49 & 21098\\
-\caption{Classification accuracy of grasslands using the DT algorithmn}
 \label{fig_dt_lvl2_classification}
 \end{tabular}
+\caption{Classification accuracy of grasslands using the DT algorithmn}
+\end{table}
 
 The SEaTH algorithm does not perform as well as the 
+\begin{table}
 \begin{tabular}{c c c c c}
 Class & Precision & Recall & F-score & Support\\
 \hline
@@ -495,12 +510,54 @@ E1 & 0.03 & 0.68 & 0.05 & 122\\
 E2 & 0.68 & 0.01 & 0.02 & 15539\\
 E3 & 0.02 & 0.38 & 0.04 & 61\\
 E5 & 0.0 & 0.0 & 0.0 & 2\\
-UN & 0.0 & 0.0 & 0.0 & 5374\\
+unclass & 0.0 & 0.0 & 0.0 & 5374\\
 avg & 0.5 & 0.01 & 0.01 & 21098\\
-\caption{Classification accuracy of grasslands using the SEaTH algorithmn}
-
 \label{fig_seath_lvl2_classification}
 \end{tabular}
+\caption{Classification accuracy of grasslands using the SEaTH algorithmn}
+\end{table}
+
+\subsection{Level 3}
+\begin{table}
+\centering
+\begin{tabular}{c c c c c}
+Class & Precision & Recall & F-score & Support\\
+\hline
+E1.2 & 1.0 & 0.01 & 0.02 & 122\\
+E1.7 & 0.0 & 0.0 & 0.0 & 0\\
+E2.1 & 0.0 & 0.0 & 0.0 & 11105\\
+E2.2 & 0.0 & 0.0 & 0.0 & 121\\
+E2.6 & 0.5 & 0.0 & 0.0 & 4240\\
+E2.7 & 0.0 & 0.0 & 0.0 & 73\\
+E3.4 & 0.02 & 0.3 & 0.04 & 61\\
+E5.4 & 0.0 & 0.0 & 0.0 & 2\\
+unclass & 0.0 & 0.0 & 0.0 & 5374\\
+avg & 0.11 & 0.0 & 0.0 & 21098\\
+\end{tabular}
+\caption{Classification accuracy for EUNIS level 3 using SEaTH}
+\end{table}
+There were 4140 agricultural croplands in EUNIS I1 that were classified wrongly 
+as E 
+%I1 & 0.0 & 0.0 & 0.0 & 3671\\
+%I1.2 & 0.0 & 0.0 & 0.0 & 1\\
+%I1.5 & 0.0 & 0.0 & 0.0 & 468\\
+%J1 & 0.0 & 0.0 & 0.0 & 62\\
+\begin{table}
+\centering
+\begin{tabular}{c c c c c}
+Class & Precision & Recall & F-score & Support\\
+\hline
+E1.2 & 0.5 & 0.01 & 0.02 & 122\\
+E2.1 & 0.63 & 0.69 & 0.66 & 11509\\
+E2.2 & 0.0 & 0.0 & 0.0 & 122\\
+E2.6 & 0.17 & 0.04 & 0.07 & 4335\\
+E2.7 & 0.0 & 0.0 & 0.0 & 75\\
+E3.4 & 1.0 & 0.03 & 0.06 & 64\\
+E5.4 & 0.0 & 0.0 & 0.0 & 2\\
+avg & 0.37 & 0.37 & 0.36 & 21788\\
+\end{tabular}
+\caption{Classification accuracy for EUNIS level 3 using DT}
+\end{table}
 
 The few dry grasslands in the Saarburg region really hurt the classifier's 
 ability to learn from the data. Only one dry grassland classified as such fits 
@@ -519,42 +576,6 @@ orchards was identified and even after having moved to a minimum 200m$^{2}$ size
 polygons created during segmentation has not been resolved. A multi-scale
 approach will probably be needed to solve this problem.
 %% overal 
-
-\begin{tabular}{c c c c c}
-Class & Precision & Recall & F-score & Support\\
-\hline\\
-D5 & 0.0 & 0.0 & 0.0 & 0\\
-E1 & 0.01 & 1.0 & 0.01 & 1\\
-E2 & 0.0 & 0.0 & 0.0 & 103\\
-E3 & 0.0 & 0.0 & 0.0 & 0\\
-F3 & 0.0 & 0.0 & 0.0 & 0\\
-FB & 0.0 & 0.0 & 0.0 & 25\\
-G1 & 0.0 & 0.0 & 0.0 & 0\\
-H2 & 0.0 & 0.0 & 0.0 & 0\\
-I1 & 0.0 & 0.0 & 0.0 & 53\\
-J1 & 0.0 & 0.0 & 0.0 & 0\\
-avg & 0.0 & 0.01 & 0.0 & 182\\
-\label{fig_dry_classification}
-%\caption{Classification report of mesic grasslands from scikit-learn}
-\end{tabular}
-The very wet results also reflect the few wet or very wet grasslands in the 
-region.
-\begin{tabular}{c c c c c}
-Class & Precision & Recall & F-score & Support\\
-\hline\\
-D5 & 0.0 & 0.0 & 0.0 & 0\\
-E1 & 0.0 & 0.0 & 0.0 & 0\\
-E2 & 0.0 & 0.0 & 0.0 & 55\\
-E3 & 0.01 & 1.0 & 0.02 & 1\\
-F3 & 0.0 & 0.0 & 0.0 & 0\\
-FB & 0.0 & 0.0 & 0.0 & 2\\
-G1 & 0.0 & 0.0 & 0.0 & 0\\
-H2 & 0.0 & 0.0 & 0.0 & 0\\
-I1 & 0.0 & 0.0 & 0.0 & 32\\
-J1 & 0.0 & 0.0 & 0.0 & 0\\
-avg & 0.0 & 0.01 & 0.0 & 90\\
-\label{fig_very_wet_classification}
-\end{tabular}
 
 Adding immature soil and the usage intensity increases classification accuracy 
 only very slightly.
