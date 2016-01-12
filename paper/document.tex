@@ -1,5 +1,7 @@
 \documentclass[authoryear, review,12pt,number]{elsarticle}
 %\documentclass[authoryear, preprint,12pt,number]{elsarticle}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage[numbers]{natbib}
 \usepackage{graphicx}
 \usepackage{float}
@@ -64,21 +66,17 @@ remote sensing, biotope classification, data mining, nature conservation, OWL, E
 \linenumbers
 
 \section{Introduction}
-Recognizing the importance of functioning habitats to reduce biodiversity loss, 
-the European Union has implemented an environmental conservation framework to 
-protect and conserve vital habitats in accordance with the Convention on 
-Biological Diversity. An integral part of this framework is the EU 
-Habitats Directive (Council Directive) 92/43/EEC [1992], which established the 
-Natura 2000 network of habitats. The %law don't know if law is the right word.
-%i would say directive
-directive requires conservation and monitoring of designated habitats by member
-states and for a report to be submitted every six years. Environmental data to
-determine biodiversity status must be collected to comply with the statute. Yet,
-comparing data used for these reports is difficult due to varying data
-collection methods and aquisition nomenclatures by the nature conservation
-authorities in each member state \citep{VandenBorre2011}.
-% the references are misleading at this place. You could use vandenborre2011
-% instead.. \citep{INSPIREdataspecs, INSPIRE}.
+Recognizing the importance of functioning habitats to reduce biodiversity loss,
+the European Union has implemented an environmental conservation framework to
+protect and conserve vital habitats in accordance with the Convention on
+Biological Diversity. An integral part of this framework is the EU Habitats
+Directive (Council Directive) 92/43/EEC [1992], which established the Natura
+2000 network of habitats. The directive requires conservation and monitoring of
+designated habitats by member states and for a report to be submitted every six
+years. Environmental data to determine biodiversity status must be collected to
+comply with the statute. Yet, comparing data used for these reports is difficult
+due to varying data collection methods and aquisition nomenclatures by the
+nature conservation authorities in each member state \citep{VandenBorre2011}.
 The main issue lies in the subjective nature of field surveys to identify
 habitats \citep{Cherrill1999, Cherrill1999a, Hearn_2011, Nieland2015}.
 Furthermore, habitat status is mostly generated in bottom-up approaches taking
@@ -86,48 +84,36 @@ into account the national and regional interpretation guidelines
 \citep{VandenBorre2011, INSPIREdataspecs}. This subjective and time-consuming
 task of conducting field surveys could be partially replaced with an automated
 remote sensing (RS) method that uses Geographic Object-Based Image
-Analysis(GEOBIA) to reduce subjectivity, costs and time. \\
-Remote sensing 
-%combined with GEOBIA, which segments the image into
-%homogeneous image objects \citep{Blaschke2010}, Das passt hier nicht so richtig
-offers opportunities to collect
-and automatically interpret large amounts of computer-readable data useful for nature
-conservation and biodiversity monitoring \citep{Corbane2015, VandenBorre2011,
-Mayer2011}. RS image analysis implicitly incorporates the expertise and
-knowledge of the person performing the analysis, reducing objectivity. %Diesen
-% Satz vestehe ich nicht. Bitte umformulieren! Vielleicht einfach ``reducing
-% objectivity'' rausnehmen?!
-This can
-be divided into remote sensing knowledge (spectral signature, remote sensing
-indices, etc.) and field knowledge (feature properties, spatial relations, etc)
-\citep{Andres2013a}, which is often neither completely nor explicitly
-defined as it is based on trial and error but influences the classification
+Analysis(GEOBIA) to reduce subjectivity, costs and time.
+\\
+Remote sensing offers opportunities to collect and automatically interpret large
+amounts of computer-readable data useful for nature conservation and
+biodiversity monitoring \citep{Corbane2015, VandenBorre2011, Mayer2011}. RS
+image analysis implicitly incorporates the expertise of the person performing
+the analysis, reducing reproducibility as the analyst ultimately chooses class
+membership in non-crisp boundaries between classes. This can be divided into
+remote sensing knowledge (spectral signature, remote sensing indices, etc.) and
+field knowledge (feature properties, spatial relations, etc)
+\citep{Andres2013a}, which is often neither completely nor explicitly defined as
+it is based on trial and error but influences the classification
 \citep{Arvor2013}. To ensure accuracy and applicability of classification
 outputs for conservation, experts with detailed knowledge of the sites are
 needed to interpret the RS data. The distance between the high-level semantics
 used by experts to describe domain concepts and the low-level information
 quantified from data is referred to as the ``semantic gap''.
 \\
-Ontologies %defined as ``an explicit specification of a conceptualization''
-%\citep{gruber1993} %could KEIN KONJUNKTIV!
- can help bridge the ``semantic gap'' and allow for better
-data transferability, predictability, interchangeability, knowledge and workflow
-management (provenance) and logical consistency \citep{Janowicz2012}.
-The standards-compliant format designed and adopted to express rich semantics 
-and enable the ``Semantic Web'' is called the Web Ontology 
-Language (OWL2)\footnote{\url{http://www.w3.org/TR/owl2-overview/}}. The 
-format supports multiple syntaxes yet defines the Resource Description 
-Framework (RDF)/XML (subject, predicate, object triplets) as a common exchange 
-format. 
-%An OWL2 ontology is composed of classes, individuals 
-%and properties. Classes are sets of individuals and properties come in 
-%two forms: an object property defines a relationship between two individuals 
-%and a data property  places a data type constraint on the 
-%individual \citep{OWL2}. Das klingt nach Methode. Runter oder raus.
+Ontologies can help bridge the ``semantic gap'' and allow for better data
+transferability, predictability, interchangeability, knowledge and workflow
+management (provenance) and logical consistency \citep{Janowicz2012}.  The
+standards-compliant format designed and adopted to express rich semantics and
+enable the ``Semantic Web'' is called the Web Ontology Language
+(OWL2)\footnote{\url{http://www.w3.org/TR/owl2-overview/}}. The format supports
+multiple syntaxes yet defines the Resource Description Framework (RDF)/XML
+(subject, predicate, object triplets) as a common exchange format.
+\\
 Moreover, through the use of reasoners (inference engines) that infer logical
 consequences over axioms and asserted facts and verify consistency, one can
-discover new knowledge \citep{Arvor2013, Andres2013a}% Andres wird im pdf nicht
-%richtig dargestellt . 
+discover new knowledge \citep{Arvor2013, Andres2013a}
 RS and field expert
 knowledge can be digitized in ontologies, thus allowing for a hierarchy of
 concepts for improved automatic image annotation and retrieval using concepts
@@ -141,22 +127,23 @@ Ontologies modeled on the Land Cover Classification System and the General
 Habitat Category were integrated into tools used to monitor and protect areas in
 the EU \citep{Arvor2013}. The authors note that using the taxonomy of the
 different classification systems makes it possible to include expert knowledge
-in the process. Further research included expert knowledge from remote sensing
-and ecology to classify Natura 2000 sites using a hierarchical classification
-system. %hier fehlt eine Quelle!
- \cite{Lucas2015} used pixel-based analysis and OBIA for greater
-classification accuracy which relies on a rule-base created by an
-expert. Other research includes classification of urban
-building types using a three-layered architecture \citep{diSciascio2013} and a
-semi-automated classification of urban building using the Random Forest (RF)
-classifier to determine variable importance of features from airborne laser
-scanner data \citep{Belgiu2014}. Ontologies have also been paired with
-different algorithms to automatically acquire classification rules: a genetic
-programming algorithm \citep{Forestier2012470} and the C4.5 data mining
-algorithm \citep{Sheeren2006ML}. In biodiversity monitoring research, ontologies
-have been demonstrated to improve spatial data interoperability by
-\citep{Nieland2015} and a habitat quality tool showing trends and indicators
-led to the discovery of relationships between phenomena \citep{Perez-Luque2015}. 
+in the process. 
+%Further research included expert knowledge from remote sensing
+%and ecology to classify Natura 2000 sites using a hierarchical classification
+%system. %hier fehlt eine Quelle!
+\cite{Lucas2015} used pixel-based analysis and OBIA for greater classification
+accuracy which relies on a rule-base created by an expert. Other research
+includes classification of urban building types using a three-layered
+architecture \citep{diSciascio2013} and a semi-automated classification of urban
+building using the Random Forest (RF) classifier to determine variable
+importance of features from airborne laser scanner data \citep{Belgiu2014}.
+Ontologies have also been paired with different algorithms to automatically
+acquire classification rules: a genetic programming algorithm
+\citep{Forestier2012470} and the C4.5 data mining algorithm
+\citep{Sheeren2006ML}. In biodiversity monitoring research, ontologies have been
+demonstrated to improve spatial data interoperability by \cite{Nieland2015} and
+a habitat quality tool showing trends and indicators led to the discovery of
+relationships between phenomena \citep{Perez-Luque2015}. 
 \\
 The addition of fuzzy data types to OWL2 and the development of a fuzzy spatial
 reasoner holds great promise for the future of GEOBIA ontology research using
@@ -168,84 +155,61 @@ Even though researchers recently developed a number of indicators using
 different sensors for habitat evaluation \citep{Nagendra2013}, classification
 procedures and rule-sets were not formalized to be computer readable and
 therefore suffer from similar transferablity and reproducibility problems as
-manual habitat mapping \citep{Arvor2013, Nieland2015}.  Therefore a formalized
+manual habitat mapping \citep{Arvor2013, Nieland2015}. Therefore a formalized
 computer-readable ontology could help solve these problems and allow scientists
 to see how the classification was performed and be aware of possible
-incompatibilities before combining data \citep{Janowicz2012}. 
-Furthermore, there is no standardized set of indicators
-using RS for trans-national habitat evaluation \citep{Lucas2015,
-VandenBorre2011}. Therefore, technical solutions to increase interoperability by
-thematically harmonizing environmental data and systematize data collection methods from remote sensing
-inputs in an automated workflow are needed. 
+incompatibilities before combining data \citep{Janowicz2012}.  Furthermore,
+there is no standardized set of indicators using RS for trans-national habitat
+evaluation \citep{Lucas2015, VandenBorre2011}. Therefore, technical solutions to
+increase interoperability by thematically harmonizing environmental data and
+systematize data collection methods from remote sensing inputs in an automated
+workflow are needed. 
 \\
 The EIONET Action Group on Land monitoring in Europe (EAGLE) is an expert group
 that seeks to harmonize land cover (LC) and land use (LU) nomenclatures using an
-object-oriented data model that eases translations between
-nomenclatures\footnote{\url{http://sia.eionet.europa.eu/EAGLE}}. %zitieren!
-% S. Arnold, B. Kosztra, G. Banko, G. Smith, G. Hazeu, M. Bock, N.
-% Valcarcel-Sanz (2013): The EAGLE concept - A vision of a future European Land Monitoring Framework. In: Lasaponara R., Masini N., Biscione M. (Editors): EARSeL Symposium proceedings 2013
-The many different nomenclatures used in Europe each have their own specific
-thematic conceptualization suited towards a specific scale and data collection method-
-reducing the ability to compare thematic maps. Since LU and LC are
-interconnected and influence one another, nomenclatures often incorporate both
-definitions into one class making separation difficult. To overcome this problem
-the EAGLE data model describes landscapes in three main components: land cover
-(abiotic, vegetation, water) land use (agriculture, forestry, etc.) and
-characteristics (bio-physical, cultivation etc). The increased interoperability
-and transferability of RS data and the semantic layer on top %could KEIN
-% KONJUNKTIV
-helps decision-makers to better assess and compare outcomes. 
-%We use EAGLE
-%concepts to overcome these issues and ease translation/application to a
-% different domain. Das kommt wieder in die Methode
+object-oriented data model that eases translations between nomenclatures
+\citep{arnold2013eagle}. The many different nomenclatures used in Europe each
+have their own specific thematic conceptualization suited towards a specific
+scale and data collection method- reducing the ability to compare thematic maps.
+Since LU and LC are interconnected and influence one another, nomenclatures
+often incorporate both definitions into one class making separation difficult.
+To overcome this problem the EAGLE data model describes landscapes in three main
+components: land cover (abiotic, vegetation, water) land use (agriculture,
+forestry, etc.) and characteristics (bio-physical, cultivation etc). The
+increased interoperability and transferability of RS data and the semantic layer
+on top helps decision-makers to better assess and compare outcomes. 
 \\ 
-In this paper we propose an automated system that can
-classify dry, mesic and wet grassland habitats according to the European Union
-Nature Information System (EUNIS) biotope classification schema using EO data, existing
+In this paper we propose an automated system that can classify dry, mesic and
+wet grassland habitats according to the European Union Nature Information System
+(EUNIS) biotope classification schema using earth observation data, existing
 thematic maps (biotope, forestry, etc.), and expert knowledge formalized in an
-ontology by taking into account machine learning algorithms.
-
-
-The combination of data mining algorithms with ontology-based classification has, to our knowledge, not yet been done
-and is a first in remote sensing research. % Oder was meinst du?! EUNIS und
-% EAGLE? hmm. Dann schreib lieber sowas wie in the field of biodiversity
-% monitoring oder so. Aber ich fänds auch ok so.
-
-This method contributes to the goal of
-empirically-derived rule creation and enhances data interoperability and
-comparison as proposed \cite{Janowicz2012}. % nimm \cite{} für
-% Quellen ohne Klammer nicht \citep
-The main goals of this paper are 
+ontology by taking into account rules generated by data mining algorithms. The
+combination of data mining algorithms with ontology-based classification has, to
+our knowledge, not yet been done and is a first in remote sensing research. 
+This method contributes to the goal of empirically-derived rule creation and enhances data interoperability and
+comparison as proposed \cite{Janowicz2012}.
+The main goals of this paper are:
 \begin{itemize}
- \item to develop a RS classification methodology, which is based on
- machine learning approaches in combination with ontological formalism to
- generate highly interoperable, reproducable and exchangeable classification
- procedures and results,
- 
- \item apply the methodology to indicators used for seperation of grassland
- habitats defined under EUNIS
- 
- \item and evaluate the developed approach by comparing it to a state-of-the
- art machine learning classifier (Extra Tree Classifier\footnote{link zur website})
+ % Birgit wird data mining sagen statt machine learning- ich finde die begriffe
+ % ziemlich aenlich!
+ % using advances in artificial intelligence?
+ \item to develop a RS classification methodology using data mining approaches
+     in combination with ontological formalism to generate highly interoperable,
+     reproducable and exchangeable classification procedures and results,
+ \item apply the methodology to indicators used to separate grassland habitats
+     defined under EUNIS
+ \item and evaluate the developed approach by comparing it to a state-of-the art
+     machine learning classifier (Extra Tree Classifier\footnote{link zur
+     website})
 \end{itemize}
 
-
-% diSciascio2013!!
-%Versuche doch die Kernthesen in max. 2-3 S?tzen zusammen zu fassen (vielleicht
-% mit bullet points).
-% Darauf kannst du dann in der Conclusion wieder zur?ckkommen. 
-
-
-% by
-%using data mining algorithms to generate rules based
-%remote sensing, digital
-%surface model (DSM) and digital terrain model (DTM) derived statistics of
-%polygons segmented from orthophotos %(cf. \ref{subsec_segmentation}).
-%The
-%advantages of using an OWL2 ontology are also discussed.
-
-%Das war
-% etwas zu konfus
+%We use EAGLE concepts to overcome these issues and ease translation/application
+%to a different domain. Das kommt wieder in die Methode
+%An OWL2 ontology is composed of classes, individuals 
+%and properties. Classes are sets of individuals and properties come in 
+%two forms: an object property defines a relationship between two individuals 
+%and a data property  places a data type constraint on the 
+%individual \citep{OWL2}. Das klingt nach Methode. Runter oder raus.
 \section{Use case: Classifying EUNIS grassland habitats in
 Rhineland-Palatinate}
 \label{subsec_data_study_area}
@@ -257,7 +221,7 @@ and culturally important viticulture industry along the Mosel and Rhine rivers.
 \begin{figure}
 \label{fig_study_area}
     \includegraphics[width=\textwidth]{diagrams/study_area_closeup.png}
-    \caption{The location of Saarburg on the left in purple in relation to
+    \caption{Saarburg is purple location Saarburg in purple in relation to
     Rheinland Palatinate. Map on right \copyright Thunderforest, Data
 \copyright OpenStreetMap contributors.}
 \end{figure}
@@ -338,7 +302,7 @@ classifying of EUNIS habitats.
 % (\ref{subsec_rulegen_data_mining}) (4) classifying polygons
 %with the Fact++ reasoner \citep{Tsarkov2006} and writing results back to the
 %database. 
-%Die Beschreibung stimmt nicht mit der Graphik überein!
+%Die Beschreibung stimmt nicht mit der Graphik ?berein!
 The developed system is comprised of (1) the preparation of reference data,
 including a spatial union of the base data sets (pre-segmented,
 pre-classified areal photos and thematic maps (see \ref{data_reference}) and the attachment
@@ -408,8 +372,8 @@ workflow is shown in figure
     } 
 \label{fig_full_workflow}
 \end{figure}
-%Generell ist das Kapitel noch sehr durcheinander! Ich würde mich von hier an
-% einfach an die Struktur aus der Übersicht halten! d.h. 
+%Generell ist das Kapitel noch sehr durcheinander! Ich w?rde mich von hier an
+% einfach an die Struktur aus der ?bersicht halten! d.h. 
 % 2.2 Preparation of reference data and semantic characterisation
 % 2.3 Selection of training/validation data
 % 2.4 Rule generation
@@ -420,8 +384,8 @@ workflow is shown in figure
 
 %Ich versuchs mal:
 
-%subsubsections kommen später raus: Ich hab sie nur drin gelassen um den
-% Überblick zu behalten
+%subsubsections kommen sp?ter raus: Ich hab sie nur drin gelassen um den
+% ?berblick zu behalten
 
 
 \label{subsec_Preparation_of_reference_data_and_semantic_characterisation}
@@ -518,7 +482,7 @@ per class is enough to produce accurate results.\\
 %The data mining module splits data into training and testing data.
 %mach
 %den Begriff data mining module mit in die Graphik oder verwende ihn nicht. Das
-% ist total irritierend und man weiß nicht was damit gemeint ist.
+% ist total irritierend und man wei? nicht was damit gemeint ist.
 
 \label{subsec_rulegen_data_mining}
 \subsection{Rule Generation}
@@ -544,7 +508,7 @@ another. Since we have over 200 features and the authors of SEaTH suggest using
 only 2-3 features, we parse the first three lines as the list is sorted from
 best to worst. These logical AND the rules with the thresholds and do this for
 every class. An example rule is shown below.
-\\% Eine Graphik vom DT Graph fände ich gut!
+\\% Eine Graphik vom DT Graph f?nde ich gut!
 The subclass ``low'' from ``usage intensity'' has a rule that is generated by
 the decision tree algorithm as seen in \ref{dt_rule_generation} below. The first
 name is the feature/statistic's name, followed by a threshold. For the DT, as in
