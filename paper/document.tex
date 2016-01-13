@@ -212,12 +212,16 @@ The main goals of this paper are:
 %individual \citep{OWL2}. Das klingt nach Methode. Runter oder raus.
 \section{Use case: Classifying EUNIS grassland habitats in
 Rhineland-Palatinate}
+%hier würde ich ein paar Einleitende Worte schreiben. Dass wir unsre Methodik
+% testen wollen an und dafür folgenden use-case ausgewählt haben.
 \label{subsec_data_study_area}
 Saarburg is an 200km$^{2}$ administrative district and is located in the
 south-west of the federal state of Rhineland Palatinate (RLP), Germany.
 Luxembourg borders the area to the west and the federal state of Saarland to
 the South. RLP has a western european atlantic climate and has an economically
 and culturally important viticulture industry along the Mosel and Rhine rivers.
+%hast du ganz Saarburg als Testgebiet genommen? Vielleicht kannst du noch die
+% Anzahl der Grünlandflächen dazu schreiben.
 \begin{figure}
 \label{fig_study_area}
     \includegraphics[width=\textwidth]{diagrams/study_area_closeup.png}
@@ -225,12 +229,7 @@ and culturally important viticulture industry along the Mosel and Rhine rivers.
     Rheinland Palatinate. Map on right \copyright Thunderforest, Data
 \copyright OpenStreetMap contributors.}
 \end{figure}
-The digital orthophotos and are used to create the Digital Surface Model (DSM)
-using automated stereo matching and therefore represent the basis for all
-segmentation and classification procedures.
-% Available orthophotos are from the years 2xxx, 2xxx, 2013.
-The DTM and DEM was produced using LiDAR ASCII point clouds acquired between 
-2003 and 2009 with a resolution of 0.5m.\\
+
 
 \subsubsection{Target indicators and base nomenclatures}
 \label{subsec_target_indicators_nomenclatures}
@@ -267,10 +266,26 @@ herbaceous}, usage: {grazing, mowing}, usage intensity: {low, medium, high}.
 }
 \label{tab_indicators_classes}
 \end{table}
-\subsubsection{Thematic Maps}
-The RLP biotope map was last updated in 2015. The agriculture data set 
-(INVEKOS) is updated yearly. % The Forestry map is from 200X and the soil map 
-is from 200X.
+\subsubsection{Data}
+For the pre-segmentation step (see
+\ref{subsec_Preparation_of_reference_data_and_semantic_characterisation}) two
+types of data bases were taken into account. Digital orthophotos (resolution
+???) are used to create the Digital Surface Model (DSM) using automated stereo
+matching and therefore represent the basis for all segmentation and
+classification procedures. The DTM and DEM was produced using LiDAR ASCII point
+clouds acquired between 2003 and 2009 with a resolution of 0.2m.\\
+
+The reference data (see
+\ref{subsec_Preparation_of_reference_data_and_semantic_characterisation})
+consists of the federal biotope map (paritally updated 2015), a federal
+agriculture dataset (INVEKOS updated every year) and a soil map (resolution xxx)
+which is based on the ALKIS (Amtliches Liegenschaftskaster
+Informationssystem?!).
+%Die Walddaten kannst du raus lassen. Die hast du ja fuer die Arbeit nicht
+% benutzt.
+The actual classification process is based on two RapidEye Scenes (Year:xx and
+yy) and indices of the DTM, DEM and orthophotos.
+
 
 \begin{figure} \includegraphics[width=1\textwidth]{diagrams/pre_processing.png}
     \caption{Biotope, Agriculture, Forestry, Geology (soil maps) are combined 
@@ -286,7 +301,7 @@ This section describes the developed method for ontology-based, multi-source
 classifying of EUNIS habitats.
 %Die Datenaufbereitung muss ebenfalls noch besser beschrieben werden.
 \label{subsec_method_overview}
-\subsection{Overview of the Automated EUNIS Habitat Mapping System}
+\subsection{Overview of the automated EUNIS Habitat Mapping System}
  Figure ~\ref{fig_full_workflow} gives an overview of the method using the
  wetness indicator as an example of one of the habitat indicators needed to
  differentiate dry, mesic and wet grassland habitats according to level 2 of
@@ -318,31 +333,36 @@ Java libraries to interact with the database, convert files and execute a
 reasoner over the created OWL file.
 The OWLAPI \footnote{\url{https://github.com/owlcs/owlapi}} is used to interact 
 with the OWL files and execute the FaCT++
-reasoner \citep{Tsarkov2006}. Currently the data rule generation module uses two 
-algorithms from scikit-learn: decision tree classifier (DT) and extra tree 
-classifier (ET) and one additional algorithm called the Separability and 
-Thresholds (SEaTH) algorithm \citep{Nussbaum2006}. 
-%% where does this paragraph go?!
+reasoner \citep{Tsarkov2006}. Currently the rule generation module uses two 
+algorithms %from scikit-learn müsstest du voher einführen. Mach lieber
+% footnotes! oder Zitate
+: decision tree classifier (DT) and one additional algorithm called the Separability and 
+Thresholds (SEaTH) algorithm \citep{Nussbaum2006}. The and tree 
+classifier (ET) %footnote
+is performed as reference classification
+%% where does this paragraph go?! good question! ;-)
 
-The SEaTH algorithm statistically identifies characteristic features and their
-thresholds. It has been used on remote sensing data for land cover
-classification \citep{Gao2011, Mhangara2013} and nuclear installation
-classification \citep{Nussbaum2006}.  The DT is a modified classification an
-regression tree (CART)\citep{scikit-learn}. CART has been used in many MODIS and
-Landsat TM studies and is used in the standard MODIS land cover data
-\citep{friedl2002global}. Many remote sensing studies use it and it performs
-well in classification tasks \citep{Li_2014, Qian_2014, Shao_2012}.
-%%%
-The data mining module is described in the next section \ref{subsec_rulegen_data_mining}. 
-
-
-After the algorithms produce rules for each indicator, these are then added as
-facet restrictions to an OWL ontology.  The polygons from the testing table are
-loaded from the database as OWLIndividuals into the same ontology and the
-reasoner FaCT++ classifies all polygons according to the rules. The
-classification results by the reasoner is written to the database. The full
-workflow is shown in figure 
-\ref{fig_full_workflow}.
+% The SEaTH algorithm statistically identifies characteristic features and their
+% thresholds. It has been used on remote sensing data for land cover
+% classification \citep{Gao2011, Mhangara2013} and nuclear installation
+% classification \citep{Nussbaum2006}.  The DT is a modified classification an
+% regression tree (CART)\citep{scikit-learn}. CART has been used in many MODIS and
+% Landsat TM studies and is used in the standard MODIS land cover data
+% \citep{friedl2002global}. Many remote sensing studies use it and it performs
+% well in classification tasks \citep{Li_2014, Qian_2014, Shao_2012}.
+% %%% Dieser Absatz muss, wenn überhaupt, in die Einleitung
+%The data mining module is described in the next section
+% \ref{subsec_rulegen_data_mining}.% Data mining module gibt es so in der
+% Graphik nicht. raus!
+%______________________
+% 
+% After the algorithms produce rules for each indicator, these are then added as
+% facet restrictions to an OWL ontology.  The polygons from the testing table are
+% loaded from the database as OWLIndividuals into the same ontology and the
+% reasoner FaCT++ classifies all polygons according to the rules. The
+% classification results by the reasoner is written to the database. The full
+% workflow is shown in figure 
+% \ref{fig_full_workflow}. => das muss zur classification
 
 
 %Diesen Teil musst du noch genauer
@@ -396,10 +416,13 @@ workflow is shown in figure
 The iterative object-based image analysis is performed by \cite{Tintrup2015} 
 using Defiens eCognition Server and segments the data using thresholds and 
 multi-resolution approaches \citep{baatz2001ecognition}.The data is segmented 
-by multi-spectral (B, G, R, NIR) orthophotos with a 0.2m ground resolution and 
-a 2 x 2km tile size. Spectral information and indices (Bare Area Index, etc.) and 
+by multi-spectral (B, G, R, NIR) orthophotos (see \ref{usecase}) 
+%with a 0.2m ground resolution and a 2 x 2km tile size. =>Das kommt zu Data in
+% use-case
+Spectral information and indices (Bare Area Index, etc.) and 
 height from the DEM to separate between biotic and abiotic features 
-\citep{Tintrup2015}. The detailed pre-processing workflow is 
+\citep{Tintrup2015}. The detailed %pre-processing würde ich so nicht sagen
+data preparation workflow is 
 shown in figure \ref{fig_pre-processing}. The quality of the segmentation
 determines the quality of the later identification step as the value of an
 indicator such as wetness for a grassland might differ for that of a forest.
@@ -410,7 +433,8 @@ with regard to the infer-ability with available input data sets (see
 nomenclature showed that some indicators do not lend themselves to easily be
 detected by RS data. Therefore indicators were added to produce a meaningful
 formalization of the classes.  This formalization can then be written to an OWL
-ontology, which is able to store complex logical connections in an OWL2 file. 
+ontology, which is able to store complex logical connections in an OWL2 file.
+
 
 \subsubsection{Semantic characterisation} 
 \label{subsec_segmentation}
@@ -422,11 +446,14 @@ a EUNIS class, E2.22 ``Sub-Atlantic lowland hay meadows'' modelled with selected
 remote sensing indicators is written in description logic (DL) below
 ~\ref{eq:description_logic}.
 \subsubsection{Semantic characterisation - Land cover extraction and biophysical
-characteristics} Land cover extraction is performed by the segmentation processes documented in  
-section \ref{subsec_segmentation}. The basic principle is that with the use of 
-a DSM and spectral information the segmentation step produces 200m$^{2}$ 
-polygons. These polygons include spectral information and various statistics 
-and indices such as SAGA wetness index, wind effect, etc.   
+characteristics} Land cover extraction is performed by the segmentation
+processes documented in section \ref{subsec_segmentation}. 
+%The basic principle
+%is that with the use of a DSM and spectral information the segmentation step
+%produces 200m$^{2}$ polygons. Das stimmt so nicht. Du hast doch alle FLächen
+% kleiner 200 rausgelöscht.
+These polygons include spectral information and
+various statistics and indices such as SAGA wetness index, wind effect, etc.
 This follows the EAGLE data model's separation of LU and LC information.
 
 \subsubsection{Semantic characterisation - Land use and anthropomorphic
@@ -453,16 +480,18 @@ E2.22 &\equiv wetness \exists \{``mesic''\} \\
 \end{equation}
 
 
-The goal is to produce what Janowicz describes as a
-``micro theory'' \citep{Janowicz2012} which can then be used to map other theories
-by training the data mining algorithms for the new region and using the
-reasoner. We hope that once good test sites are taken for a region (for instance
-the federal state of Rhineland Palatinate) that the data mining algorithms will
-identify rules for ontological primitives that captures the concept well using
-RS and other environmental data, negating the need to re-train. This speeds
-up classification and makes generation of new reference data unnecessary. This
-refers especially to the ones, which are derived from rather stable data sources
-like the indices of the DEM/DSM.
+% The goal is to produce what Janowicz describes as a
+% ``micro theory'' \citep{Janowicz2012} which can then be used to map other theories
+% by training the data mining algorithms for the new region and using the
+% reasoner. We hope that once good test sites are taken for a region (for instance
+% the federal state of Rhineland Palatinate) that the data mining algorithms will
+% identify rules for ontological primitives that captures the concept well using
+% RS and other environmental data, negating the need to re-train. This speeds
+% up classification and makes generation of new reference data unnecessary. This
+% refers especially to the ones, which are derived from rather stable data sources
+% like the indices of the DEM/DSM.
+%Dieser Teil muss in die Einleitung oder in den Methodenüberblick. hier ist es
+%definitiv falsch!
 
 \label{Selection_of_training_validation_data}
 \subsection{Selection of training and validation data}
@@ -601,7 +630,11 @@ The testing
 data includes polygons of grasslands between trees in orchards and 
 agricultural land which are grasslands. To evaluate the quality of the results
 in respect to well-established, popular classification approaches the outcomes
- were compared to a ET reference classification (see table \ref{xxx})
+ were compared to a ET reference classification (see table \ref{xxx}).
+ %Hier muss noch rein: f-score, precision, support und recall erklären.Du
+ % machst es für alle Indikatoren einzeln. dann für ausgewählte, abgeleitete
+ % EUNIS Grassland Klassen.
+ 
 
 \section{Results}
 The number of indicators and what one can reasonably expect to derive from the
