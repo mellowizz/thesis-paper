@@ -241,10 +241,9 @@ http://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-treesk
 %   -fehlt ein paar sachecn
 \section{Use case: Classifying EUNIS grassland habitats in Rhineland-Palatinate}
 \label{sec:usecase}
-To test the feasability of applying our method to real-world scenarioes, we
-tested our method on dry, mesic and wet grasslands (EUNIS E1, E2 and E3
-respectively) in the federal state of Rhineland-Palatinate (RLP). For this
-purpose Saarburg was selected.
+To test the feasability of applying our method to a real-world use case, we 
+tested our method on dry, mesic and wet grasslands (EUNIS E1, E2 and E3 
+respectively) in the federal state of Rhineland-Palatinate (RLP). 
 \\
 \label{subsec:data_study_area}
 Saarburg is an 200km$^{2}$ administrative district and is located in the
@@ -265,7 +264,7 @@ We adapted the selected EUNIS indicators to meet the requirements of remote
 sensing analysis. We also adopted EAGLE's object-oriented approach by separating
 land use, land cover and characteristics (biophysical and anthropogenic) and
 adopted  terms when possible to increase interoperability and further re-use.
-The table ~\ref{tab_indicators_classes} shows the list of indicators that can be
+The table ~\ref{tab:indicators_classes} shows the list of indicators that can be
 detected by our data and aggregated to form EUNIS classes. 
 \begin{table}
 \centering
@@ -291,11 +290,11 @@ detected by our data and aggregated to form EUNIS classes.
 each value is used to safe space. Vegetation type: {graminaceous, 
 herbaceous}, usage: {grazing, mowing}, usage intensity: {low, medium, high}. 
 }
-\label{tab_indicators_classes}
+\label{tab:indicators_classes}
 \end{table}
 \label{subsec_study_data}
 For the pre-segmentation step (see
-\ref{subsec_Preparation_of_reference_data_and_semantic_characterisation}) two
+\ref{subsec:Preparation_of_reference_data_and_semantic_characterisation}) two
 types of data were taken into account. Digital orthophotos (resolution 0.2m) are
 used to create the Digital Surface Model (DSM) (resolution 0.5m) using automated
 stereo matching and therefore represent the basis for all segmentation and
@@ -321,7 +320,7 @@ yy) and indices of the DTM, DEM and orthophotos.
 This section describes the developed ontology-based and multi-source EUNIS habitat
 classifying method.
 %Die Datenaufbereitung muss ebenfalls noch besser beschrieben werden.
-\label{subsec_method_overview}
+\label{subsec:method_overview}
 \subsection{Overview of the automated EUNIS Habitat Mapping System}
 Figure ~\ref{fig_full_workflow} gives an overview of the method using the
 wetness indicator as an example of one of the habitat indicators needed to
@@ -334,7 +333,7 @@ attachment of subsequent semantic characteristics (see \ref{data_reference)},
 the generation of classification rules using machine learning algorithms and
 finally (4) the ontology-based classification process (see
 \ref{classification}).
-\label{subsec_software}
+\label{subsec:software}
 \subsubsection{Software Overview}
 The software relies on a PostgreSQL database and various open source Python and
 Java libraries to interact with the database, convert files and execute a
@@ -343,8 +342,8 @@ reasoner over the created OWL file.  The OWLAPI
 OWL files and execute the FaCT++ reasoner \citep{Tsarkov2006}. Currently the
 rule generation module uses two algorithms: decision tree classifier (DT) and
 one additional algorithm called the Separability and Thresholds (SEaTH)
-algorithm \citep{Nussbaum2006}.  The and extra trees classifier (ET) is
-performed as a reference classification.
+algorithm \citep{Nussbaum2006}. The extra trees classifier (ET) is used 
+as a reference classification.
 
 %Diesen Teil musst du noch genauer
 % beschreiben. Das ist der Kern deiner Arbeit. Auch wenn du dich in den n?chsten
@@ -378,9 +377,8 @@ performed as a reference classification.
 % reason which individuals (segmented polygons) belong to which class (A-Box 
 % reasoning) and how the classes are related (T-box reasoning).
 
-\label{subsec_Preparation_of_reference_data_and_semantic_characterisation}
+\label{subsec:Preparation_of_reference_data_and_semantic_characterisation}
 \subsection{Preparation of reference data and semantic characterisation}
-\label{subsec_segmentation}
 The iterative object-based image analysis is performed by \cite{Tintrup2015} 
 using Defiens eCognition Server and segments the data using thresholds and 
 multi-resolution approaches \citep{baatz2001ecognition}.The data is segmented 
@@ -405,11 +403,10 @@ ontology, which is able to store complex logical connections in an OWL2 file.
 
 
 \subsubsection{Semantic characterisation} 
-\label{subsec_segmentation}
 We use environmental variables (e.g., wetness, soil maturity, vegetation type,
 etc.) from the classification schemes and concepts from EAGLE to preserve
 interoperability by using this well-formalized vocabulary. All used indicators
-for this research are shown in Table \ref{tab_indicators_classes} An example of
+for this research are shown in Table \ref{tab:indicators_classes} An example of
 a EUNIS class, E2.22 ``Sub-Atlantic lowland hay meadows'' modelled with selected
 remote sensing indicators is written in description logic (DL) below
 ~\ref{eq:description_logic}.
@@ -452,42 +449,56 @@ E2.22 &\equiv wetness \exists \{``mesic''\} \\
 \label{Selection_of_training_validation_data}
 \subsection{Selection of training and validation data}
 \subsubsection{SeATH}
-Training the SEaTH algorithm %is quite straight forward and. Das kann man so
-% nicht in einer wiss publ schreiben
-starts with 15 
-objects per class being randomly selected from the training data. One benefit of the SeATH algorithm is that one does not need many training
-objects.
-In \cite{Nussbaum2006}, for example, the authors suggest using only very
-characteristic features for training and only used around 10 samples per
-class. The authors also state that usually two features
-per class is enough to produce accurate results.\\
-\subsubsection{DT and ET}
-%fehlt noch
-%% DT
-%The data mining module splits data into training and testing data.
-%mach
-%den Begriff data mining module mit in die Graphik oder verwende ihn nicht. Das
-% ist total irritierend und man wei? nicht was damit gemeint ist.
+Training the SEaTH algorithm starts with 15 objects per class being randomly 
+selected from the training data. One benefit of the SeATH algorithm is that one 
+does not need many training objects. In \cite{Nussbaum2006}, for example, the 
+authors suggest using only very characteristic features for training and only 
+used around 10 samples per class. The authors also state that usually two 
+features per class is enough to produce accurate results.
+\\
+%\subsection{DT and ET}
+We use an evolutionary search algorithm with 10 evolutions based on the 
+Distributed Evolutionary Algorithms in Python \citep{DEAP_JMLR2012} software to 
+find the best features and used balanced class weights due to the very 
+different distribution of grassland biotopes.  Three different fitted DT 
+classifiers were compared: 1) a DT fitted with the features chosen by the 
+evolutionary search algorithm 2) a DT trained on all features with parameters 
+chosen after trial and error 3) a DT trained on the top 10 most important 
+features as chosen by the ET classifier. Each DT classifier undergoes a 5-fold 
+cross validation to verify results and the highest overall accuracy DT is 
+chosen.
+%\subsection{Training the Data Mining Algorithm}
 
+Using training data, the algorithm determines the separability of the object 
+classes and then calculates the thresholds for which the maximum separability 
+can be achieved using the given features based on the Jeffries-Matusita 
+distance 
 \label{subsec_rulegen_data_mining}
 \subsection{Rule Generation}
-%We use the ET classifier for comparison purposes. Das muss zu Validation!
-%Then for the DT and SEaTH algorithms, rules are generated and
-%translated to OWL2.
-For the DT case the tree is parsed as normal by starting at the head node and
-collecting all thresholds until one reaches the leaf node containing the
-classification. The leaf node also has information on how many objects were
-classified by going down this branch and how many were misclassified. The rule
-is written as the and'ing of feature threshold from each node needed to reach
-the leaf node. The rule is assigned to the class with the highest number of
-objects at that leaf node. All other paths to leaf nodes are converted and the
-result is a ruleset that has many rules unioned together. The SEaTH algorithm
-outputs CSV rules that includes the best features to separate one class from
-another. Since we have over 200 features and the authors of SEaTH suggest using
-only 2-3 features, we parse the first three lines as the list is sorted from
-best to worst. These logical AND the rules with the thresholds and do this for
-every class. An example rule is shown below.
-\\% Eine Graphik vom DT Graph f?nde ich gut!
+For the DT case the tree is parsed according to the depth first search
+algorithm. Starting with the root node, the algorithm visits edges first,
+traveling as far as and only when it reaches a leaf node does it backtrack. The
+nodes contain the decision thresholds and all nodes visited before reaching the
+leaf node (the parents of that node) are logicall AND together to create a rule.
+The leaf node also has information on how many objects were classified by going
+down this branch and how many were misclassified. The rule is assigned to the
+class with the best accuracy at that leaf node. The process continues until all
+leaf nodes are visited. The rules then are joined together by logical ORs and
+become a rule set for the indicator under investigation. An example decision
+tree trained on immature soil is depicted in \ref{decisiontree}.
+\begin{figure}
+    \label{fig:decisiontree}
+\includegraphics[width=\textwidth]{diagrams/natfo_immature_soil_dt.png}
+    \caption{An example decision tree trained on immature soil indicator}
+\end{figure}
+The SEaTH algorithm outputs rules that includes the best features to separate 
+one class from another. Since we have over 200 features and the authors of 
+SEaTH suggest using only 2-3 features, we parse the first three lines as the 
+list is sorted from best to worst. We join the features with their 
+corresponding thresholds using logical ANDs. We do this for every class, 
+logically ORing the three-feature rules with one another. An example rule from 
+the DT is shown below.
+\\
 The subclass ``low'' from ``usage intensity'' has a rule that is generated by
 the decision tree algorithm as seen in \ref{dt_rule_generation} below. The first
 name is the feature/statistic's name, followed by a threshold. For the DT, as in
@@ -498,16 +509,16 @@ from. This information is currently not being used.
     wief_max,>,1.092550,0
     tpi5_max,<=,-0.341000,420
     swi_median,<=,8.097600,421
-    toin\_max,<=,1536.561279,422
-    pan4_glcm_std\_135,<=,-7.890923,423
+    toin_max,<=,1536.561279,422
+    pan4_glcm_std_135,<=,-7.890923,423
     b_std,<=,10.100981,424
 \end{lstlisting}
-The OWL2 snippet shows how the first two lines of this rule look in an OWL2
-ontology. The rule has a collection of DataSomeValuesFrom within a nested datatype
-restriction corresponding to the rule threshold. A class can be defined by
-many rules containing multiple datatype properties that are chained together
-with logical AND (intersection) operators. The rules are then joined by a
-logical OR operator as can be seen in the outer ObjectUnionOf.  
+The OWL2 snippet shows how the first two lines of this rule look in an OWL2 
+ontology. The rule has a collection of DataSomeValuesFrom within a nested 
+datatype restriction corresponding to the rule threshold. A class can be 
+defined by many rules containing multiple datatype properties that are chained 
+together with logical AND (intersection) operators. The rules are then joined 
+by a logical OR operator as can be seen in the outer ObjectUnionOf.  
 \label{dt_rule_snippet_owl}
 \begin{lstlisting}
                 <DataSomeValuesFrom>
@@ -532,44 +543,26 @@ logical OR operator as can be seen in the outer ObjectUnionOf.
         </ObjectUnionOf>
     </EquivalentClasses>
 \end{lstlisting}
-We use an evolutionary search algorithm with 10 evolutions based on the 
-Distributed Evolutionary Algorithms in Python \citep{DEAP_JMLR2012} software to 
-find the best features and used balanced class weights due to the very 
-different distribution of grassland biotopes.  Three different fitted DT 
-classifiers were compared: 1) a DT fitted with the features chosen by the 
-evolutionary search algorithm 2) a DT trained on all features with parameters 
-chosen after trial and error 3) a DT trained on the top 10 most important 
-features as chosen by the ET classifier. Each DT classifier undergoes a 5-fold 
-cross validation to verify results and the highest overall accuracy DT is 
-chosen.
-%\subsection{Training the Data Mining Algorithm}
-
-Using training data, the algorithm determines the separability of the object 
-classes and then calculates the thresholds for which the maximum separability 
-can be achieved using the given features based on the Jeffries-Matusita 
-distance 
 \subsection{Ontology-based classification}
-\label{subsec_onto_classification}
+\label{subsec:onto_classification}
 After the algorithms produce rules for each indicator, these are then added as
 facet restrictions to an OWL ontology. The polygons from the testing table are
 loaded from the database as OWLIndividuals into the same ontology and the
 reasoner FaCT++ classifies all polygons according to the rules. The
 classification results by the reasoner is written to the database.
 \subsection{Validation} 
-The data was divided into 20\% for training and 80\% for validation. For SEaTH
-20 objects per class were used from the training data set because the algorithm
+The data was divided into 20\% for training and 80\% for validation. For SEaTH 
+15 objects per class were used from the training data because the algorithm 
 performs better with a smaller number of features \citep{Nussbaum2006}. We 
-selected only objects that were identified to be herbaceous plants by the 
-segmentation algorithm for testing and training. 
-
-The testing 
-data includes polygons of grasslands between trees in orchards and 
-agricultural land which are grasslands.
-
-To evaluate the quality of the results
-in respect to well-established, popular classification approaches the 
-outcomes were compared to a ET reference classification (see table \ref{xxx}).
-
+selected only polygons greater than 200m$^{2}$ identified to be herbaceous 
+plants by the segmentation algorithm for training and testing. For training we 
+selected only polygons where the value for the 90 percentile of the NDSM was 
+less than 1 meter. Therefore the testing data includes polygons of grasslands 
+between trees in orchards and grasslands in agricultural production. Finally To 
+evaluate the quality of the results in respect to well-established, popular 
+classification approaches the outcomes were compared to an ET reference 
+classification (see table \ref{tab:classification_EUNIS}).
+\\
 We use 
 precision\footenote{\url{
 http://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score
@@ -580,11 +573,11 @@ ml#sklearn.metrics.recall_score}} (sensitivity, true positive rate),
 value) and 
 f-score\footenote{\url{
 http://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html#s
-klearn.metrics.f1_score}} to determine the accuracy of classification
-results. The precision score \ref{eg:precision} is a reflection of how many of the objects that were
-classified were true positives. Recall \ref{eq:recall} shows the classifier's ability to find
-all relevant objects (positive samples). The f-score is the harmonic mean of the
-precision and recall.
+klearn.metrics.f1_score}} to determine the accuracy of classification results. 
+The precision score \ref{eg:precision} is a reflection of how many of the 
+objects that were classified were true positives. Recall \ref{eq:recall} shows 
+the classifier's ability to find all relevant objects (positive samples). The 
+f-score is the harmonic mean of the precision and recall.
 \begin{equation}
 \begin{align*}
     \frac{\text{true positives}}{\text{true positives + false positives}}
@@ -604,13 +597,13 @@ precision and recall.
 \end{align*}
 \label{eq:fscore}
 \end{equation}
-
-% class first indicators 
- %Hier muss noch rein: f-score, precision, support und recall erkl??ren.Du
- % machst es f??r alle Indikatoren einzeln. dann f??r ausgew??hlte, abgeleitete
- % EUNIS Grassland Klassen.
- 
-
+First the rules are generated for each indicator and metrics are saved to 
+determine accuracy. The results for each indicator is saved in the 
+database. The indicators are then aggregated using SQL queries according to the 
+formalized EUNIS class definition to find which objects meet the requirement. 
+Objects that meet the rule as defined in \ref{tab:indicators_classes} are 
+assigned to that class. The classified result is then compared to the actual 
+class label to determine the quality of the results.
 \section{Results}
 The number of indicators and what one can reasonably expect to derive from the
 data currently available is limited as one can see in the results.
@@ -658,6 +651,7 @@ Support\\
     & SEaTH & 0.45 & 0.35 & 0.39 & 12178\\
     & ET & 0.41 & 0.63 & 0.49 & 21098\\
     \end{tabular}
+    \label{tab:classification_EUNIS}
     \caption{Overall classification accuracy of EUNIS indicators}
 \end{table}
 
