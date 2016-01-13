@@ -118,7 +118,7 @@ RS and field expert
 knowledge can be digitized in ontologies, thus allowing for a hierarchy of
 concepts for improved automatic image annotation and retrieval using concepts
 from both fields to produce more accurate results \citep{Srikanth_2005}.
-Janowicz \cite{Janowicz2012} advocates for more observation-driven ontologies and for
+\cite{Janowicz2012} advocates for more observation-driven ontologies and for
 including machine learning, statistics and data mining to construct ontological
 primitives. While published research on using observation-based ontologies for
 biotope classifications is limited, the available research using ontologies in
@@ -442,19 +442,19 @@ mining algorithm.
 \begin{equation}
 \begin{align*}
 %\begin{split}
-E2.22 &\equiv wetness \exists \{``mesic''\} \\
-&\qquad {} \land hydromorphic \exists \{``false''\} \\
-&\qquad {} \land immature\_soil \exists \{``false''\} \\
-&\qquad {} \land species\_richness \exists \{``false''\} \\
-&\qquad {} \land usage \exists \{``mowing''\} \\
-&\qquad {} \land usage\_intensity \exists \{``medium''\} \\
+E2.22 &\equiv \exists has\_wetness \{``mesic''\} \\
+&\qquad {} \cap \exists has\_hydromorphic \{``false''\} \\
+&\qquad {} \cap \exists has\_immature\_soil \{``false''\} \\
+&\qquad {} \cap \exists species\_richness \{``false''\} \\
+&\qquad {} \cap \exists has\_usage \{``mowing''\} \\
+&\qquad {} \cap \exists has\_usage\_intensity \{``medium''\} \\
 \end{align*}
 \label{eq:description_logic}
 \end{equation}
 
 
-The goal is to produce what Janowicz describes as a
-``micro theory'' \citep{Janowicz2012} which can then be used to map other theories
+The goal is to produce what \cite{Janowicz2012} describes as a
+``micro theory'' which can then be used to map other theories
 by training the data mining algorithms for the new region and using the
 reasoner. We hope that once good test sites are taken for a region (for instance
 the federal state of Rhineland Palatinate) that the data mining algorithms will
@@ -604,14 +604,15 @@ in respect to well-established, popular classification approaches the outcomes
  were compared to a ET reference classification (see table \ref{xxx})
 
 \section{Results}
-As can been seen in table \ref{tab_accuracy_indicators}, the indicators for
-immature soil and hydromorphic performed well whereas the wetness indicator's
-accuracy was lackluster. The performance of usage and usage intensity is not
-surprising as usually one needs time-series data to accurately detect these
-values. The performance of the algorithms in relation to one another was
-expected. We expected SEaTH to perform better than it did. Overall the results
-show that the DT classifier outperforms SEaTH and achieves comparabe results to
-the ET classifier for the indicators chosen. 
+As can been seen in table \ref{tab_accuracy_indicators}, the immature soil and
+hydromorphic indicators performed well. The poor performance of the wetness
+indicator in particular is suprising as the data mining algorithms had access to
+many different wetness indicators and morphological data. Since classifying
+EUNIS level 2 grasslands requires information on wetness, the classification
+suffers. The performance of usage and usage intensity is not surprising given no
+time series data was available. In regards to algorithmic performance, SEaTH
+performed poorly overall and the results show that the DT classifier achieves comparable
+results to the ET classifier for the indicators chosen. 
 \begin{table}
     \centering
     %\rowcolors{2}{lightgray}{white}
@@ -652,16 +653,15 @@ the ET classifier for the indicators chosen.
     \caption{Overall classification accuracy of EUNIS indicators}
     \label{tab_accuracy_indicators}
 \end{table}
-
 We had hoped that the many wetness indicies derived from the DSM would have made
-a reliable indicator but that does not appear to be the case. The results for
-wetness could suffer due to inadequate training data, a conceptualization
-problem or improperly classified reference polygons. 
-
-
+a reliable indicator but that does not appear to be the case. 
 \subsection{EUNIS Level 2 Classification}
-\ref{level2_classification}
-The classification accuracy
+\label{level2_classification}
+The DT classifier over estimates the presence of E2 grasslands whereas
+the SEaTH algorithm underestimates their presence. The DT classifier has 4115
+false positives (19654 classified vs. 15539 actual) whereas SEaTH classified
+only 1511 objects as E2 (14028). 
+4115 
 \begin{table}
 \begin{tabular}{c c c c c}
 Class & Precision & Recall & F-score & Support\\
@@ -715,13 +715,9 @@ avg & 0.5 & 0.01 & 0.01 & 21098\\
 Class & Precision & Recall & F-score & Support\\
 \hline
 E1.2 & 1.0 & 0.01 & 0.02 & 122\\
-E1.7 & 0.0 & 0.0 & 0.0 & 0\\
 E2.1 & 0.0 & 0.0 & 0.0 & 11105\\
-E2.2 & 0.0 & 0.0 & 0.0 & 121\\
 E2.6 & 0.5 & 0.0 & 0.0 & 4240\\
-E2.7 & 0.0 & 0.0 & 0.0 & 73\\
 E3.4 & 0.02 & 0.3 & 0.04 & 61\\
-E5.4 & 0.0 & 0.0 & 0.0 & 2\\
 unclass & 0.0 & 0.0 & 0.0 & 5374\\
 avg & 0.11 & 0.0 & 0.0 & 21098\\
 \end{tabular}
@@ -729,10 +725,6 @@ avg & 0.11 & 0.0 & 0.0 & 21098\\
 \end{table}
 There were 4140 agricultural croplands in EUNIS I1 that were classified wrongly 
 as E 
-%I1 & 0.0 & 0.0 & 0.0 & 3671\\
-%I1.2 & 0.0 & 0.0 & 0.0 & 1\\
-%I1.5 & 0.0 & 0.0 & 0.0 & 468\\
-%J1 & 0.0 & 0.0 & 0.0 & 62\\
 \begin{table}
 \centering
 \begin{tabular}{c c c c c}
@@ -740,11 +732,8 @@ Class & Precision & Recall & F-score & Support\\
 \hline
 E1.2 & 0.5 & 0.01 & 0.02 & 122\\
 E2.1 & 0.63 & 0.69 & 0.66 & 11509\\
-E2.2 & 0.0 & 0.0 & 0.0 & 122\\
 E2.6 & 0.17 & 0.04 & 0.07 & 4335\\
-E2.7 & 0.0 & 0.0 & 0.0 & 75\\
 E3.4 & 1.0 & 0.03 & 0.06 & 64\\
-E5.4 & 0.0 & 0.0 & 0.0 & 2\\
 avg & 0.37 & 0.37 & 0.36 & 21788\\
 \end{tabular}
 \caption{Classification accuracy for EUNIS level 3 using DT}
@@ -793,6 +782,13 @@ A dimension reduction strategy using principal component analysis could possibly
 improve the data mining algorithms classification accuracy.
 %The extra trees classifier selection of feature importances were strange
 \section{Conclusion}
+We demonstrated that a combination of ontological formalism generates highly
+interoperable, reporduceable and exchangeable classfification procedures and
+results.
+
+ to develop a RS classification methodology using data mining approaches
+     in combination with ontological formalism to generate highly interoperable,
+     reproducable and exchangeable classification procedures and results,
 We showed an automated workflow using ontologies and data mining algorithms can 
 accurately classify EUNIS habitat objects. Moreover, the use of ontologies if 
 published on the Internet can allow others to reuse the workflow and make their 
