@@ -263,7 +263,6 @@ herbaceous}, usage: {grazing, mowing}, usage intensity: {low, medium, high}.
 }
 \label{tab:indicators_classes}
 \end{table}
-
 \subsection{Segmentation}
 \label{subsec:segmentation}
 For the pre-segmentation step (see
@@ -272,8 +271,8 @@ types of data were taken into account. Digital orthophotos (resolution 0.2m) are
 used to create the Digital Surface Model (DSM) (resolution 0.5m) using automated
 stereo matching and therefore represent the basis for all segmentation and
 classification procedures. The DTM and DEM was produced using LiDAR ASCII point
-clouds acquired between 2003 and 2009 with a resolution of 0.2m.\\
-The reference data (see
+clouds acquired between 2003 and 2009 with a resolution of 0.2m.\\ The reference
+data (see
 \ref{subsec:Preparation_of_reference_data_and_semantic_characterisation})
 consists of the federal biotope map (partially updated 2015), agricultural data
 updated every year and a soil map (resolution xxx) which is based on the ALKIS
@@ -575,15 +574,15 @@ assigned to that class. The classified result is then compared to the actual
 class label to determine the quality of the results.
 
 \section{Results}
-As can been seen in table \ref{tab_accuracy_indicators}, the immature soil and
+As can been seen in table \ref{tab:accuracy_indicators}, the immature soil and
 hydromorphic indicators performed well. The poor performance of the wetness
 indicator in particular is suprising as the data mining algorithms had access to
 many different wetness indicators and morphological data. Since classifying
 EUNIS level 2 grasslands requires information on wetness, the classification
-suffers. The performance of usage and usage intensity is not surprising given no
-time series data was available. In regards to algorithmic performance, SEaTH
-performed poorly overall and the results show that the DT classifier achieves comparable
-results to the ET classifier for the indicators chosen. 
+suffers. The performance of usage and usage intensity is most likely due to a
+lack of time series data. In regards to algorithmic performance, SEaTH
+performed poorly overall and the results show that the DT classifier achieves
+comparable results to the ET classifier for the indicators chosen. 
 \begin{table}
     \centering
     %\rowcolors{2}{lightgray}{white}
@@ -623,17 +622,17 @@ results to the ET classifier for the indicators chosen.
     \end{tabular}
     \label{tab:classification_EUNIS}
     \caption{Overall classification accuracy of EUNIS indicators}
-    \label{tab_accuracy_indicators}
+    \label{tab:accuracy_indicators}
 \end{table}
-We had hoped that the many wetness indicies derived from the DSM would have made
-a reliable indicator but that does not appear to be the case. 
+The poor performance of the wetness indicator negatively effects classification of the
+biotopes. Luckily, the immature soil and hydromorphic indicators when combined
+are disjoint (see \ref{tab:indicators_classes})
 \subsection{EUNIS Level 2 Classification}
 \label{level2_classification}
-The DT classifier over estimates the presence of E2 grasslands whereas
-the SEaTH algorithm underestimates their presence. The DT classifier has 4115
-false positives (19654 classified vs. 15539 actual) whereas SEaTH classified
-only 1511 objects as E2 (14028). 
-4115 
+The DT classifier over estimates the presence of E2 grasslands whereas the SEaTH
+algorithm underestimates their presence. The DT classifier has 4115 false
+positives (19654 classified vs. 15539 actual) whereas SEaTH classified only 1511
+objects as E2 (14028). 
 \begin{table}
 \begin{tabular}{c c c c c}
 Class & Precision & Recall & F-score & Support\\
@@ -645,27 +644,18 @@ unclass & 0.0 & 0.0 & 0.0 & 5376\\
 avg & 0.59 & 0.43 & 0.49 & 21098\\
 \label{fig:dt_lvl2_classification}
 \end{tabular}
-\caption{Classification accuracy of grasslands using the DT algorithmn}
+\caption{Classification accuracy of grasslands using the DT classifier}
 \end{table}
-
-The poor performance of the wetness indicator harms the classification of the
-biotopes. The definition (see \ref{tab_indicators_classes}) of grasslands allows
-for immature soil and hydromorphic indicators to be used together to improve
-separation of the classes.
-The largest number of polygons in the testing data not belonging to the E
-category of grasslands belong to I1 which are described as ``Arable land and
+The largest number of polygons in the testing data not belonging to EUNIS
+glrasslands belong to I1 which are described as ``Arable land and
 market gardens''. The class includes meadow/pastureland under management and
 recently fallowed land under I1.5. The high recall and low precision score
-especially for wetness could be explained by the presence of these grasslands
-classified under agricultural use.
+especially for wetness could be explained by the presence of these grassland
+classes. The presence of orchards i 
+
 The dominance of mesic grasslands in Saarburg is clearly reflected in
-the results. In the testing data of the 21098 objects, 15539 objects - 74\% - are mesic grasslands
-in class E2. That leaves only 122 in E1 and 61 objects in E3. The training
-accuracies were far higher than the test results; with many indicators nearing
-100\%.  
-
-
-
+the results. In the testing data of the 21098 objects, 15539 objects - 74\% -
+are mesic grasslands. Less than 1\% of objects are in E1 (122) and E3 (61). 
 \begin{table}
 \begin{tabular}{c c c c c}
 Class & Precision & Recall & F-score & Support\\
@@ -735,14 +725,16 @@ only very slightly.
 \section{Discussion}
 The results demonstrate that the method provides benefits to a normal
 classification approach and that with proper conceptualization, reference data
-and dimension reduction could achieve results comparable to an ET classifier. A
-rigourous investigation of the segmented polygons and accurate reference data is
-needed to diagnose why the wetness indicator performed so poorl. One possible
-problem with the current segmentation approach is that 200m$^{2}$ minimum
-polygons are created which have large differenes between min and max values. The
-segmentation class herbaceous plants could be too lenient as shrubs were found
-in polygons labeled as herbaceous. In addition other indicators are needed to
-more accurately differentiate between grasslands.
+and dimension reduction could achieve results comparable to an ET classifier.
+Further investigation of the segmented polygons and a test area with a more
+uniform distribution of biotope classes is needed. Accurate reference data is
+needed to diagnose why the wetness indicator performed so poorly.
+
+The selection of grasslands greater than 200m$^{2}$ in size might have also led
+to errors as max and min heights had a large range. The pre-segmentation class
+herbaceous plants could be too lenient as shrubs were found in polygons labeled
+as herbaceous. In addition other indicators are needed to more accurately
+differentiate between grasslands.
 
 The misclassification of I1 - ``Arable land and market gardens'' is 
 understandable as the EUNIS biotope classification specifically states that 
@@ -754,17 +746,14 @@ A dimension reduction strategy using principal component analysis could possibly
 improve the data mining algorithms classification accuracy.
 %The extra trees classifier selection of feature importances were strange
 \section{Conclusion}
-We demonstrated that a combination of ontological formalism generates highly
-interoperable, reporduceable and exchangeable classfification procedures and
-results.
+We demonstrated that an ontological-based semi-automated classsification system
+produces interoperable, reproduceable and exchangeable classfification outputs
+and results. Furthermore, the method is not constrained by data mining
+algorithms or software.  
 
- to develop a RS classification methodology using data mining approaches
-     in combination with ontological formalism to generate highly interoperable,
-     reproducable and exchangeable classification procedures and results,
-We showed an automated workflow using ontologies and data mining algorithms can 
-accurately classify EUNIS habitat objects. Moreover, the use of ontologies if 
-published on the Internet can allow others to reuse the workflow and make their 
-own modifications. 
+Formalizing ecological information for biodiversity monitoring is
+necessary to take advantage of advances in new sensors and products becoming
+available. 
 \section{Acknowledgments}
 We would like to thank RLP AgroScience GmbH for processing the data and the 
 RLP's Environment Ministry for funding the NATFLO project. This work was 
@@ -772,12 +761,11 @@ conducted using the Prot\'eg\'e resource, which is supported by grant
 GM10331601 from the National Institute of General Medical Sciences of the 
 United States National Institutes of Health.
 \section{Appendix}
-%SQLAlchemy is used for database interaction and data management is done with
-%the Python Data Analysis Library (Pandas) \citep{McKinney2010}. 
-The OWL ontology with rules generated by the DT algorithm used in this study 
-is located at: 
-\url{http://www.user.tu-berlin.de/niklasmoran/grassland_dt.owl} and the SEaTH 
-OWL file is located: 
+The OWL ontology with rules generated by the DT algorithm used in this study is
+located at: \url{http://www.user.tu-berlin.de/niklasmoran/grassland_dt.owl} and
+the SEaTH OWL file is located:
 \url{http://www.user.tu-berlin.de/niklasmoran/grassland_seath.owl}
 \bibliographystyle{model2-names}
-\section{References} \bibliography{references} \end{document}
+\section{References}
+\bibliography{references}
+\end{document}
