@@ -1,5 +1,5 @@
-\documentclass[authoryear, review,12pt,number]{elsarticle}
-%\documentclass[authoryear, preprint,12pt,number]{elsarticle}
+\documentclass[authoryear,preprint,12pt,number]{elsarticle}
+%\documentclass[authoryear,review,12pt,number]{elsarticle}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[numbers]{natbib}
@@ -7,12 +7,13 @@
 \usepackage{float}
 \usepackage{rotating}
 \usepackage{stfloats}
-\usepackage{lineno}
+%\usepackage{lineno}
 %\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
 \usepackage{tabulary}
 \usepackage{graphicx}
 \usepackage{color}
 \usepackage[none]{hyphenat} \usepackage[table]{xcolor} \sloppy
+\usepackage[hyphens]{url}
 \usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage{multirow}
@@ -42,7 +43,7 @@
 \lstset{language=XML}
 
 \begin{frontmatter}
-\linenumbers
+%\linenumbers
 \title{Classifying EUNIS habitats using ontologies and data mining methods}
 
 \author[TUB]{T. Niklas Moran\corref{cor1}}
@@ -77,7 +78,7 @@ remote sensing, biotope classification, data mining, nature conservation, OWL,
 EUNIS, GEOBIA
 \end{keyword}
 \end{frontmatter}
-\linenumbers
+%\linenumbers
 
 \section{Introduction}
 Recognizing the importance of functioning ecosystems to reduce biodiversity 
@@ -163,19 +164,19 @@ remote sensing \citep{Bobillo2011, Bobillo2015}. More recently a multi-scale
 fuzzy spatial reasoner was developed which could have significant impact on this
 research \citep{Argyridis2015}.
 
-Even though researchers recently developed a number of indicators using
-different sensors for habitat evaluation \citep{Nagendra2013}, classification
-procedures and rule-sets were not formalized to be computer readable and
-therefore suffer from similar transferablity and reproducibility problems as
-manual habitat mapping \citep{Arvor2013, Nieland2015}. Therefore a formalized
-computer-readable ontology could help solve these problems and allow scientists
-to see how the classification was performed and be aware of possible
-incompatibilities before combining data \citep{Janowicz2012}.  Furthermore,
-there is no standardized set of indicators using RS for trans-national habitat
-evaluation \citep{Lucas2015, VandenBorre2011}. Therefore, technical solutions to
-increase interoperability by thematically harmonizing environmental data and
-systematize data collection methods from remote sensing inputs in an automated
-workflow are needed. 
+Even though researchers recently developed a number of indicators using 
+different sensors for habitat evaluation \citep{Nagendra2013}, classification 
+procedures and rule-sets were not formalized to be computer readable and 
+therefore suffer from similar transferablity and reproducibility problems as 
+manual habitat mapping \citep{Arvor2013, Nieland2015a, Nieland2015b}. Therefore 
+a formalized computer-readable ontology could help solve these problems and 
+allow scientists to see how the classification was performed and be aware of 
+possible incompatibilities before combining data \citep{Janowicz2012}.  
+Furthermore, there is no standardized set of indicators using RS for 
+trans-national habitat evaluation \citep{Lucas2015, VandenBorre2011}. 
+Therefore, technical solutions to increase interoperability by thematically 
+harmonizing environmental data and systematize data collection methods from 
+remote sensing inputs in an automated workflow are needed. 
 
 The EIONET Action Group on Land monitoring in Europe (EAGLE) is an expert group
 that seeks to harmonize land cover (LC) and land use (LU) nomenclatures using an
@@ -221,8 +222,8 @@ The main goals of this paper are:
      machine learning classifier (Extra Tree 
 Classifier 
 \footnote{\url{
-http://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees
-}}).
+http://scikit-learn.org/stable/modules/ensemble.html\#extremely-randomized-t
+rees}}).
 \end{itemize}
 \section{Method}
 \subsection{Use case: Classifying EUNIS grasslands in Rhineland-Palatinate}
@@ -244,13 +245,14 @@ and culturally important viticulture industry along the Mosel and Rhine rivers
     OpenStreetMap contributors.}
 \label{fig:study_area}
 \end{figure}
-To achieve a correct formalisation of the regarded habitats we adapted selected
+To achieve a correct formalization of the regarded habitats we adapted selected
 indicators, defined in the EUNIS nomenclature, to meet the requirements of
 remote sensing analysis.
-Furthermore, we adopted EAGLE's object-oriented approach by separating land use,
-land cover and characteristics (biophysical and anthropogenic) and adopted terms when possible to increase interoperability and further re-use.
-The table ~\ref{tab:indicators_classes} shows the list of indicators that can be
-detected by our data and aggregated to form EUNIS classes. 
+Furthermore, we adopted EAGLE's object-oriented approach by separating land 
+use, land cover and characteristics (biophysical and anthropomorphic) and 
+adopted terms when possible to increase interoperability and further re-use. 
+The table ~\ref{tab:indicators_classes} shows the list of indicators that can 
+be detected by our data and aggregated to form EUNIS classes. 
 \begin{table}
 \centering
   \begin{tabular}{clcccccccc}
@@ -261,9 +263,11 @@ detected by our data and aggregated to form EUNIS classes.
     & E1   & dry & g/h & g/m/- & low & 1 & 0 & 0/1/- \\ 
     & E1.2 & dry & g/h & g/m/- & low & 1 & 0 & 1\\
 \multirow{4}{*}{mesic} 
+    \\
     & E2   & mesic & g/h & g/m/- & l/m/h/- & 0 & 0 & 0/1/-\\
     & E2.1 & mesic & g/h & g & medium/high & 0 & 0 & -/0/1 \\
     & E2.6 & mesic & g & g/m/- & high & 0 & 0 & 0 \\
+    \\
 \multirow{3}{*}{wet}
     & E3   & very wet & g/h & g/m/- & low/medium & 0 & 1 & 0/1/- \\
     & E3.4 & very wet & g/h & g/m & medium & 0 & 1 & 0/1 \\
@@ -309,7 +313,7 @@ EUNIS. The developed system is comprised of (1) the preparation of reference
 data, including a spatial union of the base data sets (pre-segmented,
 pre-classified areal photos and thematic maps (see
 \ref{subsec:reference_data_and_semantic_characterisation}) and the attachment of
-subsequent semantic characteristics (see \ref{subsec:LU_anthropomorphic}), (2)
+subsequent semantic characteristics (see \ref{LU_anthropomorphic}), (2)
 the selection of training and validation data (see
 \ref{subsec:Selection_of_training_validation_data} the generation of
 classification rules using machine learning algorithms and finally (4) the
@@ -321,7 +325,7 @@ database, convert files and execute a reasoner over the created OWL file (see
 OWL files and execute the FaCT++ reasoner \citep{Tsarkov2006}. Currently the
 rule generation (see \ref{subsec:rulegen_data_mining}) module uses two
 algorithms: decision tree classifier
-(DT)\footnote{\url{http://scikit-learn.org/stable/modules/tree.html#tree}} and
+(DT)\footnote{\url{http://scikit-learn.org/stable/modules/tree.html\#tree}} and
 one additional algorithm called the Separability and Thresholds (SEaTH)
 algorithm \citep{Nussbaum2006}. The extra trees classifier (ET)
 \footnote{\url{http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesClassifier.html}}
@@ -378,8 +382,7 @@ finding if any of the individuals fit into the defined classes. As EUNIS is an
 hierarchically structured classification scheme testing that the formalization
 follows the same hierarchy is important. 
 
-%\subsubsection{Land cover extraction and biophysical characteristics}
-%\label{subsec:LC_biophysical}
+\label{LC_biophysical}
 We use environmental variables (e.g., wetness, soil maturity, vegetation type,
 etc.) from the classification schemes and concepts from EAGLE to preserve
 interoperability by using this well-formalized vocabulary. All used indicators
@@ -392,8 +395,7 @@ These polygons include spectral information and various statistics and indices
 such as SAGA wetness index, wind effect, etc. This follows the EAGLE data
 model's separation of LU and LC information.
 
-%\subsubsection{Land use and anthropomorphic characteristics}
-%\label{subsec:LU_anthropomorphic}
+\label{LU_anthropomorphic}
 To generate the reference data, we combined agricultural, foresty, biotope and
 geological data from different sources, creating a comprehensive database for
 Rhineland Palatinate. These thematic maps include anthropomorphic
@@ -540,17 +542,17 @@ evaluate the quality of the results in respect to well-established, popular
 classification approaches the outcomes were compared to an ET reference 
 classification (see table \ref{tab:classification_EUNIS}).
 \\
-We use 
-precision\footenote{\url{
+We use precision\footnote{\url{
 http://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score
-.html#sklearn.metrics.precision_score}} (positive predicative value), 
-recall\footenote{\url{
+.html\#sklearn.metrics.precision\_score}} (positive predicative value), 
+recall\footnote{\url{
 http://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.ht
-ml#sklearn.metrics.recall_score}} (sensitivity, true positive rate), 
+ml\#sklearn.metrics.recall\_score}} (sensitivity, true positive rate), 
 value) and 
-f-score\footenote{\url{
-http://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html#s
-klearn.metrics.f1_score}} to determine the accuracy of classification results. 
+f-score\footnote{\url{
+http://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html\#
+s
+klearn.metrics.f1\_score}} to determine the accuracy of classification results. 
 The precision score (\ref{eq:precision}) is a reflection of how many of the 
 objects that were classified were true positives. Recall \ref{eq:recall} shows 
 the classifier's ability to find all relevant objects (positive samples). The 
