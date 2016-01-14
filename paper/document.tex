@@ -314,7 +314,7 @@ yy) and indices of the DTM, DEM and orthophotos.
     fitting within the combined polygons. The features are joined together 
     and get all properties associated from the dataset unless they conflict. 
     When conflicts occur the corresponding column is marked as such.}
-\label{fig_pre-processing}
+\label{fig:pre-processing}
 \end{figure}
 \section{Method}
 This section describes the developed ontology-based and multi-source EUNIS habitat
@@ -373,34 +373,39 @@ as a reference classification.
 \label{fig_full_workflow}
 \end{figure}
 
-% Once the rules and segmented objects are imported into the ontology, a reasoner can
-% reason which individuals (segmented polygons) belong to which class (A-Box 
-% reasoning) and how the classes are related (T-box reasoning).
-
-\label{subsec:Preparation_of_reference_data_and_semantic_characterisation}
-\subsection{Preparation of reference data and semantic characterisation}
+\label{subsec:Preparation_of_reference_data_and_semantic_characterisation} 
+\subsection{Preparation of reference data and semantic characterization}
 The iterative object-based image analysis is performed by \cite{Tintrup2015} 
-using Defiens eCognition Server and segments the data using thresholds and 
-multi-resolution approaches \citep{baatz2001ecognition}.The data is segmented 
-by multi-spectral (B, G, R, NIR) orthophotos (see \ref{usecase}) 
-%with a 0.2m ground resolution and a 2 x 2km tile size. =>Das kommt zu Data in
-% use-case
-Spectral information and indices (Bare Area Index, etc.) and 
-height from the DEM to separate between biotic and abiotic features 
-\citep{Tintrup2015}. The detailed %pre-processing w??rde ich so nicht sagen
-data preparation workflow is 
-shown in figure \ref{fig_pre-processing}. The quality of the segmentation
-determines the quality of the later identification step as the value of an
-indicator such as wetness for a grassland might differ for that of a forest.
-EUNIS class descriptions and interpretation guidelines \citep{EUNISManual} were
-used to develop a set of indicators to accurately formalize certain habitats
-with regard to the infer-ability with available input data sets (see
+using Defiens eCognition Server in a multi-resolution approach 
+\citep{baatz2001ecognition} taking into account thresholds. The data is 
+segmented by multi-spectral (B, G, R, NIR) orthophotos (see \ref{sec:usecase}) 
+spectral information and indices (Bare Area Index, etc.) and height from the 
+DEM to separate between biotic and abiotic features \citep{Tintrup2015}. The 
+detailed data preparation workflow is shown in figure 
+\ref{fig:pre-processing}. This segmentation follows the EAGLE concept and 
+attaches landcover class labels to created polygons. This step is crucial as 
+the quality of the segmentation determines the quality of the later 
+identification step as the value of an indicator such as wetness for a grassland 
+might differ for that of a forest. Using EUNIS class descriptions and 
+interpretation guidelines \citep{EUNISManual}, a set of indicators tailored to 
+the available input data for our test area were created (see 
 ~\ref{subsec_indicators_and_nomenclatures}). Detailed analysis of the EUNIS
 nomenclature showed that some indicators do not lend themselves to easily be
 detected by RS data. Therefore indicators were added to produce a meaningful
-formalization of the classes.  This formalization can then be written to an OWL
-ontology, which is able to store complex logical connections in an OWL2 file.
+formalization of the classes. This formalization can be written to an OWL
+ontology, which is able to store complex logical connections in an OWL2 file. 
+The logical consistency of the formalization can be verified by a reasoner 
+performing T-Box (terminological component) reasoning.
 
+Relationships between objects (subsumption, disjointedness, etc). are 
+discovered and checked for consistency during T-box reasoning. Using 
+software, such as Protege, users can see how the defined axioms are related in 
+the stored knowledge base (OWL2) and check for logical consistency. If 
+OWLIndividuals (objects) are in the knowledge base then A-Box reasoning can 
+also be performed finding if any of the individuals fit into the defined 
+classes. As EUNIS is an hierarchically structured classification scheme testing 
+that the formalization follows the same hierarchy is important and that 
+subclasses are logical (grassland should not be a subclass of forest).
 
 \subsubsection{Semantic characterisation} 
 We use environmental variables (e.g., wetness, soil maturity, vegetation type,
@@ -467,44 +472,39 @@ chosen after trial and error 3) a DT trained on the top 10 most important
 features as chosen by the ET classifier. Each DT classifier undergoes a 5-fold 
 cross validation to verify results and the highest overall accuracy DT is 
 chosen.
-%\subsection{Training the Data Mining Algorithm}
-
-Using training data, the algorithm determines the separability of the object 
-classes and then calculates the thresholds for which the maximum separability 
-can be achieved using the given features based on the Jeffries-Matusita 
-distance 
-\label{subsec_rulegen_data_mining}
+\label{subsec:rulegen_data_mining}
 \subsection{Rule Generation}
 For the DT case the tree is parsed according to the depth first search
-algorithm. Starting with the root node, the algorithm visits edges first,
-traveling as far as and only when it reaches a leaf node does it backtrack. The
-nodes contain the decision thresholds and all nodes visited before reaching the
-leaf node (the parents of that node) are logicall AND together to create a rule.
-The leaf node also has information on how many objects were classified by going
-down this branch and how many were misclassified. The rule is assigned to the
-class with the best accuracy at that leaf node. The process continues until all
-leaf nodes are visited. The rules then are joined together by logical ORs and
-become a rule set for the indicator under investigation. An example decision
-tree trained on immature soil is depicted in \ref{decisiontree}.
+algorithm. Starting with the root node, the algorithm visits edges first, 
+traveling as far as and only when it reaches a leaf node does it backtrack. The 
+nodes contain the decision thresholds and all nodes visited before reaching the 
+leaf node (the parents of that node) are chained with AND together to create a 
+rule. The leaf node also has information on how many objects were classified by 
+going down this branch and how many were falsely classified. The rule is 
+assigned to the class with the best accuracy at that leaf node. The process 
+continues until all leaf nodes are visited. The rules are joined 
+together by logical ORs and become a rule set for the indicator under 
+investigation. An example decision tree trained on immature soil is depicted in 
+\ref{fig:decisiontree}.
 \begin{figure}
     \label{fig:decisiontree}
 \includegraphics[width=\textwidth]{diagrams/natfo_immature_soil_dt.png}
     \caption{An example decision tree trained on immature soil indicator}
 \end{figure}
-The SEaTH algorithm outputs rules that includes the best features to separate 
+The SEaTH algorithm outputs rules that include the best features to separate 
 one class from another. Since we have over 200 features and the authors of 
 SEaTH suggest using only 2-3 features, we parse the first three lines as the 
 list is sorted from best to worst. We join the features with their 
 corresponding thresholds using logical ANDs. We do this for every class, 
-logically ORing the three-feature rules with one another. An example rule from 
+chaining the preceding rule and the next rule with an OR. An example rule from 
 the DT is shown below.
 \\
 The subclass ``low'' from ``usage intensity'' has a rule that is generated by
-the decision tree algorithm as seen in \ref{dt_rule_generation} below. The first
-name is the feature/statistic's name, followed by a threshold. For the DT, as in
-the example, the last number is the node in the tree where the threshold comes
-from. This information is currently not being used.
-\label{dt_rule_snippet_csv}
+the decision tree algorithm as seen in \ref{lst:dt_rule_snippet_csv} below. 
+The first name is the feature/statistic's name, followed by a threshold. For 
+the DT, as in the example, the last number is the node in the tree where the 
+threshold comes from. This information is currently not being used.
+\label{lst:dt_rule_snippet_csv}
 \begin{lstlisting}
     wief_max,>,1.092550,0
     tpi5_max,<=,-0.341000,420
@@ -513,13 +513,14 @@ from. This information is currently not being used.
     pan4_glcm_std_135,<=,-7.890923,423
     b_std,<=,10.100981,424
 \end{lstlisting}
-The OWL2 snippet shows how the first two lines of this rule look in an OWL2 
-ontology. The rule has a collection of DataSomeValuesFrom within a nested 
-datatype restriction corresponding to the rule threshold. A class can be 
-defined by many rules containing multiple datatype properties that are chained 
-together with logical AND (intersection) operators. The rules are then joined 
-by a logical OR operator as can be seen in the outer ObjectUnionOf.  
-\label{dt_rule_snippet_owl}
+\ref{lst:dt_rule_snippet_owl} shows how the first two 
+lines of this rule look in an OWL2/XML ontology. The rule has a collection of 
+DataSomeValuesFrom within a nested datatype restriction corresponding to the 
+rule threshold. A class can be defined by many rules containing multiple 
+datatype properties that are chained together with logical AND (intersection) 
+operators. The rules are then joined by a logical OR operator as can be seen in 
+the outer ObjectUnionOf.  
+\label{lst:dt_rule_snippet_owl}
 \begin{lstlisting}
                 <DataSomeValuesFrom>
                     <DataProperty IRI="#has_tpi5_max"/>
@@ -544,13 +545,14 @@ by a logical OR operator as can be seen in the outer ObjectUnionOf.
     </EquivalentClasses>
 \end{lstlisting}
 \subsection{Ontology-based classification}
-\label{subsec:onto_classification}
-After the algorithms produce rules for each indicator, these are then added as
-facet restrictions to an OWL ontology. The polygons from the testing table are
-loaded from the database as OWLIndividuals into the same ontology and the
-reasoner FaCT++ classifies all polygons according to the rules. The
-classification results by the reasoner is written to the database.
+\label{subsec:Onto_classification}
+After the algorithms produce rules for each indicator, these are then added as 
+facet restrictions to an OWL ontology. The polygons from the testing table are 
+loaded from the database as OWLIndividuals into the same ontology and the 
+reasoner FaCT++ classifies all polygons by applying A-box reasoning over the 
+rules. The classification results by the reasoner is written to the database. 
 \subsection{Validation} 
+\label{subsec:Validation}
 The data was divided into 20\% for training and 80\% for validation. For SEaTH 
 15 objects per class were used from the training data because the algorithm 
 performs better with a smaller number of features \citep{Nussbaum2006}. We 
