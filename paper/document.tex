@@ -8,7 +8,7 @@
 \usepackage{rotating}
 \usepackage{stfloats}
 \usepackage{lineno}
-\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+%\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
 \usepackage{tabulary}
 \usepackage{graphicx}
 \usepackage{color}
@@ -59,11 +59,17 @@ Lab, Technische Universit\"at Berlin, Stra\ss e des 17. Juni 145, 10623 Berlin,
 Germany}
 
 \begin{abstract}
-     Remote sensing based biodiversity monitoring r
-amounts of remote sensing data is available 
-This research describes a developed semi-automatic ontology-based, multi-source 
-EUNIS classification method that is tested on a region in 
-Rhineland-Palatinate, Germany. 
+Biodiversity monitoring using remote sensing is critical in order to 
+meet future challenges and existing laws such as the EU Habitats Directive. The 
+subjective nature of field surveys, conducted to meet reporting guidelines of  
+the Habitats Directive, combined with differing nomenclatures and procedures 
+of EU member state environmental agencies hampers data exchange and comparison. 
+Furthermore, manual field surveys are expensive and time-consuming. To meet 
+these future challenges automated tools are needed to use remote 
+sensing data to produce comparable, empirical data outputs that lend 
+themselves to data discovery and provenance needs. These requirements describes 
+a developed semi-automatic ontology-based, multi-source EUNIS classification 
+method that is tested on a region in Rhineland-Palatinate, Germany. 
 \end{abstract}
 
 \begin{keyword}
@@ -211,18 +217,17 @@ The main goals of this paper are:
      defined under EUNIS
  \item and evaluate the developed approach by comparing it to a state-of-the art
      machine learning classifier (Extra Tree 
-Classifier\footnote{\url{
-http://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-treesk
+Classifier 
+\footnote{\url{
+http://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees
 }}).
 \end{itemize}
-
 \section{Use case: Classifying EUNIS grasslands in Rhineland-Palatinate}
 \label{sec:usecase_data}
 To test the feasibility of applying our method to a real-world use case, we 
 tested our method on dry, mesic and wet grasslands (EUNIS E1, E2 and E3 
 respectively) in the district of Saarburg within the federal state of 
 Rhineland-Palatinate (RLP). 
-
 Saarburg is an 200km$^{2}$ administrative district and is located in the
 south-west of the federal state of Rhineland Palatinate (RLP), Germany.
 Luxembourg borders the area to the west and the federal state of Saarland to
@@ -267,8 +272,8 @@ herbaceous}, usage: {grazing, mowing}, usage intensity: {low, medium, high}.
 }
 \label{tab:indicators_classes}
 \end{table}
-\subsection{Segmentation}
 \label{subsec:segmentation}
+\subsection{Segmentation}
 For the pre-segmentation step two types of data were taken into account. 
 Digital orthophotos (resolution 0.2m) are used to create the Digital Surface 
 Model (DSM) (resolution 0.5m) using automated stereo matching and therefore 
@@ -310,26 +315,15 @@ attachment of subsequent semantic characteristics (see
 the generation of classification rules using machine learning algorithms and
 finally (4) the ontology-based classification process (see
 \ref{subsec:Onto_classification}}).
-
 The software relies on a PostgreSQL database and various open source Python and
 Java libraries to interact with the database, convert files and execute a
 reasoner over the created OWL file. The OWLAPI
-\footnote{\url{https://github.com/owlcs/owlapi}} is used to interact with the
+\footnote{https://github.com/owlcs/owlapi} is used to interact with the
 OWL files and execute the FaCT++ reasoner \citep{Tsarkov2006}. Currently the
 rule generation module uses two algorithms: decision tree classifier (DT) and
 one additional algorithm called the Separability and Thresholds (SEaTH)
 algorithm \citep{Nussbaum2006}. The extra trees classifier (ET) is used as a
 reference classification.
-
-%Diesen Teil musst du noch genauer
-% beschreiben. Das ist der Kern deiner Arbeit. Auch wenn du dich in den n?chsten
-% Unterkapiteln nochmal wiederholst. Es ist sehr wichtig f?r das Verst?ndnis,
-% dass du hier alles detalliert beschreibst. Ich w?rde f?r jeden Punkt
-% mindestens einen Satz schreiben.
-% Verweise auf die anderen Kapitel (z.b. (1) ist beschrieben in 2.2 und 2.3 
-% Hier muss noch rein: Woher kommen die
-% Ausgangsdaten? Wie wurden Referenzdaten erstellt?(Verweise auf Kapitel 2.2)
-% Wie funktioniert das Sampling? Wie formalisierst du die Regeln (OWL Axioms)?
 \begin{figure}
 \includegraphics[width=1\linewidth]{diagrams/final_workflow_diagram.png}
 \caption
@@ -345,7 +339,6 @@ reference classification.
     } 
 \label{fig:full_workflow}
 \end{figure}
-
 \label{subsec:reference_data_and_semantic_characterisation} 
 \subsection{Reference data preparation semantic characterization}
 The iterative object-based image analysis is performed by \cite{Tintrup2015} 
@@ -412,12 +405,12 @@ data mining algorithm.
 \begin{equation}
 \begin{align*}
 %\begin{split}
-E2.22 &\equiv \exists has\_wetness \{``mesic''\} \\
-&\qquad {} \cap \exists has\_hydromorphic \{``false''\} \\
-&\qquad {} \cap \exists has\_immature\_soil \{``false''\} \\
-&\qquad {} \cap \exists species\_richness \{``false''\} \\
-&\qquad {} \cap \exists has\_usage \{``mowing''\} \\
-&\qquad {} \cap \exists has\_usage\_intensity \{``medium''\} \\
+    E2.22 &\equiv \exists has\_wetness \{``mesic''\} \\
+    &\qquad {} \cap \exists has\_hydromorphic \{``false''\} \\
+    &\qquad {} \cap \exists has\_immature\_soil \{``false''\} \\
+    &\qquad {} \cap \exists species\_richness \{``false''\} \\
+    &\qquad {} \cap \exists has\_usage \{``mowing''\} \\
+    &\qquad {} \cap \exists has\_usage\_intensity \{``medium''\} \\
 \end{align*}
 \label{eq:description_logic}
 \end{equation}
@@ -474,7 +467,7 @@ The first name is the feature/statistic's name, followed by a threshold. For
 the DT, as in the example, the last number is the node in the tree where the 
 threshold comes from. This information is currently not being used.
 \label{lst:dt_rule_snippet_csv}
-\begin{lstlisting}[frame=single]
+\begin{lstlisting}
     wief_max,>,1.092550,0
     tpi5_max,<=,-0.341000,420
     swi_median,<=,8.097600,421
@@ -545,7 +538,7 @@ value) and
 f-score\footenote{\url{
 http://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html#s
 klearn.metrics.f1_score}} to determine the accuracy of classification results. 
-The precision score \ref{eg:precision} is a reflection of how many of the 
+The precision score (\ref{eq:precision}) is a reflection of how many of the 
 objects that were classified were true positives. Recall \ref{eq:recall} shows 
 the classifier's ability to find all relevant objects (positive samples). The 
 f-score is the harmonic mean of the precision and recall.
@@ -650,7 +643,7 @@ avg & 0.59 & 0.43 & 0.49 & 21098\\
 \caption{Classification accuracy of grasslands using the DT classifier}
 \end{table}
 The largest number of polygons in the testing data not belonging to EUNIS
-glrasslands belong to I1 which are described as ``Arable land and
+grasslands belong to I1 which are described as ``Arable land and
 market gardens''. The class includes meadow/pastureland under management and
 recently fallowed land under I1.5. The high recall and low precision score
 especially for wetness could be explained by the presence of these grassland
@@ -660,6 +653,7 @@ The dominance of mesic grasslands in Saarburg is clearly reflected in
 the results. In the testing data of the 21098 objects, 15539 objects - 74\% -
 are mesic grasslands. Less than 1\% of objects are in E1 (122) and E3 (61). 
 \begin{table}
+\centering
 \begin{tabular}{c c c c c}
 Class & Precision & Recall & F-score & Support\\
 \hline
@@ -679,6 +673,19 @@ avg & 0.5 & 0.01 & 0.01 & 21098\\
 \begin{tabular}{c c c c c}
 Class & Precision & Recall & F-score & Support\\
 \hline
+E1.2 & 0.5 & 0.01 & 0.02 & 122\\
+E2.1 & 0.63 & 0.69 & 0.66 & 11509\\
+E2.6 & 0.17 & 0.04 & 0.07 & 4335\\
+E3.4 & 1.0 & 0.03 & 0.06 & 64\\
+avg & 0.37 & 0.37 & 0.36 & 21788\\
+\end{tabular}
+\caption{Classification accuracy for EUNIS level 3 using DT}
+\end{table}
+\begin{table}
+\centering
+\begin{tabular}{c c c c c}
+Class & Precision & Recall & F-score & Support\\
+\hline
 E1.2 & 1.0 & 0.01 & 0.02 & 122\\
 E2.1 & 0.0 & 0.0 & 0.0 & 11105\\
 E2.6 & 0.5 & 0.0 & 0.0 & 4240\\
@@ -688,21 +695,10 @@ avg & 0.11 & 0.0 & 0.0 & 21098\\
 \end{tabular}
 \caption{Classification accuracy for EUNIS level 3 using SEaTH}
 \end{table}
-There were 4140 agricultural croplands in EUNIS I1 that were classified wrongly 
-as E 
-\begin{table}
-\centering
-\begin{tabular}{c c c c c}
-Class & Precision & Recall & F-score & Support\\
-\hline
-E1.2 & 0.5 & 0.01 & 0.02 & 122\\
-E2.1 & 0.63 & 0.69 & 0.66 & 11509\\
-E2.6 & 0.17 & 0.04 & 0.07 & 4335\\
-E3.4 & 1.0 & 0.03 & 0.06 & 64\\
-avg & 0.37 & 0.37 & 0.36 & 21788\\
-\end{tabular}
-\caption{Classification accuracy for EUNIS level 3 using DT}
-\end{table}
+At level three fewer objects are found and classified. Our indicators are not 
+capable of detecting the differences at this level. For instance in dry 
+grasslands there is only one object in E1.71, all the rest of the dry 
+grasslands are in E1.262.
 
 The few dry grasslands in the Saarburg region really hurt the classifier's 
 ability to learn from the data. Only one dry grassland classified as such fits 
