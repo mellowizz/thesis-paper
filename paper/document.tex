@@ -25,6 +25,7 @@
 \usepackage{array}
 \usepackage[ddmmyyyy]{datetime}
 \usepackage{listings}
+
 \renewcommand{\dateseparator}{.}
 
 \newcolumntype{R}[2]{%
@@ -37,6 +38,8 @@
 \begin{document}
 \input{./title.tex}
 \input{./authordec.tex}
+%\input{./intro_master.tex}
+\lstset{language=XML}
 
 \begin{frontmatter}
 \linenumbers
@@ -71,24 +74,25 @@ EUNIS, GEOBIA
 \linenumbers
 
 \section{Introduction}
-Recognizing the importance of functioning habitats to reduce biodiversity loss,
-the European Union has implemented an environmental conservation framework to
-protect and conserve vital habitats in accordance with the Convention on
-Biological Diversity. An integral part of this framework is the EU Habitats
-Directive (Council Directive) 92/43/EEC [1992], which established the Natura
-2000 network of habitats. The directive requires conservation and monitoring of
-designated habitats by member states and for a report to be submitted every six
-years. Environmental data to determine biodiversity status must be collected to
-comply with the statute. Yet, comparing data used for these reports is difficult
-due to varying data collection methods and acquisition nomenclatures by the
-nature conservation authorities in each member state \citep{VandenBorre2011}.
-The main issue lies in the subjective nature of field surveys to identify
-habitats \citep{Cherrill1999, Cherrill1999a, Hearn_2011, Nieland2015}.
-Furthermore, habitat status is mostly generated in bottom-up approaches taking
-into account the national and regional interpretation guidelines
-\citep{VandenBorre2011, INSPIREdataspecs}. This subjective and time-consuming
-task of conducting field surveys could be partially replaced with an automated
-remote sensing (RS) method that uses Geographic Object-Based Image
+Recognizing the importance of functioning ecosystems to reduce biodiversity 
+loss, the European Union has implemented an environmental conservation 
+framework to protect and conserve vital habitats in accordance with the 
+Convention on Biological Diversity. An integral part of this framework is the 
+EU Habitats Directive (Council Directive) 92/43/EEC [1992], which established 
+the Natura 2000 network of habitats. The directive requires conservation and 
+monitoring of designated habitats by member states and for a report to be 
+submitted every six years. Environmental data to determine biodiversity status 
+must be collected to comply with the statute. Yet, comparing data used for 
+these reports is difficult due to varying data collection methods and 
+acquisition nomenclatures by the nature conservation authorities in each member 
+state \citep{VandenBorre2011}. The main issue lies in the subjective nature of 
+field surveys to identify habitats \citep{Cherrill1999, Cherrill1999a, 
+Hearn_2011, Nieland2015}. Furthermore, habitat status is mostly generated in 
+bottom-up approaches taking into account the national and regional 
+interpretation guidelines \citep{VandenBorre2011, INSPIREdataspecs}. This 
+subjective and time-consuming task of conducting field surveys could be 
+partially replaced with an automated remote sensing (RS) method that uses 
+Geographic Object-Based Image
 Analysis(GEOBIA) to reduce subjectivity, costs and time.
 
 Remote sensing offers opportunities to collect and automatically interpret large
@@ -265,20 +269,18 @@ herbaceous}, usage: {grazing, mowing}, usage intensity: {low, medium, high}.
 \end{table}
 \subsection{Segmentation}
 \label{subsec:segmentation}
-For the pre-segmentation step (see
-\ref{subsec:Preparation_of_reference_data_and_semantic_characterisation}) two
-types of data were taken into account. Digital orthophotos (resolution 0.2m) are
-used to create the Digital Surface Model (DSM) (resolution 0.5m) using automated
-stereo matching and therefore represent the basis for all segmentation and
-classification procedures. The DTM and DEM was produced using LiDAR ASCII point
-clouds acquired between 2003 and 2009 with a resolution of 0.2m.\\ The reference
-data (see
-\ref{subsec:Preparation_of_reference_data_and_semantic_characterisation})
+For the pre-segmentation step two types of data were taken into account. 
+Digital orthophotos (resolution 0.2m) are used to create the Digital Surface 
+Model (DSM) (resolution 0.5m) using automated stereo matching and therefore 
+represent the basis for all segmentation and classification procedures. The DTM 
+and DEM was produced using LiDAR ASCII point clouds acquired between 2003 and 
+2009 with a resolution of 0.2m.\\ The reference
+data (see \ref{subsec:reference_data_and_semantic_characterisation})
 consists of the federal biotope map (partially updated 2015), agricultural data
-updated every year and a soil map (resolution xxx) which is based on the ALKIS
-%(Amtliches Liegenschaftskaster Informationssystem?!).
-The actual classification process is based on two RapidEye Scenes (Year:xx and
-yy) and indices of the DTM, DEM and orthophotos.
+updated every year and a soil map (resolution xxx) which is based on the ALKIS 
+(Amtliches Liegenschaftskaster Informationssystem- Automated Land 
+Registration Map) The actual classification process is based on two RapidEye 
+Scenes (Year:xx and yy) and indices of the DTM, DEM and orthophotos.
 
 \begin{figure} \includegraphics[width=1\textwidth]{diagrams/pre_processing.png}
     \caption{biotope, agriculture and soil maps are combined 
@@ -300,8 +302,9 @@ differentiate dry, mesic and wet grassland habitats according to level 2 of
 EUNIS. The developed system is comprised of (1) the preparation of reference
 data, including a spatial union of the base data sets (pre-segmented,
 pre-classified areal photos and thematic maps (see 
-\ref{subsec:Preparation_of_reference_data_and_semantic_characterisation} and the
-attachment of subsequent semantic characteristics (see \ref{)},
+\ref{subsec:reference_data_and_semantic_characterisation}) and the
+attachment of subsequent semantic characteristics (see 
+\ref{subsec:LU_anthropomorphic}),
 (2) the selection of training and validation data (see
 \ref{subsec:Selection_of_training_validation_data}
 the generation of classification rules using machine learning algorithms and
@@ -343,15 +346,15 @@ reference classification.
 \label{fig:full_workflow}
 \end{figure}
 
-\label{subsec:Preparation_of_reference_data_and_semantic_characterisation} 
-\subsection{Preparation of reference data and semantic characterization} The
-iterative object-based image analysis is performed by \cite{Tintrup2015} using
-Defiens eCognition Server in a multi-resolution approach
-\citep{baatz2001ecognition} taking into account thresholds. The data is
-segmented by multi-spectral (B, G, R, NIR) orthophotos (see
-\ref{sec:usecase_data}) spectral information and indices (Bare Area Index, etc.)
-and height from the DEM to separate between biotic and abiotic features
-\citep{Tintrup2015}. The detailed data preparation workflow is shown in figure
+\label{subsec:reference_data_and_semantic_characterisation} 
+\subsection{Reference data preparation semantic characterization}
+The iterative object-based image analysis is performed by \cite{Tintrup2015} 
+using Defiens eCognition Server in a multi-resolution approach 
+\citep{baatz2001ecognition} taking into account thresholds. The data is 
+segmented by multi-spectral (B, G, R, NIR) orthophotos (see 
+\ref{sec:usecase_data}) spectral information and indices (Bare Area Index, 
+etc.) and height from the DEM to separate between biotic and abiotic features 
+\citep{Tintrup2015}. The detailed data preparation workflow is shown in figure 
 \ref{fig:pre-processing}. This segmentation follows the EAGLE concept and
 captures land cover classes and labels created polygons as such. This step is
 crucial as the quality of the segmentation determines the quality of the later
@@ -402,7 +405,7 @@ sources, creating a comprehensive database for Rhineland Palatinate. These
 thematic maps have anthropomorphic characteristics of the land use such as
 cultivation and management practice (grazing or mowing). These polygons are much
 larger than the polygons produced by the segmentation (see
-\ref{subsec:Preparation_of_reference_data_and_semantic_characterisation}, so
+\ref{subsec:reference_data_and_semantic_characterisation}, so
 that all polygons completely within the thematically combined polygon receives
 all of its attributes. This step adds the class labels used for training the
 data mining algorithm. 
@@ -471,7 +474,7 @@ The first name is the feature/statistic's name, followed by a threshold. For
 the DT, as in the example, the last number is the node in the tree where the 
 threshold comes from. This information is currently not being used.
 \label{lst:dt_rule_snippet_csv}
-\begin{lstlisting}
+\begin{lstlisting}[frame=single]
     wief_max,>,1.092550,0
     tpi5_max,<=,-0.341000,420
     swi_median,<=,8.097600,421
