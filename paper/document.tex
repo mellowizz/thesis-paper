@@ -37,6 +37,7 @@
 \newcommand*\rot{\multicolumn{1}{R{60}{1em}}}% no optional argument here,
 % please!
 \begin{document}
+\tableofcontents
 \input{./title.tex}
 \input{./authordec.tex}
 %\input{./intro_master.tex}
@@ -86,10 +87,10 @@ loss, the European Union has implemented an environmental conservation
 framework to protect and conserve vital habitats in accordance with the 
 Convention on Biological Diversity. An integral part of this framework is the 
 EU Habitats Directive (Council Directive) 92/43/EEC [1992], which established 
-the Natura 2000 network of habitats. The directive requires conservation and 
-monitoring of designated habitats by member states and for a report to be 
-submitted every six years. Environmental data to determine biodiversity status 
-must be collected to comply with the statute. Yet, comparing data used for 
+the Natura 2000 network of habitats. The directive requires member states to 
+conserve and monitor designated habitats and for a report to be submitted every 
+six years. Environmental data to determine biodiversity status must be 
+collected to comply with reporting requirements. Yet, comparing data used for 
 these reports is difficult due to varying data collection methods and 
 acquisition nomenclatures by the nature conservation authorities in each member 
 state \citep{VandenBorre2011}. The main issue lies in the subjective nature of 
@@ -110,17 +111,17 @@ image analysis implicitly incorporates the expertise of the person performing
 the analysis, reducing reproducibility as the analyst ultimately chooses class
 membership in non-crisp boundaries between classes. This can be divided into
 remote sensing knowledge (spectral signature, remote sensing indices, etc.) and
-field knowledge (feature properties, spatial relations, etc)
+field knowledge (feature properties, spatial relations, etc.)
 \citep{Andres2013a}, which is often neither completely nor explicitly defined as
 it is based on trial and error but influences the classification
 \citep{Arvor2013}. To ensure accuracy and applicability of classification
 outputs for conservation, experts with detailed knowledge of the sites are
 needed to interpret the RS data. The distance between the high-level semantics
 used by experts to describe domain concepts and the low-level information
-quantified from data is referred to as the ``semantic gap''.
+quantified from data is referred to as the ``semantic gap''\citep{Smeulders00}.
 
 Ontologies can help bridge the ``semantic gap'' and allow for better data
-transferability, predictability, interchangeability, knowledge and workflow
+transferability, knowledge and workflow
 management (provenance) and logical consistency \citep{Janowicz2012}.  The
 standards-compliant format designed and adopted to express rich semantics and
 enable the ``Semantic Web'' is called the Web Ontology Language
@@ -160,7 +161,8 @@ indicators led to the discovery of relationships between phenomena
 \citep{Perez-Luque2015}.
 The addition of fuzzy data types to OWL2 and the development of a fuzzy spatial
 reasoner holds great promise for the future of GEOBIA ontology research using
-remote sensing \citep{Bobillo2011, Bobillo2015}. More recently a multi-scale
+remote sensing \citep{Belgiu2013, Bobillo2015}. More recently a 
+multi-scale
 fuzzy spatial reasoner was developed which could have significant impact on this
 research \citep{Argyridis2015}.
 
@@ -259,22 +261,21 @@ be detected by our data and aggregated to form EUNIS classes.
   \rot{description}&\rot{EUNIS class}&\rot{wetness} & \rot{vegetation type} &
   \rot{usage} & \rot{usage intensity} & \rot{immature
   soil} & \rot{hydromorphic} & \rot{species richness} \\ \hline
-\multirow{3}{*}{dry}
+\multirow{2}{*}{dry}
     & E1   & dry & g/h & g/m/- & low & 1 & 0 & 0/1/- \\ 
     & E1.2 & dry & g/h & g/m/- & low & 1 & 0 & 1\\
-\multirow{4}{*}{mesic} 
-    \\
+\multirow{3}{*}{mesic} 
     & E2   & mesic & g/h & g/m/- & l/m/h/- & 0 & 0 & 0/1/-\\
-    & E2.1 & mesic & g/h & g & medium/high & 0 & 0 & -/0/1 \\
+    & E2.1 & mesic & g/h & g & medium/high & 0 & 0 & 0/1/- \\
     & E2.6 & mesic & g & g/m/- & high & 0 & 0 & 0 \\
-    \\
-\multirow{3}{*}{wet}
+\multirow{2}{*}{wet}
     & E3   & very wet & g/h & g/m/- & low/medium & 0 & 1 & 0/1/- \\
     & E3.4 & very wet & g/h & g/m & medium & 0 & 1 & 0/1 \\
 \end{tabular}
 \caption{A `/ ' denotes OR and a '-' denotes 'none' and the first letter of 
-each value is used to safe space. Vegetation type: {graminaceous, 
-herbaceous}, usage: {grazing, mowing}, usage intensity: {low, medium, high}. 
+each value is used to safe space. Vegetation type: \{graminaceous, 
+herbaceous\}, usage: \{grazing, mowing\}, usage intensity: \{low, medium, 
+high\}. 
 }
 \label{tab:indicators_classes}
 \end{table}
