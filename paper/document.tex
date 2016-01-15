@@ -28,6 +28,7 @@
 \usepackage[ddmmyyyy]{datetime}
 \usepackage{listings}
 \usepackage{color}
+\usepackage{standalone}
 
 \renewcommand{\dateseparator}{.}
 
@@ -42,11 +43,13 @@
 \loadglsentries[main]{./glossary}
 \makeglossaries
 \begin{document}
-\tableofcontents
 \input{./title.tex}
-\printglossary
 \input{./authordec.tex}
-%\input{./intro_master.tex}
+\tableofcontents
+\listoffigures
+\listoftables
+\printglossary
+\input{./intro_master.tex}
 
 \begin{frontmatter}
 %\linenumbers
@@ -67,18 +70,23 @@ Lab, Technische Universit\"at Berlin, Stra\ss e des 17. Juni 145, 10623 Berlin,
 Germany}
 
 \begin{abstract}
-Biodiversity monitoring using remote sensing is critical in order to 
-meet future challenges and existing laws such as the EU Habitats Directive. The 
-subjective nature of field surveys, conducted to meet reporting guidelines of  
-the Habitats Directive, combined with differing nomenclatures and procedures 
-of EU member state environmental agencies hampers data exchange and comparison. 
-Furthermore, manual field surveys are expensive and time-consuming. To meet 
-these future challenges automated tools are needed to use remote 
-sensing data to produce comparable, empirical data outputs that lend 
-themselves to data discovery and provenance needs. These requirements describes 
-a developed semi-automatic ontology-based, multi-source \gls{eunis} 
-classification 
-method that is tested on a region in Rhineland-Palatinate, Germany. 
+Biodiversity monitoring using Remote Sensing is critical to meet 
+requirements of existing laws such as the EU Habitats Directive and more 
+importantly meet future challenges. The full potential of RS has yet 
+to be harnessed as different nomenclatures and procedures hinder 
+interoperability, comparison and provenance. Furthermore, the manual field 
+surveys are expensive and time-consuming. To meet 
+these future challenges automated tools are needed to use RS data to 
+produce comparable, empirical data outputs that lend 
+themselves to data discovery and provenance. These issues are addressed by a 
+novel semi-automatic ontology-based classification method that uses data mining 
+algorithms and OWL ontologies that yields traceable, interoperable and 
+observation-based classification outputs. The method is tested on EUNIS 
+grasslands in Saarburg, Rheinland-Palatinate. The method is a first 
+step in developing observation-based ontologies in the field of nature 
+conservation. 
+especially for data discovery, automatic image interpretation, data 
+interoperability, workflow management and data publication.
 \end{abstract}
 
 \begin{keyword}
@@ -133,16 +141,15 @@ Ontologies can help bridge the ``semantic gap'' and allow for better data
 transferability, knowledge and workflow management (provenance) and logical 
 consistency ~\citep{Janowicz2012}.  The standards-compliant format designed and 
 adopted to express rich semantics and enable the ``Semantic Web'' is called the 
-Web Ontology Language 
 (\gls{owl})\footnote{\url{http://www.w3.org/TR/owl2-overview/}}. The format 
-supports multiple syntaxes yet defines the \gls{rdf}/\gls{xml} (subject, 
-predicate, object triplets) as a common exchange format.  Moreover, through the 
-use of reasoners (inference engines) that infer logical consequences over 
-axioms and asserted facts and verify consistency, one can discover new 
-knowledge ~\citep{Arvor2013, Andres2013a} \gls{rs} and field expert knowledge 
-can be digitized in ontologies, thus allowing for a hierarchy of concepts for 
-improved automatic image annotation and retrieval using concepts from both 
-fields to produce more accurate results ~\citep{Srikanth2005}. 
+supports multiple syntaxes yet defines the \gls{rdf} (subject, 
+predicate, object triplets) saved as \gls{xml} as a common exchange format.  
+Moreover, through the use of reasoners (inference engines) that infer logical 
+consequences over axioms and asserted facts and verify consistency, one can 
+discover new knowledge ~\citep{Arvor2013, Andres2013a} \gls{rs} and field expert 
+knowledge can be digitized in ontologies, thus allowing for a hierarchy of 
+concepts for improved automatic image annotation and retrieval using concepts 
+from both fields to produce more accurate results ~\citep{Srikanth2005}. 
 ~\cite{Janowicz2012} advocates for more observation-driven ontologies and for 
 including machine learning, statistics and data mining to construct ontological 
 primitives. While published research on using observation-based ontologies for 
@@ -157,21 +164,20 @@ in the process. ~\cite{Lucas2015} used pixel-based analysis and \gls{geobia}
 for greater classification accuracy which relies on a rule-base created by an 
 expert. Other research includes classification of urban building types using a 
 three-layered architecture ~\citep{diSciascio2013} and a semi-automated 
-classification of urban building using the Random Forest (RF) classifier to 
+classification of urban building using the Random Forest classifier to 
 determine variable importance of features from airborne laser scanner data 
 ~\citep{Belgiu2014}. Ontologies have also been paired with different algorithms 
 to automatically acquire classification rules: a genetic programming algorithm 
 ~\citep{Forestier2012470} and the C4.5 data mining algorithm 
 ~\citep{Sheeren2006ML}. In biodiversity monitoring research, ontologies have 
 been demonstrated to improve spatial data interoperability 
-~\citep{Nieland2015a, Nieland2015b} and have been used for a habitat quality 
-tool showing trends and indicators led to the discovery of relationships 
-between phenomena ~\citep{Perez-Luque2015}. The addition of fuzzy data types to 
-\gls{owl} and the development of a fuzzy spatial reasoner holds great promise 
-for the future of \gls{geobia} ontology research using remote sensing 
-~\citep{Belgiu2013, Bobillo2015}. More recently a multi-scale fuzzy spatial 
-reasoner was developed which could have significant impact on this research 
-~\citep{Argyridis2015}.
+~\citep{Nieland2015a, Nieland2015b} and have been shown to aid in discovery of 
+new relationships to consider for habitat management ~\citep{Perez-Luque2015}. 
+The addition of fuzzy data types to \gls{owl} and the development of a fuzzy 
+spatial reasoner holds great promise for the future of \gls{geobia} ontology 
+research using remote sensing ~\citep{Belgiu2013, Bobillo2015}. More recently a 
+multi-scale fuzzy spatial reasoner was developed which could have significant 
+impact on this research ~\citep{Argyridis2015}.
 
 Even though researchers recently developed a number of indicators using 
 different sensors for habitat evaluation ~\citep{Nagendra2013}, classification 
@@ -181,39 +187,38 @@ manual habitat mapping ~\citep{Arvor2013, Nieland2015a, Nieland2015b}.
 Therefore a formalized computer-readable ontology could help solve these 
 problems and allow scientists to see how the classification was performed and 
 be aware of possible incompatibilities before combining data 
-~\citep{Janowicz2012}.  Furthermore, there is no standardized set of indicators 
+~\citep{Janowicz2012}. Furthermore, there is no standardized set of indicators 
 using \gls{rs} for trans-national habitat evaluation ~\citep{Lucas2015, 
 VandenBorre2011}. Therefore, technical solutions to increase interoperability 
 by thematically harmonizing environmental data and systematize data collection 
 methods from remote sensing inputs in an automated workflow are needed. 
 
-The \gls{eagle} is an expert 
-group that seeks to harmonize land cover (LC) and land use (LU) nomenclatures 
-using an object-oriented data model that eases translations between 
-nomenclatures ~\citep{arnold2013eagle}. The many different nomenclatures used 
-in 
-Europe each have their own specific thematic conceptualization suited towards a 
-specific scale and data collection method- reducing the ability to compare 
-thematic maps. Since LU and LC are interconnected and influence one another, 
-nomenclatures often incorporate both definitions into one class making 
-separation difficult. To overcome this problem the \gls{eagle} data model 
-describes landscapes in three main components: land cover (abiotic, vegetation, 
-water) land use (agriculture, forestry, etc.) and characteristics 
-(bio-physical, cultivation etc). The increased interoperability and 
-transferability of \gls{rs} data and the semantic layer on top helps 
-decision-makers to better assess and compare outcomes. 
+The \gls{eagle} is an expert group that seeks to harmonize \gls{lc}
+and \gls{lu} nomenclatures using an object-oriented data model that 
+eases translations between nomenclatures ~\citep{arnold2013eagle}. The many 
+different nomenclatures used in Europe each have their own specific thematic 
+conceptualization suited towards a specific scale and data collection method- 
+reducing the ability to compare thematic maps. Since LU and LC are 
+interconnected and influence one another, nomenclatures often incorporate both 
+definitions into one class making separation difficult. To overcome this 
+problem the \gls{eagle} data model describes landscapes in three main 
+components: land cover (abiotic, vegetation, water) land use (agriculture, 
+forestry, etc.) and characteristics (bio-physical, cultivation etc). The 
+increased interoperability and transferability of \gls{rs} data and the 
+semantic layer on top helps decision-makers to better assess and compare 
+outcomes. 
 
 
-In this paper we propose an automated system that can classify dry, mesic and
+In this paper we propose an automated system that can classify dry, mesic and 
 wet grassland habitats according to the \gls{eunis} biotope classification 
-schema using earth observation data, existing
-thematic maps (biotope, forestry, etc.), and expert knowledge formalized in an
-ontology by taking into account rules generated by data mining algorithms. The
-combination of data mining algorithms with ontology-based classification has, to
-our knowledge, not yet been done and is a first in remote sensing research.
-This method contributes to the goal of empirically-derived rule creation and
-enhances data interoperability and comparison as proposed ~\cite{Janowicz2012}.
-The main goals of this paper are:
+schema using earth observation data, existing thematic maps (biotope, forestry, 
+etc.), and expert knowledge formalized in an ontology by taking into account 
+rules generated by data mining algorithms. The combination of data mining 
+algorithms with ontology-based classification has, to our knowledge, not yet 
+been done and is a first in remote sensing research. This method contributes to 
+the goal of empirically-derived rule creation and enhances data 
+interoperability and comparison as proposed ~\cite{Janowicz2012}. The main 
+goals of this paper are:
 \begin{itemize}
  \item to develop a \gls{rs} classification methodology using data mining 
 approaches
@@ -236,9 +241,10 @@ tested our method on dry, mesic and wet grasslands (\gls{eunis} E1, E2 and E3
 respectively) in the district of Saarburg. 
 
 Saarburg is an 200km$^{2}$ administrative district and is located in the
-south-west of the federal state of Rhineland Palatinate (RLP), Germany.
+south-west of the federal state of \gls{rlp}, Germany.
 Luxembourg borders the area to the west and the federal state of Saarland to
-the South. RLP has a western european atlantic climate and has an economically
+the South. \gls{rlp} has a western european atlantic climate and has an 
+economically
 and culturally important viticulture industry along the Mosel and Rhine rivers
 (see figure \ref{fig:study_area}).
 \begin{figure}
@@ -248,16 +254,14 @@ and culturally important viticulture industry along the Mosel and Rhine rivers
     OpenStreetMap contributors.}
 \label{fig:study_area}
 \end{figure}
-To achieve a correct formalization of the regarded habitats we adapted selected
-indicators, defined in the \gls{eunis} nomenclature, to meet the 
-requirements of
-remote sensing analysis.
-Furthermore, we adopted \gls{eagle}'s object-oriented approach by 
-separating land 
-use, land cover and characteristics (biophysical and anthropomorphic) and 
-adopted terms when possible to increase interoperability and further re-use. 
-The table ~\ref{tab:indicators_classes} shows the list of indicators that can 
-be detected by our data and aggregated to form \gls{eunis} classes. 
+To achieve a accurate formalization of the regarded habitats we adapted 
+selected indicators, defined in the \gls{eunis} nomenclature, to meet the 
+requirements of remote sensing analysis. Furthermore, we adopted \gls{eagle}'s 
+object-oriented approach by separating land use, land cover and 
+characteristics (biophysical and anthropomorphic) and adopted terms when 
+possible to increase interoperability and further re-use. The table 
+~\ref{tab:indicators_classes} shows the list of indicators that can be detected 
+by our data and aggregated to form \gls{eunis} classes. 
 \begin{table}
 \centering
   \begin{tabular}{clcccccccc}
@@ -282,20 +286,21 @@ herbaceous\}, usage: \{grazing, mowing\}, usage intensity: \{low, medium,
 high\}.\label{tab:indicators_classes}}
 \end{table}
 All described processes are based on a pre-segmentation based on \gls{geobia}.  
-For
-this pre-segmentation step two types of data were taken into account.  Digital
-orthophotos (Year:2012-2013, resolution 0.2m) are used to create the Digital
-Surface Model (\gls{dsm}) (resolution 0.5m) using automated stereo matching and
-therefore represent the basis for all segmentation and classification
-procedures. The \gls{dtm} and \gls{dem} was produced using LiDAR ASCII point 
-clouds acquired
-between 2003 and 2009 with a resolution of 0.2m.\\ The reference data (see
-\ref{subsec:reference_data_and_semantic_characterisation}) consists of the
-federal biotope map (partially updated 2015), agricultural data updated every
-year and a soil map which is based on the ALKIS (Amtliches Liegenschaftskaster
-Informationssystem- Automated Land Registration Map) (partially updated 2015).
-The actual classification process is based on two RapidEye Scenes (Year:2014)
-and indices of the \gls{dt}M, DEM and orthophotos.
+For this pre-segmentation step two types of data were taken into account.  
+Digital orthophotos (Year:2012-2013, resolution 0.2m) are used to create the 
+Digital Surface Model (\gls{dsm}) (resolution 0.5m) using automated stereo 
+matching and therefore represent the basis for all segmentation and 
+classification procedures. The \gls{dtm} and \gls{dem} was produced using 
+\gls{lidar} ASCII point clouds acquired between 2003 and 2009 with a 
+resolution of 0.2m.
+
+The reference data (see 
+\ref{subsec:reference_data_and_semantic_characterisation}) consists of the 
+federal biotope map (partially updated 2015), agricultural data updated every 
+year and a soil map which is based on the ALKIS (Amtliches Liegenschaftskaster 
+Informationssystem- Automated Land Registration Map) (partially updated 2015). 
+The actual classification process is based on two RapidEye Scenes from 2014 and 
+indices of the \gls{dtm}, \gls{dem} and orthophotos.
 
 \begin{figure} \includegraphics[width=1\textwidth]{diagrams/pre_processing.png}
     \caption{biotope, agriculture and soil maps are combined 
@@ -316,29 +321,28 @@ differentiate dry, mesic and wet grassland habitats according to level 2 of
 \gls{eunis}. The developed system is comprised of (1) the preparation of 
 reference
 data, including a spatial union of the base data sets (pre-segmented,
-pre-classified areal photos and thematic maps (see
+pre-classified areial photos and thematic maps (see
 \ref{subsec:reference_data_and_semantic_characterisation}) and the attachment of
 subsequent semantic characteristics (see 
 \ref{subsec:reference_data_and_semantic_characterisation}), (2)
 the selection of training and validation data (see
 \ref{subsec:Selection_of_training_validation_data} the generation of
 classification rules using machine learning algorithms and finally (4) the
-ontology-based classification process (see The software relies on a PostgreSQL
-database and various open source Python and Java libraries to interact with the
-database, convert files and execute a reasoner over the created \gls{owl} file 
-(see
-\ref{subsec:Onto_classification}). The \gls{owl}API
-\footnote{\url{https://github.com/owlcs/owlapi}} is used to interact with the
+ontology-based classification process (see \ref{subsec:Onto_classification}). 
+
+The software relies on a PostgreSQL database and various open source Python and 
+Java libraries to interact with the database, convert files and execute a 
+reasoner over the created \gls{owl} file (see 
+\ref{subsec:Onto_classification}). The \gls{owl}API 
+\footnote{\url{https://github.com/owlcs/owlapi}} is used to interact with the 
 \gls{owl} files and execute the FaCT++ reasoner ~\citep{Tsarkov2006}. Currently 
-the
-rule generation (see \ref{subsec:rulegen_data_mining}) module uses two
-algorithms: \gls{dt}\footnote{\url{
-http://scikit-learn.org/stable/modules/tree.html\#tree} } and
-one additional algorithm called the Separability and Thresholds (SEaTH)
-algorithm ~\citep{Nussbaum2006}. The \gls{et}\footnote{\url{
+the rule generation (see \ref{subsec:rulegen_data_mining}) module uses two 
+algorithms: \gls{dt}\footnote{\url{ 
+http://scikit-learn.org/stable/modules/tree.html\#tree} } and one additional 
+algorithm called the Separability and Thresholds (SEaTH) algorithm 
+~\citep{Nussbaum2006}. The \gls{et}\footnote{\url{ 
 http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesClas
-sifier.html}}
-is used as a reference classification.
+ sifier.html}} is used as a reference classification.
 \begin{figure}
 \includegraphics[width=1\linewidth]{diagrams/final_workflow_diagram.png}
 \caption
@@ -405,28 +409,7 @@ for this research are shown in Table \ref{tab:indicators_classes}. An example of
 a \gls{eunis} class, E2.22 ``Sub-Atlantic lowland hay meadows'' modelled with 
 selected
 remote sensing indicators is written in description logic (DL) below (see
-equation ~\ref{eq:description_logic}). Basic land cover extraction is performed
-by the segmentation process. 
-These polygons include spectral information and various statistics and indices
-such as SAGA wetness index, wind effect, etc. This follows the \gls{eagle} data
-model's separation of LU and LC information.
-
-%\label{LU_anthropomorphic}
-To generate the reference data, we combined agricultural, foresty, biotope and 
-geological data from different sources, creating a comprehensive database for 
-Rhineland Palatinate. These thematic maps include anthropomorphic 
-characteristics of the land use such as cultivation and management practice 
-(grazing or mowing) as well as biophysical characteristics (wetness, soil 
-composition, morphology etc.). To ensure the comparability of these base data 
-sets they were characterized with a common reference model of indicators, which 
-have been developed within the \gls{natflo} project. That means, all base data 
-sets include the subsequent indicators (such as wetness, usage etc.) and can 
-therefore be used as reference data. The included polygons are much larger than 
-the polygons produced by the segmentation (see 
-\ref{subsec:reference_data_and_semantic_characterisation}, so that all polygons 
-completely within the thematically combined polygon receives all of its 
-attributes. This step adds the class labels used for training the data mining 
-algorithm.
+equation ~\ref{eq:description_logic}).
 \begin{equation}\label{eq:description_logic}
 \begin{align*}
 %\begin{split}
@@ -439,66 +422,87 @@ algorithm.
 \end{align*}
 \end{equation}
 \label{subsec:Selection_of_training_validation_data}
+
+%\label{LU_anthropomorphic}
+Basic land cover extraction is performed
+by the segmentation process. 
+These polygons include spectral information and various statistics and indices
+such as SAGA wetness index, wind effect, etc. This follows the \gls{eagle} data
+model's separation of land use and land cover information.
+
+To generate the reference data, we combined agricultural, foresty, biotope and 
+geological data from different sources, creating a comprehensive database for 
+\gls{rlp}. These thematic maps include anthropomorphic characteristics of the 
+\gls{lu} such as cultivation and management practice (grazing or mowing) as 
+well as biophysical characteristics (wetness, soil composition, morphology 
+etc.). To ensure the comparability of these base data sets they were 
+characterized with a common reference model of indicators, which have been 
+developed within the \gls{natflo} project. That means, all base data sets 
+include the subsequent indicators (such as wetness, usage etc.) and can 
+therefore be used as reference data. The included polygons are much larger than 
+the polygons produced by the segmentation (see 
+\ref{subsec:reference_data_and_semantic_characterisation}, so that all polygons 
+completely within the thematically combined polygon receives all of its 
+attributes. This step adds the class labels used for 
+training the data mining algorithm.
 \subsection{Selection of training and validation data}
-% Du musst noch schreiben, dass du als erstes in Cal und val trennst!
-%\subsubsection{SeATH}
-The data was divided into 40\% for training and 60\% for validation. 
-Training the SEaTH algorithm starts with 15 objects per class being randomly 
-selected from the training data. One benefit of the SeATH algorithm is that one 
-does not need many training objects. In ~\cite{Nussbaum2006}, for example, the 
-authors suggest using only very characteristic features for training and only 
-used around 10 samples per class. The authors also state that usually two 
-features per class is enough to produce accurate results.
+The data was divided into 40\% for training and 60\% for validation. Training 
+\gls{seath} starts with 15 objects per class being randomly selected from the 
+training data. One benefit of \gls{seath} is that one does not need many 
+training objects. In ~\cite{Nussbaum2006}, for example, the authors suggest 
+using only very characteristic features for training and only used around 10 
+samples per class. The authors also state that usually two features per class 
+is enough to produce accurate results.
 
 We use an evolutionary search algorithm with 10 evolutions based on the 
 Distributed Evolutionary Algorithms in Python ~\citep{DEAP_JMLR2012} software 
 to find the best features and used balanced class weights due to the very 
-different distribution of grassland biotopes.  Three different fitted \gls{dt} 
+different distribution of grassland biotopes. Three different fitted \gls{dt} 
 classifiers were compared: 1) a \gls{dt} fitted with the features chosen by the 
 evolutionary search algorithm 2) a \gls{dt} trained on all features with 
 parameters chosen after trial and error 3) a \gls{dt} trained on the top 10 
 most important features as chosen by the \gls{et} classifier. Each \gls{dt} 
 classifier undergoes a 5-fold cross validation to verify results and the 
-highest overall accuracy \gls{dt} is chosen.
+\gls{dt} with the highest overall accuracy \gls{dt} was chosen.
 \label{subsec:rulegen_data_mining}
 \subsection{Rule generation}
-%Hier vielleicht noch ein einleitender Satz: Based on the training data,
-% different data mining algorithms are used to generate rules for the actual
-% classification procedure.
-For the \gls{dt} case the tree is parsed according to the depth first search 
-algorithm. Starting with the root node, the algorithm visits edges first, 
-traveling as far as and only when it reaches a leaf node does it backtrack. The 
-nodes contain the decision thresholds and all nodes visited before reaching the 
-leaf node (the parents of that node) are chained with a logical ``AND'' 
-together to create a rule. The leaf node also has information on how many 
-objects were classified by going down this branch and how many were falsely 
-classified. The rule is assigned to the class with the best accuracy at that 
-leaf node. The process continues until all leaf nodes are visited. The rules 
-are joined together by logical ``OR"s and become a rule set for the indicator 
-under investigation. An example decision tree trained on immature soil is 
-depicted in figure \ref{fig:decisiontree}.
+Different data mining algorithms are trained on the training data to generate 
+rules for the classification procedure. For the \gls{dt} case the tree is 
+parsed according to the depth first search algorithm. Starting with the root 
+node, the algorithm visits edges first, traveling as far as and only when it 
+reaches a leaf node does it backtrack. The nodes contain the decision thresholds 
+and all nodes visited before reaching the leaf node (the parents of that node) 
+are chained with a logical ``AND'' together to create a rule. The leaf node also 
+has information on how many objects were classified by going down this branch 
+and how many were falsely classified. The rule is assigned to the class with 
+the best accuracy at that leaf node. The process continues until all leaf nodes 
+are visited. The rules are joined together by logical ``OR"s and become a rule 
+set for the indicator under investigation. An example decision tree trained on 
+immature soil is depicted in figure \ref{fig:decisiontree}.
 %Die Graphik ist etwas klein. Vielleicht ist Querformat besser?!
 \begin{figure}
 \includegraphics[width=\textwidth]{diagrams/natfo_immature_soil_dt.png}
     \caption{An example decision tree trained on immature soil 
 indicator.\label{fig:decisiontree}}
 \end{figure}
-%Hier muss noch rein wie SeATH funktioniert. Hattest du das nicht schon irgendwo
-% geschrieben?
-The SEaTH algorithm outputs rules that include the best features to separate 
-one class from another. Since we have over 200 features and the authors of 
-SEaTH suggest using only 2-3 features, we parse the first three lines as the 
-list is sorted from best to worst. We join the features with their 
-corresponding thresholds using logical ANDs. We do this for every class, 
-chaining the preceding rule and the next rule with an OR. An example rule from 
-the \gls{dt} is shown below.
 
-The subclass ``low'' from ``usage intensity'' has a rule that is generated by 
-the decision tree algorithm as seen in \ref{lst:dt_rule_snippet_csv} below. The 
-first name is the feature/statistic's name, followed by a threshold. For the 
-\gls{dt}, as in the example, the last number is the node in the tree where the 
-threshold comes from. This information is currently not being used.
+\gls{seath} makes the assumption that the classes follow a normal distribution 
+and determines the separability of the object classes by computing the 
+pairwise Jeffries-Matusita distance. The distance outputs a score from 0-2 
+signaling the quality of separation where 2 is total class separation with 
+this feature. The \gls{seath} algorithm outputs rules that include the best 
+features to separate one class from another. Since we have over 200 features and 
+the authors of \gls{seath} suggest using only 2-3 features, we parse the first 
+three lines as the list is sorted from best to worst. We join the features with 
+their corresponding thresholds using logical ANDs. We do this for every class, 
+chaining the preceding rule and the next rule with an OR. 
 
+An example rule from the \gls{dt} is shown below. The subclass ``low'' from 
+``usage intensity'' has a rule that is generated by the decision tree algorithm 
+as seen in \ref{lst:dt_rule_snippet_csv} below. The first name is the 
+feature/statistic's name, followed by a threshold. For the \gls{dt}, as in the 
+example, the last number is the node in the tree where the threshold comes 
+from. This information is currently not being used.
 \lstset{language=XML,tabsize=2, label=lst:dt_rule_snippet_csv, caption=\lstname}
 \begin{lstlisting}
     wief_max,>,1.092550,0
@@ -520,27 +524,27 @@ as can be seen in the outer ObjectUnionOf.
 \lstset{language=XML,tabsize=2, label=lst:dt_rule_snippet_owl, 
 caption=\lstname}
 \begin{lstlisting}
-                <DataSomeValuesFrom>
-                    <DataProperty IRI="#has_tpi5_max"/>
-                    <DatatypeRestriction>
-                        <Datatype abbreviatedIRI="xsd:double"/>
-                        <FacetRestriction facet="&xsd;maxInclusive">
-                            <Literal datatypeIRI="&xsd;double">-0.341</Literal>
-                        </FacetRestriction>
-                    </DatatypeRestriction>
-                </DataSomeValuesFrom>
-                <DataSomeValuesFrom>
-                    <DataProperty IRI="#has_wief_max"/>
-                    <DatatypeRestriction>
-                        <Datatype abbreviatedIRI="xsd:double"/>
-                        <FacetRestriction facet="&xsd;minExclusive">
-                            <Literal datatypeIRI="&xsd;double">1.09255</Literal>
-                        </FacetRestriction>
-                    </DatatypeRestriction>
-                </DataSomeValuesFrom>
-            </ObjectIntersectionOf>
-        </ObjectUnionOf>
-    </EquivalentClasses>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#has_tpi5_max"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;maxInclusive">
+                        <Literal datatypeIRI="&xsd;double">-0.341</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#has_wief_max"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;minExclusive">
+                        <Literal datatypeIRI="&xsd;double">1.09255</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </ObjectUnionOf>
+</EquivalentClasses>
 \end{lstlisting}
 \subsection{Ontology-based classification}
 \label{subsec:Onto_classification}
@@ -751,14 +755,14 @@ ability to learn from the data. Only one dry grassland classified as such fits
 the rule's definition of a dry grassland. The reasons for this could be due the 
 differences in data quality between the biotope map and the agriculture map 
 with grasslands misclassified or a conceptualization problem with the 
-translation from the RLP classification to \gls{eunis}. Visually inspecting the 
-data revealed that polygons were in fact grasslands, agricultural land or 
-meadow as the height restriction and the class name ``herbaceous plants'' from 
-the segmentation properly excluded trees, artificial buildings, etc. The larger 
-size of the thematic map's polygons means that a polygon of grasslands in 
-between an orchard will still be assigned the orchard's label and \gls{eunis} 
-indicators. Early on the issue with orchards was identified and even after 
-having moved to a minimum 200m$^{2}$ size for polygons created during 
+translation from the \gls{rlp} classification to \gls{eunis}. Visually 
+inspecting the data revealed that polygons were in fact grasslands, agricultural 
+land or meadow as the height restriction and the class name ``herbaceous 
+plants'' from the segmentation properly excluded trees, artificial buildings, 
+etc. The larger size of the thematic map's polygons means that a polygon of 
+grasslands in between an orchard will still be assigned the orchard's label and 
+\gls{eunis} indicators. Early on the issue with orchards was identified and even 
+after having moved to a minimum 200m$^{2}$ size for polygons created during 
 segmentation has not been resolved. A multi-scale approach will probably be 
 needed to solve this problem. overal Adding immature soil and the usage 
 intensity increases classification accuracy only very slightly.
@@ -796,9 +800,9 @@ Formalizing ecological information for biodiversity monitoring is
 necessary to take advantage of advances in new sensors and products becoming
 available. 
 \section{Acknowledgments}
-We would like to thank RLP AgroScience GmbH for processing the data and the 
-RLP's Environment Ministry for funding the \gls{natflo} project. This work was 
-conducted using the Prot\'eg\'e resource, which is supported by grant 
+We would like to thank \gls{rlp} AgroScience GmbH for processing the data and 
+the \gls{rlp}'s Environment Ministry for funding the \gls{natflo} project. This 
+work was conducted using the Prot\'eg\'e resource, which is supported by grant 
 GM10331601 from the National Institute of General Medical Sciences of the 
 United States National Institutes of Health.
 \section{Appendix}
