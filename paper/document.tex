@@ -12,9 +12,11 @@
 \usepackage{tabulary}
 \usepackage{graphicx}
 \usepackage{color}
-\usepackage[none]{hyphenat} \usepackage[table]{xcolor} \sloppy
+\usepackage[none]{hyphenat}
+%\usepackage[table]{xcolor} \sloppy
 \usepackage[hyphens]{url}
 \usepackage{hyperref}
+\usepackage[toc]{glossaries}
 \usepackage{amsmath}
 \usepackage{multirow}
 \usepackage{rotating}
@@ -36,9 +38,13 @@
 }
 \newcommand*\rot{\multicolumn{1}{R{60}{1em}}}% no optional argument here,
 % please!
+
+\loadglsentries[main]{./glossary}
+\makeglossaries
 \begin{document}
 \tableofcontents
 \input{./title.tex}
+\printglossary
 \input{./authordec.tex}
 %\input{./intro_master.tex}
 \lstset{language=XML}
@@ -93,12 +99,12 @@ six years. Environmental data to determine biodiversity status must be
 collected to comply with reporting requirements. Yet, comparing data used for 
 these reports is difficult due to varying data collection methods and 
 acquisition nomenclatures by the nature conservation authorities in each member 
-state \citep{VandenBorre2011}. The main issue lies in the subjective nature of 
-field surveys to identify habitats \citep{Cherrill1999, Cherrill1999a, 
-Hearn_2011, Nieland2015a}. Furthermore, habitat status is mostly 
+state ~\citep{VandenBorre2011}. The main issue lies in the subjective nature of 
+field surveys to identify habitats ~\citep{Cherrill1999, Cherrill1999a, 
+Hearn2011, Nieland2015a}. Furthermore, habitat status is mostly 
 generated in 
 bottom-up approaches taking into account the national and regional 
-interpretation guidelines \citep{VandenBorre2011, INSPIREdataspecs}. This 
+interpretation guidelines ~\citep{VandenBorre2011, INSPIREdataspecs}. This 
 subjective and time-consuming task of conducting field surveys could be 
 partially replaced with an automated remote sensing (RS) method that uses 
 Geographic Object-Based Image
@@ -106,23 +112,24 @@ Analysis(GEOBIA) to reduce subjectivity, costs and time.
 
 Remote sensing offers opportunities to collect and automatically interpret large
 amounts of computer-readable data useful for nature conservation and
-biodiversity monitoring \citep{Corbane2015, VandenBorre2011, Mayer2011}. RS
+biodiversity monitoring ~\citep{Corbane2015, VandenBorre2011, Mayer2011}. RS
 image analysis implicitly incorporates the expertise of the person performing
 the analysis, reducing reproducibility as the analyst ultimately chooses class
 membership in non-crisp boundaries between classes. This can be divided into
 remote sensing knowledge (spectral signature, remote sensing indices, etc.) and
 field knowledge (feature properties, spatial relations, etc.)
-\citep{Andres2013a}, which is often neither completely nor explicitly defined as
+~\citep{Andres2013a}, which is often neither completely nor explicitly defined 
+as
 it is based on trial and error but influences the classification
-\citep{Arvor2013}. To ensure accuracy and applicability of classification
+~\citep{Arvor2013}. To ensure accuracy and applicability of classification
 outputs for conservation, experts with detailed knowledge of the sites are
 needed to interpret the RS data. The distance between the high-level semantics
 used by experts to describe domain concepts and the low-level information
-quantified from data is referred to as the ``semantic gap''\citep{Smeulders00}.
+quantified from data is referred to as the ``semantic gap''~\citep{Smeulders00}.
 
 Ontologies can help bridge the ``semantic gap'' and allow for better data
 transferability, knowledge and workflow
-management (provenance) and logical consistency \citep{Janowicz2012}.  The
+management (provenance) and logical consistency ~\citep{Janowicz2012}.  The
 standards-compliant format designed and adopted to express rich semantics and
 enable the ``Semantic Web'' is called the Web Ontology Language
 (OWL2)\footnote{\url{http://www.w3.org/TR/owl2-overview/}}. The format supports
@@ -130,12 +137,12 @@ multiple syntaxes yet defines the Resource Description Framework (RDF)/XML
 (subject, predicate, object triplets) as a common exchange format.  Moreover,
 through the use of reasoners (inference engines) that infer logical consequences
 over axioms and asserted facts and verify consistency, one can discover new
-knowledge \citep{Arvor2013, Andres2013a}
+knowledge ~\citep{Arvor2013, Andres2013a}
 
 RS and field expert knowledge can be digitized in ontologies, thus allowing for
 a hierarchy of concepts for improved automatic image annotation and retrieval
 using concepts from both fields to produce more accurate results
-\citep{Srikanth_2005}. \cite{Janowicz2012} advocates for more
+~\citep{Srikanth2005}. ~\cite{Janowicz2012} advocates for more
 observation-driven ontologies and for including machine learning, statistics and
 data mining to construct ontological primitives. While published research on
 using observation-based ontologies for biotope classifications is limited, the
@@ -143,39 +150,42 @@ available research using ontologies in RS research is briefly summarized below.
 
 Ontologies modeled on the Land Cover Classification System and the General
 Habitat Category were integrated into tools used to monitor and protect areas in
-the EU \citep{Arvor2013}. The authors note that using the taxonomy of the
+the EU ~\citep{Arvor2013}. The authors note that using the taxonomy of the
 different classification systems makes it possible to include expert knowledge
-in the process. \cite{Lucas2015} used pixel-based analysis and OBIA for greater
+in the process. ~\cite{Lucas2015} used pixel-based analysis and OBIA for greater
 classification accuracy which relies on a rule-base created by an expert. Other
 research includes classification of urban building types using a three-layered
-architecture \citep{diSciascio2013} and a semi-automated classification of urban
+architecture ~\citep{diSciascio2013} and a semi-automated classification of 
+urban
 building using the Random Forest (RF) classifier to determine variable
-importance of features from airborne laser scanner data \citep{Belgiu2014}.
+importance of features from airborne laser scanner data ~\citep{Belgiu2014}.
 Ontologies have also been paired with different algorithms to automatically
 acquire classification rules: a genetic programming algorithm
-\citep{Forestier2012470} and the C4.5 data mining algorithm
-\citep{Sheeren2006ML}. In biodiversity monitoring research, ontologies have been
-demonstrated to improve spatial data interoperability \citep{Nieland2015a,
+~\citep{Forestier2012470} and the C4.5 data mining algorithm
+~\citep{Sheeren2006ML}. In biodiversity monitoring research, ontologies have 
+been
+demonstrated to improve spatial data interoperability ~\citep{Nieland2015a,
 Nieland2015b} and have been used for a habitat quality tool showing trends and
 indicators led to the discovery of relationships between phenomena
-\citep{Perez-Luque2015}.
+~\citep{Perez-Luque2015}.
 The addition of fuzzy data types to OWL2 and the development of a fuzzy spatial
 reasoner holds great promise for the future of GEOBIA ontology research using
-remote sensing \citep{Belgiu2013, Bobillo2015}. More recently a 
+remote sensing ~\citep{Belgiu2013, Bobillo2015}. More recently a 
 multi-scale
 fuzzy spatial reasoner was developed which could have significant impact on this
-research \citep{Argyridis2015}.
+research ~\citep{Argyridis2015}.
 
 Even though researchers recently developed a number of indicators using 
-different sensors for habitat evaluation \citep{Nagendra2013}, classification 
+different sensors for habitat evaluation ~\citep{Nagendra2013}, classification 
 procedures and rule-sets were not formalized to be computer readable and 
 therefore suffer from similar transferablity and reproducibility problems as 
-manual habitat mapping \citep{Arvor2013, Nieland2015a, Nieland2015b}. Therefore 
+manual habitat mapping ~\citep{Arvor2013, Nieland2015a, Nieland2015b}. 
+Therefore 
 a formalized computer-readable ontology could help solve these problems and 
 allow scientists to see how the classification was performed and be aware of 
-possible incompatibilities before combining data \citep{Janowicz2012}.  
+possible incompatibilities before combining data ~\citep{Janowicz2012}.  
 Furthermore, there is no standardized set of indicators using RS for 
-trans-national habitat evaluation \citep{Lucas2015, VandenBorre2011}. 
+trans-national habitat evaluation ~\citep{Lucas2015, VandenBorre2011}. 
 Therefore, technical solutions to increase interoperability by thematically 
 harmonizing environmental data and systematize data collection methods from 
 remote sensing inputs in an automated workflow are needed. 
@@ -183,7 +193,7 @@ remote sensing inputs in an automated workflow are needed.
 The EIONET Action Group on Land monitoring in Europe (EAGLE) is an expert group
 that seeks to harmonize land cover (LC) and land use (LU) nomenclatures using an
 object-oriented data model that eases translations between nomenclatures
-\citep{arnold2013eagle}. The many different nomenclatures used in Europe each
+~\citep{arnold2013eagle}. The many different nomenclatures used in Europe each
 have their own specific thematic conceptualization suited towards a specific
 scale and data collection method- reducing the ability to compare thematic maps.
 Since LU and LC are interconnected and influence one another, nomenclatures
@@ -194,14 +204,18 @@ forestry, etc.) and characteristics (bio-physical, cultivation etc). The
 increased interoperability and transferability of RS data and the semantic layer
 on top helps decision-makers to better assess and compare outcomes. 
 % The goal is to produce what Janowicz describes as a
-% ``micro theory'' \citep{Janowicz2012} which can then be used to map other theories
+% ``micro theory'' ~\citep{Janowicz2012} which can then be used to map other 
+theories
 % by training the data mining algorithms for the new region and using the
-% reasoner. We hope that once good test sites are taken for a region (for instance
-% the federal state of Rhineland Palatinate) that the data mining algorithms will
+% reasoner. We hope that once good test sites are taken for a region (for 
+instance
+% the federal state of Rhineland Palatinate) that the data mining algorithms 
+will
 % identify rules for ontological primitives that captures the concept well using
 % RS and other environmental data, negating the need to re-train. This speeds
 % up classification and makes generation of new reference data unnecessary. This
-% refers especially to the ones, which are derived from rather stable data sources
+% refers especially to the ones, which are derived from rather stable data 
+sources
 % like the indices of the DEM/DSM.
 
 In this paper we propose an automated system that can classify dry, mesic and
@@ -212,7 +226,7 @@ ontology by taking into account rules generated by data mining algorithms. The
 combination of data mining algorithms with ontology-based classification has, to
 our knowledge, not yet been done and is a first in remote sensing research.
 This method contributes to the goal of empirically-derived rule creation and
-enhances data interoperability and comparison as proposed \cite{Janowicz2012}.
+enhances data interoperability and comparison as proposed ~\cite{Janowicz2012}.
 The main goals of this paper are:
 \begin{itemize}
  \item to develop a RS classification methodology using data mining approaches
@@ -248,13 +262,14 @@ and culturally important viticulture industry along the Mosel and Rhine rivers
 \label{fig:study_area}
 \end{figure}
 To achieve a correct formalization of the regarded habitats we adapted selected
-indicators, defined in the EUNIS nomenclature, to meet the requirements of
+indicators, defined in the \gls{eunis} nomenclature, to meet the 
+requirements of
 remote sensing analysis.
 Furthermore, we adopted EAGLE's object-oriented approach by separating land 
 use, land cover and characteristics (biophysical and anthropomorphic) and 
 adopted terms when possible to increase interoperability and further re-use. 
 The table ~\ref{tab:indicators_classes} shows the list of indicators that can 
-be detected by our data and aggregated to form EUNIS classes. 
+be detected by our data and aggregated to form \gls{eunis} classes. 
 \begin{table}
 \centering
   \begin{tabular}{clcccccccc}
@@ -272,19 +287,20 @@ be detected by our data and aggregated to form EUNIS classes.
     & E3   & very wet & g/h & g/m/- & low/medium & 0 & 1 & 0/1/- \\
     & E3.4 & very wet & g/h & g/m & medium & 0 & 1 & 0/1 \\
 \end{tabular}
+\label{tab:indicators_classes}
 \caption{A `/ ' denotes OR and a '-' denotes 'none' and the first letter of 
 each value is used to safe space. Vegetation type: \{graminaceous, 
 herbaceous\}, usage: \{grazing, mowing\}, usage intensity: \{low, medium, 
 high\}. 
 }
-\label{tab:indicators_classes}
 \end{table}
 All described processes are based on a pre-segmentation based on GEOBIA.  For
 this pre-segmentation step two types of data were taken into account.  Digital
 orthophotos (Year:2012-2013, resolution 0.2m) are used to create the Digital
-Surface Model (DSM) (resolution 0.5m) using automated stereo matching and
+Surface Model (\gls{dsm}) (resolution 0.5m) using automated stereo matching and
 therefore represent the basis for all segmentation and classification
-procedures. The DTM and DEM was produced using LiDAR ASCII point clouds acquired
+procedures. The \gls{dtm} and \gls{dem} was produced using LiDAR ASCII point 
+clouds acquired
 between 2003 and 2009 with a resolution of 0.2m.\\ The reference data (see
 \ref{subsec:reference_data_and_semantic_characterisation}) consists of the
 federal biotope map (partially updated 2015), agricultural data updated every
@@ -323,13 +339,15 @@ database and various open source Python and Java libraries to interact with the
 database, convert files and execute a reasoner over the created OWL file (see
 \ref{subsec:Onto_classification}). The OWLAPI
 \footnote{\url{https://github.com/owlcs/owlapi}} is used to interact with the
-OWL files and execute the FaCT++ reasoner \citep{Tsarkov2006}. Currently the
+OWL files and execute the FaCT++ reasoner ~\citep{Tsarkov2006}. Currently the
 rule generation (see \ref{subsec:rulegen_data_mining}) module uses two
 algorithms: decision tree classifier
 (DT)\footnote{\url{http://scikit-learn.org/stable/modules/tree.html\#tree}} and
 one additional algorithm called the Separability and Thresholds (SEaTH)
-algorithm \citep{Nussbaum2006}. The extra trees classifier (ET)
-\footnote{\url{http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesClassifier.html}}
+algorithm ~\citep{Nussbaum2006}. The extra trees classifier (ET)
+\footnote{\url{
+http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesClas
+sifier.html}}
 is used as a reference classification.
 \begin{figure}
 \includegraphics[width=1\linewidth]{diagrams/final_workflow_diagram.png}
@@ -348,19 +366,19 @@ is used as a reference classification.
 \end{figure}
 \label{subsec:reference_data_and_semantic_characterisation} 
 \subsection{Reference data preparation and semantic characterization}
-The iterative object-based image analysis is performed by \cite{Tintrup2015} 
+The iterative object-based image analysis is performed by ~\cite{Tintrup2015} 
 using Defiens eCognition Server in a multi-resolution approach 
-\citep{baatz2001ecognition} taking into account thresholds. The data is 
+~\citep{baatz2001ecognition} taking into account thresholds. The data is 
 segmented by multi-spectral (B, G, R, NIR) orthophotos (see 
 \ref{sec:usecase_data}) spectral information and indices (Bare Area Index, 
 etc.) and height from the DEM to separate between biotic and abiotic features 
-\citep{Tintrup2015}. The detailed data preparation workflow is shown in figure 
+~\citep{Tintrup2015}. The detailed data preparation workflow is shown in figure 
 \ref{fig:pre-processing}. This segmentation follows the EAGLE concept and
 captures land cover classes and labels created polygons as such. This step is
 crucial as the quality of the segmentation determines the quality of the later
 identification step as the value of an indicator such as wetness for a grassland
 might differ for that of a forest. Using EUNIS class descriptions and
-interpretation guidelines \citep{EUNISManual}, a set of indicators tailored to
+interpretation guidelines ~\citep{EUNISManual}, a set of indicators tailored to
 the available input data for our test area were created. Detailed analysis of
 the EUNIS nomenclature showed that some indicators do not lend themselves to
 easily be detected by RS data. Therefore consulting with an expert ecologist,
@@ -371,7 +389,7 @@ logical connections (axioms) in an OWL2 file.
 An OWL2 ontology is composed of classes, individuals and properties. Classes are
 sets of individuals and properties come in two forms: an object property defines
 a relationship between two individuals and a data property  places a data type
-constraint on the individual \citep{OWL2}. Furthermore, a reasoner can perform
+constraint on the individual ~\citep{OWL2}. Furthermore, a reasoner can perform
 A-Box and T-Box reasoning over the defined axioms. 
 
 Relationships between objects (subsumption, disjointedness, etc). are discovered
@@ -400,7 +418,8 @@ model's separation of LU and LC information.
 To generate the reference data, we combined agricultural, foresty, biotope and
 geological data from different sources, creating a comprehensive database for
 Rhineland Palatinate. These thematic maps include anthropomorphic
-characteristics of the land use such as cultivation and management practice (grazing or mowing)
+characteristics of the land use such as cultivation and management practice 
+(grazing or mowing)
 as well as biophysical characteristics (wetness, soil composition, morphology
 etc.). To ensure the comparablity of these base data sets they were
 characterised with a common reference model of indictors, which have been
@@ -408,7 +427,10 @@ developed within the NATFLO (Remote Sensing Based Objects for Nature
 Conservancy) project.  That means, all base data sets include the subsequent
 indicators (such as wetness, usage etc.) and can therefore be used as reference
 data. The included polygons are much larger than the polygons produced by the
-segmentation (see \ref{subsec:reference_data_and_semantic_characterisation}, so that all polygons completely within the thematically combined polygon receives all of its attributes. This step adds the class labels used for training the data mining algorithm.
+segmentation (see \ref{subsec:reference_data_and_semantic_characterisation}, so 
+that all polygons completely within the thematically combined polygon receives 
+all of its attributes. This step adds the class labels used for training the 
+data mining algorithm.
 \begin{equation}
 \begin{align*}
 %\begin{split}
@@ -428,13 +450,14 @@ segmentation (see \ref{subsec:reference_data_and_semantic_characterisation}, so 
 The data was divided into 40\% for training and 60\% for validation. 
 Training the SEaTH algorithm starts with 15 objects per class being randomly 
 selected from the training data. One benefit of the SeATH algorithm is that one 
-does not need many training objects. In \cite{Nussbaum2006}, for example, the 
+does not need many training objects. In ~\cite{Nussbaum2006}, for example, the 
 authors suggest using only very characteristic features for training and only 
 used around 10 samples per class. The authors also state that usually two 
 features per class is enough to produce accurate results.
 %\subsubsection{DT and ET}
 We use an evolutionary search algorithm with 10 evolutions based on the 
-Distributed Evolutionary Algorithms in Python \citep{DEAP_JMLR2012} software to 
+Distributed Evolutionary Algorithms in Python ~\citep{DEAP_JMLR2012} software 
+to 
 find the best features and used balanced class weights due to the very 
 different distribution of grassland biotopes.  Three different fitted DT 
 classifiers were compared: 1) a DT fitted with the features chosen by the 
@@ -452,8 +475,10 @@ For the DT case the tree is parsed according to the depth first search
 algorithm. Starting with the root node, the algorithm visits edges first, 
 traveling as far as and only when it reaches a leaf node does it backtrack. The 
 nodes contain the decision thresholds and all nodes visited before reaching the 
-leaf node (the parents of that node) are chained with a logical ``AND'' together to
-create a rule. The leaf node also has information on how many objects were classified by 
+leaf node (the parents of that node) are chained with a logical ``AND'' together 
+to
+create a rule. The leaf node also has information on how many objects were 
+classified by 
 going down this branch and how many were falsely classified. The rule is 
 assigned to the class with the best accuracy at that leaf node. The process 
 continues until all leaf nodes are visited. The rules are joined 
@@ -533,7 +558,7 @@ rules. The classification results by the reasoner is written to the database.
 \label{subsec:Validation}
 For SEaTH 
 15 objects per class were used from the training data because the algorithm 
-performs better with a smaller number of features \citep{Nussbaum2006}. We 
+performs better with a smaller number of features ~\citep{Nussbaum2006}. We 
 selected only polygons greater than 200m$^{2}$ identified to be herbaceous 
 plants by the segmentation algorithm for training and testing. For training we 
 selected only polygons where the value for the 90 percentile of the NDSM was 
@@ -754,7 +779,7 @@ The misclassification of I1 - ``Arable land and market gardens'' is
 understandable as the EUNIS biotope classification specifically states that 
 turf and sports fields are excluded. Since I1 is ``species poor'' adding 
 ``species richness'' to the E2 rule reduced the number of polygons classified 
-as I1 but also reduced the total number of E2 classes as well.\\
+as I1 but also reduced the total number of E2 classes as well.
 
 A dimension reduction strategy using principal component analysis could possibly
 improve the data mining algorithms classification accuracy.
@@ -789,4 +814,5 @@ the SEaTH OWL file is located:
 \bibliographystyle{model2-names}
 \section{References}
 \bibliography{references}
+%\printglossary
 \end{document}
