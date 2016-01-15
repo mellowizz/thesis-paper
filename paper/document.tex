@@ -29,6 +29,7 @@
 \usepackage{listings}
 \usepackage{color}
 \usepackage{standalone}
+\usepackage[final]{pdfpages}
 
 \renewcommand{\dateseparator}{.}
 
@@ -44,7 +45,8 @@
 \makeglossaries
 \begin{document}
 \input{./title.tex}
-\input{./authordec.tex}
+\includepdf[pages=-]{./authordec.pdf}
+%\input{./authordec.tex}
 \tableofcontents
 \listoffigures
 \listoftables
@@ -95,7 +97,6 @@ EUNIS, GEOBIA
 \end{keyword}
 \end{frontmatter}
 %\linenumbers
-
 \section{Introduction}
 Recognizing the importance of functioning ecosystems to reduce biodiversity 
 loss, the European Union has implemented an environmental conservation 
@@ -110,32 +111,29 @@ these reports is difficult due to varying data collection methods and
 acquisition nomenclatures by the nature conservation authorities in each member 
 state ~\citep{VandenBorre2011}. The main issue lies in the subjective nature of 
 field surveys to identify habitats ~\citep{Cherrill1999, Cherrill1999a, 
-Hearn2011, Nieland2015a}. Furthermore, habitat status is mostly 
-generated in 
+Hearn2011, Nieland2015a}. Furthermore, habitat status is mostly generated in 
 bottom-up approaches taking into account the national and regional 
 interpretation guidelines ~\citep{VandenBorre2011, INSPIREdataspecs}. This 
 subjective and time-consuming task of conducting field surveys could be 
-partially replaced with an automated \gls{rs} method that 
-uses \gls{geobia} to reduce subjectivity, costs and time.
+partially replaced with an automated \gls{rs} method that uses \gls{geobia} to 
+reduce subjectivity, costs and time.
 
-Remote sensing offers opportunities to collect and automatically interpret large
-amounts of computer-readable data useful for nature conservation and
+Remote sensing offers opportunities to collect and automatically interpret 
+large amounts of computer-readable data useful for nature conservation and 
 biodiversity monitoring ~\citep{Corbane2015, VandenBorre2011, Mayer2011}. 
-\gls{rs}
-image analysis implicitly incorporates the expertise of the person performing
-the analysis, reducing reproducibility as the analyst ultimately chooses class
-membership in non-crisp boundaries between classes. This can be divided into
-remote sensing knowledge (spectral signature, remote sensing indices, etc.) and
-field knowledge (feature properties, spatial relations, etc.)
-~\citep{Andres2013a}, which is often neither completely nor explicitly defined 
-as
-it is based on trial and error but influences the classification
-~\citep{Arvor2013}. To ensure accuracy and applicability of classification
-outputs for conservation, experts with detailed knowledge of the sites are
+\gls{rs} image analysis implicitly incorporates the expertise of the person 
+performing the analysis, reducing reproducibility as the analyst ultimately 
+chooses class membership in non-crisp boundaries between classes. This can be 
+divided into remote sensing knowledge (spectral signature, remote sensing 
+indices, etc.) and field knowledge (feature properties, spatial relations, 
+etc.) ~\citep{Andres2013a}, which is often neither completely nor explicitly 
+defined as it is based on trial and error but influences the classification 
+~\citep{Arvor2013}. To ensure accuracy and applicability of classification 
+outputs for conservation, experts with detailed knowledge of the sites are 
 needed to interpret the \gls{rs} data. The distance between the high-level 
-semantics
-used by experts to describe domain concepts and the low-level information
-quantified from data is referred to as the ``semantic gap''~\citep{Smeulders00}.
+semantics used by experts to describe domain concepts and the low-level 
+information quantified from data is referred to as the ``semantic 
+gap''~\citep{Smeulders00}.
 
 Ontologies can help bridge the ``semantic gap'' and allow for better data 
 transferability, knowledge and workflow management (provenance) and logical 
@@ -504,7 +502,7 @@ feature/statistic's name, followed by a threshold. For the \gls{dt}, as in the
 example, the last number is the node in the tree where the threshold comes 
 from. This information is currently not being used.
 \lstset{language=XML,tabsize=2, label=lst:dt_rule_snippet_csv, caption=\lstname}
-\begin{lstlisting}
+\begin{lstlisting}[frame=single]
     wief_max,>,1.092550,0
     tpi5_max,<=,-0.341000,420
     swi_median,<=,8.097600,421
@@ -512,24 +510,17 @@ from. This information is currently not being used.
     pan4_glcm_std_135,<=,-7.890923,423
     b_std,<=,10.100981,424
 \end{lstlisting}
-\ref{lst:dt_rule_snippet_owl} shows how the first two lines of 
-\ref{lst:dt_rule_snippet_csv} this rule look in an \gls{owl}/XML ontology. The 
-rule has a collection of DataSomeValuesFrom within a nested datatype restriction 
-corresponding to the rule threshold. A class can be defined by many rules 
-containing multiple datatype properties that are chained together with logical 
-AND (intersection) operators. The rules are then joined by a logical OR operator 
-as can be seen in the outer ObjectUnionOf. 
-%hier bitte das Layout 
 
-\lstset{language=XML,tabsize=2, label=lst:dt_rule_snippet_owl, 
-caption=\lstname}
-\begin{lstlisting}
+\lstset{basicstyle=\footnotesize,language=XML,tabsize=2,
+label=lst:dt_rule_snippet_owl , caption=\lstname, breaklines=true}
+\begin{lstlisting}[frame=single,fontadjust]
             <DataSomeValuesFrom>
                 <DataProperty IRI="#has_tpi5_max"/>
                 <DatatypeRestriction>
                     <Datatype abbreviatedIRI="xsd:double"/>
                     <FacetRestriction facet="&xsd;maxInclusive">
-                        <Literal datatypeIRI="&xsd;double">-0.341</Literal>
+                        <Literal datatypeIRI="&xsd;double">-0.341
+                        </Literal>
                     </FacetRestriction>
                 </DatatypeRestriction>
             </DataSomeValuesFrom>
@@ -538,7 +529,8 @@ caption=\lstname}
                 <DatatypeRestriction>
                     <Datatype abbreviatedIRI="xsd:double"/>
                     <FacetRestriction facet="&xsd;minExclusive">
-                        <Literal datatypeIRI="&xsd;double">1.09255</Literal>
+                        <Literal datatypeIRI="&xsd;double">1.09255
+                        </Literal>
                     </FacetRestriction>
                 </DatatypeRestriction>
             </DataSomeValuesFrom>
@@ -546,8 +538,21 @@ caption=\lstname}
     </ObjectUnionOf>
 </EquivalentClasses>
 \end{lstlisting}
+
+\ref{lst:dt_rule_snippet_owl} shows how the first two lines of 
+\ref{lst:dt_rule_snippet_csv} this rule look in an \gls{owl}/XML ontology. The 
+rule has a collection of DataSomeValuesFrom within a nested datatype 
+restriction 
+corresponding to the rule threshold. A class can be defined by many rules 
+containing multiple datatype properties that are chained together with logical 
+AND (intersection) operators. The rules are then joined by a logical OR 
+operator 
+as can be seen in the outer ObjectUnionOf. 
+
 \subsection{Ontology-based classification}
 \label{subsec:Onto_classification}
+
+
 After the algorithms produce rules for each indicator, these are then added as 
 facet restrictions to an \gls{owl} ontology. The polygons from the testing 
 table 
@@ -610,21 +615,6 @@ assigned to that class. The classified result is then compared to the actual
 class label to determine the quality of the results.
 
 \section{Results}
-As can been seen in table \ref{tab:accuracy_indicators}, the immature soil and
-% hydromorphic indicators performed well. The poor performance of the wetness
-% indicator in particular is suprising as the data mining algorithms had access 
-%to
-% many different wetness indicators and morphological data. Since classifying
-% \gls{eunis} level 2 grasslands requires information on wetness, the 
-%classification
-% suffers. The performance of usage and usage intensity is most likely due to a
-% lack of time series data. In regards to algorithmic performance, SEaTH
-% performed poorly overall and the results show that the \gls{dt} classifier 
-%achieves
-% comparable results to the \gls{et} classifier for the indicators chosen. 
-% Du vermischt results und discussion sehr stark. Bitte beschreibe hier
-% lediglich die Ergebnisse OHNE Bewertung und Erkl??rung! Das kommt in die
-% Discussion!
 \begin{table}
     \centering
     %\rowcolors{2}{lightgray}{white}
@@ -748,57 +738,67 @@ grasslands there is only one object in E1.71, all the rest of the dry
 grasslands are in E1.262.
 
 \section{Discussion}
-%could be explained by the presence of these grassland
-%classes. The presence of orchards 
-The few dry grasslands in the Saarburg region really hurt the classifier's 
+As can been seen in table \ref{tab:accuracy_indicators}, the immature soil and
+hydromorphic indicators performed well. The poor performance of the wetness
+indicator in particular is surprising as the data mining algorithms had 
+access to many different wetness indicators and morphological data. Since 
+classifying \gls{eunis} level 2 grasslands requires information on wetness, 
+the classification suffers. The performance of usage and usage intensity is 
+most likely due to a lack of time series data. In regards to algorithmic 
+performance, SEaTH performed poorly overall and the results show that the 
+\gls{dt} classifier achieves comparable results to the \gls{et} classifier 
+for the indicators chosen. 
+
+The very few dry grasslands in the Saarburg region hurt the classifier's 
 ability to learn from the data. Only one dry grassland classified as such fits 
 the rule's definition of a dry grassland. The reasons for this could be due the 
-differences in data quality between the biotope map and the agriculture map 
-with grasslands misclassified or a conceptualization problem with the 
-translation from the \gls{rlp} classification to \gls{eunis}. Visually 
-inspecting the data revealed that polygons were in fact grasslands, agricultural 
-land or meadow as the height restriction and the class name ``herbaceous 
-plants'' from the segmentation properly excluded trees, artificial buildings, 
-etc. The larger size of the thematic map's polygons means that a polygon of 
-grasslands in between an orchard will still be assigned the orchard's label and 
-\gls{eunis} indicators. Early on the issue with orchards was identified and even 
-after having moved to a minimum 200m$^{2}$ size for polygons created during 
-segmentation has not been resolved. A multi-scale approach will probably be 
-needed to solve this problem. overal Adding immature soil and the usage 
-intensity increases classification accuracy only very slightly.
+differences in data quality between the biotope map and the agriculture map. 
+It could also be a conceptualization problem with the translation from the 
+\gls{rlp} classification to \gls{eunis}.
 
-The selection of grasslands greater than 200m$^{2}$ in size might have also led
-to errors as max and min heights had a large range. The pre-segmentation class
-herbaceous plants could be too lenient as shrubs were found in polygons labeled
-as herbaceous. In addition other indicators are needed to more accurately
-differentiate between grasslands.
+Visually inspecting the data revealed that polygons were in fact grasslands, 
+agricultural land or meadows. Most belonged the class I1 - ``Arable land and 
+market gardens'' and the \gls{eunis} biotope classification guide specifically 
+states that turf and sports fields are excluded. Since I1 is ``species poor'' 
+adding ``species richness'' to the E2 rule reduced the number of polygons 
+classified as I1 but also reduced the total number of E2 classes as well. Thus, 
+adding species richness was not helpful. The height restriction and the class 
+name ``herbaceous plants'' from the segmentation properly excluded trees, 
+artificial buildings, etc. The larger size of the thematic map's polygons means 
+that a polygon of grasslands in between an orchard will still be assigned the 
+orchard's label and \gls{eunis} indicators. Early on the issue with orchards 
+was identified as a troubling area for segmentation and this has not yet been 
+resolved. A multi-scale approach will probably be needed to solve this problem. 
 
-The misclassification of I1 - ``Arable land and market gardens'' is 
-understandable as the \gls{eunis} biotope classification specifically states 
-that 
-turf and sports fields are excluded. Since I1 is ``species poor'' adding 
-``species richness'' to the E2 rule reduced the number of polygons classified 
-as I1 but also reduced the total number of E2 classes as well.
+The selection of grasslands greater than 200m$^{2}$ in size might have also led 
+to errors as max and min values in the \gls{dsm} had a large range. The 
+pre-segmentation class herbaceous plants could be too lenient as shrubs were 
+found in polygons labeled as herbaceous. In addition other indicators are 
+needed to more accurately differentiate between grasslands.
 
-A dimension reduction strategy using principal component analysis could possibly
-improve the data mining algorithms classification accuracy.
+Lastly, properly exploiting a dimension reduction strategy using principal 
+component analysis or some other method  could possibly improve the data mining 
+algorithms classification accuracy. The addition of time series data for 
+intensity and soil maps would greatly help classification accuracy.  
 \section{Conclusion}
-The results demonstrate that the method provides benefits to a normal
-classification approach and that with proper conceptualization, reference data
-and dimension reduction could achieve results comparable to an \gls{et} 
-classifier.
+The results demonstrate that the method provides additional value when compared 
+with a normal classification approach and that with proper conceptualization, 
+reference data and dimension reduction could achieve results comparable to an 
+\gls{et} classifier. Furthermore, we tested the method on formalized 
+\gls{eunis} grasslands and showed that it could be used to refine the 
+indicators and revisit the conceptualization. 
+
 Further investigation of the segmented polygons and a test area with a more
 uniform distribution of biotope classes is needed. Accurate reference data is
-needed to diagnose why the wetness indicator performed so poorly.
+needed to diagnose why the wetness indicator performed so poorly. Other 
+algorithms should be applied for comparison.  
 
 We demonstrated that an ontological-based semi-automated classification system
-produces interoperable and exchangeable classifification outputs
-and results. Furthermore, the method is not constrained by data mining
-algorithms or software.  
-
-Formalizing ecological information for biodiversity monitoring is
-necessary to take advantage of advances in new sensors and products becoming
-available. 
+produces interoperable and exchangeable classification outputs
+and results and is not constrained by data mining
+algorithms or software. Furthermore, such tools can be applied to different 
+domains and, for biodiversity monitoring, help decision-makers make informed 
+decision by being able to compare outputs.
 \section{Acknowledgments}
 We would like to thank \gls{rlp} AgroScience GmbH for processing the data and 
 the \gls{rlp}'s Environment Ministry for funding the \gls{natflo} project. This 
