@@ -1,5 +1,4 @@
-\documentclass[authoryear,preprint,12pt,number]{elsarticle}
-%\documentclass[authoryear,review,12pt,number]{elsarticle}
+\documentclass[authoryear,review,12pt,number]{elsarticle}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[numbers]{natbib}
@@ -44,15 +43,7 @@
 \loadglsentries[main]{./glossary}
 \makeglossaries
 \begin{document}
-\input{./title.tex}
-\includepdf[pages=-]{./authordec.pdf}
-%\input{./authordec.tex}
-\tableofcontents
-\listoffigures
-\listoftables
-\printglossary
-\input{./intro_master.tex}
-
+%\include{./authordec}
 \begin{frontmatter}
 %\linenumbers
 \title{Classifying EUNIS habitats using ontologies and data mining 
@@ -72,21 +63,19 @@ Lab, Technische Universit\"at Berlin, Stra\ss e des 17. Juni 145, 10623 Berlin,
 Germany}
 
 \begin{abstract}
-Biodiversity monitoring using Remote Sensing is critical to meet 
+Biodiversity monitoring using remote sensing (RS) is critical to meet 
 requirements of existing laws such as the EU Habitats Directive and more 
-importantly meet future challenges. The full potential of RS has yet 
-to be harnessed as different nomenclatures and procedures hinder 
-interoperability, comparison and provenance. Furthermore, the manual field 
-surveys are expensive and time-consuming. To meet 
-these future challenges automated tools are needed to use RS data to 
-produce comparable, empirical data outputs that lend 
+importantly meet future challenges. The full potential of RS has yet to be 
+harnessed as different nomenclatures and procedures hinder interoperability, 
+comparison and provenance. Furthermore, the manual field surveys are expensive 
+and time-consuming. To meet these future challenges automated tools are needed 
+to use RS data to produce comparable, empirical data outputs that lend 
 themselves to data discovery and provenance. These issues are addressed by a 
 novel semi-automatic ontology-based classification method that uses data mining 
 algorithms and OWL ontologies that yields traceable, interoperable and 
 observation-based classification outputs. The method is tested on EUNIS 
-grasslands in Saarburg, Rheinland-Palatinate. The method is a first 
-step in developing observation-based ontologies in the field of nature 
-conservation. 
+grasslands in Saarburg, Rheinland-Palatinate. The method is a first step in 
+developing observation-based ontologies in the field of nature conservation. 
 especially for data discovery, automatic image interpretation, data 
 interoperability, workflow management and data publication.
 \end{abstract}
@@ -137,12 +126,12 @@ gap''~\citep{Smeulders00}.
 
 Ontologies can help bridge the ``semantic gap'' and allow for better data 
 transferability, knowledge and workflow management (provenance) and logical 
-consistency ~\citep{Janowicz2012}.  The standards-compliant format designed and 
+consistency ~\citep{Janowicz2012}. The standards-compliant format designed and 
 adopted to express rich semantics and enable the ``Semantic Web'' is called the 
 (\gls{owl})\footnote{\url{http://www.w3.org/TR/owl2-overview/}}. The format 
-supports multiple syntaxes yet defines the \gls{rdf} (subject, 
-predicate, object triplets) saved as \gls{xml} as a common exchange format.  
-Moreover, through the use of reasoners (inference engines) that infer logical 
+supports multiple syntaxes yet defines the \gls{rdf} (subject, predicate, 
+object triplets) saved as \gls{xml} as a common exchange format. Moreover, 
+through the use of reasoners (inference engines) that infer logical 
 consequences over axioms and asserted facts and verify consistency, one can 
 discover new knowledge ~\citep{Arvor2013, Andres2013a} \gls{rs} and field expert 
 knowledge can be digitized in ontologies, thus allowing for a hierarchy of 
@@ -284,13 +273,13 @@ herbaceous\}, usage: \{grazing, mowing\}, usage intensity: \{low, medium,
 high\}.\label{tab:indicators_classes}}
 \end{table}
 All described processes are based on a pre-segmentation based on \gls{geobia}.  
-For this pre-segmentation step two types of data were taken into account.  
+For this pre-segmentation step two types of data were taken into account. 
 Digital orthophotos (Year:2012-2013, resolution 0.2m) are used to create the 
 Digital Surface Model (\gls{dsm}) (resolution 0.5m) using automated stereo 
 matching and therefore represent the basis for all segmentation and 
 classification procedures. The \gls{dtm} and \gls{dem} was produced using 
-\gls{lidar} ASCII point clouds acquired between 2003 and 2009 with a 
-resolution of 0.2m.
+\gls{lidar} ASCII point clouds acquired between 2003 and 2009 with a resolution 
+of 0.2m.
 
 The reference data (see 
 \ref{subsec:reference_data_and_semantic_characterisation}) consists of the 
@@ -777,9 +766,9 @@ found in polygons labeled as herbaceous. In addition other indicators are
 needed to more accurately differentiate between grasslands.
 
 Lastly, properly exploiting a dimension reduction strategy using principal 
-component analysis or some other method  could possibly improve the data mining 
+component analysis or some other method could possibly improve the data mining 
 algorithms classification accuracy. The addition of time series data for 
-intensity and soil maps would greatly help classification accuracy.  
+intensity and soil maps would greatly help classification accuracy.
 \section{Conclusion}
 The results demonstrate that the method provides additional value when compared 
 with a normal classification approach and that with proper conceptualization, 
@@ -791,7 +780,7 @@ indicators and revisit the conceptualization.
 Further investigation of the segmented polygons and a test area with a more
 uniform distribution of biotope classes is needed. Accurate reference data is
 needed to diagnose why the wetness indicator performed so poorly. Other 
-algorithms should be applied for comparison.  
+algorithms should be applied for comparison.
 
 We demonstrated that an ontological-based semi-automated classification system
 produces interoperable and exchangeable classification outputs
@@ -807,9 +796,9 @@ GM10331601 from the National Institute of General Medical Sciences of the
 United States National Institutes of Health.
 \section{Appendix}
 The \gls{owl} ontology with rules generated by the \gls{dt} algorithm used in 
-this study is
-located at: \url{http://www.user.tu-berlin.de/niklasmoran/grassland_dt.owl} and
-the SEaTH \gls{owl} file is located:
+this study is located at: 
+\url{http://www.user.tu-berlin.de/niklasmoran/grassland_dt.owl} and the SEaTH 
+\gls{owl} file is located: 
 \url{http://www.user.tu-berlin.de/niklasmoran/grassland_seath.owl}
 \bibliographystyle{model2-names}
 \section{References}
