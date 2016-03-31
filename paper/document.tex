@@ -1,4 +1,4 @@
-\documentclass[authoryear,review,12pt,number]{elsarticle}
+\documentclass[authoryear,final,12pt,number]{elsarticle}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[numbers]{natbib}
@@ -29,7 +29,13 @@
 \usepackage{color}
 \usepackage{standalone}
 \usepackage[final]{pdfpages}
-
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    citecolor=blue,
+}
 \renewcommand{\dateseparator}{.}
 
 \newcolumntype{R}[2]{%
@@ -219,37 +225,47 @@ approaches
 http://scikit-learn.org/stable/modules/ensemble.html\#extremely-randomized-t
 rees}}.
 \end{itemize}
-\section{Method}
-\subsection{Use case: Classifying EUNIS Grasslands in 
-Rhineland-Palatinate}
-\label{sec:usecase_data}
-To test the feasibility of applying our method to a real-world use case, we 
-tested our method on dry, mesic and wet grasslands (\gls{eunis} E1, E2 and E3 
-respectively) in the district of Saarburg. 
 
-Saarburg is an 200km$^{2}$ administrative district and is located in the
-south-west of the federal state of \gls{rlp}, Germany.
-Luxembourg borders the area to the west and the federal state of Saarland to
-the South. \gls{rlp} has a western european atlantic climate and has an 
-economically
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Method}
+%Hier muss eine kurze Einleitung fuer die Methode rein. Ich versuchs mal:
+This section proposes an ontology-based classification approach which uses a
+decision tree classifier for the semantic annotation procedure. It furthermore
+describes the study area including available geo-data as well as the process of
+semantic conceptualisation of classes in the nature conservation domain. 
+\subsection{Study area, data and classfication nomenclature}
+\label{sec:usecase_data}
+Study area for this work is the administrative district of Saarburg. It extents
+over an area of around 200km$^{2}$ and is
+located in the south-west of the federal state of \gls{rlp}, Germany.
+Luxembourg borders the area to the west and the federal state of Saarland to the
+South. \gls{rlp} has a western European atlantic climate and has an economically
 and culturally important viticulture industry along the Mosel and Rhine rivers
 (see figure \ref{fig:study_area}).
 \begin{figure}
+%Hier muss noch ein Nordpfeil und Massstab rein! 
     \includegraphics[width=\textwidth]{diagrams/study_area_closeup.png}
     \caption{The location of Saarburg (in purple) in relation to
     Rheinland-Palatinate. Map on right \copyright Thunderforest, Data\copyright
     OpenStreetMap contributors.}
 \label{fig:study_area}
 \end{figure}
-To achieve a accurate formalization of the regarded habitats we adapted 
-selected indicators, defined in the \gls{eunis} nomenclature, to meet the 
-requirements of remote sensing analysis. Furthermore, we adopted \gls{eagle}'s 
-object-oriented approach by separating land use, land cover and 
-characteristics (biophysical and anthropomorphic) and adopted terms when 
-possible to increase interoperability and further re-use. The table 
-~\ref{tab:indicators_classes} shows the list of indicators that can be detected 
-by our data and aggregated to form \gls{eunis} classes. 
+On the the goals of this work is to support the federal administration of
+\gls{rlp} performing their regional biotope mapping as well as fulfilling its
+European reporting obligations defined in the \gls{habdir}. Therefore we chose
+the nomenclature of the \gls{eunis} to perform this research as it directly
+satisfies the \gls{habdir} and has already been transferred to the local mapping
+nomenclatures. To achieve an accurate formalization of the regarded habitats we
+adapted selected indicators, defined in \gls{eunis}, to meet the requirements of
+remote sensing analysis. Furthermore \gls{eagle}'s object-oriented
+approach were used to separate land use, land cover, characteristics
+(biophysical and anthropomorphic). The \gls{eagle} terms were adopted when
+possible to increase interoperability and further re-use. Table
+~\ref{tab:indicators_classes} illustrates the list
+of indicators to be derived and aggregated to form
+\gls{eunis} classes.
 \begin{table}
+%Die erste Spalte wuerde ich rausnehmen. Das ist doppelt!
 \centering
   \begin{tabular}{clcccccccc}
   \rot{description}&\rot{\gls{eunis} class}&\rot{wetness} & \rot{vegetation 
@@ -272,16 +288,15 @@ each value is used to safe space. Vegetation type: \{graminaceous,
 herbaceous\}, usage: \{grazing, mowing\}, usage intensity: \{low, medium, 
 high\}.\label{tab:indicators_classes}}
 \end{table}
-All described processes are based on a pre-segmentation based on \gls{geobia}.  
-For this pre-segmentation step two types of data were taken into account. 
-Digital orthophotos (Year:2012-2013, resolution 0.2m) are used to create the 
-Digital Surface Model (\gls{dsm}) (resolution 0.5m) using automated stereo 
-matching and therefore represent the basis for all segmentation and 
-classification procedures. The \gls{dtm} and \gls{dem} was produced using 
-\gls{lidar} ASCII point clouds acquired between 2003 and 2009 with a resolution 
-of 0.2m.
-
-The reference data (see 
+All described processes are based on a pre-segmentated data set, generated using
+\gls{geobia}. 
+For this pre-segmentation step two types of data were taken into account.
+Digital orthophotos (Year:2012-2013, resolution 0.2m) are used to create the
+Digital Surface Model (\gls{dsm}) (resolution 0.5m) using automated stereo
+matching and therefore represent the basis for all segmentation and
+classification procedures. The \gls{dtm} and \gls{dem} was produced using
+\gls{lidar} ASCII point clouds acquired between 2003 and 2009 with a resolution
+of 0.2m. The reference data (see 
 \ref{subsec:reference_data_and_semantic_characterisation}) consists of the 
 federal biotope map (partially updated 2015), agricultural data updated every 
 year and a soil map which is based on the ALKIS (Amtliches Liegenschaftskaster 
@@ -297,10 +312,18 @@ indices of the \gls{dtm}, \gls{dem} and orthophotos.
     they conflict. When conflicts occur the corresponding column is marked as 
     such.\label{fig:pre-processing}}
 \end{figure}
-
-This section describes the developed ontology-based, multi-source \gls{eunis} 
-habitat classification method.
+The pre-segmentation process as well as the calculation of zonal statistics
+for the further classification (see section xx) was performed by
+\citep{Tintrup2015}.
+%This section describes the developed ontology-based, multi-source \gls{eunis} 
+%habitat classification method.
 \label{subsec:method_overview}
+
+%hier fehlt noch die Erstellung der Referenzdaten.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Overview of the automated EUNIS Habitat Mapping System}
 Figure ~\ref{fig:full_workflow} gives an overview of the method using the
 wetness indicator as an example of one of the habitat indicators needed to
