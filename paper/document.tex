@@ -1,4 +1,4 @@
-\documentclass[authoryear,final,12pt,number]{elsarticle}
+\documentclass[authoryear,review,12pt,number]{elsarticle}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[numbers]{natbib}
@@ -29,6 +29,7 @@
 \usepackage{color}
 \usepackage{standalone}
 \usepackage[final]{pdfpages}
+\sloppy
 \hypersetup{
     colorlinks=true,
     linkcolor=black,
@@ -52,8 +53,9 @@
 %\include{./authordec}
 \begin{frontmatter}
 %\linenumbers
-\title{Classifying EUNIS habitats using ontologies and data mining 
-methods}
+\title{Combining machine learning and ontological data handling for multi-source
+classification of nature conservation areas}
+% Über den Titel muessen wir nochmal diskutieren. 
 
 \author[TUB]{T. Niklas Moran\corref{cor1}}
 \ead{niklasmoran@mailbox.tu-berlin.de}
@@ -216,7 +218,7 @@ goals of this paper are:
  \item to develop a \gls{rs} classification methodology using data mining 
 approaches
      in combination with ontological formalism to generate highly interoperable,
-     reproducable and exchangeable classification procedures and results,
+     reproducible and exchangeable classification procedures and results,
  \item apply the methodology to indicators used to separate grassland habitats
      defined under \gls{eunis}
  \item and evaluate the developed approach by comparing it to a state-of-the art
@@ -232,15 +234,21 @@ rees}}.
 This section proposes an ontology-based classification approach which uses a
 decision tree classifier for the semantic annotation procedure. It furthermore
 describes the study area including available geo-data as well as the process of
-semantic conceptualisation of classes in the nature conservation domain. 
-\subsection{Study area, data and classfication nomenclature}
+semantic conceptualisation of classes in the nature conservation domain. To
+evaluate the generated results the outcomes were compared to a highly randomised
+tree classifier which is known to be suitable for this kind of classification
+problem. %hier muss noch eine Quelle rein. Da gibts sicher ein benchmark von
+% irgendwem
+\subsection{Study area, data and classification nomenclature}
 \label{sec:usecase_data}
+%‚Testgebiet
+%%%%%%%%%%%
 Study area for this work is the administrative district of Saarburg. It extents
 over an area of around 200km$^{2}$ and is
 located in the south-west of the federal state of \gls{rlp}, Germany.
 Luxembourg borders the area to the west and the federal state of Saarland to the
-South. \gls{rlp} has a western European atlantic climate and has an economically
-and culturally important viticulture industry along the Mosel and Rhine rivers
+South. \gls{rlp} is influenced by western European atlantic climate and has an
+economically and culturally important viticulture industry along the Mosel and Rhine rivers
 (see figure \ref{fig:study_area}).
 \begin{figure}
 %Hier muss noch ein Nordpfeil und Massstab rein! 
@@ -250,59 +258,101 @@ and culturally important viticulture industry along the Mosel and Rhine rivers
     OpenStreetMap contributors.}
 \label{fig:study_area}
 \end{figure}
-On the the goals of this work is to support the federal administration of
-\gls{rlp} performing their regional biotope mapping as well as fulfilling its
+
+% Nomenklatur %%%%%%%%%%%%%%%%
+One of the main intentions of this work is to support the federal administration
+of \gls{rlp} performing their regional biotope mapping as well as fulfilling its
 European reporting obligations defined in the \gls{habdir}. Therefore we chose
 the nomenclature of the \gls{eunis} to perform this research as it directly
 satisfies the \gls{habdir} and has already been transferred to the local mapping
-nomenclatures. To achieve an accurate formalization of the regarded habitats we
-adapted selected indicators, defined in \gls{eunis}, to meet the requirements of
-remote sensing analysis. Furthermore \gls{eagle}'s object-oriented
-approach were used to separate land use, land cover, characteristics
-(biophysical and anthropomorphic). The \gls{eagle} terms were adopted when
-possible to increase interoperability and further re-use. Table
-~\ref{tab:indicators_classes} illustrates the list
-of indicators to be derived and aggregated to form
-\gls{eunis} classes.
+nomenclatures. A consistent classification process could be realised by
+describing \gls{eunis} classes with biophysical and anthropogenic indicators
+which are supposed to be derivable with the help of the available data bases. To
+achieve an accurate formalization of the regarded habitats selected indicators,
+defined in \gls{eunis}, were adopted to meet the requirements of remote sensing
+analysis.
+Furthermore certain indicators of \gls{eagle}'s object-oriented data
+model were used to describe land use, land cover and additional characteristics
+(biophysical and anthropomorphic). The \gls{eagle} terms were adopted when possible to increase
+interoperability and further re-use. Table ~\ref{tab:indicators_classes}
+illustrates the regarded \gls{eunis} categories and subsequent descriptive
+indicators.
+
 \begin{table}
-%Die erste Spalte wuerde ich rausnehmen. Das ist doppelt!
 \centering
   \begin{tabular}{clcccccccc}
-  \rot{description}&\rot{\gls{eunis} class}&\rot{wetness} & \rot{vegetation 
-type} &
+  \rot{\gls{eunis} class}&\rot{vegetation 
+type} &\rot{wetness level} & 
   \rot{usage} & \rot{usage intensity} & \rot{immature
   soil} & \rot{hydromorphic} & \rot{species richness} \\ \hline
-\multirow{2}{*}{dry}
-    & E1   & dry & g/h & g/m/- & low & 1 & 0 & 0/1/- \\ 
-    & E1.2 & dry & g/h & g/m/- & low & 1 & 0 & 1\\
-\multirow{3}{*}{mesic} 
-    & E2   & mesic & g/h & g/m/- & l/m/h/- & 0 & 0 & 0/1/-\\
-    & E2.1 & mesic & g/h & g & medium/high & 0 & 0 & 0/1/- \\
-    & E2.6 & mesic & g & g/m/- & high & 0 & 0 & 0 \\
-\multirow{2}{*}{wet}
-    & E3   & very wet & g/h & g/m/- & low/medium & 0 & 1 & 0/1/- \\
-    & E3.4 & very wet & g/h & g/m & medium & 0 & 1 & 0/1 \\
+%\multirow{2}{*}{dry}
+    E1   &  g/h & dry &g/m/- & low & 1 & 0 & 0/1/- \\ 
+    E1.2 &  g/h & dry &g/m/- & low & 1 & 0 & 1\\
+%\multirow{3}{*}{mesic} 
+    E2   &  g/h & mesic &g/m/- & l/m/h/- & 0 & 0 & 0/1/-\\
+    E2.1 &  g/h & mesic &g & medium/high & 0 & 0 & 0/1/- \\
+    E2.6 &  g & mesic &g/m/- & high & 0 & 0 & 0 \\
+%\multirow{2}{*}{wet}
+    E3   &  g/h & wet & g/m/- & low/medium & 0 & 1 & 0/1/- \\
+    E3.4  & g/h &  wet& g/m & medium & 0 & 1 & 0/1 \\
 \end{tabular}
 \caption{A `/ ' denotes OR and a '-' denotes 'none' and the first letter of 
 each value is used to safe space. Vegetation type: \{graminaceous, 
 herbaceous\}, usage: \{grazing, mowing\}, usage intensity: \{low, medium, 
-high\}.\label{tab:indicators_classes}}
+high\}.}
+\label{tab:indicators_classes}
 \end{table}
-All described processes are based on a pre-segmentated data set, generated using
-\gls{geobia}. 
-For this pre-segmentation step two types of data were taken into account.
-Digital orthophotos (Year:2012-2013, resolution 0.2m) are used to create the
-Digital Surface Model (\gls{dsm}) (resolution 0.5m) using automated stereo
-matching and therefore represent the basis for all segmentation and
-classification procedures. The \gls{dtm} and \gls{dem} was produced using
-\gls{lidar} ASCII point clouds acquired between 2003 and 2009 with a resolution
-of 0.2m. The reference data (see 
-\ref{subsec:reference_data_and_semantic_characterisation}) consists of the 
-federal biotope map (partially updated 2015), agricultural data updated every 
-year and a soil map which is based on the ALKIS (Amtliches Liegenschaftskaster 
-Informationssystem- Automated Land Registration Map) (partially updated 2015). 
-The actual classification process is based on two RapidEye Scenes from 2014 and 
+
+%Referenzdaten
+%%%%%%%%%%%%%%%%%
+The thematic reference data consists of the federal biotope map (partially
+updated 2015), agricultural data (updated every year) and a soil map which is
+based on the ALKIS (Amtliches Liegenschaftskaster Informationssystem- Automated
+Land Registration Map) (partially updated 2015).
+In order to generate valid and consistent testing and training data for the
+classification, these data were combined to create a comprehensive thematic
+database for \gls{rlp}. 
+% The thematic maps include characteristics of \gls{lu},
+% such as cultivation and management practice (grazing or mowing), biophysical
+% characteristics (wetness, soil composition, morphology etc.) as well as land
+% cover components (graminaceous vegetation, shrubs, trees, etc.).
+To ensure the comparability of these base data sets they were characterised with
+a common reference model of indicators, which have been developed on the basis
+of the \gls{eagle} and if necessary certain \gls{eunis} within the \gls{natflo}
+project.
+That means, all base data sets were conceptualised by using the developed
+indicators (such as wetness, usage etc.) and can therefore be used as testing
+and training data for certain categories which serve as class labels for the
+machine learning algorithm.
+
+%Segmentierung
+%%%%%%%%%%%%%%%%%%%%%
+All described processes are based on a pre-segmented data set, generated using
+\gls{geobia}. For this pre-segmentation step two types of data were taken into
+account. Digital, multi-spectral (B, G, R, NIR) orthophotos (Year:2012-2013,
+resolution 0.2m) and a \gls{dsm} (resolution 0.5m) which was generated by applying
+automated stereo matching. These data therefore represent the basis for all
+segmentation and classification procedures. 
+The iterative object-based pre-classification was performed by
+~\cite{Tintrup2015} using Definiens eCognition Server in a multi-resolution
+approach ~\citep{baatz2001ecognition}. A basic land cover extraction is performed by the
+segmentation process which also follows the \gls{eagle} data model when
+possible. Furthermore, based on the available input data (\gls{dtm}, \gls{dem}
+orthophotos), various zonal statistics could be calculated for the resulting
+objects (see attachment BLABLA).
+
+
+% Furthermore a \gls{dtm} and
+% \gls{dem} was produced using \gls{lidar} ASCII point clouds acquired between
+% 2003 and 2009 with a resolution of 0.2m. ? Fuer was wurde das benutzt?
+% Vielleicht raus, oder?
+
+
+Hence, the actual classification
+process is based on two RapidEye Scenes from 2014,
+% hier muss die Anzahl der Indices rein!‚
 indices of the \gls{dtm}, \gls{dem} and orthophotos.
+% Du solltest noch eine Liste aller berechneten Indices fuer den Anhang machen!
 
 \begin{figure} \includegraphics[width=1\textwidth]{diagrams/pre_processing.png}
     \caption{biotope, agriculture and soil maps are combined 
@@ -312,53 +362,51 @@ indices of the \gls{dtm}, \gls{dem} and orthophotos.
     they conflict. When conflicts occur the corresponding column is marked as 
     such.\label{fig:pre-processing}}
 \end{figure}
-The pre-segmentation process as well as the calculation of zonal statistics
-for the further classification (see section xx) was performed by
-\citep{Tintrup2015}.
-%This section describes the developed ontology-based, multi-source \gls{eunis} 
-%habitat classification method.
-\label{subsec:method_overview}
-
-%hier fehlt noch die Erstellung der Referenzdaten.
-
+ The detailed data preparation workflow is shown in figure
+\ref{fig:pre-processing}. This segmentation follows the \gls{eagle} concept and
+captures land cover classes and labels created polygons as such.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Overview of the automated EUNIS Habitat Mapping System}
+\subsection{Overview of the ontological classification process}
+\label{subsec:method_overview}
 Figure ~\ref{fig:full_workflow} gives an overview of the method using the
-wetness indicator as an example of one of the habitat indicators needed to
-differentiate dry, mesic and wet grassland habitats according to level 2 of
-\gls{eunis}. The developed system is comprised of (1) the preparation of 
-reference
+wetness indicator as an example. The wetness level is essential to
+differentiate dry, mesic and wet grassland habitats according to the second
+level of the \gls{eunis} nomenclature (see table \ref{tab:indicators_classes}.
+The developed system is comprised of (1) the preparation of reference
 data, including a spatial union of the base data sets (pre-segmented,
-pre-classified areial photos and thematic maps (see
-\ref{subsec:reference_data_and_semantic_characterisation}) and the attachment of
+pre-classified aerial photos and thematic maps (see
+\ref{sec:usecase_data}) and the attachment of
 subsequent semantic characteristics (see 
 \ref{subsec:reference_data_and_semantic_characterisation}), (2)
 the selection of training and validation data (see
-\ref{subsec:Selection_of_training_validation_data} the generation of
-classification rules using machine learning algorithms and finally (4) the
-ontology-based classification process (see \ref{subsec:Onto_classification}). 
+\ref{subsec:Selection_of_training_validation_data}), the generation of
+classification rules (see 
+\ref{subsec:rule_generation}) using machine learning algorithms and
+finally (4) the ontology-based classification process (see \ref{subsec:Onto_classification}). 
 
 The software relies on a PostgreSQL database and various open source Python and 
 Java libraries to interact with the database, convert files and execute a 
-reasoner over the created \gls{owl} file (see 
+reasoner over the created \gls{owl} ontology ‚(see 
 \ref{subsec:Onto_classification}). The \gls{owl}API 
 \footnote{\url{https://github.com/owlcs/owlapi}} is used to interact with the 
-\gls{owl} files and execute the FaCT++ reasoner ~\citep{Tsarkov2006}. Currently 
-the rule generation (see \ref{subsec:rulegen_data_mining}) module uses two 
-algorithms: \gls{dt}\footnote{\url{ 
-http://scikit-learn.org/stable/modules/tree.html\#tree} } and one additional 
-algorithm called the Separability and Thresholds (SEaTH) algorithm 
-~\citep{Nussbaum2006}. The \gls{et}\footnote{\url{ 
-http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesClas
- sifier.html}} is used as a reference classification.
+\gls{owl} files and execute the FaCT++ reasoner ~\citep{Tsarkov2006}. 
+% Currently 
+% the rule generation (see \ref{subsec:rulegen_data_mining}) module uses two 
+% algorithms: \gls{dt}\footnote{\url{ 
+% http://scikit-learn.org/stable/modules/tree.html\#tree} } and one additional 
+% algorithm called the Separability and Thresholds (SEaTH) algorithm 
+% ~\citep{Nussbaum2006}. The \gls{et}\footnote{\url{ 
+% http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesClas
+%  sifier.html}} is used as a reference classification.
+%Das brauchen wir nicht unbedingt.
 \begin{figure}
 \includegraphics[width=1\linewidth]{diagrams/final_workflow_diagram.png}
 \caption
     {
         1) The thematic maps (biotope, soil, etc.) are unioned together and
-        statistics are calculated for each combined polygon.
+        spatial statistics are calculated for each combined polygon.
         2) Training and testing data are created and saved in the database.
         3) The rules are generated for e.g.\ the ``wetness'' indicator from
         training data.
@@ -368,17 +416,13 @@ testing
         class membership.
     \label{fig:full_workflow}}
 \end{figure}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Semantic characterization}
 \label{subsec:reference_data_and_semantic_characterisation} 
-\subsection{Reference data preparation and semantic characterization}
-The iterative object-based image analysis is performed by ~\cite{Tintrup2015} 
-using Defiens eCognition Server in a multi-resolution approach 
-~\citep{baatz2001ecognition} taking into account thresholds. The data is 
-segmented by multi-spectral (B, G, R, NIR) orthophotos (see 
-\ref{sec:usecase_data}) spectral information and indices (Bare Area Index, 
-etc.) and height from the DEM to separate between biotic and abiotic features 
-~\citep{Tintrup2015}. The detailed data preparation workflow is shown in figure 
-\ref{fig:pre-processing}. This segmentation follows the \gls{eagle} concept and
-captures land cover classes and labels created polygons as such. This step is
+ This step is
 crucial as the quality of the segmentation determines the quality of the later
 identification step as the value of an indicator such as wetness for a grassland
 might differ for that of a forest. Using \gls{eunis} class descriptions and
@@ -398,19 +442,20 @@ An \gls{owl} ontology is composed of classes, individuals and
 properties. Classes are
 sets of individuals and properties come in two forms: an object property defines
 a relationship between two individuals and a data property  places a data type
-constraint on the individual ~\citep{OWL2}. Furthermore, a reasoner can 
-perform
-A-Box and T-Box reasoning over the defined axioms. 
-
-Relationships between objects (subsumption, disjointedness, etc). are 
-discovered and checked for consistency during T-box reasoning. Using software, 
-such as Protege, users can see how the defined axioms are related in the stored 
-knowledge base (\gls{owl}) and check for logical consistency. If OWLIndividuals 
-(objects) are in the knowledge base then A-Box reasoning can also be performed 
-finding if any of the individuals fit into the defined classes. As \gls{eunis} 
-is an hierarchically structured classification scheme testing that the 
-formalization follows the same hierarchy is important. 
+constraint on the individual ~\citep{OWL2}. 
+% % Furthermore, a reasoner can 
+% % perform
+% % A-Box and T-Box reasoning over the defined axioms. 
+% Relationships between objects (subsumption, disjointedness, etc). are 
+% discovered and checked for consistency during T-box reasoning. Using software, 
+% such as Protege, users can see how the defined axioms are related in the stored 
+% knowledge base (\gls{owl}) and check for logical consistency. If OWLIndividuals 
+% (objects) are in the knowledge base then A-Box reasoning can also be performed 
+% finding if any of the individuals fit into the defined classes. As \gls{eunis} 
+% is an hierarchically structured classification scheme testing that the 
+% formalization follows the same hierarchy is important. 
 %LC
+%Das passt hier nicht. Der Absatz geht um semantic characterisation
 
 We use environmental variables (e.g., wetness, soil maturity, vegetation type,
 etc.) from the classification schemes and concepts from \gls{eagle} to preserve
@@ -420,42 +465,25 @@ a \gls{eunis} class, E2.22 ``Sub-Atlantic lowland hay meadows'' modelled with
 selected
 remote sensing indicators is written in description logic (DL) below (see
 equation ~\ref{eq:description_logic}).
-\begin{equation}\label{eq:description_logic}
-\begin{align*}
-%\begin{split}
-    E2.22 &\equiv \exists has\_wetness \{``mesic''\} \\
-    &\qquad {} \cap \exists has\_hydromorphic \{``false''\} \\
-    &\qquad {} \cap \exists has\_immature\_soil \{``false''\} \\
-    &\qquad {} \cap \exists species\_richness \{``false''\} \\
-    &\qquad {} \cap \exists has\_usage \{``mowing''\} \\
-    &\qquad {} \cap \exists has\_usage\_intensity \{``medium''\} \\
-\end{align*}
-\end{equation}
-\label{subsec:Selection_of_training_validation_data}
+
+\begin{tabular}[h]{p{0.8cm}l p{2cm}l}
+    E2.22 &$\qquad$ {} $\equiv$ $\exists$has\_wetness \{``mesic''\} \\
+      \ &$\qquad$ {} $\cap$ $\exists$has\_hydromorphic \{``false''\} \\
+      \ &$\qquad$ {} $\cap$ $\exists$has\_immature\_soil \{``false''\} \\
+     &$\qquad$ {} $\cap$ $\exists$species\_richness \{``false''\} \\
+     &$\qquad$ {} $\cap$ $\exists$has\_usage \{``mowing''\} \\
+     &$\qquad$ {} $\cap$ $\exists$ has\_usage\_intensity \{``medium''\} \\
+\end{tabular}\label{eq:description_logic}\\
+
 
 %\label{LU_anthropomorphic}
-Basic land cover extraction is performed
-by the segmentation process. 
-These polygons include spectral information and various statistics and indices
-such as SAGA wetness index, wind effect, etc. This follows the \gls{eagle} data
-model's separation of land use and land cover information.
 
-To generate the reference data, we combined agricultural, foresty, biotope and 
-geological data from different sources, creating a comprehensive database for 
-\gls{rlp}. These thematic maps include anthropomorphic characteristics of the 
-\gls{lu} such as cultivation and management practice (grazing or mowing) as 
-well as biophysical characteristics (wetness, soil composition, morphology 
-etc.). To ensure the comparability of these base data sets they were 
-characterized with a common reference model of indicators, which have been 
-developed within the \gls{natflo} project. That means, all base data sets 
-include the subsequent indicators (such as wetness, usage etc.) and can 
-therefore be used as reference data. The included polygons are much larger than 
-the polygons produced by the segmentation (see 
-\ref{subsec:reference_data_and_semantic_characterisation}, so that all polygons 
-completely within the thematically combined polygon receives all of its 
-attributes. This step adds the class labels used for 
-training the data mining algorithm.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Selection of training and validation data}
+\label{subsec:Selection_of_training_validation_data}
 The data was divided into 40\% for training and 60\% for validation. Training 
 \gls{seath} starts with 15 objects per class being randomly selected from the 
 training data. One benefit of \gls{seath} is that one does not need many 
@@ -475,7 +503,11 @@ most important features as chosen by the \gls{et} classifier. Each \gls{dt}
 classifier undergoes a 5-fold cross validation to verify results and the 
 \gls{dt} with the highest overall accuracy \gls{dt} was chosen.
 \label{subsec:rulegen_data_mining}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Rule generation}
+\label{subsec:rule_generation}
 Different data mining algorithms are trained on the training data to generate 
 rules for the classification procedure. For the \gls{dt} case the tree is 
 parsed according to the depth first search algorithm. Starting with the root 
@@ -601,20 +633,20 @@ objects that were classified were true positives. Recall \ref{eq:recall} shows
 the classifier's ability to find all relevant objects (positive samples). The 
 f-score is the harmonic mean of the precision and recall.
 \begin{equation}\label{eq:precision}
-\begin{align*}
+%\begin{align*}
     \frac{\text{true positives}}{\text{true positives + false positives}}
-\end{align*}
+%\end{align*}
 \end{equation}
 
 \begin{equation}\label{eq:recall}
-\begin{align*}
+%\begin{align*}
     \frac{\text{true positives}}{\text{true positives + false negatives}}
-\end{align*}
+%\end{align*}
 \end{equation}
 \begin{equation}\label{eq:fscore}
-\begin{align*}
+%\begin{align*}
     2 * \frac{\text{precision * recall}}{\text{precision + recall}}
-\end{align*}
+%\end{align*}
 \end{equation}
 First the rules are generated for each indicator and the metrics in
 \ref{eq:precision}, \ref{eq:recall} and \ref{eq:fscore} are saved for accuracy
