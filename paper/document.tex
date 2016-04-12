@@ -689,37 +689,31 @@ avg & 0.99 & 0.98 & 0.99 & 3530\\
 \begin{table}
     \centering
     %\rowcolors{2}{lightgray}{white}
-    \begin{tabular}{l l c l l  c c c c}
-    Indicator & Class & Precision & Recall & F-score & 
+    \begin{tabular}{l l l l c c c }
+    Indicator & Features & Class & Precision & Recall & F-score & 
     Support\\
     \hline
-    \multirow{7}{*}{\rotatebox[origin=c]{90}{acidity}}\\
-    \multicolumn{2}{c}{\rotatebox[origin=c]{90}{all}}\\
+    \multirow{6}{*}{\rotatebox[origin=c]{90}{acidity}}
+    & \multirow{3}{*}{\rotatebox[origin=c]{90}{all}} 
     & alkaline & 0.15 & 1.0 & 0.26 & 33\\
-    & null & 0.0 & 0.0 & 0.0 & 189\\
-    & avg & 0.02 & 0.15 & 0.04 & 222\\
-    \cline{2-6}
-    \multicolumn{2}{c}{\rotatebox[origin=c]{90}{100}}\\
+    & & null & 0.0 & 0.0 & 0.0 & 189\\
+    & & avg & 0.02 & 0.15 & 0.04 & 222\\
+    \cline{2-7}
+    & \multirow{3}{*}{\rotatebox[origin=c]{90}{100}} 
     & alkaline & 0.02 & 1.0 & 0.03 & 60\\
-    & null & 0.0 & 0.0 & 0.0 & 3424\\
-    & avg & 0.0 & 0.02 & 0.0 & 3484\\
-    \cline{2-6}
-    & 0 &1.00 & 1.00 & 1.00 & 3101\\
-    & alkaline & 1.00 & 0.99 & 0.99 & 267\\
-    \multirow{3}{*}{species richness}
-    & DT & 0.08 & 0.25 & 0.12 & 21098\\
-    & ET & 0.08 & 0.28 & 0.12 & 21098\\
-    \cline{2-6}
-    \multirow{3}{*}{wetness}
+    & & null & 0.0 & 0.0 & 0.0 & 3424\\
+    & & avg & 0.0 & 0.02 & 0.0 & 3484\\
+    \cline{2-7}
+    \multirow{6}{*}{\rotatebox[origin=c]{90}{wetness}}
+    & \multirow{3}{*}{\rotatebox[origin=c]{90}{all}}
     & dry & 0.0 & 0.0 & 0.0 & 20\\
-    & mesic & 0.99 & 0.99 & 0.99 & 2816\\
-    & avg & 0.99 & 0.99 & 0.99 & 2836\\
-    \cline{2-6}
+    & & mesic & 0.99 & 0.99 & 0.99 & 2816\\
+    & & avg & 0.99 & 0.99 & 0.99 & 2836\\
+    \cline{2-7}
+    & \multirow{3}{*}{\rotatebox[origin=c]{90}{100}}
     & dry & 0.0 & 0.05 & 0.0 & 59\\
-    & mesic & 0.88 & 0.12 & 0.2 & 3425\\
-    & avg & 0.86 & 0.11 & 0.2 & 3484\\
-
-    & ET & 0.41 & 0.63 & 0.49 & 21098\\
+    & & mesic & 0.88 & 0.12 & 0.2 & 3425\\
+    & & avg & 0.86 & 0.11 & 0.2 & 3484\\
     \end{tabular}
     \caption{Overall classification accuracy of 
 indicators\label{tab:accuracy_indicators}}
