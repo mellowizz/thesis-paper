@@ -6,12 +6,9 @@
 \usepackage{float}
 \usepackage{rotating}
 \usepackage{stfloats}
-%\usepackage{lineno}
-%\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
 \usepackage{tabulary}
 \usepackage{graphicx}
 \usepackage[none]{hyphenat}
-%\usepackage[table]{xcolor} \sloppy
 \usepackage[hyphens]{url}
 \usepackage{hyperref}
 \usepackage[toc]{glossaries}
@@ -50,21 +47,23 @@
 \loadglsentries[main]{./glossary}
 \makeglossaries
 \begin{document}
-%\include{./authordec}
 \begin{frontmatter}
-%\linenumbers
 \title{Combining machine learning and ontological data handling for multi-source
 classification of nature conservation areas}
 % Über den Titel muessen wir nochmal diskutieren. 
 
 \author[TUB]{T. Niklas Moran\corref{cor1}}
-\ead{niklasmoran@mailbox.tu-berlin.de}
+\ead{niklas@niklasmoran.com}
 
 \author[TUB]{Simon Nieland}
+\author[RLP]{Gregor Tintrup gen. Suntrup}
 \author[TUB]{Birgit Kleinschmit}
 
 \address[TUB]{Geoinformation in Environmental Planning Lab, Technische
 Universit\"at Berlin, Stra\ss e des 17. Juni 145, 10623 Berlin, Germany}
+
+\address[RLP]{Dept. Environmental Systems, RLP AgroScience - Institute for 
+Agroecology, Breitenweg 81 67435 Neustadt, Germany}
 
 \cortext[cor1]{Corresponding author at: Geoinformation in Environmental Planning
 Lab, Technische Universit\"at Berlin, Stra\ss e des 17. Juni 145, 10623 Berlin,
@@ -598,7 +597,7 @@ The optimal parameters for the \gls{dt} were determined by using 10 evolutions,
 a population size of 50, tournament size of 3 and a gene mutation probability 
 of 0.1 ~\citep{DEAP_JMLR2012} The parameters for the \gls{dt} that influence 
 classification accuracy include: minimum samples leaf, minimum samples split, 
-the max depth, the max features and the criterion ('entroy' or 'gini'). Two 
+the max depth, the max features and the criterion ('entropy' or 'gini'). Two 
 different fitted \gls{dt} classifiers were compared: Both were trained with a 
 \gls{dt} and used the evolutionary search algorithm to find the best parameters 
 to create the trees but one was fitted with all the features and the other with 
@@ -618,21 +617,21 @@ training and testing data includes polygons of grasslands between trees in
 orchards and grasslands in agricultural production. Finally, to evaluate the
 quality of the results in respect to well-established, popular classification
 approaches the outcomes were compared to an \gls{et} reference classification
-(see
-\ref{tab:accuracy_indicators}
+(see \ref{tab:accuracy_indicators}).
 We use precision\footnote{\url{
 http://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score
 .html\#sklearn.metrics.precision\_score}} (positive predicative value), 
 recall\footnote{\url{
 http://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.ht
 ml\#sklearn.metrics.recall\_score}} (sensitivity, true positive rate), 
-value) and 
+and 
 f-score\footnote{\url{
 http://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html\#
 s
 klearn.metrics.f1\_score}} to determine the accuracy of classification results. 
 The precision score (\ref{eq:precision}) is a reflection of how many of the 
-objects that were classified were true positives. Recall \ref{eq:recall} shows 
+objects that were classified were true positives. Recall (\ref{eq:recall}) 
+shows 
 the classifier's ability to find all relevant objects (positive samples). The 
 f-score is the harmonic mean of the precision and recall.
 \begin{equation}\label{eq:precision}
@@ -658,35 +657,13 @@ database. Objects that meet the rule as defined in \ref{tab:indicators_classes}
 are assigned to that class. The classified result is then compared to the 
 actual class label to determine the quality of the results.
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Results
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
-%%% MAY %%% 
 
-\begin{tabular}{c | c c c c}
-Class & Precision & Recall & F-score & Support\\
-\hline
-\hline\\
-dry & 0.0 & 0.0 & 0.0 & 20\\
-mesic & 0.99 & 0.99 & 0.99 & 2816\\
-avg & 0.99 & 0.99 & 0.99 & 2836\\
-\end{tabular}
-
-%%% MNZ %%%
-
-\begin{tabular}{c | c c c c}
-Class & Precision & Recall & F-score & Support\\
-\hline
-\hline\\
-dry & 0.0 & 0.0 & 0.0 & 5\\
-mesic & 1.0 & 0.98 & 0.99 & 3521\\
-wet & 0.0 & 0.0 & 0.0 & 4\\
-avg & 0.99 & 0.98 & 0.99 & 3530\\
-\end{tabular}
-%% MAY %%%
-\begin{table}
+%% Saarburg %%%
+\begin{table}[h!]
     \centering
     %\rowcolors{2}{lightgray}{white}
     \begin{tabular}{l l l l c c c }
@@ -695,151 +672,116 @@ avg & 0.99 & 0.98 & 0.99 & 3530\\
     \hline
     \multirow{6}{*}{\rotatebox[origin=c]{90}{acidity}}
     & \multirow{3}{*}{\rotatebox[origin=c]{90}{all}} 
-    & alkaline & 0.15 & 1.0 & 0.26 & 33\\
-    & & null & 0.0 & 0.0 & 0.0 & 189\\
-    & & avg & 0.02 & 0.15 & 0.04 & 222\\
+    & alkaline & 0.91 & 0.97 & 0.94 & 259\\
+    & & unclass & 0.00 & 0.0 & 0.0 & 3109\\
+    & & avg & 0.07 & 0.07 & 0.07 & 3368\\
     \cline{2-7}
     & \multirow{3}{*}{\rotatebox[origin=c]{90}{100}} 
-    & alkaline & 0.02 & 1.0 & 0.03 & 60\\
-    & & null & 0.0 & 0.0 & 0.0 & 3424\\
-    & & avg & 0.0 & 0.02 & 0.0 & 3484\\
+    & alkaline & 0.0 & 0.0 & 0.0 & 259\\
+    & & unclass & 0.0 & 0.0 & 0.0 & 3109 \\
+    & & avg & 0.0 & 0.0 & 0.0 & 3368\\
+    \cline{2-7}
+    \multirow{6}{*}{\rotatebox[origin=c]{90}{wetness}}
+    & \multirow{4}{*}{\rotatebox[origin=c]{90}{all}}
+    & dry & 0.83 & 0.97 & 0.89 & 259\\
+    & & mesic & 1.0 & 0.98& 0.99 & 3067\\
+    & & wet & 1.0 & 0.90 & 0.95 & 42\\
+    & & avg & 0.98 & 0.98 & 0.98 & 3368\\
+    \cline{2-7}
+    & \multirow{3}{*}{\rotatebox[origin=c]{90}{100}}
+    & dry & 0.08 & 0.92 & 0.14 & 259\\
+    & & mesic & 0.92 & 0.08 & 0.15 & 3067\\
+    & & wet & 0.0 & 0.0 & 0.0 & 42\\
+    & & avg & 0.85 & 0.15 & 0.15 & 3368\\
+    \end{tabular}
+    \caption{Classification accuracy of 
+indicators for Saarburg\label{tab:accuracy_saarburg}}
+\end{table}
+
+%% MAY %%%
+\begin{table}[h!]
+    \centering
+    %\rowcolors{2}{lightgray}{white}
+    \begin{tabular}{l l l l c c c }
+    Indicator & Features & Class & Precision & Recall & F-score & 
+    Support\\
+    \hline
+    \multirow{6}{*}{\rotatebox[origin=c]{90}{acidity}}
+    & \multirow{3}{*}{\rotatebox[origin=c]{90}{all}} 
+    & alkaline & 1.0 & 0.02 & 0.03 & 60\\
+    & & unclass & 0.98 & 1.0 & 0.99 & 3424\\
+    & & avg & 0.98 & 0.98 & 0.97 & 3484\\
+    \cline{2-7}
+    & \multirow{3}{*}{\rotatebox[origin=c]{90}{100}} 
+    & alkaline & 0.0 & 0.0 & 0.0 & 60\\
+    & & unclass & 0.98 & 1.0 & 0.99 & 3424\\
+    & & avg & 0.97 & 0.98 & 0.97 & 3484\\
     \cline{2-7}
     \multirow{6}{*}{\rotatebox[origin=c]{90}{wetness}}
     & \multirow{3}{*}{\rotatebox[origin=c]{90}{all}}
-    & dry & 0.0 & 0.0 & 0.0 & 20\\
-    & & mesic & 0.99 & 0.99 & 0.99 & 2816\\
-    & & avg & 0.99 & 0.99 & 0.99 & 2836\\
+    & dry & 0.0 & 0.0 & 0.0 & 59\\
+    & & mesic & 0.99 & 0.82& 0.90 & 3425\\
+    & & avg & 0.98 & 0.80 & 0.88 & 3484\\
     \cline{2-7}
     & \multirow{3}{*}{\rotatebox[origin=c]{90}{100}}
-    & dry & 0.0 & 0.05 & 0.0 & 59\\
-    & & mesic & 0.88 & 0.12 & 0.2 & 3425\\
-    & & avg & 0.86 & 0.11 & 0.2 & 3484\\
+    & dry & 0.02 & 0.90 & 0.04 & 59\\
+    & & mesic & 0.99 & 0.16 & 0.28 & 3425\\
+    & & avg & 0.97 & 0.18 & 0.28 & 3484\\
     \end{tabular}
-    \caption{Overall classification accuracy of 
-indicators\label{tab:accuracy_indicators}}
-\end{table}
-The poor performance of the wetness indicator negatively effects classification 
-of the
-biotopes. Luckily, the immature soil and hydromorphic indicators when combined
-are disjoint (see \ref{tab:indicators_classes})
-\subsection{EUNIS Level 2 Classification}
-\label{subsec:level2_classification}
-The \gls{dt} classifier has 4115 false
-positives (19654 classified vs. 15539 actual) 
-\begin{table}
-\centering
-\begin{tabular}{c c c c c}
-Class & Precision & Recall & F-score & Support\\
-\hline
-E1 & 0.5 & 0.01 & 0.02 & 122\\
-E2 & 0.79 & 0.58 & 0.67 & 15539\\
-E3 & 0.7 & 0.11 & 0.2 & 61\\
-unclass & 0.0 & 0.0 & 0.0 & 5376\\
-avg & 0.59 & 0.43 & 0.49 & 21098\\
-\end{tabular}
-\caption{Classification accuracy of grasslands using the \gls{dt} 
-classifier\label{fig:dt_lvl2_classification}}
-\end{table}
-% gibt es ueberhaupt I1 noch im Datensatz?!
-The largest number of polygons in the testing data not belonging to \gls{eunis}
-grasslands belong to I1 which are described as ``Arable land and
-market gardens''. The class includes meadow/pastureland under management and
-recently fallowed land under I1.5. 
-
-The dominance of mesic grasslands in Saarburg is clearly reflected in
-the results. In the testing data of the 21098 objects, 15539 objects - 74\% -
-are mesic grasslands. Less than 1\% of objects are in E1 (122) and E3 (61). 
-\begin{table}
-\centering
-\begin{tabular}{c c c c c}
-Class & Precision & Recall & F-score & Support\\
-\hline
-E1 & 0.03 & 0.68 & 0.05 & 122\\
-E2 & 0.68 & 0.01 & 0.02 & 15539\\
-E3 & 0.02 & 0.38 & 0.04 & 61\\
-unclass & 0.0 & 0.0 & 0.0 & 5376\\
-avg & 0.5 & 0.01 & 0.01 & 21098\\
-\end{tabular}
-\caption{Classification accuracy of grasslands using the \gls{seath}
-algorithm\label{fig:seath_lvl2_classification}}
+    \caption{Classification accuracy of 
+indicators for test area 1 (MAY)\label{tab:accuracy_may}}
 \end{table}
 
-%%%%
-
-\subsection{EUNIS Level 3 classificaton}
-\begin{table}
-\centering
-\begin{tabular}{c c c c c}
-Class & Precision & Recall & F-score & Support\\
-\hline
-E1.2 & 0.5 & 0.01 & 0.02 & 122\\
-E2.1 & 0.63 & 0.69 & 0.66 & 11509\\
-E2.6 & 0.17 & 0.04 & 0.07 & 4335\\
-E3.4 & 1.0 & 0.03 & 0.06 & 64\\
-avg & 0.37 & 0.37 & 0.36 & 21788\\
-\end{tabular}
-\caption{Classification accuracy for \gls{eunis} level 3 using \gls{dt}}
+%% MNZ %%%
+\begin{table}[h!]
+    \centering
+    %\rowcolors{2}{lightgray}{white}
+    \begin{tabular}{l l l l c c c }
+    Indicator & Features & Class & Precision & Recall & F-score & 
+    Support\\
+    \hline
+    \multirow{6}{*}{\rotatebox[origin=c]{90}{acidity}}
+    & \multirow{3}{*}{\rotatebox[origin=c]{90}{all}} 
+    & alkaline & 0.0 & 0.0 & 0.0 & 619\\
+    & & unclass & 0.87 & 1.0 & 0.93 & 4066\\
+    & & avg & 0.75 & 0.87 & 0.81 & 4685\\
+    \cline{2-7}
+    & \multirow{3}{*}{\rotatebox[origin=c]{90}{100}} 
+    & alkaline & 0.0 & 0.0 & 0.0 & 619\\
+    & & unclass & 0.87 & 1.0 & 0.93 & 4066\\
+    & & avg & 0.75 & 0.87 & 0.81 & 4685\\
+    \cline{2-7}
+    \multirow{6}{*}{\rotatebox[origin=c]{90}{wetness}}
+    & \multirow{4}{*}{\rotatebox[origin=c]{90}{all}}
+    & dry & 1.0 & 0.3 & 0.46 & 10\\
+    & & mesic & 1.0 & 0.95& 0.97 & 4671\\
+    & & wet & 0.0 & 0.0 & 0.0 & 4\\
+    & & avg & 1.0 & 0.95 & 0.97 & 4685\\
+    \cline{2-7}
+    & \multirow{4}{*}{\rotatebox[origin=c]{90}{100}}
+    & dry & 0.0 & 0.8 & 0.0 & 10\\
+    & & mesic & 0.99 & 0.2 & 0.33 & 4671\\
+    & & wet & 0.0 & 0.0 & 0.0 & 4\\
+    & & avg & 0.99 & 0.2 & 0.33 & 4685\\
+    \end{tabular}
+    \caption{Classification accuracy of 
+indicators for test area 2 (MNZ) \label{tab:accuracy_mnz}}
 \end{table}
-\begin{table}
-\centering
-\begin{tabular}{c c c c c}
-Class & Precision & Recall & F-score & Support\\
-\hline
-E1.2 & 1.0 & 0.01 & 0.02 & 122\\
-E2.1 & 0.0 & 0.0 & 0.0 & 11105\\
-E2.6 & 0.5 & 0.0 & 0.0 & 4240\\
-E3.4 & 0.02 & 0.3 & 0.04 & 61\\
-unclass & 0.0 & 0.0 & 0.0 & 5374\\
-avg & 0.11 & 0.0 & 0.0 & 21098\\
-\end{tabular}
-\caption{Classification accuracy for \gls{eunis} level 3 using SEaTH}
-\end{table}
-At level three fewer objects are found and classified. Our indicators are not 
-capable of detecting the differences at this level. For instance in dry 
-grasslands there is only one object in E1.71, all the rest of the dry 
-grasslands are in E1.262.
-
 %Discussion
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}
 As a base classifier for the proposed methodology the \gls{dt} was chosen.
 Benefits of this machine learning algorithm are on the one hand the traceability
-and understandability of the resulting rules, on the other hand \gls{dt} has
-been utilised successfully for several related research questions 
+and understandability of the resulting rules and on the other hand \gls{dt} has
+been used successfully for several related research questions 
 ~\citep{Franke2012125, Otukei2010S27}.
 
-
-As can been seen in table \ref{tab:accuracy_indicators}, the immature soil and
-hydromorphic indicators performed well. The poor performance of the wetness
-indicator in particular is surprising as the data mining algorithms had 
-access to many different wetness indicators and morphological data. Since 
-classifying \gls{eunis} level 2 grasslands requires information on wetness, 
-the classification suffers. The performance of usage and usage intensity is 
-most likely due to a lack of time series data. In regards to algorithmic 
-performance, SEaTH performed poorly overall and the results show that the 
-\gls{dt} classifier achieves comparable results to the \gls{et} classifier 
-for the indicators chosen. 
-
-The very few dry grasslands in the Saarburg region hurt the classifier's 
-ability to learn from the data. Only one dry grassland classified as such fits 
-the rule's definition of a dry grassland. The reasons for this could be due the 
-differences in data quality between the biotope map and the agriculture map. 
-It could also be a conceptualization problem with the translation from the 
-\gls{rlp} classification to \gls{eunis}.
-
-Visually inspecting the data revealed that polygons were in fact grasslands, 
-agricultural land or meadows. Most belonged the class I1 - ``Arable land and 
-market gardens'' and the \gls{eunis} biotope classification guide specifically 
-states that turf and sports fields are excluded. Since I1 is ``species poor'' 
-adding ``species richness'' to the E2 rule reduced the number of polygons 
-classified as I1 but also reduced the total number of E2 classes as well. Thus, 
-adding species richness was not helpful. The height restriction and the class 
-name ``herbaceous plants'' from the segmentation properly excluded trees, 
-artificial buildings, etc. The larger size of the thematic map's polygons means 
-that a polygon of grasslands in between an orchard will still be assigned the 
-orchard's label and \gls{eunis} indicators. Early on the issue with orchards 
-was identified as a troubling area for segmentation and this has not yet been 
-resolved. A multi-scale approach will probably be needed to solve this problem. 
+As can been seen in table \ref{tab:accuracy_saarburg}, using all features 
+yields better classification accuracy than using only the top 100 most 
+informative features as chosen by the \gls{et} classifier. While training on 
+acidity indicated that it would perform well, the results are not nearly 
+as good. The same holds true for the other parameters as well: immature 
+soil and species richness.
 
 The selection of grasslands greater than 200m$^{2}$ in size might have also led 
 to errors as max and min values in the \gls{dsm} had a large range. The 
@@ -860,8 +802,7 @@ reference data and dimension reduction could achieve results comparable to an
 indicators and revisit the conceptualization. 
 
 Further investigation of the segmented polygons and a test area with a more
-uniform distribution of biotope classes is needed. Accurate reference data is
-needed to diagnose why the wetness indicator performed so poorly. Other 
+uniform distribution of biotope classes is needed. Other 
 algorithms should be applied for comparison.
 
 We demonstrated that an ontological-based semi-automated classification system
@@ -891,16 +832,17 @@ this study is located at:
 \begin{tabular}{ll}
 \label{tab:indices}
 dtm/dem & orthophotos\\
-aspect & red\\
-catchment area & blue\\
-convergence index & green\\
-curvature classification & bare area index\\
+\cline{1-2}
+Aspect & Red\\
+Catchment Area & Blue\\
+Convergence Index & Green\\
+Curvature Classification & Bare Area Index\\
 Double Difference Vegetation Index & Normalized Difference Vegetation Index\\
 Diurnal Anisotropic Heating & Normalized Difference Wetness Index\\
-DIFI & Near Infrared\\
-flow accumulaction & Panchromatic\\
+Diffuse Insolation & Near Infrared\\
+Flow Accumulation & Panchromatic\\
 Morphometric Protection Index & Red edge\\
-MRRT & RapidEye(nir, red edge, r,g,b\\
+Multiresolution Index of the Ridge Top Flatness & RapidEye(NIR, Red Edge, RGB)\\
 Multiresolution Index of Valley Bottom Flattness & ×\\
 Profile Curvature & ×\\
 Slope & ×\\
